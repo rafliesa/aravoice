@@ -4,7 +4,21 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import LatestNewsCard from "@/components/news/LatestNewsCard";
 import NewsCard from "@/components/news/NewsCard";
-import { type News, fetchPublishedNews, formatPublishedDate } from "@/lib/news";
+import {
+  type NewsCardData,
+  type Pagination,
+  fetchNewsCards,
+  formatPublishedDate,
+} from "@/lib/news";
+
+const CARD_PAGE_SIZE = 6;
+
+const EMPTY_PAGINATION: Pagination = {
+  page: 1,
+  limit: CARD_PAGE_SIZE,
+  total_items: 0,
+  total_pages: 0,
+};
 
 const summaryCards = [
   {
@@ -62,42 +76,49 @@ function MetaItem({ children, icon }: { children: React.ReactNode; icon: React.R
 }
 
 export default function Home() {
-  const [publishedNews, setPublishedNews] = useState<News[]>([]);
-  const [loadingNews, setLoadingNews] = useState(true);
+  const [page, setPage] = useState(1);
+  const [cardNews, setCardNews] = useState<NewsCardData[]>([]);
+  const [pagination, setPagination] = useState<Pagination>(EMPTY_PAGINATION);
+  const [loadingCards, setLoadingCards] = useState(true);
   const [newsError, setNewsError] = useState("");
 
   useEffect(() => {
     const controller = new AbortController();
 
     async function loadNews() {
+      setLoadingCards(true);
+      setNewsError("");
       try {
-        setPublishedNews(await fetchPublishedNews(controller.signal));
+        const response = await fetchNewsCards(page, CARD_PAGE_SIZE, controller.signal);
+        setCardNews(response.data);
+        setPagination(response.pagination);
       } catch (error) {
         if ((error as Error).name !== "AbortError") {
+          setCardNews([]);
           setNewsError(error instanceof Error ? error.message : "Berita gagal dimuat");
         }
       } finally {
         if (!controller.signal.aborted) {
-          setLoadingNews(false);
+          setLoadingCards(false);
         }
       }
     }
 
     loadNews();
     return () => controller.abort();
-  }, []);
+  }, [page]);
 
-  const leadNews = publishedNews[0];
-  const latestNews = publishedNews.slice(0, 3);
-  const featuredNews = publishedNews.slice(0, 3);
+  const leadNews = cardNews[0];
+  const latestNews = cardNews.slice(0, 3);
   const availableFormats = leadNews?.formats.map((format) => format.toUpperCase()) ?? [];
   const heroCategory = leadNews?.category.toUpperCase() ?? "BERITA";
-  const heroTitle = loadingNews
+  const initialLoading = loadingCards && cardNews.length === 0;
+  const heroTitle = initialLoading
     ? "Memuat berita terbaru..."
-    : newsError
+    : newsError && cardNews.length === 0
       ? "Berita belum dapat dimuat"
       : leadNews?.title ?? "Belum ada berita terbit";
-  const heroExcerpt = newsError
+  const heroExcerpt = newsError && cardNews.length === 0
     ? newsError
     : leadNews?.excerpt ?? "Berita yang dipublikasikan dari halaman admin akan tampil di sini.";
 
@@ -224,10 +245,10 @@ export default function Home() {
                 ))}
               </ul>
 
-              {loadingNews && (
+              {initialLoading && (
                 <p className="mt-6 text-sm text-zinc-500">Memuat berita terbaru...</p>
               )}
-              {!loadingNews && latestNews.length === 0 && (
+              {!initialLoading && latestNews.length === 0 && (
                 <p className="mt-6 text-sm text-zinc-500">
                   {newsError || "Belum ada berita yang diterbitkan."}
                 </p>
@@ -238,17 +259,48 @@ export default function Home() {
 
         {/* Featured cards */}
         <section className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {loadingNews &&
-            Array.from({ length: 3 }, (_, index) => (
+          {loadingCards
+            ? Array.from({ length: CARD_PAGE_SIZE }, (_, index) => (
               <div
                 key={index}
                 className="h-96 animate-pulse rounded-lg border border-zinc-200 bg-zinc-100"
               />
-            ))}
-          {featuredNews.map((news) => (
-            <NewsCard key={news.id} news={news} />
-          ))}
+              ))
+            : cardNews.map((news) => <NewsCard key={news.id} news={news} />)}
         </section>
+
+        {!loadingCards && newsError && (
+          <p className="mt-6 text-center text-sm text-red-600">{newsError}</p>
+        )}
+
+        {pagination.total_pages > 1 && (
+          <nav
+            aria-label="Pagination berita"
+            className="mt-8 flex items-center justify-center gap-4"
+          >
+            <button
+              type="button"
+              onClick={() => setPage((current) => Math.max(1, current - 1))}
+              disabled={page <= 1 || loadingCards}
+              className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              Sebelumnya
+            </button>
+            <span className="text-sm text-zinc-600">
+              Halaman {pagination.page} dari {pagination.total_pages}
+            </span>
+            <button
+              type="button"
+              onClick={() =>
+                setPage((current) => Math.min(pagination.total_pages, current + 1))
+              }
+              disabled={page >= pagination.total_pages || loadingCards}
+              className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              Berikutnya
+            </button>
+          </nav>
+        )}
       </div>
     </div>
   );

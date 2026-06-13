@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { type News } from "@/lib/news";
+import { type NewsCardData } from "@/lib/news";
 
 type NewsCardProps = {
-  news: News;
+  news: NewsCardData;
 };
 
 export default function NewsCard({ news }: NewsCardProps) {

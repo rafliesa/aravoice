@@ -16,8 +16,42 @@ export type News = {
 
 export type CreateNewsPayload = Omit<News, "id">;
 
-export async function fetchPublishedNews(signal?: AbortSignal) {
-  const response = await fetch("/api/news", {
+export type NewsCardData = Pick<
+  News,
+  | "id"
+  | "category"
+  | "title"
+  | "excerpt"
+  | "author"
+  | "reading_time"
+  | "cover_image"
+  | "caption"
+  | "formats"
+  | "published_at"
+>;
+
+export type Pagination = {
+  page: number;
+  limit: number;
+  total_items: number;
+  total_pages: number;
+};
+
+export type PaginatedNewsCards = {
+  data: NewsCardData[];
+  pagination: Pagination;
+};
+
+export async function fetchNewsCards(
+  page: number,
+  limit: number,
+  signal?: AbortSignal,
+) {
+  const params = new URLSearchParams({
+    page: String(page),
+    limit: String(limit),
+  });
+  const response = await fetch(`/api/news/cards?${params}`, {
     cache: "no-store",
     signal,
   });
@@ -25,8 +59,7 @@ export async function fetchPublishedNews(signal?: AbortSignal) {
     throw new Error(await getResponseError(response));
   }
 
-  const news = (await response.json()) as News[];
-  return news.filter((item) => item.is_published);
+  return (await response.json()) as PaginatedNewsCards;
 }
 
 export async function getResponseError(response: Response) {

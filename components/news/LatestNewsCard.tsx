@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { type News, formatPublishedDate } from "@/lib/news";
+import { type NewsCardData, formatPublishedDate } from "@/lib/news";
 
 type LatestNewsCardProps = {
-  news: News;
+  news: NewsCardData;
 };
 
 export default function LatestNewsCard({ news }: LatestNewsCardProps) {
