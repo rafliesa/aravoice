@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { type News, formatPublishedDate } from "@/lib/news";
+import LatestNewsCard from "@/components/news/LatestNewsCard";
+import NewsCard from "@/components/news/NewsCard";
+import { type News, fetchPublishedNews, formatPublishedDate } from "@/lib/news";
 
 const summaryCards = [
   {
@@ -50,82 +52,6 @@ const summaryCards = [
   },
 ];
 
-type LatestItem = {
-  id: string;
-  category: string;
-  title: string;
-  meta: string;
-  href: string;
-};
-
-type FeaturedItem = {
-  id: string;
-  category: string;
-  title: string;
-  body: string;
-  type: string;
-  duration: string;
-  coverImage: string;
-  href: string;
-};
-
-const fallbackLatest: LatestItem[] = [
-  {
-    id: "fallback-latest-1",
-    category: "PARA DATA",
-    title: "NPCI Kota Bandung: Event Melimpah, Anggaran 2026 Menciut",
-    meta: "10 Mei 2024 • 5 mnt baca",
-    href: "#berita-terbaru",
-  },
-  {
-    id: "fallback-latest-2",
-    category: "PARA ATLET",
-    title: "Maulida Aulia: Melampaui Batas dengan Lompatan Harapan",
-    meta: "08 Mei 2024 • 8 mnt baca",
-    href: "#berita-terbaru",
-  },
-  {
-    id: "fallback-latest-3",
-    category: "PARA EDU",
-    title: "Panduan Etika Jurnalistik dalam Liputan Disabilitas",
-    meta: "05 Mei 2024 • 12 mnt baca",
-    href: "#berita-terbaru",
-  },
-];
-
-const fallbackFeatured: FeaturedItem[] = [
-  {
-    id: "fallback-featured-1",
-    category: "PARA POP",
-    title: "Dari Cedera ke Podium Nasional",
-    body: "Perjalanan seorang atlet para-atletik yang kembali bangkit setelah mengalami cedera…",
-    type: "Artikel",
-    duration: "5 menit baca",
-    coverImage: "",
-    href: "#berita-terbaru",
-  },
-  {
-    id: "fallback-featured-2",
-    category: "PARA REPORT",
-    title: "Latihan Tiap Hari, Tanpa Fasilitas Layak",
-    body: "Atlet renang berlatih di kolam umum demi mimpi besar mengharumkan nama bangsa di",
-    type: "Artikel",
-    duration: "6 menit baca",
-    coverImage: "",
-    href: "#berita-terbaru",
-  },
-  {
-    id: "fallback-featured-3",
-    category: "PARA POP",
-    title: "Medali Emas ASEAN Para Games 2026",
-    body: "Kebanggaan Indonesia dari cabang para-powerlifting yang berhasil memecahkan rekor",
-    type: "Video",
-    duration: "8 menit",
-    coverImage: "",
-    href: "#berita-terbaru",
-  },
-];
-
 function MetaItem({ children, icon }: { children: React.ReactNode; icon: React.ReactNode }) {
   return (
     <span className="inline-flex items-center gap-1.5 text-sm text-zinc-500">
@@ -137,53 +63,43 @@ function MetaItem({ children, icon }: { children: React.ReactNode; icon: React.R
 
 export default function Home() {
   const [publishedNews, setPublishedNews] = useState<News[]>([]);
+  const [loadingNews, setLoadingNews] = useState(true);
+  const [newsError, setNewsError] = useState("");
 
   useEffect(() => {
     const controller = new AbortController();
 
-    fetch("/api/news", { cache: "no-store", signal: controller.signal })
-      .then((response) => {
-        if (!response.ok) throw new Error("Backend tidak tersedia");
-        return response.json() as Promise<News[]>;
-      })
-      .then((items) => setPublishedNews(items.filter((item) => item.is_published)))
-      .catch(() => {
-        // Keep the curated fallback content when the API is unavailable.
-      });
+    async function loadNews() {
+      try {
+        setPublishedNews(await fetchPublishedNews(controller.signal));
+      } catch (error) {
+        if ((error as Error).name !== "AbortError") {
+          setNewsError(error instanceof Error ? error.message : "Berita gagal dimuat");
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoadingNews(false);
+        }
+      }
+    }
 
+    loadNews();
     return () => controller.abort();
   }, []);
 
   const leadNews = publishedNews[0];
-  const latestItems: LatestItem[] =
-    publishedNews.length > 0
-      ? publishedNews.slice(0, 3).map((item) => ({
-          id: String(item.id),
-          category: item.category.toUpperCase(),
-          title: item.title,
-          meta: `${formatPublishedDate(item.published_at)} • ${item.reading_time} menit baca`,
-          href: `#berita-${item.id}`,
-        }))
-      : fallbackLatest;
-  const featuredItems: FeaturedItem[] =
-    publishedNews.length > 0
-      ? publishedNews.slice(0, 3).map((item) => {
-          const isVideo = item.formats.some((format) => format.toUpperCase() === "VIDEO");
-          return {
-            id: String(item.id),
-            category: item.category.toUpperCase(),
-            title: item.title,
-            body: item.excerpt,
-            type: isVideo ? "Video" : "Artikel",
-            duration: `${item.reading_time} menit${isVideo ? "" : " baca"}`,
-            coverImage: item.cover_image,
-            href: `#berita-${item.id}`,
-          };
-        })
-      : fallbackFeatured;
-  const availableFormats = leadNews?.formats.length
-    ? leadNews.formats.map((format) => format.toUpperCase())
-    : ["TEKS", "AUDIO", "VIDEO"];
+  const latestNews = publishedNews.slice(0, 3);
+  const featuredNews = publishedNews.slice(0, 3);
+  const availableFormats = leadNews?.formats.map((format) => format.toUpperCase()) ?? [];
+  const heroCategory = leadNews?.category.toUpperCase() ?? "BERITA";
+  const heroTitle = loadingNews
+    ? "Memuat berita terbaru..."
+    : newsError
+      ? "Berita belum dapat dimuat"
+      : leadNews?.title ?? "Belum ada berita terbit";
+  const heroExcerpt = newsError
+    ? newsError
+    : leadNews?.excerpt ?? "Berita yang dipublikasikan dari halaman admin akan tampil di sini.";
 
   return (
     <div className="flex-1 bg-[#faf8f3] text-[#1a1a1a]">
@@ -201,37 +117,40 @@ export default function Home() {
         <section className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-2">
           <div>
             <p className="text-sm font-bold tracking-wider text-[#F29100]">
-              {leadNews?.category.toUpperCase() ?? "LIPUTAN KHUSUS"}
+              {heroCategory}
             </p>
             <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
-              {leadNews?.title ?? "Di Balik Prestasi: Polemik Masa Depan Atlet Disabilitas"}
+              {heroTitle}
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-600">
-              {leadNews?.excerpt ??
-                "Ketika medali dirayakan, masa depan atlet sering masih dipertanyakan. Paravoice mengangkat cerita, data, dan suara untuk perubahan yang nyata."}
+              {heroExcerpt}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-6 border-t border-zinc-200 pt-6">
-              <MetaItem icon={<UserIcon />}>Oleh {leadNews?.author ?? "Tim Paravoice"}</MetaItem>
-              <MetaItem icon={<CalendarIcon />}>
-                {leadNews ? formatPublishedDate(leadNews.published_at) : "10 Mei 2026"}
-              </MetaItem>
-              <MetaItem icon={<ClockIcon />}>
-                {leadNews ? `${leadNews.reading_time} menit baca` : "12 menit baca"}
-              </MetaItem>
-            </div>
+            {leadNews && (
+              <div className="mt-8 flex flex-wrap items-center gap-6 border-t border-zinc-200 pt-6">
+                <MetaItem icon={<UserIcon />}>Oleh {leadNews.author}</MetaItem>
+                <MetaItem icon={<CalendarIcon />}>
+                  {formatPublishedDate(leadNews.published_at)}
+                </MetaItem>
+                <MetaItem icon={<ClockIcon />}>
+                  {leadNews.reading_time} menit baca
+                </MetaItem>
+              </div>
+            )}
 
-            <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
-              <span className="text-sm font-medium text-zinc-500">Format tersedia:</span>
-              {availableFormats.map((format) => (
-                <span
-                  key={format}
-                  className="rounded bg-[#F29100] px-3 py-1 text-xs font-bold tracking-wide text-white"
-                >
-                  {format}
-                </span>
-              ))}
-            </div>
+            {availableFormats.length > 0 && (
+              <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
+                <span className="text-sm font-medium text-zinc-500">Format tersedia:</span>
+                {availableFormats.map((format) => (
+                  <span
+                    key={format}
+                    className="rounded bg-[#F29100] px-3 py-1 text-xs font-bold tracking-wide text-white"
+                  >
+                    {format}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
 
           <div>
@@ -245,18 +164,19 @@ export default function Home() {
             ) : (
               <div className="aspect-[16/10] w-full rounded-sm bg-black" />
             )}
-            <p className="mt-3 text-sm text-zinc-500">
-              {leadNews?.caption ||
-                "Maulida Aulia, peraih medali emas ASEAN Para Games 2023 (Foto: NPC Indonesia)"}
-            </p>
-            <div className="mt-4 text-right">
-              <Link
-                href={leadNews ? `#berita-${leadNews.id}` : "#berita-terbaru"}
-                className="text-sm font-bold text-[#8A5100] hover:underline"
-              >
-                Baca Selengkapnya ↓
-              </Link>
-            </div>
+            {leadNews?.caption && (
+              <p className="mt-3 text-sm text-zinc-500">{leadNews.caption}</p>
+            )}
+            {leadNews && (
+              <div className="mt-4 text-right">
+                <Link
+                  href={`#berita-${leadNews.id}`}
+                  className="text-sm font-bold text-[#8A5100] hover:underline"
+                >
+                  Baca Selengkapnya ↓
+                </Link>
+              </div>
+            )}
           </div>
         </section>
 
@@ -299,61 +219,34 @@ export default function Home() {
               <div className="mt-2 h-1 w-16 rounded bg-[#F29100]" />
 
               <ul className="mt-6 divide-y divide-zinc-200">
-                {latestItems.map((item) => (
-                  <li key={item.id} className="py-5 first:pt-0">
-                    <p className="text-xs font-bold tracking-wider text-[#F29100]">{item.category}</p>
-                    <Link href={item.href} className="mt-2 block text-lg font-bold leading-snug hover:text-[#8A5100]">
-                      {item.title}
-                    </Link>
-                    <p className="mt-2 text-xs text-zinc-500">{item.meta}</p>
-                  </li>
+                {latestNews.map((news) => (
+                  <LatestNewsCard key={news.id} news={news} />
                 ))}
               </ul>
 
-              <Link
-                href="#"
-                className="mt-6 flex items-center justify-center gap-2 rounded-md border border-zinc-300 px-5 py-3 text-sm font-bold text-zinc-800 transition-colors hover:bg-zinc-100"
-              >
-                Lihat Semua Artikel
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-              </Link>
+              {loadingNews && (
+                <p className="mt-6 text-sm text-zinc-500">Memuat berita terbaru...</p>
+              )}
+              {!loadingNews && latestNews.length === 0 && (
+                <p className="mt-6 text-sm text-zinc-500">
+                  {newsError || "Belum ada berita yang diterbitkan."}
+                </p>
+              )}
             </div>
           </aside>
         </section>
 
         {/* Featured cards */}
         <section className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {featuredItems.map((item) => (
-            <article
-              id={`berita-${item.id}`}
-              key={item.id}
-              className="overflow-hidden rounded-lg border border-zinc-200 bg-white"
-            >
-              {item.coverImage ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={item.coverImage}
-                  alt={item.title}
-                  className="aspect-[16/10] w-full object-cover"
-                />
-              ) : (
-                <div className="aspect-[16/10] w-full bg-black" />
-              )}
-              <div className="p-6">
-                <p className="text-xs font-bold tracking-wider text-[#F29100]">{item.category}</p>
-                <h3 className="mt-3 text-xl font-bold leading-snug">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-zinc-600">{item.body}</p>
-                <div className="mt-6 flex items-center justify-between border-t border-zinc-100 pt-4">
-                  <div className="flex items-center gap-4">
-                    <MetaItem icon={item.type === "Video" ? <VideoIcon /> : <DocIcon />}>{item.type}</MetaItem>
-                    <MetaItem icon={<ClockIcon />}>{item.duration}</MetaItem>
-                  </div>
-                  <Link href={item.href} aria-label="Baca" className="text-[#F29100] transition-colors hover:text-[#8A5100]">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-                  </Link>
-                </div>
-              </div>
-            </article>
+          {loadingNews &&
+            Array.from({ length: 3 }, (_, index) => (
+              <div
+                key={index}
+                className="h-96 animate-pulse rounded-lg border border-zinc-200 bg-zinc-100"
+              />
+            ))}
+          {featuredNews.map((news) => (
+            <NewsCard key={news.id} news={news} />
           ))}
         </section>
       </div>
@@ -386,24 +279,6 @@ function ClockIcon() {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
       <polyline points="12 6 12 12 16 14" />
-    </svg>
-  );
-}
-
-function DocIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-      <polyline points="14 2 14 8 20 8" />
-    </svg>
-  );
-}
-
-function VideoIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="23 7 16 12 23 17 23 7" />
-      <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
     </svg>
   );
 }

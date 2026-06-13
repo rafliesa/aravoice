@@ -16,6 +16,19 @@ export type News = {
 
 export type CreateNewsPayload = Omit<News, "id">;
 
+export async function fetchPublishedNews(signal?: AbortSignal) {
+  const response = await fetch("/api/news", {
+    cache: "no-store",
+    signal,
+  });
+  if (!response.ok) {
+    throw new Error(await getResponseError(response));
+  }
+
+  const news = (await response.json()) as News[];
+  return news.filter((item) => item.is_published);
+}
+
 export async function getResponseError(response: Response) {
   try {
     const data = (await response.json()) as { error?: string };
