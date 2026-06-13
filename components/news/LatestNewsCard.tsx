@@ -12,7 +12,7 @@ export default function LatestNewsCard({ news }: LatestNewsCardProps) {
         {news.category.toUpperCase()}
       </p>
       <Link
-        href={`#berita-${news.id}`}
+        href={`/${news.slug}`}
         className="mt-2 block text-lg font-bold leading-snug hover:text-[#8A5100]"
       >
         {news.title}

@@ -41,7 +41,7 @@ export default function NewsCard({ news }: NewsCardProps) {
             </MetaItem>
           </div>
           <Link
-            href={`#berita-${news.id}`}
+            href={`/${news.slug}`}
             aria-label={`Baca ${news.title}`}
             className="text-[#F29100] transition-colors hover:text-[#8A5100]"
           >

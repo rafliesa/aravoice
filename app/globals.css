@@ -25,3 +25,54 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+/* Article layout: float-able images so authors can place a picture beside text
+   (Word/Docs style). Shared by the Tiptap editor and the public article page
+   via the .article-prose class (see components/editor/articleProse.ts). */
+.article-prose img {
+  border-radius: 0.5rem;
+  height: auto;
+}
+
+.article-prose img[data-align="full"] {
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.article-prose img[data-align="center"] {
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.article-prose img[data-align="left"] {
+  float: left;
+  width: 45%;
+  margin: 0.5rem 1.5rem 1rem 0;
+}
+
+.article-prose img[data-align="right"] {
+  float: right;
+  width: 45%;
+  margin: 0.5rem 0 1rem 1.5rem;
+}
+
+/* An explicit author width (inline style) overrides the float defaults above. */
+
+/* Headings and dividers always start on a clean line below floats. */
+.article-prose h2,
+.article-prose h3,
+.article-prose hr {
+  clear: both;
+}
+
+/* On narrow screens, stop floating so images never crush the text column. */
+@media (max-width: 640px) {
+  .article-prose img[data-align="left"],
+  .article-prose img[data-align="right"] {
+    float: none;
+    display: block;
+    width: 100% !important;
+    margin: 1.5rem 0;
+  }
+}

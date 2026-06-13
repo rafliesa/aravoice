@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
+import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
+import { BubbleMenu } from "@tiptap/react/menus";
+import StarterKit from "@tiptap/starter-kit";
+import Link from "@tiptap/extension-link";
+import Placeholder from "@tiptap/extension-placeholder";
+import FloatImage, { type ImageAlign } from "@/components/editor/FloatImage";
+import { ARTICLE_PROSE } from "@/components/editor/articleProse";
 
 type Props = {
   value: string;
@@ -8,241 +15,174 @@ type Props = {
   placeholder?: string;
 };
 
-type Bubble = { top: number; left: number };
-type Plus = { top: number };
-type Active = { bold: boolean; italic: boolean; block: string };
-
-const EDITOR_CLASS =
-  "relative min-h-[60vh] w-full max-w-2xl font-serif text-lg leading-9 text-zinc-800 outline-none " +
-  "[&:empty]:before:text-zinc-400 [&:empty]:before:content-[attr(data-placeholder)] " +
-  "[&_h2]:mt-8 [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:tracking-tight " +
-  "[&_h3]:mt-6 [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:leading-snug " +
-  "[&_p]:mt-5 [&_blockquote]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-zinc-800 [&_blockquote]:pl-5 [&_blockquote]:text-xl [&_blockquote]:italic [&_blockquote]:text-zinc-600 " +
-  "[&_ul]:mt-5 [&_ul]:list-disc [&_ul]:pl-7 [&_ol]:mt-5 [&_ol]:list-decimal [&_ol]:pl-7 [&_li]:mt-2 " +
-  "[&_a]:text-orange-600 [&_a]:underline [&_img]:my-6 [&_img]:w-full [&_img]:rounded-lg " +
-  "[&_hr]:my-10 [&_hr]:border-t-2 [&_hr]:border-zinc-200";
+const ALIGN_OPTIONS: { key: ImageAlign; label: string; title: string }[] = [
+  { key: "left", label: "⬅ Teks kanan", title: "Gambar kiri, teks membungkus di kanan" },
+  { key: "right", label: "Teks kiri ➡", title: "Gambar kanan, teks membungkus di kiri" },
+  { key: "center", label: "Tengah", title: "Gambar di tengah" },
+  { key: "full", label: "Penuh", title: "Lebar penuh" },
+];
 
 export default function RichTextEditor({ value, onChange, placeholder }: Props) {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const ref = useRef<HTMLDivElement>(null);
-  const [bubble, setBubble] = useState<Bubble | null>(null);
-  const [plus, setPlus] = useState<Plus | null>(null);
-  const [plusOpen, setPlusOpen] = useState(false);
-  const [active, setActive] = useState<Active>({ bold: false, italic: false, block: "" });
+  const editor = useEditor({
+    immediatelyRender: false,
+    extensions: [
+      StarterKit.configure({
+        heading: { levels: [2, 3] },
+        link: false,
+      }),
+      Link.configure({ openOnClick: false, autolink: true }),
+      Placeholder.configure({ placeholder: placeholder ?? "Ceritakan kisahmu…" }),
+      FloatImage.configure({ inline: false }),
+    ],
+    content: value,
+    editorProps: {
+      attributes: {
+        class: `${ARTICLE_PROSE} min-h-[60vh] w-full max-w-2xl outline-none`,
+      },
+    },
+    onUpdate: ({ editor }) => onChange(editor.getHTML()),
+  });
 
-  // Initialize once; uncontrolled afterwards so the caret never jumps.
+  // Keep the editor in sync when the parent resets the form (e.g. after save).
   useEffect(() => {
-    if (ref.current && ref.current.innerHTML !== value) {
-      ref.current.innerHTML = value;
+    if (editor && value !== editor.getHTML()) {
+      editor.commands.setContent(value, { emitUpdate: false });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [value, editor]);
 
-  const sync = useCallback(() => {
-    if (ref.current) onChange(ref.current.innerHTML);
-  }, [onChange]);
+  const state = useEditorState({
+    editor,
+    selector: ({ editor }) =>
+      editor
+        ? {
+            bold: editor.isActive("bold"),
+            italic: editor.isActive("italic"),
+            h2: editor.isActive("heading", { level: 2 }),
+            h3: editor.isActive("heading", { level: 3 }),
+            quote: editor.isActive("blockquote"),
+            bullet: editor.isActive("bulletList"),
+            ordered: editor.isActive("orderedList"),
+            link: editor.isActive("link"),
+            imageAlign: (editor.getAttributes("image").align ?? null) as ImageAlign | null,
+          }
+        : null,
+  });
 
-  const blockTagOf = (node: Node | null): { el: HTMLElement | null; tag: string } => {
-    const editor = ref.current;
-    if (!editor || !node) return { el: null, tag: "" };
-    let el = node.nodeType === 3 ? node.parentElement : (node as HTMLElement);
-    while (el && el !== editor && el.parentElement !== editor) el = el.parentElement;
-    if (!el || el === editor) return { el: null, tag: "" };
-    return { el, tag: el.tagName };
+  if (!editor) return null;
+
+  const addLink = () => {
+    const prev = editor.getAttributes("link").href as string | undefined;
+    const url = window.prompt("Masukkan URL tautan:", prev ?? "");
+    if (url === null) return;
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+      return;
+    }
+    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
   };
 
-  const refresh = useCallback(() => {
-    const editor = ref.current;
-    const wrap = wrapRef.current;
-    const sel = window.getSelection();
-    if (!editor || !wrap || !sel || sel.rangeCount === 0) {
-      setBubble(null);
-      setPlus(null);
-      return;
-    }
-    const range = sel.getRangeAt(0);
-    if (!editor.contains(range.commonAncestorContainer)) {
-      setBubble(null);
-      setPlus(null);
-      return;
-    }
-    const wrapRect = wrap.getBoundingClientRect();
-
-    // Bubble toolbar on a non-empty selection.
-    if (!sel.isCollapsed) {
-      const rect = range.getBoundingClientRect();
-      setBubble({
-        top: rect.top - wrapRect.top,
-        left: rect.left - wrapRect.left + rect.width / 2,
-      });
-      const { tag } = blockTagOf(sel.anchorNode);
-      setActive({
-        bold: document.queryCommandState("bold"),
-        italic: document.queryCommandState("italic"),
-        block: tag,
-      });
-      setPlus(null);
-      return;
-    }
-
-    setBubble(null);
-
-    // Plus menu on an empty current line.
-    const { el } = blockTagOf(sel.anchorNode);
-    const isEmpty = el ? !el.textContent?.trim() : !editor.textContent?.trim();
-    if (isEmpty) {
-      const rect = (el ?? editor).getBoundingClientRect();
-      setPlus({ top: rect.top - wrapRect.top });
-    } else {
-      setPlus(null);
-      setPlusOpen(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener("selectionchange", refresh);
-    return () => document.removeEventListener("selectionchange", refresh);
-  }, [refresh]);
-
-  const exec = useCallback(
-    (command: string, arg?: string) => {
-      ref.current?.focus();
-      document.execCommand(command, false, arg);
-      sync();
-      refresh();
-    },
-    [sync, refresh]
-  );
-
-  const toggleBlock = useCallback(
-    (tag: string) => {
-      const current = active.block === tag;
-      exec("formatBlock", current ? "P" : tag);
-    },
-    [active.block, exec]
-  );
-
-  const addLink = useCallback(() => {
-    const url = window.prompt("Masukkan URL tautan:");
-    if (url) exec("createLink", url);
-  }, [exec]);
-
-  const insertImage = useCallback(() => {
+  const insertImage = () => {
     const url = window.prompt("Masukkan URL gambar:");
-    if (url) exec("insertHTML", `<img src="${url}" alt="" />`);
-    setPlusOpen(false);
-  }, [exec]);
+    if (!url) return;
+    const align =
+      (window.prompt(
+        "Tata letak: ketik 'kiri', 'kanan', 'tengah', atau 'penuh'",
+        "penuh",
+      ) ?? "penuh").toLowerCase();
+    const map: Record<string, ImageAlign> = {
+      kiri: "left",
+      kanan: "right",
+      tengah: "center",
+      penuh: "full",
+    };
+    editor
+      .chain()
+      .focus()
+      .setImage({ src: url, alt: "" })
+      .updateAttributes("image", { align: map[align] ?? "full" })
+      .run();
+  };
 
-  const insertDivider = useCallback(() => {
-    exec("insertHTML", "<hr/><p><br/></p>");
-    setPlusOpen(false);
-  }, [exec]);
+  const insertDivider = () => editor.chain().focus().setHorizontalRule().run();
 
   return (
-    <div ref={wrapRef} className="relative">
-      {/* Bubble toolbar (Medium-style) */}
-      {bubble && (
-        <div
-          className="absolute z-20 flex -translate-x-1/2 -translate-y-[calc(100%+10px)] items-center gap-0.5 rounded-lg bg-zinc-900 px-1 py-1 text-white shadow-xl"
-          style={{ top: bubble.top, left: bubble.left }}
-          onMouseDown={(e) => e.preventDefault()}
-        >
-          <BubbleBtn active={active.bold} onClick={() => exec("bold")} title="Bold">
-            <span className="font-bold">B</span>
-          </BubbleBtn>
-          <BubbleBtn active={active.italic} onClick={() => exec("italic")} title="Italic">
-            <span className="italic">i</span>
-          </BubbleBtn>
-          <span className="mx-1 h-5 w-px bg-white/20" />
-          <BubbleBtn active={active.block === "H2"} onClick={() => toggleBlock("H2")} title="Judul">
-            <span className="font-bold">H</span>
-          </BubbleBtn>
-          <BubbleBtn active={active.block === "H3"} onClick={() => toggleBlock("H3")} title="Subjudul">
-            <span className="text-xs font-bold">h</span>
-          </BubbleBtn>
-          <BubbleBtn
-            active={active.block === "BLOCKQUOTE"}
-            onClick={() => toggleBlock("BLOCKQUOTE")}
-            title="Kutipan"
-          >
-            ❝
-          </BubbleBtn>
-          <BubbleBtn active={false} onClick={addLink} title="Tautan">
-            🔗
-          </BubbleBtn>
-        </div>
-      )}
+    <div className="relative">
+      {/* Persistent toolbar */}
+      <div className="sticky top-0 z-10 mb-4 flex flex-wrap items-center gap-1 rounded-lg border border-zinc-200 bg-white p-1.5 shadow-sm">
+        <ToolBtn active={state?.bold} onClick={() => editor.chain().focus().toggleBold().run()} title="Tebal">
+          <span className="font-bold">B</span>
+        </ToolBtn>
+        <ToolBtn active={state?.italic} onClick={() => editor.chain().focus().toggleItalic().run()} title="Miring">
+          <span className="italic">i</span>
+        </ToolBtn>
+        <Divider />
+        <ToolBtn active={state?.h2} onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} title="Judul">
+          <span className="font-bold">H2</span>
+        </ToolBtn>
+        <ToolBtn active={state?.h3} onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()} title="Subjudul">
+          <span className="font-bold">H3</span>
+        </ToolBtn>
+        <ToolBtn active={state?.quote} onClick={() => editor.chain().focus().toggleBlockquote().run()} title="Kutipan">
+          ❝
+        </ToolBtn>
+        <Divider />
+        <ToolBtn active={state?.bullet} onClick={() => editor.chain().focus().toggleBulletList().run()} title="Daftar">
+          •
+        </ToolBtn>
+        <ToolBtn active={state?.ordered} onClick={() => editor.chain().focus().toggleOrderedList().run()} title="Daftar bernomor">
+          1.
+        </ToolBtn>
+        <Divider />
+        <ToolBtn active={state?.link} onClick={addLink} title="Tautan">
+          🔗
+        </ToolBtn>
+        <ToolBtn active={false} onClick={insertImage} title="Sisipkan gambar">
+          🖼
+        </ToolBtn>
+        <ToolBtn active={false} onClick={insertDivider} title="Pembatas">
+          —
+        </ToolBtn>
+      </div>
 
-      {/* Plus menu on empty line */}
-      {plus && (
-        <div
-          className="absolute -left-12 z-10"
-          style={{ top: plus.top - 4 }}
-          onMouseDown={(e) => e.preventDefault()}
-        >
+      {/* Image bubble menu — appears when an image is selected */}
+      <BubbleMenu
+        editor={editor}
+        shouldShow={({ editor }) => editor.isActive("image")}
+        className="flex items-center gap-0.5 rounded-lg bg-zinc-900 p-1 text-white shadow-xl"
+      >
+        {ALIGN_OPTIONS.map((opt) => (
           <button
+            key={opt.key}
             type="button"
-            onClick={() => setPlusOpen((o) => !o)}
-            className={`flex h-8 w-8 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition-transform hover:text-zinc-800 ${
-              plusOpen ? "rotate-45" : ""
+            title={opt.title}
+            onClick={() => editor.chain().focus().setImageAlign(opt.key).run()}
+            className={`rounded px-2 py-1 text-xs transition-colors ${
+              state?.imageAlign === opt.key ? "text-orange-400" : "text-white hover:bg-white/15"
             }`}
-            title="Sisipkan"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="12" y1="5" x2="12" y2="19" />
-              <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
+            {opt.label}
           </button>
-          {plusOpen && (
-            <div className="absolute left-10 top-0 flex items-center gap-1 rounded-lg border border-zinc-200 bg-white p-1 shadow-lg">
-              <button
-                type="button"
-                onClick={insertImage}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 hover:bg-zinc-100"
-                title="Gambar"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <polyline points="21 15 16 10 5 21" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                onClick={insertDivider}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 hover:bg-zinc-100"
-                title="Pembatas"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <circle cx="5" cy="12" r="1" />
-                  <circle cx="12" cy="12" r="1" />
-                  <circle cx="19" cy="12" r="1" />
-                </svg>
-              </button>
-            </div>
-          )}
-        </div>
-      )}
+        ))}
+        <span className="mx-1 h-5 w-px bg-white/20" />
+        <button
+          type="button"
+          title="Atur lebar gambar"
+          onClick={() => {
+            const w = window.prompt("Lebar gambar (mis. 40% atau 300px):");
+            if (w) editor.chain().focus().setImageWidth(w).run();
+          }}
+          className="rounded px-2 py-1 text-xs text-white hover:bg-white/15"
+        >
+          Lebar
+        </button>
+      </BubbleMenu>
 
-      <div
-        ref={ref}
-        contentEditable
-        suppressContentEditableWarning
-        onInput={() => {
-          sync();
-          refresh();
-        }}
-        onFocus={refresh}
-        onKeyUp={refresh}
-        onMouseUp={refresh}
-        data-placeholder={placeholder}
-        className={EDITOR_CLASS}
-      />
+      <EditorContent editor={editor} />
     </div>
   );
 }
 
-function BubbleBtn({
+function ToolBtn({
   children,
   onClick,
   title,
@@ -251,7 +191,7 @@ function BubbleBtn({
   children: React.ReactNode;
   onClick: () => void;
   title: string;
-  active: boolean;
+  active?: boolean;
 }) {
   return (
     <button
@@ -259,10 +199,14 @@ function BubbleBtn({
       title={title}
       onClick={onClick}
       className={`flex h-8 min-w-8 items-center justify-center rounded px-2 text-sm transition-colors ${
-        active ? "text-orange-400" : "text-white hover:bg-white/15"
+        active ? "bg-zinc-900 text-white" : "text-zinc-700 hover:bg-zinc-100"
       }`}
     >
       {children}
     </button>
   );
+}
+
+function Divider() {
+  return <span className="mx-1 h-5 w-px bg-zinc-200" />;
 }

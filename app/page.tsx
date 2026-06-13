@@ -191,10 +191,10 @@ export default function Home() {
             {leadNews && (
               <div className="mt-4 text-right">
                 <Link
-                  href={`#berita-${leadNews.id}`}
+                  href={`/${leadNews.slug}`}
                   className="text-sm font-bold text-[#8A5100] hover:underline"
                 >
-                  Baca Selengkapnya ↓
+                  Baca Selengkapnya →
                 </Link>
               </div>
             )}
