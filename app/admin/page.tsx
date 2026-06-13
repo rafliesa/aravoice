@@ -2,6 +2,13 @@
 
 import { useEffect, useState } from "react";
 import RichTextEditor from "@/components/RichTextEditor";
+import {
+  type CreateNewsPayload,
+  type News,
+  formatPublishedDate,
+  getResponseError,
+  slugify,
+} from "@/lib/news";
 
 const CATEGORIES = [
   "Liputan Khusus",
@@ -14,8 +21,7 @@ const CATEGORIES = [
 
 const FORMATS = ["TEKS", "AUDIO", "VIDEO"] as const;
 
-type Draft = {
-  id: number;
+type FormState = {
   category: string;
   title: string;
   excerpt: string;
@@ -26,44 +32,65 @@ type Draft = {
   coverImage: string;
   caption: string;
   body: string;
-  createdAt: string;
+  isPublished: boolean;
 };
 
-const STORAGE_KEY = "aravoice_drafts";
-
-const EMPTY = {
-  category: CATEGORIES[0],
-  title: "",
-  excerpt: "",
-  author: "Tim Paravoice",
-  date: "",
-  readingTime: "",
-  formats: ["TEKS"] as string[],
-  coverImage: "",
-  caption: "",
-  body: "",
-};
+function createEmptyForm(): FormState {
+  return {
+    category: CATEGORIES[0],
+    title: "",
+    excerpt: "",
+    author: "Tim Paravoice",
+    date: "",
+    readingTime: "",
+    formats: ["TEKS"],
+    coverImage: "",
+    caption: "",
+    body: "",
+    isPublished: true,
+  };
+}
 
 export default function AdminPage() {
-  const [form, setForm] = useState(EMPTY);
-  const [drafts, setDrafts] = useState<Draft[]>([]);
-  const [saved, setSaved] = useState(false);
+  const [form, setForm] = useState<FormState>(createEmptyForm);
+  const [news, setNews] = useState<News[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [editorKey, setEditorKey] = useState(0);
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) setDrafts(JSON.parse(raw));
-    } catch {
-      // ignore malformed storage
+    const controller = new AbortController();
+
+    async function loadNews() {
+      try {
+        const response = await fetch("/api/news", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(await getResponseError(response));
+        setNews((await response.json()) as News[]);
+      } catch (error) {
+        if ((error as Error).name !== "AbortError") {
+          setMessage({
+            type: "error",
+            text: error instanceof Error ? error.message : "Gagal memuat berita",
+          });
+        }
+      } finally {
+        setLoading(false);
+      }
     }
+
+    loadNews();
+    return () => controller.abort();
   }, []);
 
-  function persist(next: Draft[]) {
-    setDrafts(next);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-  }
-
-  function update<K extends keyof typeof EMPTY>(key: K, val: (typeof EMPTY)[K]) {
+  function update<K extends keyof FormState>(key: K, val: FormState[K]) {
     setForm((f) => ({ ...f, [key]: val }));
   }
 
@@ -76,21 +103,75 @@ export default function AdminPage() {
     }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const draft: Draft = {
-      id: Date.now(),
-      ...form,
-      createdAt: new Date().toISOString(),
+
+    const slug = slugify(form.title);
+    const readingTime = Number.parseInt(form.readingTime, 10);
+    if (!slug || !form.body.trim() || Number.isNaN(readingTime)) {
+      setMessage({
+        type: "error",
+        text: "Judul, isi berita, dan durasi baca wajib diisi.",
+      });
+      return;
+    }
+
+    const payload: CreateNewsPayload = {
+      slug,
+      category: form.category,
+      title: form.title,
+      excerpt: form.excerpt,
+      body: form.body,
+      author: form.author,
+      reading_time: readingTime,
+      cover_image: form.coverImage,
+      caption: form.caption,
+      formats: form.formats,
+      published_at: new Date(`${form.date}T12:00:00`).toISOString(),
+      is_published: form.isPublished,
     };
-    persist([draft, ...drafts]);
-    setForm(EMPTY);
-    setSaved(true);
-    window.setTimeout(() => setSaved(false), 3000);
+
+    setSubmitting(true);
+    setMessage(null);
+    try {
+      const response = await fetch("/api/news", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error(await getResponseError(response));
+
+      const created = (await response.json()) as News;
+      setNews((current) => [created, ...current]);
+      setForm(createEmptyForm());
+      setEditorKey((key) => key + 1);
+      setMessage({ type: "success", text: "Berita tersimpan ke backend." });
+    } catch (error) {
+      setMessage({
+        type: "error",
+        text: error instanceof Error ? error.message : "Gagal menyimpan berita",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
-  function deleteDraft(id: number) {
-    persist(drafts.filter((d) => d.id !== id));
+  async function deleteNews(id: number) {
+    setDeletingId(id);
+    setMessage(null);
+    try {
+      const response = await fetch(`/api/news/${id}`, { method: "DELETE" });
+      if (!response.ok) throw new Error(await getResponseError(response));
+      setNews((current) => current.filter((item) => item.id !== id));
+      setMessage({ type: "success", text: "Berita berhasil dihapus." });
+    } catch (error) {
+      setMessage({
+        type: "error",
+        text: error instanceof Error ? error.message : "Gagal menghapus berita",
+      });
+    } finally {
+      setDeletingId(null);
+    }
   }
 
   return (
@@ -100,7 +181,7 @@ export default function AdminPage() {
           <p className="text-sm font-bold tracking-wider text-[#F29100]">ADMIN</p>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight">Buat Berita</h1>
           <p className="mt-2 text-sm text-zinc-500">
-            Backend belum tersedia — draft disimpan sementara di browser (localStorage).
+            Berita disimpan langsung ke API Aravoice.
           </p>
         </header>
 
@@ -143,14 +224,18 @@ export default function AdminPage() {
                     type="date"
                     value={form.date}
                     onChange={(e) => update("date", e.target.value)}
+                    required
                     className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#F29100]"
                   />
                 </Field>
-                <Field label="Durasi Baca">
+                <Field label="Durasi Baca (menit)">
                   <input
+                    type="number"
+                    min="0"
                     value={form.readingTime}
                     onChange={(e) => update("readingTime", e.target.value)}
-                    placeholder="12 menit baca"
+                    placeholder="12"
+                    required
                     className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#F29100]"
                   />
                 </Field>
@@ -175,6 +260,18 @@ export default function AdminPage() {
                       </button>
                     );
                   })}
+                </div>
+              </Field>
+
+              <Field label="Status Publikasi">
+                <div className="flex items-center gap-3 rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={form.isPublished}
+                    onChange={(e) => update("isPublished", e.target.checked)}
+                    className="h-4 w-4 accent-[#F29100]"
+                  />
+                  Tampilkan berita di halaman utama
                 </div>
               </Field>
 
@@ -249,6 +346,7 @@ export default function AdminPage() {
               />
               <div className="mt-6">
                 <RichTextEditor
+                  key={editorKey}
                   value={form.body}
                   onChange={(html) => update("body", html)}
                   placeholder="Ceritakan kisahmu…"
@@ -260,37 +358,52 @@ export default function AdminPage() {
           <div className="mt-10 flex items-center gap-4 border-t border-zinc-200 pt-6">
             <button
               type="submit"
-              className="rounded-md bg-[#1a1a1a] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+              disabled={submitting}
+              className="rounded-md bg-[#1a1a1a] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Simpan Berita
+              {submitting ? "Menyimpan…" : "Simpan Berita"}
             </button>
-            {saved && <span className="text-sm font-medium text-green-600">✓ Tersimpan</span>}
+            {message && (
+              <span
+                className={`text-sm font-medium ${
+                  message.type === "success" ? "text-green-700" : "text-red-600"
+                }`}
+              >
+                {message.text}
+              </span>
+            )}
           </div>
         </form>
 
-        {/* Saved drafts */}
+        {/* Saved news */}
         <section className="mt-14 border-t border-zinc-200 pt-8">
           <h2 className="text-xl font-extrabold tracking-tight">
-            Draft Tersimpan ({drafts.length})
+            Berita Tersimpan ({news.length})
           </h2>
-          {drafts.length === 0 ? (
-            <p className="mt-3 text-sm text-zinc-500">Belum ada draft.</p>
+          {loading ? (
+            <p className="mt-3 text-sm text-zinc-500">Memuat berita…</p>
+          ) : news.length === 0 ? (
+            <p className="mt-3 text-sm text-zinc-500">Belum ada berita.</p>
           ) : (
             <ul className="mt-5 divide-y divide-zinc-200">
-              {drafts.map((d) => (
-                <li key={d.id} className="flex items-center justify-between gap-4 py-4">
+              {news.map((item) => (
+                <li key={item.id} className="flex items-center justify-between gap-4 py-4">
                   <div>
-                    <p className="text-xs font-bold tracking-wider text-[#F29100]">{d.category}</p>
-                    <p className="mt-1 font-semibold">{d.title || "(Tanpa judul)"}</p>
+                    <p className="text-xs font-bold tracking-wider text-[#F29100]">
+                      {item.category} · {item.is_published ? "TERBIT" : "DRAFT"}
+                    </p>
+                    <p className="mt-1 font-semibold">{item.title}</p>
                     <p className="mt-1 text-xs text-zinc-500">
-                      {d.author} • {d.date || "tanpa tanggal"} • {d.formats.join(", ")}
+                      {item.author} • {formatPublishedDate(item.published_at)} •{" "}
+                      {item.reading_time} menit • {item.formats.join(", ") || "tanpa format"}
                     </p>
                   </div>
                   <button
-                    onClick={() => deleteDraft(d.id)}
-                    className="shrink-0 rounded-md border border-zinc-300 px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-red-300 hover:bg-red-50 hover:text-red-600"
+                    onClick={() => deleteNews(item.id)}
+                    disabled={deletingId === item.id}
+                    className="shrink-0 rounded-md border border-zinc-300 px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-red-300 hover:bg-red-50 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    Hapus
+                    {deletingId === item.id ? "Menghapus…" : "Hapus"}
                   </button>
                 </li>
               ))}
