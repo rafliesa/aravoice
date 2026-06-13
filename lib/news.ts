@@ -19,6 +19,7 @@ export type CreateNewsPayload = Omit<News, "id">;
 export type NewsCardData = Pick<
   News,
   | "id"
+  | "slug"
   | "category"
   | "title"
   | "excerpt"
@@ -60,6 +61,19 @@ export async function fetchNewsCards(
   }
 
   return (await response.json()) as PaginatedNewsCards;
+}
+
+export async function fetchNewsBySlug(slug: string, signal?: AbortSignal) {
+  const response = await fetch(`/api/news/slug/${encodeURIComponent(slug)}`, {
+    cache: "no-store",
+    signal,
+  });
+  if (!response.ok) {
+    if (response.status === 404) return null;
+    throw new Error(await getResponseError(response));
+  }
+
+  return (await response.json()) as News;
 }
 
 export async function getResponseError(response: Response) {
