@@ -336,13 +336,13 @@ export default function AdminPage() {
 
           {/* Medium-style writing canvas */}
           <div className="mt-12 border-t border-zinc-200 pt-10">
-            <div className="mx-auto max-w-2xl pl-14">
+            <div className="mx-auto max-w-3xl px-6">
               <input
                 value={form.title}
                 onChange={(e) => update("title", e.target.value)}
                 placeholder="Judul cerita…"
                 required
-                className="w-full bg-transparent font-serif text-4xl font-bold leading-tight tracking-tight outline-none placeholder:text-zinc-300"
+                className="w-full bg-transparent font-serif text-4xl font-bold leading-tight tracking-tight outline-none placeholder:text-zinc-300 sm:text-5xl"
               />
               <div className="mt-6">
                 <RichTextEditor
