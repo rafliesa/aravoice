@@ -2,10 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import {
-  EditorialCard,
-  LatestArticles,
-} from "@/components/design-system/Editorial";
+import { EditorialCard } from "@/components/design-system/Editorial";
 import {
   DesignButton,
   DesignLink,
@@ -17,7 +14,7 @@ import {
   formatPublishedDate,
 } from "@/lib/news";
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 9;
 
 const EMPTY_PAGINATION: Pagination = {
   page: 1,
@@ -94,14 +91,7 @@ export default function RubrikPage({
   }, [category, page, retryKey]);
 
   const leadNews = news[0];
-  const featuredNews = news.slice(1, 3);
-  const latestNews = news.slice(3);
-  const latestArticles = latestNews.map((item) => ({
-    category: item.category,
-    title: item.title,
-    meta: `${formatPublishedDate(item.published_at)} • ${item.reading_time} menit baca`,
-    href: `/${item.slug}`,
-  }));
+  const otherNews = news.slice(1);
 
   const changePage = (nextPage: number) => {
     if (
@@ -214,36 +204,28 @@ export default function RubrikPage({
               </Link>
             </section>
 
-            <section className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
-              <div className="lg:col-span-2">
-                <SectionHeading>Pilihan {category}</SectionHeading>
+            <section className="mt-12">
+              <SectionHeading>Artikel {category}</SectionHeading>
 
-                {featuredNews.length > 0 ? (
-                  <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    {featuredNews.map((item) => (
-                      <EditorialCard
-                        key={item.id}
-                        category={item.category}
-                        title={item.title}
-                        excerpt={item.excerpt}
-                        format={getNewsFormat(item)}
-                        readingTime={`${item.reading_time} menit`}
-                        href={`/${item.slug}`}
-                        imageSrc={item.cover_image || undefined}
-                        imageAlt={item.title}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <EmptySection />
-                )}
-              </div>
-
-              <LatestArticles
-                title={`Terbaru di ${category}`}
-                items={latestArticles}
-                emptyMessage="Artikel lain akan segera hadir."
-              />
+              {otherNews.length > 0 ? (
+                <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {otherNews.map((item) => (
+                    <EditorialCard
+                      key={item.id}
+                      category={item.category}
+                      title={item.title}
+                      excerpt={item.excerpt}
+                      format={getNewsFormat(item)}
+                      readingTime={`${item.reading_time} menit`}
+                      href={`/${item.slug}`}
+                      imageSrc={item.cover_image || undefined}
+                      imageAlt={item.title}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <EmptySection />
+              )}
             </section>
 
             {pagination.total_pages > 1 && (
@@ -328,16 +310,13 @@ function RubrikSkeleton() {
         <div className="bg-tertiary-200 aspect-[16/10] animate-pulse rounded-lg" />
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2">
-          {Array.from({ length: 2 }, (_, index) => (
-            <div
-              key={index}
-              className="bg-tertiary-200 h-96 animate-pulse rounded-lg"
-            />
-          ))}
-        </div>
-        <div className="bg-tertiary-200 h-96 animate-pulse rounded-lg" />
+      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {Array.from({ length: PAGE_SIZE - 1 }, (_, index) => (
+          <div
+            key={index}
+            className="bg-tertiary-200 h-96 animate-pulse rounded-lg"
+          />
+        ))}
       </div>
     </div>
   );
