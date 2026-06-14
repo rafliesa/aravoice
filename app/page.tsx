@@ -2,8 +2,14 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import LatestNewsCard from "@/components/news/LatestNewsCard";
-import NewsCard from "@/components/news/NewsCard";
+import {
+  EditorialCard,
+  LatestArticles,
+} from "@/components/design-system/Editorial";
+import {
+  DesignLink,
+  StatusBadge,
+} from "@/components/design-system/Primitives";
 import {
   type NewsCardData,
   fetchNewsCards,
@@ -33,6 +39,13 @@ function MetaItem({ children, icon }: { children: React.ReactNode; icon: React.R
       {children}
     </span>
   );
+}
+
+function getNewsFormat(news: NewsCardData) {
+  const formats = news.formats.map((format) => format.toUpperCase());
+  if (formats.includes("VIDEO")) return "Video";
+  if (formats.includes("AUDIO")) return "Audio";
+  return "Artikel";
 }
 
 export default function Home() {
@@ -87,20 +100,27 @@ export default function Home() {
       .slice(0, SECTION_CARD_LIMIT),
   })).filter((section) => section.items.length > 0);
 
+  const latestArticles = latestNews.map((news) => ({
+    category: news.category,
+    title: news.title,
+    meta: `${formatPublishedDate(news.published_at)} • ${news.reading_time} menit baca`,
+    href: `/${news.slug}`,
+  }));
+
   return (
-    <div className="flex-1 bg-[#faf8f3] text-[#1a1a1a]">
+    <div className="bg-surface-warm text-neutral flex-1">
       <div className="mx-auto max-w-7xl px-6 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-zinc-500">
           <Link href="/" className="hover:text-zinc-800">Home</Link>
           <span>›</span>
-          <span className="font-semibold text-[#F29100]">{heroCategory}</span>
+          <span className="text-secondary-700 font-semibold">{heroCategory}</span>
         </nav>
 
         {/* Hero */}
         <section className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-2">
           <div>
-            <p className="text-sm font-bold tracking-wider text-[#F29100]">
+            <p className="text-secondary-700 text-sm font-bold tracking-wider">
               {heroCategory}
             </p>
             <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
@@ -126,12 +146,9 @@ export default function Home() {
               <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
                 <span className="text-sm font-medium text-zinc-500">Format tersedia:</span>
                 {availableFormats.map((format) => (
-                  <span
-                    key={format}
-                    className="rounded bg-[#F29100] px-3 py-1 text-xs font-bold tracking-wide text-white"
-                  >
+                  <StatusBadge key={format} tone="new">
                     {format}
-                  </span>
+                  </StatusBadge>
                 ))}
               </div>
             )}
@@ -153,12 +170,12 @@ export default function Home() {
             )}
             {leadNews && (
               <div className="mt-4 text-right">
-                <Link
+                <DesignLink
                   href={`/${leadNews.slug}`}
-                  className="text-sm font-bold text-[#8A5100] hover:underline"
+                  variant="secondary"
                 >
-                  Baca Selengkapnya ↓
-                </Link>
+                  Baca Selengkapnya <span aria-hidden="true">→</span>
+                </DesignLink>
               </div>
             )}
           </div>
@@ -180,7 +197,17 @@ export default function Home() {
             ) : featuredNews.length > 0 ? (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 {featuredNews.map((news) => (
-                  <NewsCard key={news.id} news={news} />
+                  <EditorialCard
+                    key={news.id}
+                    category={news.category}
+                    title={news.title}
+                    excerpt={news.excerpt}
+                    format={getNewsFormat(news)}
+                    readingTime={`${news.reading_time} menit`}
+                    href={`/${news.slug}`}
+                    imageSrc={news.cover_image || undefined}
+                    imageAlt={news.title}
+                  />
                 ))}
               </div>
             ) : (
@@ -192,32 +219,16 @@ export default function Home() {
 
           {/* Sidebar */}
           <aside id="berita-terbaru">
-            <div className="rounded-lg border border-zinc-200 bg-white p-6">
-              <h2 className="text-2xl font-extrabold tracking-tight">Terbaru di Paravoice.id</h2>
-              <div className="mt-2 h-1 w-16 rounded bg-[#F29100]" />
-
-              <ul className="mt-6 divide-y divide-zinc-200">
-                {latestNews.map((news) => (
-                  <LatestNewsCard key={news.id} news={news} />
-                ))}
-              </ul>
-
-              {initialLoading && (
-                <p className="mt-6 text-sm text-zinc-500">Memuat berita terbaru...</p>
-              )}
-              {!initialLoading && latestNews.length === 0 && (
-                <p className="mt-6 text-sm text-zinc-500">
-                  {newsError || "Belum ada berita yang diterbitkan."}
-                </p>
-              )}
-
-              <Link
-                href="/para-report"
-                className="mt-6 flex items-center justify-center gap-2 rounded-md border border-zinc-300 px-4 py-3 text-sm font-semibold text-zinc-800 transition-colors hover:bg-zinc-100"
-              >
-                Lihat Semua Artikel →
-              </Link>
-            </div>
+            <LatestArticles
+              title="Terbaru di ParaVoice.id"
+              items={latestArticles}
+              allArticlesHref="/para-report"
+              emptyMessage={
+                initialLoading
+                  ? "Memuat berita terbaru..."
+                  : newsError || "Belum ada berita yang diterbitkan."
+              }
+            />
           </aside>
         </section>
 
@@ -226,21 +237,31 @@ export default function Home() {
           <section key={section.key} className="mt-16">
             <div className="flex items-center justify-between gap-3 border-b border-zinc-300 pb-4">
               <div className="flex items-center gap-3">
-                <span className="h-7 w-1.5 rounded bg-[#F29100]" />
+                <span className="bg-secondary h-7 w-1.5 rounded" />
                 <h2 className="font-caslon text-3xl font-bold tracking-tight">
                   {section.title}
                 </h2>
               </div>
               <Link
                 href={section.href}
-                className="shrink-0 text-sm font-bold text-[#8A5100] hover:underline"
+                className="text-secondary-800 shrink-0 text-sm font-bold hover:underline"
               >
                 Lihat Selengkapnya →
               </Link>
             </div>
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
               {section.items.map((news) => (
-                <NewsCard key={news.id} news={news} />
+                <EditorialCard
+                  key={news.id}
+                  category={news.category}
+                  title={news.title}
+                  excerpt={news.excerpt}
+                  format={getNewsFormat(news)}
+                  readingTime={`${news.reading_time} menit`}
+                  href={`/${news.slug}`}
+                  imageSrc={news.cover_image || undefined}
+                  imageAlt={news.title}
+                />
               ))}
             </div>
           </section>
@@ -252,19 +273,20 @@ export default function Home() {
 
         {/* Bottom CTA boxes */}
         <section className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="flex flex-col items-center rounded-lg border-2 border-[#F29100] bg-white p-8 text-center">
+          <div className="border-secondary flex flex-col items-center rounded-lg border-2 bg-white p-8 text-center">
             <h2 className="font-caslon text-3xl font-bold tracking-tight">
               Bergabung Dengan Kami
             </h2>
             <p className="mt-4 max-w-sm text-sm leading-7 text-zinc-600">
               Dapatkan kisah dan kabar terbaru dari kesejahteraan atlet disabilitas
             </p>
-            <Link
+            <DesignLink
               href="/buletin"
-              className="mt-6 inline-flex items-center gap-2 rounded-md bg-[#0b0f1a] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+              variant="next"
+              className="mt-6"
             >
               Selanjutnya →
-            </Link>
+            </DesignLink>
           </div>
 
           <div className="flex flex-col rounded-lg border border-zinc-200 bg-white p-8">
@@ -275,12 +297,13 @@ export default function Home() {
               Dukungan Anda membantu kami terus menyuarakan prestasi dan tantangan
               yang dihadapi atlet disabilitas Indonesia.
             </p>
-            <Link
+            <DesignLink
               href="/donasi"
-              className="mt-6 inline-flex w-fit items-center gap-2 rounded-md bg-[#0b0f1a] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black"
+              variant="next"
+              className="mt-6 w-fit"
             >
               Donasi ♡
-            </Link>
+            </DesignLink>
           </div>
         </section>
       </div>
