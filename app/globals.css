@@ -34,6 +34,52 @@ body {
   height: auto;
 }
 
+.article-prose audio,
+.article-prose video {
+  clear: both;
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.article-prose video {
+  max-height: 70vh;
+  border-radius: 0.5rem;
+  background: #09090b;
+}
+
+.article-prose iframe[data-provider] {
+  clear: both;
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+  border: 0;
+  border-radius: 0.5rem;
+}
+
+.article-prose iframe[data-provider="youtube"],
+.article-prose iframe[data-provider="vimeo"] {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.article-prose iframe[data-provider="spotify"] {
+  height: 352px;
+}
+
+.article-prose iframe[data-provider="soundcloud"] {
+  height: 166px;
+}
+
+.article-prose.tiptap iframe[data-provider] {
+  pointer-events: none;
+}
+
+.article-prose .ProseMirror-selectednode {
+  outline: 3px solid #f29100;
+  outline-offset: 3px;
+}
+
 .article-prose img[data-align="full"] {
   display: block;
   width: 100%;
