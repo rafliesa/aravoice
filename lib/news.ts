@@ -47,11 +47,15 @@ export async function fetchNewsCards(
   page: number,
   limit: number,
   signal?: AbortSignal,
+  category?: string,
 ) {
   const params = new URLSearchParams({
     page: String(page),
     limit: String(limit),
   });
+  if (category) {
+    params.set("category", category);
+  }
   const response = await fetch(`/api/news/cards?${params}`, {
     cache: "no-store",
     signal,
