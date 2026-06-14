@@ -241,10 +241,27 @@ export async function getNewsBySlug(slug: string) {
 export async function searchNewsByTitle(title: string) {
   const normalized = requiredString(title, "title");
   const records = await prisma.news.findMany({
-    where: { title: { contains: normalized, mode: "insensitive" } },
+    where: {
+      isPublished: true,
+      title: { contains: normalized, mode: "insensitive" },
+    },
+    select: {
+      id: true,
+      slug: true,
+      category: true,
+      title: true,
+      excerpt: true,
+      author: true,
+      readingTime: true,
+      coverImage: true,
+      caption: true,
+      formats: true,
+      publishedAt: true,
+    },
     orderBy: [{ publishedAt: "desc" }, { id: "desc" }],
+    take: 8,
   });
-  return records.map(serializeNews);
+  return records.map(serializeNewsCard);
 }
 
 export async function deleteNews(id: number) {
