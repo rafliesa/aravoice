@@ -48,7 +48,7 @@ export default function ArticlePage({
 
   return (
     <div className="flex-1 bg-[#faf8f3] text-[#1a1a1a]">
-      <div className="mx-auto max-w-3xl px-6 py-10">
+      <div className="mx-auto max-w-7xl px-6 py-10">
         <nav className="flex items-center gap-2 text-sm text-zinc-500">
           <Link href="/" className="hover:text-zinc-800">
             Home
