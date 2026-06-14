@@ -27,6 +27,10 @@ type UploadResponse = {
   size: number;
 };
 
+type UploadStrategy = {
+  strategy: "blob" | "local" | "unavailable";
+};
+
 const ACCEPT: Record<Exclude<DialogMode, "embed">, string> = {
   image: "image/jpeg,image/png,image/webp,image/gif",
   audio: "audio/mpeg,audio/wav,audio/ogg,audio/mp4,.m4a",
@@ -101,11 +105,23 @@ export default function MediaDialog({ open, onClose, onInsert }: Props) {
 
     setUploading(true);
     try {
-      const data = new FormData();
-      data.append("file", file);
-      const response = await fetch("/api/uploads", { method: "POST", body: data });
-      if (!response.ok) throw new Error(await getResponseError(response));
-      const uploaded = (await response.json()) as UploadResponse;
+      const strategyResponse = await fetch("/api/uploads", {
+        cache: "no-store",
+      });
+      if (!strategyResponse.ok) {
+        throw new Error(await getResponseError(strategyResponse));
+      }
+      const strategy = (await strategyResponse.json()) as UploadStrategy;
+      if (strategy.strategy === "unavailable") {
+        throw new Error(
+          "Penyimpanan media belum dikonfigurasi. Hubungkan Vercel Blob ke project.",
+        );
+      }
+
+      const uploaded =
+        strategy.strategy === "blob"
+          ? await uploadToBlob(file, mode)
+          : await uploadToLocalStorage(file);
       if (uploaded.kind !== mode) {
         throw new Error(`File yang diterima bukan ${mode}.`);
       }
@@ -261,6 +277,55 @@ function safeImageUrl(value: string) {
   } catch {
     return null;
   }
+}
+
+async function uploadToBlob(
+  file: File,
+  kind: Exclude<DialogMode, "embed">,
+): Promise<UploadResponse> {
+  const { upload } = await import("@vercel/blob/client");
+  const blob = await upload(blobPathname(file.name), file, {
+    access: "public",
+    contentType: file.type,
+    handleUploadUrl: "/api/uploads",
+    multipart: true,
+    clientPayload: JSON.stringify({
+      mimeType: file.type,
+      size: file.size,
+    }),
+  });
+
+  return {
+    url: blob.url,
+    kind,
+    mime_type: file.type,
+    size: file.size,
+  };
+}
+
+async function uploadToLocalStorage(file: File): Promise<UploadResponse> {
+  const data = new FormData();
+  data.append("file", file);
+  const response = await fetch("/api/uploads", { method: "POST", body: data });
+  if (!response.ok) throw new Error(await getResponseError(response));
+  return (await response.json()) as UploadResponse;
+}
+
+function blobPathname(filename: string) {
+  const extension =
+    filename
+      .toLowerCase()
+      .match(/\.(?:jpe?g|png|webp|gif|mp3|wav|ogg|oga|m4a|mp4|webm|ogv)$/)?.[0] ??
+    "";
+  const basename = filename.slice(0, extension ? -extension.length : undefined);
+  const normalized = basename
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, "-")
+    .replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, "")
+    .slice(0, 130);
+  return `news/${normalized || "media"}${extension}`;
 }
 
 export type { InsertPayload };

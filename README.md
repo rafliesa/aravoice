@@ -3,6 +3,37 @@
 Aravoice adalah aplikasi full-stack Next.js. Halaman web dan endpoint API
 berjalan dalam proses yang sama, sedangkan akses PostgreSQL menggunakan Prisma.
 
+## Deploy ke Vercel
+
+Repository ini sudah memiliki konfigurasi Vercel di `vercel.json`. Build Vercel
+akan otomatis membuat Prisma Client, menjalankan migration production, lalu
+menjalankan build Next.js.
+
+Sebelum deployment pertama:
+
+1. Import repository ini melalui **Vercel → Add New → Project**.
+2. Hubungkan database PostgreSQL melalui tab **Storage**. Prisma Postgres dari
+   Vercel Marketplace direkomendasikan karena otomatis menyediakan
+   `DATABASE_URL`.
+3. Buat dan hubungkan **Vercel Blob** melalui tab **Storage**. Vercel otomatis
+   menyediakan `BLOB_READ_WRITE_TOKEN`.
+4. Tambahkan `ADMIN_PASSWORD` melalui **Settings → Environment Variables** dan
+   tandai sebagai Sensitive. Gunakan password yang panjang dan unik.
+5. Deploy atau redeploy project.
+
+Environment production yang dibutuhkan:
+
+| Variable | Kegunaan |
+| --- | --- |
+| `DATABASE_URL` | Koneksi PostgreSQL yang digunakan aplikasi dan migration |
+| `ADMIN_PASSWORD` | Login `/admin` sekaligus kunci penandatanganan sesi |
+| `BLOB_READ_WRITE_TOKEN` | Upload media persisten melalui Vercel Blob |
+
+`vercel-build` menjalankan `prisma migrate deploy`, sehingga tabel `news`
+langsung dibuat pada database baru. Gunakan database terpisah untuk Preview
+Deployment jika preview tidak boleh menjalankan migration ke database
+production.
+
 ## Requirements
 
 - Node.js 20.19+, 22.12+, atau 24+
@@ -77,5 +108,7 @@ pnpm db:deploy    # Terapkan migration yang sudah ada
 pnpm db:studio    # Buka Prisma Studio
 ```
 
-Upload media disimpan di direktori `uploads/`. Deployment production perlu
-menyediakan persistent storage untuk direktori ini.
+Saat development tanpa `BLOB_READ_WRITE_TOKEN`, upload media disimpan di
+direktori lokal `uploads/`. Di Vercel, editor memakai client upload langsung ke
+Vercel Blob sehingga file tidak melewati batas payload Vercel Functions dan
+tetap persisten antar-deployment.

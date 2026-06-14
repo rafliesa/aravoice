@@ -77,11 +77,15 @@ function signatureMatches(media: MediaType, bytes: Uint8Array) {
   }
 }
 
-export function detectMedia(
+export function validateMediaUpload(
   filename: string,
   declaredMime: string,
-  bytes: Uint8Array,
+  size: number,
 ) {
+  if (!Number.isSafeInteger(size) || size <= 0) {
+    throw new ApiError("uploaded file is empty", 400);
+  }
+
   const extension = path.extname(filename).toLowerCase();
   const normalizedMime = declaredMime.toLowerCase().split(";", 1)[0].trim();
   const candidate = MEDIA[extension]?.find((item) => {
@@ -102,22 +106,32 @@ export function detectMedia(
   if (!candidate) {
     throw new ApiError("unsupported file extension or media type", 415);
   }
-  if (!signatureMatches(candidate, bytes)) {
-    throw new ApiError("file signature does not match its media type", 415);
+  if (size > candidate.limit) {
+    throw new ApiError(
+      `${candidate.kind} file exceeds the ${candidate.limit >> 20} MB limit`,
+      413,
+    );
   }
   return candidate;
 }
 
-export async function storeUpload(file: File) {
-  if (file.size === 0) throw new ApiError("uploaded file is empty", 400);
+export function detectMedia(
+  filename: string,
+  declaredMime: string,
+  bytes: Uint8Array,
+) {
+  const media = validateMediaUpload(filename, declaredMime, bytes.byteLength);
+  if (!signatureMatches(media, bytes)) {
+    throw new ApiError("file signature does not match its media type", 415);
+  }
+  return media;
+}
 
+export async function storeUpload(file: File) {
+  const media = validateMediaUpload(file.name, file.type, file.size);
   const head = new Uint8Array(await file.slice(0, 512).arrayBuffer());
-  const media = detectMedia(file.name, file.type, head);
-  if (file.size > media.limit) {
-    throw new ApiError(
-      `${media.kind} file exceeds the ${media.limit >> 20} MB limit`,
-      413,
-    );
+  if (!signatureMatches(media, head)) {
+    throw new ApiError("file signature does not match its media type", 415);
   }
 
   const directory = path.join(process.cwd(), "uploads");

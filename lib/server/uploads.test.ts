@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { detectMedia } from "@/lib/server/uploads";
+import {
+  detectMedia,
+  validateMediaUpload,
+} from "@/lib/server/uploads";
 
 describe("detectMedia", () => {
   it.each([
@@ -23,5 +26,29 @@ describe("detectMedia", () => {
     expect(() =>
       detectMedia("image.svg", "image/svg+xml", new TextEncoder().encode("<svg>")),
     ).toThrow("unsupported file extension or media type");
+  });
+
+  it("returns Blob constraints without reading the complete file", () => {
+    const media = validateMediaUpload(
+      "news/interview.mp4",
+      "video/mp4",
+      20 << 20,
+    );
+
+    expect(media).toMatchObject({
+      kind: "video",
+      mimeType: "video/mp4",
+      limit: 200 << 20,
+    });
+  });
+
+  it("rejects oversized Blob uploads", () => {
+    expect(() =>
+      validateMediaUpload(
+        "news/interview.mp4",
+        "video/mp4",
+        (200 << 20) + 1,
+      ),
+    ).toThrow("video file exceeds the 200 MB limit");
   });
 });
