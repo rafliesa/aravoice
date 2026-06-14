@@ -1,7 +1,12 @@
 import type { NextRequest } from "next/server";
 import { assertAdminRequest } from "@/lib/server/admin-auth";
-import { deleteNews, getNewsById } from "@/lib/server/news";
-import { errorResponse, positiveInteger } from "@/lib/server/http";
+import {
+  deleteNews,
+  getNewsById,
+  parseCreateNewsPayload,
+  updateNews,
+} from "@/lib/server/news";
+import { errorResponse, positiveInteger, readJsonObject } from "@/lib/server/http";
 
 export const runtime = "nodejs";
 
@@ -14,6 +19,17 @@ export async function GET(request: NextRequest, context: RouteContext) {
     assertAdminRequest(request);
     const { id } = await context.params;
     return Response.json(await getNewsById(positiveInteger(id, "id")));
+  } catch (error) {
+    return errorResponse(error);
+  }
+}
+
+export async function PUT(request: NextRequest, context: RouteContext) {
+  try {
+    assertAdminRequest(request);
+    const { id } = await context.params;
+    const payload = parseCreateNewsPayload(await readJsonObject(request));
+    return Response.json(await updateNews(positiveInteger(id, "id"), payload));
   } catch (error) {
     return errorResponse(error);
   }
