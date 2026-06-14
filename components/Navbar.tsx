@@ -16,6 +16,7 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const isSupportActive = pathname === "/dukung-kami";
 
   return (
     <header className="w-full border-b border-zinc-200 bg-zinc-50">
@@ -77,8 +78,12 @@ export default function Navbar() {
 
           <Link
             href="/dukung-kami"
-            className="rounded-md px-5 py-2.5 text-base font-semibold transition-opacity hover:opacity-90"
-            style={{ backgroundColor: "#F29100", color: "#5B3400" }}
+            aria-current={isSupportActive ? "page" : undefined}
+            className={`rounded-md px-5 py-2.5 text-base font-semibold transition-colors ${
+              isSupportActive
+                ? "bg-[#9A5A00] text-white"
+                : "bg-[#F29100] text-[#5B3400] hover:bg-[#dc8500]"
+            }`}
           >
             Dukung Kami
           </Link>
