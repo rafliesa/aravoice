@@ -25,7 +25,7 @@ export function EditorialCard({
   imageAlt?: string;
 }) {
   const card = (
-    <article className="h-full overflow-hidden rounded-lg border border-[#ecd7bd] bg-white transition-shadow group-hover:border-secondary-300 group-hover:shadow-lg">
+    <article className="h-full overflow-hidden rounded-xs border border-[#ecd7bd] bg-white transition-shadow group-hover:border-secondary-300 group-hover:shadow-lg">
       {imageSrc ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
