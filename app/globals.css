@@ -79,6 +79,150 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+/* Global accessibility preferences are applied to the site shell so the
+   accessibility controls remain readable while visual filters are active. */
+#site-shell {
+  --a11y-smart-contrast: 1;
+  --a11y-manual-contrast: 1;
+  --a11y-saturation: 1;
+}
+
+html:is(
+    [data-a11y-smart-contrast="true"],
+    [data-a11y-contrast="1"],
+    [data-a11y-contrast="2"],
+    [data-a11y-saturation="1"],
+    [data-a11y-saturation="2"],
+    [data-a11y-saturation="3"]
+  )
+  #site-shell {
+  filter:
+    contrast(var(--a11y-smart-contrast))
+    contrast(var(--a11y-manual-contrast))
+    saturate(var(--a11y-saturation));
+}
+
+html[data-a11y-smart-contrast="true"] #site-shell {
+  --a11y-smart-contrast: 1.12;
+}
+
+html[data-a11y-contrast="1"] #site-shell {
+  --a11y-manual-contrast: 1.2;
+}
+
+html[data-a11y-contrast="2"] #site-shell {
+  --a11y-manual-contrast: 1.45;
+}
+
+html[data-a11y-saturation="1"] #site-shell {
+  --a11y-saturation: 0.45;
+}
+
+html[data-a11y-saturation="2"] #site-shell {
+  --a11y-saturation: 1.65;
+}
+
+html[data-a11y-saturation="3"] #site-shell {
+  --a11y-saturation: 0;
+}
+
+html[data-a11y-pause-animations="true"] *,
+html[data-a11y-pause-animations="true"] *::before,
+html[data-a11y-pause-animations="true"] *::after {
+  animation-delay: -1ms !important;
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-delay: 0ms !important;
+  transition-duration: 1ms !important;
+}
+
+html[data-a11y-highlight-links="true"] #site-shell a {
+  border-radius: 0.2rem !important;
+  background: #ffeb3b !important;
+  color: #000000 !important;
+  outline: 2px solid #000000 !important;
+  outline-offset: 2px !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 0.16em !important;
+}
+
+html[data-a11y-text-scale="1"] {
+  font-size: 112.5%;
+}
+
+html[data-a11y-text-scale="2"] {
+  font-size: 125%;
+}
+
+html[data-a11y-text-scale="3"] {
+  font-size: 137.5%;
+}
+
+html[data-a11y-text-spacing="1"] #site-shell {
+  letter-spacing: 0.04em;
+  word-spacing: 0.1em;
+}
+
+html[data-a11y-text-spacing="2"] #site-shell {
+  letter-spacing: 0.08em;
+  word-spacing: 0.18em;
+}
+
+html[data-a11y-hide-images="true"] #site-shell img,
+html[data-a11y-hide-images="true"] #site-shell picture,
+html[data-a11y-hide-images="true"] #site-shell video {
+  visibility: hidden !important;
+}
+
+html[data-a11y-hide-images="true"] #site-shell [style*="background-image"] {
+  background-image: none !important;
+}
+
+html[data-a11y-dyslexia="true"] #site-shell,
+html[data-a11y-dyslexia="true"] #site-shell * {
+  font-family: var(--font-lexend), Arial, sans-serif !important;
+}
+
+html[data-a11y-line-height="1"] #site-shell :where(p, li, blockquote, figcaption) {
+  line-height: 1.6 !important;
+}
+
+html[data-a11y-line-height="2"] #site-shell :where(p, li, blockquote, figcaption) {
+  line-height: 1.9 !important;
+}
+
+html[data-a11y-line-height="3"] #site-shell :where(p, li, blockquote, figcaption) {
+  line-height: 2.2 !important;
+}
+
+html[data-a11y-text-align="1"] #site-shell :where(h1, h2, h3, h4, h5, h6, p, li, blockquote) {
+  text-align: left !important;
+}
+
+html[data-a11y-text-align="2"] #site-shell :where(h1, h2, h3, h4, h5, h6, p, li, blockquote) {
+  text-align: center !important;
+}
+
+html[data-a11y-text-align="3"] #site-shell :where(h1, h2, h3, h4, h5, h6, p, li, blockquote) {
+  text-align: right !important;
+}
+
+html[data-a11y-text-align="4"] #site-shell :where(p, li, blockquote) {
+  text-align: justify !important;
+}
+
+.a11y-widget {
+  font-family: var(--font-plus-jakarta-sans), Arial, Helvetica, sans-serif;
+  letter-spacing: normal;
+  line-height: normal;
+  text-align: left;
+}
+
+.a11y-widget * {
+  box-sizing: border-box;
+}
+
 /* Article layout: float-able images so authors can place a picture beside text
    (Word/Docs style). Shared by the Tiptap editor and the public article page
    via the .article-prose class (see components/editor/articleProse.ts). */
