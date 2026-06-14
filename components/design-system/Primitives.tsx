@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+  ButtonHTMLAttributes,
+  InputHTMLAttributes,
+  ReactNode,
+  Ref,
+} from "react";
 
 export const DESIGN_TOKENS = {
   colors: {
@@ -227,21 +232,35 @@ export function StatusBadge({
   );
 }
 
+type SearchFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type"> & {
+  containerClassName?: string;
+  endAdornment?: ReactNode;
+  inputRef?: Ref<HTMLInputElement>;
+};
+
 export function SearchField({
   placeholder = "Search...",
-}: {
-  placeholder?: string;
-}) {
+  containerClassName = "",
+  className = "",
+  endAdornment,
+  inputRef,
+  ...props
+}: SearchFieldProps) {
   return (
-    <label className="focus-within:border-secondary flex items-center gap-3 rounded-md border border-zinc-300 bg-white px-4 py-3">
+    <div
+      className={`focus-within:border-secondary flex items-center gap-3 rounded-md border border-zinc-300 bg-white px-4 py-3 ${containerClassName}`}
+    >
       <SearchIcon />
       <input
+        ref={inputRef}
         type="search"
         placeholder={placeholder}
-        aria-label={placeholder}
-        className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-zinc-400"
+        aria-label={props["aria-label"] ?? placeholder}
+        className={`min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-zinc-400 ${className}`}
+        {...props}
       />
-    </label>
+      {endAdornment}
+    </div>
   );
 }
 
