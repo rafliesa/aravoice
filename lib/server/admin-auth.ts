@@ -10,8 +10,8 @@ export const ADMIN_SESSION_TTL_SECONDS = 8 * 60 * 60;
 function getAdminPassword() {
   const password = process.env.ADMIN_PASSWORD;
 
-  if (!password || Buffer.byteLength(password) < 24) {
-    throw new Error("ADMIN_PASSWORD must contain at least 24 bytes");
+  if (password === undefined) {
+    throw new Error("ADMIN_PASSWORD is not configured");
   }
 
   return password;
