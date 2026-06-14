@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import RichTextEditor from "@/components/RichTextEditor";
 import {
   type CreateNewsPayload,
@@ -51,9 +52,34 @@ function createEmptyForm(): FormState {
   };
 }
 
+function createFormFromNews(item: News): FormState {
+  return {
+    category: item.category,
+    title: item.title,
+    excerpt: item.excerpt,
+    author: item.author,
+    date: item.published_at.slice(0, 10),
+    readingTime: String(item.reading_time),
+    formats: item.formats,
+    coverImage: item.cover_image,
+    caption: item.caption,
+    body: item.body,
+    isPublished: item.is_published,
+  };
+}
+
+function sortNews(items: News[]) {
+  return [...items].sort((a, b) => {
+    const dateDifference =
+      new Date(b.published_at).getTime() - new Date(a.published_at).getTime();
+    return dateDifference || b.id - a.id;
+  });
+}
+
 export default function AdminDashboard() {
   const [form, setForm] = useState<FormState>(createEmptyForm);
   const [news, setNews] = useState<News[]>([]);
+  const [editingId, setEditingId] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [deletingId, setDeletingId] = useState<number | null>(null);
@@ -62,6 +88,7 @@ export default function AdminDashboard() {
     type: "success" | "error";
     text: string;
   } | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -103,6 +130,20 @@ export default function AdminDashboard() {
     }));
   }
 
+  function resetForm() {
+    setEditingId(null);
+    setForm(createEmptyForm());
+    setEditorKey((key) => key + 1);
+  }
+
+  function editNews(item: News) {
+    setEditingId(item.id);
+    setForm(createFormFromNews(item));
+    setEditorKey((key) => key + 1);
+    setMessage(null);
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
@@ -134,18 +175,32 @@ export default function AdminDashboard() {
     setSubmitting(true);
     setMessage(null);
     try {
-      const response = await fetch("/api/news", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        editingId === null ? "/api/news" : `/api/news/${editingId}`,
+        {
+          method: editingId === null ? "POST" : "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        },
+      );
       if (!response.ok) throw new Error(await getResponseError(response));
 
-      const created = (await response.json()) as News;
-      setNews((current) => [created, ...current]);
-      setForm(createEmptyForm());
-      setEditorKey((key) => key + 1);
-      setMessage({ type: "success", text: "Berita berhasil disimpan." });
+      const saved = (await response.json()) as News;
+      setNews((current) =>
+        sortNews(
+          editingId === null
+            ? [saved, ...current]
+            : current.map((item) => (item.id === saved.id ? saved : item)),
+        ),
+      );
+      resetForm();
+      setMessage({
+        type: "success",
+        text:
+          editingId === null
+            ? "Berita berhasil disimpan."
+            : "Perubahan berita berhasil disimpan.",
+      });
     } catch (error) {
       setMessage({
         type: "error",
@@ -163,6 +218,7 @@ export default function AdminDashboard() {
       const response = await fetch(`/api/news/${id}`, { method: "DELETE" });
       if (!response.ok) throw new Error(await getResponseError(response));
       setNews((current) => current.filter((item) => item.id !== id));
+      if (editingId === id) resetForm();
       setMessage({ type: "success", text: "Berita berhasil dihapus." });
     } catch (error) {
       setMessage({
@@ -189,13 +245,17 @@ export default function AdminDashboard() {
               </button>
             </form>
           </div>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight">Buat Berita</h1>
+          <h1 className="mt-2 text-3xl font-extrabold tracking-tight">
+            {editingId === null ? "Buat Berita" : "Edit Berita"}
+          </h1>
           <p className="mt-2 text-sm text-zinc-500">
-            Berita disimpan langsung melalui Next.js dan Prisma.
+            {editingId === null
+              ? "Berita disimpan langsung melalui Next.js dan Prisma."
+              : "Perbarui isi berita yang sudah tersimpan."}
           </p>
         </header>
 
-        <form onSubmit={handleSubmit}>
+        <form ref={formRef} onSubmit={handleSubmit}>
           {/* Metadata + cover preview */}
           <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-2">
             <div className="space-y-6">
@@ -346,7 +406,7 @@ export default function AdminDashboard() {
 
           {/* Medium-style writing canvas */}
           <div className="mt-12 border-t border-zinc-200 pt-10">
-            <div className="mx-auto max-w-3xl px-6">
+            <div>
               <input
                 value={form.title}
                 onChange={(e) => update("title", e.target.value)}
@@ -371,8 +431,22 @@ export default function AdminDashboard() {
               disabled={submitting}
               className="rounded-md bg-[#1a1a1a] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {submitting ? "Menyimpan…" : "Simpan Berita"}
+              {submitting
+                ? "Menyimpan…"
+                : editingId === null
+                  ? "Simpan Berita"
+                  : "Simpan Perubahan"}
             </button>
+            {editingId !== null && (
+              <button
+                type="button"
+                onClick={resetForm}
+                disabled={submitting}
+                className="rounded-md border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-zinc-700 transition-colors hover:border-zinc-400 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                Batal Edit
+              </button>
+            )}
             {message && (
               <span
                 className={`text-sm font-medium ${
@@ -397,7 +471,10 @@ export default function AdminDashboard() {
           ) : (
             <ul className="mt-5 divide-y divide-zinc-200">
               {news.map((item) => (
-                <li key={item.id} className="flex items-center justify-between gap-4 py-4">
+                <li
+                  key={item.id}
+                  className="flex flex-col items-start justify-between gap-4 py-4 sm:flex-row sm:items-center"
+                >
                   <div>
                     <p className="text-xs font-bold tracking-wider text-[#F29100]">
                       {item.category} · {item.is_published ? "TERBIT" : "DRAFT"}
@@ -408,13 +485,31 @@ export default function AdminDashboard() {
                       {item.reading_time} menit • {item.formats.join(", ") || "tanpa format"}
                     </p>
                   </div>
-                  <button
-                    onClick={() => deleteNews(item.id)}
-                    disabled={deletingId === item.id}
-                    className="shrink-0 rounded-md border border-zinc-300 px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-red-300 hover:bg-red-50 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {deletingId === item.id ? "Menghapus…" : "Hapus"}
-                  </button>
+                  <div className="flex shrink-0 flex-wrap items-center gap-2 sm:justify-end">
+                    <Link
+                      href={`/${item.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-md border border-zinc-300 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-zinc-400 hover:bg-zinc-50"
+                    >
+                      Lihat
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => editNews(item)}
+                      className="rounded-md border border-zinc-300 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-[#F29100] hover:bg-orange-50 hover:text-[#8A5100]"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => deleteNews(item.id)}
+                      disabled={deletingId === item.id}
+                      className="rounded-md border border-zinc-300 px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-red-300 hover:bg-red-50 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      {deletingId === item.id ? "Menghapus…" : "Hapus"}
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
