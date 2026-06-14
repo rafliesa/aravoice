@@ -6,7 +6,7 @@ import {
   verifyAdminPassword,
 } from "@/lib/server/admin-auth";
 
-const PASSWORD = "correct-horse-battery-staple-2026";
+const PASSWORD = "x";
 
 describe("admin authentication", () => {
   beforeEach(() => {
