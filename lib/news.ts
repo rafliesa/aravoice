@@ -80,6 +80,22 @@ export async function fetchNewsBySlug(slug: string, signal?: AbortSignal) {
   return (await response.json()) as News;
 }
 
+export async function searchNewsByTitle(
+  title: string,
+  signal?: AbortSignal,
+) {
+  const params = new URLSearchParams({ title });
+  const response = await fetch(`/api/news/search?${params}`, {
+    cache: "no-store",
+    signal,
+  });
+  if (!response.ok) {
+    throw new Error(await getResponseError(response));
+  }
+
+  return (await response.json()) as NewsCardData[];
+}
+
 export async function getResponseError(response: Response) {
   try {
     const data = (await response.json()) as { error?: string };
