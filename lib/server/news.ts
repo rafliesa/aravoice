@@ -150,6 +150,27 @@ export async function createNews(payload: CreateNewsPayload) {
   return serializeNews(record);
 }
 
+export async function updateNews(id: number, payload: CreateNewsPayload) {
+  const record = await prisma.news.update({
+    where: { id },
+    data: {
+      slug: payload.slug,
+      category: payload.category,
+      title: payload.title,
+      excerpt: payload.excerpt,
+      body: payload.body,
+      author: payload.author,
+      readingTime: payload.reading_time,
+      coverImage: payload.cover_image,
+      caption: payload.caption,
+      formats: payload.formats,
+      publishedAt: new Date(payload.published_at),
+      isPublished: payload.is_published,
+    },
+  });
+  return serializeNews(record);
+}
+
 export async function getAllNews() {
   const records = await prisma.news.findMany({
     orderBy: [{ publishedAt: "desc" }, { id: "desc" }],
