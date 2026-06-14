@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model News {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  category    String
+  title       String
+  excerpt     String
+  body        String
+  author      String
+  readingTime Int      @map("reading_time")
+  coverImage  String   @map("cover_image")
+  caption     String
+  formats     String[] @default([])
+  publishedAt DateTime @map("published_at") @db.Timestamptz(6)
+  isPublished Boolean  @default(false) @map("is_published")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@index([category], map: "idx_news_category")
+  @@map("news")
+}
