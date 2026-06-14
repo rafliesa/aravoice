@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import type { EmbedProvider } from "@/components/editor/EmbedNode";
 import type { MediaKind } from "@/components/editor/MediaNode";
 import { normalizeEmbedUrl } from "@/components/editor/embed";
@@ -123,7 +124,7 @@ export default function MediaDialog({ open, onClose, onInsert }: Props) {
     }
   };
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-4"
       onMouseDown={(event) => {
@@ -246,7 +247,8 @@ export default function MediaDialog({ open, onClose, onInsert }: Props) {
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
