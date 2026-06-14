@@ -2,7 +2,7 @@ import Image from "@tiptap/extension-image";
 
 export type ImageAlign = "left" | "right" | "center" | "full";
 
-declare module "@tiptap/react" {
+declare module "@tiptap/core" {
   interface Commands<ReturnType> {
     floatImage: {
       /** Update alignment of the currently selected image. */
