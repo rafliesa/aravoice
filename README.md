@@ -18,9 +18,8 @@ pnpm install
 cp .env.example .env
 ```
 
-Sesuaikan `DATABASE_URL` di `.env`. `ADMIN_PASSWORD` wajib berisi password acak
-minimal 24 karakter dan digunakan untuk login ke `/admin`. Lalu siapkan
-database baru:
+Sesuaikan `DATABASE_URL` dan `ADMIN_PASSWORD` di `.env`. Password tersebut
+digunakan untuk login ke `/admin`. Lalu siapkan database baru:
 
 ```bash
 pnpm db:deploy
