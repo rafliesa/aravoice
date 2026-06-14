@@ -44,7 +44,6 @@ export default async function AdminLoginPage({
             name="password"
             type="password"
             required
-            minLength={24}
             autoComplete="current-password"
             autoFocus
             className="mt-2 w-full rounded-md border border-zinc-300 bg-white px-3 py-3 text-sm outline-none focus:border-[#F29100]"
