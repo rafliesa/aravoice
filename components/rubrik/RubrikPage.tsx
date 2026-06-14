@@ -2,8 +2,14 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import LatestNewsCard from "@/components/news/LatestNewsCard";
-import NewsCard from "@/components/news/NewsCard";
+import {
+  EditorialCard,
+  LatestArticles,
+} from "@/components/design-system/Editorial";
+import {
+  DesignButton,
+  DesignLink,
+} from "@/components/design-system/Primitives";
 import {
   type NewsCardData,
   type Pagination,
@@ -24,6 +30,13 @@ type RubrikPageProps = {
   category: string;
   description: string;
 };
+
+function getNewsFormat(news: NewsCardData) {
+  const formats = news.formats.map((format) => format.toUpperCase());
+  if (formats.includes("VIDEO")) return "Video";
+  if (formats.includes("AUDIO")) return "Audio";
+  return "Artikel";
+}
 
 export default function RubrikPage({
   category,
@@ -83,6 +96,12 @@ export default function RubrikPage({
   const leadNews = news[0];
   const featuredNews = news.slice(1, 3);
   const latestNews = news.slice(3);
+  const latestArticles = latestNews.map((item) => ({
+    category: item.category,
+    title: item.title,
+    meta: `${formatPublishedDate(item.published_at)} • ${item.reading_time} menit baca`,
+    href: `/${item.slug}`,
+  }));
 
   const changePage = (nextPage: number) => {
     if (
@@ -104,7 +123,7 @@ export default function RubrikPage({
   return (
     <main
       ref={pageTopRef}
-      className="flex-1 scroll-mt-24 bg-[#faf8f3] text-[#1a1a1a]"
+      className="bg-surface-warm text-neutral flex-1 scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-6 py-8">
         <nav
@@ -115,11 +134,11 @@ export default function RubrikPage({
             Home
           </Link>
           <span aria-hidden="true">›</span>
-          <span className="font-semibold text-[#F29100]">{category}</span>
+          <span className="text-secondary-700 font-semibold">{category}</span>
         </nav>
 
         <header className="mt-8 max-w-3xl">
-          <p className="text-sm font-bold tracking-[0.18em] text-[#F29100]">
+          <p className="text-secondary-700 text-sm font-bold tracking-[0.18em]">
             RUBRIK
           </p>
           <h1 className="mt-3 font-caslon text-4xl font-bold tracking-tight sm:text-5xl">
@@ -141,13 +160,13 @@ export default function RubrikPage({
           <>
             <section className="mt-10 grid grid-cols-1 gap-10 border-y border-zinc-200 py-10 lg:grid-cols-2">
               <div className="flex flex-col justify-center">
-                <p className="text-sm font-bold tracking-wider text-[#F29100]">
+                <p className="text-secondary-700 text-sm font-bold tracking-wider">
                   {leadNews.category.toUpperCase()}
                 </p>
                 <h2 className="mt-4 font-caslon text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
                   <Link
                     href={`/${leadNews.slug}`}
-                    className="transition-colors hover:text-[#8A5100]"
+                    className="transition-colors hover:text-secondary-800"
                   >
                     {leadNews.title}
                   </Link>
@@ -162,13 +181,14 @@ export default function RubrikPage({
                   <span>{leadNews.reading_time} menit baca</span>
                 </div>
 
-                <Link
+                <DesignLink
                   href={`/${leadNews.slug}`}
-                  className="mt-7 inline-flex w-fit items-center gap-2 text-sm font-bold text-[#8A5100] hover:underline"
+                  variant="secondary"
+                  className="mt-7 w-fit"
                 >
                   Baca Selengkapnya
                   <span aria-hidden="true">→</span>
-                </Link>
+                </DesignLink>
               </div>
 
               <Link
@@ -201,7 +221,17 @@ export default function RubrikPage({
                 {featuredNews.length > 0 ? (
                   <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
                     {featuredNews.map((item) => (
-                      <NewsCard key={item.id} news={item} />
+                      <EditorialCard
+                        key={item.id}
+                        category={item.category}
+                        title={item.title}
+                        excerpt={item.excerpt}
+                        format={getNewsFormat(item)}
+                        readingTime={`${item.reading_time} menit`}
+                        href={`/${item.slug}`}
+                        imageSrc={item.cover_image || undefined}
+                        imageAlt={item.title}
+                      />
                     ))}
                   </div>
                 ) : (
@@ -209,26 +239,11 @@ export default function RubrikPage({
                 )}
               </div>
 
-              <aside>
-                <div className="rounded-lg border border-zinc-200 bg-white p-6">
-                  <h2 className="font-caslon text-2xl font-bold tracking-tight">
-                    Terbaru di {category}
-                  </h2>
-                  <div className="mt-2 h-1 w-16 rounded bg-[#F29100]" />
-
-                  {latestNews.length > 0 ? (
-                    <ul className="mt-6 divide-y divide-zinc-200">
-                      {latestNews.map((item) => (
-                        <LatestNewsCard key={item.id} news={item} />
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="mt-6 text-sm leading-7 text-zinc-500">
-                      Artikel lain akan segera hadir.
-                    </p>
-                  )}
-                </div>
-              </aside>
+              <LatestArticles
+                title={`Terbaru di ${category}`}
+                items={latestArticles}
+                emptyMessage="Artikel lain akan segera hadir."
+              />
             </section>
 
             {pagination.total_pages > 1 && (
@@ -240,7 +255,7 @@ export default function RubrikPage({
             )}
           </>
         ) : (
-          <div className="mt-10 rounded-lg border border-zinc-200 bg-white px-6 py-14 text-center">
+          <div className="bg-headline-surface mt-10 rounded-lg border border-tertiary-200 px-6 py-14 text-center">
             <h2 className="font-caslon text-2xl font-bold">
               Belum ada artikel di {category}
             </h2>
@@ -257,7 +272,7 @@ export default function RubrikPage({
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 border-b border-zinc-300 pb-4">
-      <span className="h-7 w-1.5 rounded bg-[#F29100]" />
+      <span className="bg-secondary h-7 w-1.5 rounded" />
       <h2 className="font-caslon text-3xl font-bold tracking-tight">
         {children}
       </h2>
@@ -267,7 +282,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 function EmptySection() {
   return (
-    <p className="mt-6 rounded-lg border border-zinc-200 bg-white px-6 py-10 text-sm text-zinc-500">
+    <p className="bg-headline-surface mt-6 rounded-lg border border-tertiary-200 px-6 py-10 text-sm text-zinc-500">
       Artikel pilihan lain akan segera hadir.
     </p>
   );
@@ -289,13 +304,13 @@ function ErrorState({
         Berita belum dapat dimuat
       </h2>
       <p className="mt-3 text-sm text-red-700">{message}</p>
-      <button
-        type="button"
+      <DesignButton
+        variant="next"
         onClick={onRetry}
-        className="mt-6 rounded-md bg-red-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-950"
+        className="mt-6"
       >
         Coba lagi
-      </button>
+      </DesignButton>
     </div>
   );
 }
@@ -305,12 +320,12 @@ function RubrikSkeleton() {
     <div aria-label="Memuat artikel" aria-busy="true">
       <div className="mt-10 grid grid-cols-1 gap-10 border-y border-zinc-200 py-10 lg:grid-cols-2">
         <div className="space-y-4">
-          <div className="h-4 w-24 animate-pulse rounded bg-zinc-200" />
-          <div className="h-12 w-full animate-pulse rounded bg-zinc-200" />
-          <div className="h-12 w-4/5 animate-pulse rounded bg-zinc-200" />
-          <div className="h-24 w-full animate-pulse rounded bg-zinc-200" />
+          <div className="bg-tertiary-200 h-4 w-24 animate-pulse rounded" />
+          <div className="bg-tertiary-200 h-12 w-full animate-pulse rounded" />
+          <div className="bg-tertiary-200 h-12 w-4/5 animate-pulse rounded" />
+          <div className="bg-tertiary-200 h-24 w-full animate-pulse rounded" />
         </div>
-        <div className="aspect-[16/10] animate-pulse rounded-lg bg-zinc-200" />
+        <div className="bg-tertiary-200 aspect-[16/10] animate-pulse rounded-lg" />
       </div>
 
       <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -318,11 +333,11 @@ function RubrikSkeleton() {
           {Array.from({ length: 2 }, (_, index) => (
             <div
               key={index}
-              className="h-96 animate-pulse rounded-lg bg-zinc-200"
+              className="bg-tertiary-200 h-96 animate-pulse rounded-lg"
             />
           ))}
         </div>
-        <div className="h-96 animate-pulse rounded-lg bg-zinc-200" />
+        <div className="bg-tertiary-200 h-96 animate-pulse rounded-lg" />
       </div>
     </div>
   );
@@ -342,44 +357,40 @@ function PaginationNav({
       aria-label="Pagination artikel rubrik"
       className="mt-12 flex flex-wrap items-center justify-center gap-3"
     >
-      <button
-        type="button"
+      <DesignButton
+        variant="secondary"
         onClick={() => onPageChange(pagination.page - 1)}
         disabled={pagination.page <= 1 || loading}
-        className="rounded-md border border-zinc-300 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40"
+        className="disabled:cursor-not-allowed disabled:opacity-40"
       >
         Sebelumnya
-      </button>
+      </DesignButton>
 
       {Array.from({ length: pagination.total_pages }, (_, index) => index + 1).map(
         (pageNumber) => (
-          <button
+          <DesignButton
             key={pageNumber}
-            type="button"
+            variant={pageNumber === pagination.page ? "next" : "secondary"}
             aria-current={
               pageNumber === pagination.page ? "page" : undefined
             }
             onClick={() => onPageChange(pageNumber)}
             disabled={loading}
-            className={`h-10 min-w-10 rounded-md px-3 text-sm font-semibold transition-colors ${
-              pageNumber === pagination.page
-                ? "bg-[#0b0f1a] text-white"
-                : "border border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-100"
-            }`}
+            className="h-10 min-w-10 px-3 disabled:cursor-not-allowed disabled:opacity-40"
           >
             {pageNumber}
-          </button>
+          </DesignButton>
         ),
       )}
 
-      <button
-        type="button"
+      <DesignButton
+        variant="secondary"
         onClick={() => onPageChange(pagination.page + 1)}
         disabled={pagination.page >= pagination.total_pages || loading}
-        className="rounded-md border border-zinc-300 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40"
+        className="disabled:cursor-not-allowed disabled:opacity-40"
       >
         Berikutnya
-      </button>
+      </DesignButton>
     </nav>
   );
 }
