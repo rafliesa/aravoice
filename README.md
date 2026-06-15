@@ -3,11 +3,12 @@
 Aravoice adalah aplikasi full-stack Next.js. Halaman web dan endpoint API
 berjalan dalam proses yang sama, sedangkan akses PostgreSQL menggunakan Prisma.
 
-## Deploy ke Vercel
+## CI/CD dan deploy ke Vercel
 
-Repository ini sudah memiliki konfigurasi Vercel di `vercel.json`. Build Vercel
-akan otomatis membuat Prisma Client, menjalankan migration production, lalu
-menjalankan build Next.js.
+Workflow `.github/workflows/ci-cd.yml` menjalankan lint, typecheck, test, dan
+production build untuk setiap pull request. Push ke `main` menjalankan checks
+yang sama lalu melakukan production deployment ke Vercel. Deployment juga bisa
+dijalankan manual dari tab **Actions**.
 
 Sebelum deployment pertama:
 
@@ -19,7 +20,22 @@ Sebelum deployment pertama:
    menyediakan `BLOB_READ_WRITE_TOKEN`.
 4. Tambahkan `ADMIN_PASSWORD` melalui **Settings → Environment Variables** dan
    tandai sebagai Sensitive. Gunakan password yang panjang dan unik.
-5. Deploy atau redeploy project.
+5. Buat Vercel access token melalui **Account Settings → Tokens**.
+6. Jalankan `vercel link` secara lokal dan ambil `orgId` serta `projectId` dari
+   `.vercel/project.json`.
+7. Tambahkan repository secrets berikut melalui
+   **GitHub → Settings → Secrets and variables → Actions**:
+
+| GitHub secret | Isi |
+| --- | --- |
+| `VERCEL_TOKEN` | Access token dari Vercel |
+| `VERCEL_ORG_ID` | Nilai `orgId` dari `.vercel/project.json` |
+| `VERCEL_PROJECT_ID` | Nilai `projectId` dari `.vercel/project.json` |
+
+Setelah ketiga secret tersedia, push ke `main` atau jalankan workflow secara
+manual. Workflow menggunakan `vercel pull`, `vercel build`, dan
+`vercel deploy --prebuilt --prod`, sehingga tidak bergantung pada trigger Git
+integration Vercel.
 
 Environment production yang dibutuhkan:
 
