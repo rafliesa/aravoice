@@ -23,6 +23,11 @@ import {
   LatestArticles,
   SolutionCard,
 } from "@/components/design-system/Editorial";
+import {
+  ContextualAudioCard,
+  InteractiveTrendChart,
+  LegalReferenceDemo,
+} from "@/components/design-system/InteractivePatterns";
 
 export const metadata: Metadata = {
   title: "Design System | ParaVoice",
@@ -54,6 +59,9 @@ const navigation = [
   ["logos", "Logo"],
   ["content", "Content Cards"],
   ["infographics", "Infographics"],
+  ["interactive-data", "Interactive Data"],
+  ["legal-reference", "Legal Reference"],
+  ["audio-story", "Audio Story"],
 ] as const;
 
 export default function DesignSystemPage() {
@@ -291,6 +299,39 @@ export default function DesignSystemPage() {
                   ]}
                   insight="Konten berbasis data membantu pembaca memahami isu olahraga disabilitas dengan konteks yang lebih kuat."
                 />
+              </div>
+            </section>
+
+            <section id="interactive-data" className="scroll-mt-8">
+              <SectionHeading
+                eyebrow="Interactive data"
+                title="Selectable trend chart"
+                description="Grafik tren yang merespons hover, fokus keyboard, dan klik serta memberi highlight pada tahun yang dipilih."
+              />
+              <div className="mt-7">
+                <InteractiveTrendChart />
+              </div>
+            </section>
+
+            <section id="legal-reference" className="scroll-mt-8">
+              <SectionHeading
+                eyebrow="Reference pattern"
+                title="Legal reference modal"
+                description="Referensi undang-undang tetap terlihat sebagai tautan, lalu membuka ringkasan yang fokus, responsif, dan dapat dinavigasi dengan keyboard."
+              />
+              <div className="mt-7">
+                <LegalReferenceDemo />
+              </div>
+            </section>
+
+            <section id="audio-story" className="scroll-mt-8">
+              <SectionHeading
+                eyebrow="Media pattern"
+                title="Contextual audio"
+                description="Audio native yang ditempatkan bersama profil narasumber dan konteks editorial, tanpa autoplay."
+              />
+              <div className="mt-7">
+                <ContextualAudioCard />
               </div>
             </section>
           </div>
