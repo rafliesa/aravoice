@@ -46,10 +46,12 @@ Environment production yang dibutuhkan:
 | `ADMIN_PASSWORD` | Login `/admin` sekaligus kunci penandatanganan sesi |
 | `BLOB_READ_WRITE_TOKEN` | Upload media persisten melalui Vercel Blob |
 
-Integrasi Neon di Vercel otomatis menyediakan `DATABASE_URL_UNPOOLED`. Untuk
-konfigurasi manual, isi `DIRECT_URL` dengan connection string Neon tanpa
-`-pooler` pada hostname. Prisma CLI memerlukan koneksi langsung karena migration
-menggunakan advisory lock yang tidak didukung oleh PgBouncer transaction mode.
+Jika tersedia, Prisma CLI memprioritaskan `DIRECT_URL` atau
+`DATABASE_URL_UNPOOLED`. Jika Vercel hanya menyediakan `DATABASE_URL` pooled
+dari Neon, konfigurasi otomatis menghapus `-pooler` dari hostname untuk
+menggunakan endpoint direct saat migration. Prisma CLI memerlukan koneksi
+langsung karena migration menggunakan advisory lock yang tidak didukung oleh
+PgBouncer transaction mode.
 
 `vercel-build` menjalankan `prisma migrate deploy`, sehingga tabel `news`
 langsung dibuat pada database baru. Gunakan database terpisah untuk Preview
