@@ -41,9 +41,15 @@ Environment production yang dibutuhkan:
 
 | Variable | Kegunaan |
 | --- | --- |
-| `DATABASE_URL` | Koneksi PostgreSQL yang digunakan aplikasi dan migration |
+| `DATABASE_URL` | Koneksi PostgreSQL pooled yang digunakan aplikasi |
+| `DATABASE_URL_UNPOOLED` atau `DIRECT_URL` | Koneksi langsung yang digunakan Prisma migration |
 | `ADMIN_PASSWORD` | Login `/admin` sekaligus kunci penandatanganan sesi |
 | `BLOB_READ_WRITE_TOKEN` | Upload media persisten melalui Vercel Blob |
+
+Integrasi Neon di Vercel otomatis menyediakan `DATABASE_URL_UNPOOLED`. Untuk
+konfigurasi manual, isi `DIRECT_URL` dengan connection string Neon tanpa
+`-pooler` pada hostname. Prisma CLI memerlukan koneksi langsung karena migration
+menggunakan advisory lock yang tidak didukung oleh PgBouncer transaction mode.
 
 `vercel-build` menjalankan `prisma migrate deploy`, sehingga tabel `news`
 langsung dibuat pada database baru. Gunakan database terpisah untuk Preview
@@ -65,8 +71,10 @@ pnpm install
 cp .env.example .env
 ```
 
-Sesuaikan `DATABASE_URL` dan `ADMIN_PASSWORD` di `.env`. Password tersebut
-digunakan untuk login ke `/admin`. Lalu siapkan database baru:
+Sesuaikan `DATABASE_URL`, `DIRECT_URL`, dan `ADMIN_PASSWORD` di `.env`.
+`DIRECT_URL` dapat sama dengan `DATABASE_URL` untuk PostgreSQL lokal tanpa
+pooler. Password admin digunakan untuk login ke `/admin`. Lalu siapkan database
+baru:
 
 ```bash
 pnpm db:deploy
