@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   type NewsCardData,
@@ -9,6 +8,7 @@ import {
 } from "@/lib/news";
 import RubrikHero from "@/modules/rubrik/sections/RubrikHero";
 import RubrikArticles from "@/modules/rubrik/sections/RubrikArticles";
+import RubrikMembershipCta from "@/modules/rubrik/sections/RubrikMembershipCta";
 import ErrorState from "@/modules/rubrik/component/ErrorState";
 import RubrikSkeleton, { PAGE_SIZE } from "@/modules/rubrik/component/RubrikSkeleton";
 import PaginationNav from "@/modules/rubrik/component/PaginationNav";
@@ -81,7 +81,10 @@ export default function RubrikPage({
   }, [category, page, retryKey]);
 
   const leadNews = news[0];
-  const otherNews = news.slice(1);
+  const articleNews = news.slice(1, 7);
+  const remainingNews = news.slice(7, 14);
+  const sidebarNews = remainingNews.length > 0 ? remainingNews : news.slice(0, 7);
+  const categoryHref = `/${category.toLowerCase().replace(/\s+/g, "-")}`;
 
   const changePage = (nextPage: number) => {
     if (
@@ -105,30 +108,7 @@ export default function RubrikPage({
       ref={pageTopRef}
       className="bg-surface-warm text-neutral flex-1 scroll-mt-24"
     >
-      <div className="mx-auto max-w-7xl px-6 py-8">
-        <nav
-          aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-sm text-zinc-500"
-        >
-          <Link href="/" className="hover:text-zinc-800">
-            Home
-          </Link>
-          <span aria-hidden="true">›</span>
-          <span className="text-secondary-700 font-semibold">{category}</span>
-        </nav>
-
-        <header className="mt-8 max-w-3xl">
-          <p className="text-secondary-700 text-sm font-bold tracking-[0.18em]">
-            RUBRIK
-          </p>
-          <h1 className="mt-3 font-caslon text-4xl font-bold tracking-tight sm:text-5xl">
-            {category}
-          </h1>
-          <p className="mt-4 text-base leading-8 text-zinc-600">
-            {description}
-          </p>
-        </header>
-
+      <div className="mx-auto max-w-7xl px-6 pb-8">
         {loading ? (
           <RubrikSkeleton />
         ) : error ? (
@@ -138,9 +118,13 @@ export default function RubrikPage({
           />
         ) : leadNews ? (
           <>
-            <RubrikHero leadNews={leadNews} />
+            <RubrikHero category={category} leadNews={leadNews} />
 
-            <RubrikArticles otherNews={otherNews} category={category} />
+            <RubrikArticles
+              allArticlesHref={categoryHref}
+              articleNews={articleNews}
+              sidebarNews={sidebarNews}
+            />
 
             {pagination.total_pages > 1 && (
               <PaginationNav
@@ -152,14 +136,16 @@ export default function RubrikPage({
           </>
         ) : (
           <div className="bg-headline-surface mt-10 rounded-lg border border-tertiary-200 px-6 py-14 text-center">
-            <h2 className="font-caslon text-2xl font-bold">
+            <h1 className="text-3xl font-extrabold">
               Belum ada artikel di {category}
-            </h2>
+            </h1>
             <p className="mt-3 text-sm text-zinc-500">
-              Artikel yang sudah diterbitkan akan tampil di halaman ini.
+              {description}
             </p>
           </div>
         )}
+
+        <RubrikMembershipCta />
       </div>
     </main>
   );
