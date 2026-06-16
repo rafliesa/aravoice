@@ -158,6 +158,32 @@ body {
   transform: scale(1.035);
 }
 
+.skeleton-block {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #eee9df 0%, #e3ddd2 45%, #eee9df 100%);
+}
+
+.skeleton-block::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 255 255 / 0.55) 50%,
+    transparent 100%
+  );
+  animation: skeleton-shimmer 1.35s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
 /* Global accessibility preferences are applied to the site shell so the
    accessibility controls remain readable while visual filters are active. */
 #site-shell {

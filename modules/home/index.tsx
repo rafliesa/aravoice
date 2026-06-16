@@ -5,6 +5,7 @@ import { formatPublishedDate } from "@/lib/news";
 import HomeHero from "@/modules/home/sections/HomeHero";
 import HomeFeatured from "@/modules/home/sections/HomeFeatured";
 import HomeBottomCta from "@/modules/home/sections/HomeBottomCta";
+import HomeNewsSkeleton from "@/modules/home/component/HomeNewsSkeleton";
 import { CARD_FETCH_LIMIT } from "@/modules/home/sections/HomeCategories";
 
 import type { NewsCardData } from "@/lib/news";
@@ -46,9 +47,7 @@ export default function HomePage() {
   const availableFormats = leadNews?.formats.map((format) => format.toUpperCase()) ?? [];
   const heroCategory = leadNews?.category.toUpperCase() ?? "BERITA";
   const initialLoading = loadingCards && cardNews.length === 0;
-  const heroTitle = initialLoading
-    ? "Memuat berita terbaru..."
-    : newsError && cardNews.length === 0
+  const heroTitle = newsError && cardNews.length === 0
       ? "Berita belum dapat dimuat"
       : leadNews?.title ?? "Belum ada berita terbit";
   const heroExcerpt = newsError && cardNews.length === 0
@@ -65,20 +64,26 @@ export default function HomePage() {
   return (
     <div className="flex-1 bg-surface-warm text-neutral">
       <div className="mx-auto max-w-7xl px-6 pb-12">
-        <HomeHero
-          availableFormats={availableFormats}
-          heroCategory={heroCategory}
-          heroExcerpt={heroExcerpt}
-          heroTitle={heroTitle}
-          leadNews={leadNews}
-        />
+        {initialLoading ? (
+          <HomeNewsSkeleton />
+        ) : (
+          <>
+            <HomeHero
+              availableFormats={availableFormats}
+              heroCategory={heroCategory}
+              heroExcerpt={heroExcerpt}
+              heroTitle={heroTitle}
+              leadNews={leadNews}
+            />
 
-        <HomeFeatured
-          articleNews={articleNews}
-          initialLoading={initialLoading}
-          latestArticles={latestArticles}
-          newsError={newsError}
-        />
+            <HomeFeatured
+              articleNews={articleNews}
+              initialLoading={false}
+              latestArticles={latestArticles}
+              newsError={newsError}
+            />
+          </>
+        )}
 
         {!loadingCards && newsError && cardNews.length > 0 && (
           <p className="mt-6 text-center text-sm text-red-600">{newsError}</p>

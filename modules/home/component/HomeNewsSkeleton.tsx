@@ -1,14 +1,8 @@
-export const PAGE_SIZE = 14;
-
-export default function RubrikSkeleton() {
+export default function HomeNewsSkeleton() {
   return (
-    <div aria-label="Konten rubrik sedang dimuat" aria-busy="true">
+    <div aria-busy="true" aria-label="Konten berita sedang dimuat">
       <section className="motion-fade-up pt-8">
-        <div className="flex items-center gap-2">
-          <div className="skeleton-block h-4 w-14 rounded" />
-          <div className="skeleton-block h-4 w-2 rounded" />
-          <div className="skeleton-block h-4 w-24 rounded" />
-        </div>
+        <div className="skeleton-block h-4 w-20 rounded" />
 
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1.06fr_1fr] lg:items-start">
           <div>
@@ -23,7 +17,7 @@ export default function RubrikSkeleton() {
               <div className="skeleton-block h-5 w-4/5 max-w-xl rounded" />
               <div className="skeleton-block h-5 w-3/5 max-w-lg rounded" />
             </div>
-            <div className="mt-9 border-y border-[#d8d0c2] py-5">
+            <div className="mt-9 border-t border-[#d8d0c2] pt-6">
               <div className="flex flex-wrap gap-4">
                 <div className="skeleton-block h-4 w-28 rounded" />
                 <div className="skeleton-block h-4 w-24 rounded" />
@@ -47,7 +41,7 @@ export default function RubrikSkeleton() {
         </div>
       </section>
 
-      <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_22rem]">
+      <section className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_22rem]">
         <div className="grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
           {Array.from({ length: 6 }, (_, index) => (
             <ArticleCardSkeleton key={index} delay={index * 70} />
@@ -57,7 +51,7 @@ export default function RubrikSkeleton() {
           <div className="skeleton-block h-8 w-44 rounded" />
           <div className="mt-3 h-1 w-36 bg-[#d9d1c4]" />
           <div className="mt-5 space-y-7">
-            {Array.from({ length: 7 }, (_, index) => (
+            {Array.from({ length: 6 }, (_, index) => (
               <div key={index} className="border-b border-[#e2ded8] pb-5">
                 <div className="skeleton-block h-3 w-16 rounded" />
                 <div className="mt-3 space-y-2">
@@ -70,7 +64,7 @@ export default function RubrikSkeleton() {
           </div>
           <div className="mt-4 skeleton-block h-12 w-full rounded-md" />
         </aside>
-      </div>
+      </section>
     </div>
   );
 }

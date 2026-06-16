@@ -59,9 +59,7 @@ export default function ArticlePage({
           </span>
         </nav>
 
-        {status === "loading" && (
-          <p className="mt-10 text-sm text-zinc-500">Memuat berita…</p>
-        )}
+        {status === "loading" && <ArticleSkeleton />}
 
         {status === "notfound" && (
           <div className="mt-10">
@@ -138,5 +136,39 @@ export default function ArticlePage({
         )}
       </div>
     </div>
+  );
+}
+
+function ArticleSkeleton() {
+  return (
+    <article aria-busy="true" aria-label="Artikel sedang dimuat" className="motion-fade-up mt-8">
+      <div className="skeleton-block h-4 w-32 rounded" />
+      <div className="mt-4 space-y-4">
+        <div className="skeleton-block h-12 w-full max-w-4xl rounded" />
+        <div className="skeleton-block h-12 w-11/12 max-w-4xl rounded" />
+        <div className="skeleton-block h-12 w-2/3 max-w-3xl rounded" />
+      </div>
+      <div className="mt-6 space-y-3">
+        <div className="skeleton-block h-5 w-full max-w-2xl rounded" />
+        <div className="skeleton-block h-5 w-4/5 max-w-xl rounded" />
+      </div>
+      <div className="mt-6 flex flex-wrap gap-4 border-y border-zinc-200 py-4">
+        <div className="skeleton-block h-4 w-28 rounded" />
+        <div className="skeleton-block h-4 w-24 rounded" />
+        <div className="skeleton-block h-4 w-24 rounded" />
+        <div className="skeleton-block h-4 w-16 rounded" />
+      </div>
+      <div className="mt-8 skeleton-block aspect-[16/8] w-full rounded-lg" />
+      <div className="mt-10 max-w-3xl space-y-4">
+        {Array.from({ length: 8 }, (_, index) => (
+          <div
+            key={index}
+            className={`skeleton-block h-5 rounded ${
+              index % 3 === 2 ? "w-3/4" : "w-full"
+            }`}
+          />
+        ))}
+      </div>
+    </article>
   );
 }

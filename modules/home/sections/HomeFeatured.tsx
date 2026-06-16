@@ -45,9 +45,7 @@ export default function HomeFeatured({
       <HomeLatestSidebar
         items={latestArticles}
         emptyMessage={
-          initialLoading
-            ? "Memuat berita terbaru..."
-            : newsError || "Belum ada berita yang diterbitkan."
+          initialLoading ? "" : newsError || "Belum ada berita yang diterbitkan."
         }
       />
     </section>
