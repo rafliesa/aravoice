@@ -1,54 +1,28 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { formatPublishedDate } from "@/lib/news";
+import { getNewsCards } from "@/lib/server/news";
 import HomeHero from "@/modules/home/sections/HomeHero";
 import HomeFeatured from "@/modules/home/sections/HomeFeatured";
 import HomeBottomCta from "@/modules/home/sections/HomeBottomCta";
 import { CARD_FETCH_LIMIT } from "@/modules/home/sections/HomeCategories";
-
 import type { NewsCardData } from "@/lib/news";
 
-export default function HomePage() {
-  const [cardNews, setCardNews] = useState<NewsCardData[]>([]);
-  const [loadingCards, setLoadingCards] = useState(true);
-  const [newsError, setNewsError] = useState("");
+export default async function HomePage() {
+  let newsError = "";
+  let cardNews: NewsCardData[] = [];
 
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function loadNews() {
-      setLoadingCards(true);
-      setNewsError("");
-      try {
-        const { fetchNewsCards } = await import("@/lib/news");
-        const response = await fetchNewsCards(1, CARD_FETCH_LIMIT, controller.signal);
-        setCardNews(response.data);
-      } catch (error) {
-        if ((error as Error).name !== "AbortError") {
-          setCardNews([]);
-          setNewsError(error instanceof Error ? error.message : "Berita gagal dimuat");
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoadingCards(false);
-        }
-      }
-    }
-
-    loadNews();
-    return () => controller.abort();
-  }, []);
+  try {
+    const response = await getNewsCards("", 1, CARD_FETCH_LIMIT);
+    cardNews = response.data;
+  } catch (error) {
+    newsError = error instanceof Error ? error.message : "Berita gagal dimuat";
+  }
 
   const leadNews = cardNews[0];
   const articleNews = cardNews.slice(1, 7);
   const latestNews = cardNews.slice(0, 7);
   const availableFormats = leadNews?.formats.map((format) => format.toUpperCase()) ?? [];
   const heroCategory = leadNews?.category.toUpperCase() ?? "BERITA";
-  const initialLoading = loadingCards && cardNews.length === 0;
-  const heroTitle = initialLoading
-    ? "Memuat berita terbaru..."
-    : newsError && cardNews.length === 0
+  const heroTitle = newsError && cardNews.length === 0
       ? "Berita belum dapat dimuat"
       : leadNews?.title ?? "Belum ada berita terbit";
   const heroExcerpt = newsError && cardNews.length === 0
@@ -75,12 +49,12 @@ export default function HomePage() {
 
         <HomeFeatured
           articleNews={articleNews}
-          initialLoading={initialLoading}
+          initialLoading={false}
           latestArticles={latestArticles}
           newsError={newsError}
         />
 
-        {!loadingCards && newsError && cardNews.length > 0 && (
+        {newsError && cardNews.length > 0 && (
           <p className="mt-6 text-center text-sm text-red-600">{newsError}</p>
         )}
       </div>

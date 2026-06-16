@@ -1,17 +1,10 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import {
-  type NewsCardData,
-  type Pagination,
-  fetchNewsCards,
-} from "@/lib/news";
+import { getNewsCards } from "@/lib/server/news";
 import RubrikHero from "@/modules/rubrik/sections/RubrikHero";
 import RubrikArticles from "@/modules/rubrik/sections/RubrikArticles";
 import RubrikMembershipCta from "@/modules/rubrik/sections/RubrikMembershipCta";
-import ErrorState from "@/modules/rubrik/component/ErrorState";
-import RubrikSkeleton, { PAGE_SIZE } from "@/modules/rubrik/component/RubrikSkeleton";
+import { PAGE_SIZE } from "@/modules/rubrik/component/RubrikSkeleton";
 import PaginationNav from "@/modules/rubrik/component/PaginationNav";
+import type { NewsCardData, Pagination } from "@/lib/news";
 
 const EMPTY_PAGINATION: Pagination = {
   page: 1,
@@ -23,62 +16,28 @@ const EMPTY_PAGINATION: Pagination = {
 type RubrikPageProps = {
   category: string;
   description: string;
+  page?: number;
 };
 
-export default function RubrikPage({
+export default async function RubrikPage({
   category,
   description,
+  page = 1,
 }: RubrikPageProps) {
-  const pageTopRef = useRef<HTMLDivElement>(null);
-  const [page, setPage] = useState(1);
-  const [news, setNews] = useState<NewsCardData[]>([]);
-  const [pagination, setPagination] =
-    useState<Pagination>(EMPTY_PAGINATION);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [retryKey, setRetryKey] = useState(0);
+  let error = "";
+  let news: NewsCardData[] = [];
+  let pagination = { ...EMPTY_PAGINATION, page };
 
-  useEffect(() => {
-    const controller = new AbortController();
-
-    async function loadNews() {
-      setLoading(true);
-      setError("");
-
-      try {
-        const response = await fetchNewsCards(
-          page,
-          PAGE_SIZE,
-          controller.signal,
-          category,
-        );
-        if (controller.signal.aborted) return;
-
-        setNews(response.data);
-        setPagination(response.pagination);
-      } catch (loadError) {
-        if ((loadError as Error).name === "AbortError") return;
-
-        setNews([]);
-        setPagination({
-          ...EMPTY_PAGINATION,
-          page,
-        });
-        setError(
-          loadError instanceof Error
-            ? loadError.message
-            : "Berita rubrik gagal dimuat.",
-        );
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
-      }
-    }
-
-    loadNews();
-    return () => controller.abort();
-  }, [category, page, retryKey]);
+  try {
+    const response = await getNewsCards(category, page, PAGE_SIZE);
+    news = response.data;
+    pagination = response.pagination;
+  } catch (loadError) {
+    error =
+      loadError instanceof Error
+        ? loadError.message
+        : "Berita rubrik gagal dimuat.";
+  }
 
   const leadNews = news[0];
   const articleNews = news.slice(1, 7);
@@ -86,36 +45,21 @@ export default function RubrikPage({
   const sidebarNews = remainingNews.length > 0 ? remainingNews : news.slice(0, 7);
   const categoryHref = `/${category.toLowerCase().replace(/\s+/g, "-")}`;
 
-  const changePage = (nextPage: number) => {
-    if (
-      loading ||
-      nextPage < 1 ||
-      nextPage > pagination.total_pages ||
-      nextPage === page
-    ) {
-      return;
-    }
-
-    setPage(nextPage);
-    pageTopRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
   return (
     <main
-      ref={pageTopRef}
       className="bg-surface-warm text-neutral flex-1 scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl px-6 pb-8">
-        {loading ? (
-          <RubrikSkeleton />
-        ) : error ? (
-          <ErrorState
-            message={error}
-            onRetry={() => setRetryKey((value) => value + 1)}
-          />
+        {error ? (
+          <div
+            role="alert"
+            className="mt-10 rounded-lg border border-red-200 bg-red-50 px-6 py-10 text-center"
+          >
+            <h1 className="text-3xl font-extrabold text-red-900">
+              Berita belum dapat dimuat
+            </h1>
+            <p className="mt-3 text-sm text-red-700">{error}</p>
+          </div>
         ) : leadNews ? (
           <>
             <RubrikHero category={category} leadNews={leadNews} />
@@ -128,9 +72,8 @@ export default function RubrikPage({
 
             {pagination.total_pages > 1 && (
               <PaginationNav
+                baseHref={categoryHref}
                 pagination={pagination}
-                loading={loading}
-                onPageChange={changePage}
               />
             )}
           </>
