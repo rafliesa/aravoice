@@ -7,11 +7,11 @@ import {
   type Pagination,
   fetchNewsCards,
 } from "@/lib/news";
-import RubrikHero from "@/components/rubrik/sections/RubrikHero";
-import RubrikArticles from "@/components/rubrik/sections/RubrikArticles";
-import ErrorState from "@/components/rubrik/ErrorState";
-import RubrikSkeleton, { PAGE_SIZE } from "@/components/rubrik/RubrikSkeleton";
-import PaginationNav from "@/components/rubrik/PaginationNav";
+import RubrikHero from "@/modules/rubrik/sections/RubrikHero";
+import RubrikArticles from "@/modules/rubrik/sections/RubrikArticles";
+import ErrorState from "@/modules/rubrik/component/ErrorState";
+import RubrikSkeleton, { PAGE_SIZE } from "@/modules/rubrik/component/RubrikSkeleton";
+import PaginationNav from "@/modules/rubrik/component/PaginationNav";
 
 const EMPTY_PAGINATION: Pagination = {
   page: 1,

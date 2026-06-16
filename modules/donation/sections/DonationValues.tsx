@@ -1,4 +1,4 @@
-import { AccessibilityIcon, CommunityIcon, ShieldIcon } from "@/components/donation/icons";
+import { AccessibilityIcon, CommunityIcon, ShieldIcon } from "@/modules/donation/component/icons";
 
 const values = [
   {

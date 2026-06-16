@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import AdminDashboard from "@/components/admin/AdminDashboard";
+import AdminDashboard from "@/modules/admin";
 import {
   ADMIN_SESSION_COOKIE,
   isValidAdminSession,

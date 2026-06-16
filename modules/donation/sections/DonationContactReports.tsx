@@ -1,5 +1,5 @@
-import ContactItem from "@/components/donation/ContactItem";
-import { ChatIcon, DownloadIcon, MailIcon, MapIcon } from "@/components/donation/icons";
+import ContactItem from "@/modules/donation/component/ContactItem";
+import { ChatIcon, DownloadIcon, MailIcon, MapIcon } from "@/modules/donation/component/icons";
 
 const reports = [2021, 2022, 2023, 2024, 2025];
 

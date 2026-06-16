@@ -1,4 +1,4 @@
-import ArticlePage from "@/components/article/ArticlePage";
+import ArticlePage from "@/modules/article";
 
 export default function Page({
   params,

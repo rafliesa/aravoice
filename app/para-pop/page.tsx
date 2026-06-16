@@ -1,4 +1,4 @@
-import RubrikPage from "@/components/rubrik/RubrikPage";
+import RubrikPage from "@/modules/rubrik";
 
 export default function ParaPopPage() {
   return (

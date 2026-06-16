@@ -1,7 +1,7 @@
 import { DesignLink, StatusBadge } from "@/components/design-system/Primitives";
 import { type NewsCardData, formatPublishedDate } from "@/lib/news";
-import MetaItem from "../MetaItem";
-import { UserIcon, CalendarIcon, ClockIcon } from "../icons";
+import MetaItem from "@/modules/home/component/MetaItem";
+import { UserIcon, CalendarIcon, ClockIcon } from "@/modules/home/component/icons";
 
 type HomeHeroProps = {
   availableFormats: string[];

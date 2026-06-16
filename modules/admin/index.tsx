@@ -10,6 +10,7 @@ import {
   getResponseError,
   slugify,
 } from "@/lib/news";
+import Field from "./component/Field";
 
 const CATEGORIES = [
   "Liputan Khusus",
@@ -367,11 +368,17 @@ export default function AdminDashboard() {
 
             {/* Cover preview */}
             <div className="lg:sticky lg:top-6 lg:self-start">
-              <p className="mb-3 text-sm font-bold tracking-wider text-zinc-400">PRATINJAU KARTU</p>
+              <p className="mb-3 text-sm font-bold tracking-wider text-zinc-400">
+                PRATINJAU KARTU
+              </p>
               <article className="overflow-hidden rounded-lg border border-zinc-200 bg-white">
                 {form.coverImage ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={form.coverImage} alt="" className="aspect-[16/10] w-full object-cover" />
+                  <img
+                    src={form.coverImage}
+                    alt=""
+                    className="aspect-[16/10] w-full object-cover"
+                  />
                 ) : (
                   <div className="aspect-[16/10] w-full bg-black" />
                 )}
@@ -383,7 +390,9 @@ export default function AdminDashboard() {
                     {form.title || "Judul berita akan tampil di sini"}
                   </h2>
                   {form.excerpt && (
-                    <p className="mt-3 text-sm leading-7 text-zinc-600">{form.excerpt}</p>
+                    <p className="mt-3 text-sm leading-7 text-zinc-600">
+                      {form.excerpt}
+                    </p>
                   )}
                   <div className="mt-4 flex flex-wrap gap-3 text-xs text-zinc-500">
                     {form.author && <span>Oleh {form.author}</span>}
@@ -393,7 +402,10 @@ export default function AdminDashboard() {
                   {form.formats.length > 0 && (
                     <div className="mt-3 flex flex-wrap gap-2">
                       {form.formats.map((f) => (
-                        <span key={f} className="rounded bg-zinc-200 px-2 py-0.5 text-[10px] font-bold text-zinc-700">
+                        <span
+                          key={f}
+                          className="rounded bg-zinc-200 px-2 py-0.5 text-[10px] font-bold text-zinc-700"
+                        >
                           {f}
                         </span>
                       ))}
@@ -482,7 +494,8 @@ export default function AdminDashboard() {
                     <p className="mt-1 font-semibold">{item.title}</p>
                     <p className="mt-1 text-xs text-zinc-500">
                       {item.author} • {formatPublishedDate(item.published_at)} •{" "}
-                      {item.reading_time} menit • {item.formats.join(", ") || "tanpa format"}
+                      {item.reading_time} menit •{" "}
+                      {item.formats.join(", ") || "tanpa format"}
                     </p>
                   </div>
                   <div className="flex shrink-0 flex-wrap items-center gap-2 sm:justify-end">
@@ -517,14 +530,5 @@ export default function AdminDashboard() {
         </section>
       </div>
     </div>
-  );
-}
-
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="block">
-      <span className="mb-1.5 block text-sm font-semibold text-zinc-700">{label}</span>
-      {children}
-    </label>
   );
 }

@@ -1,5 +1,5 @@
-import SupportHero from "@/components/support/sections/SupportHero";
-import SupportImageSection from "@/components/support/sections/SupportImageSection";
+import SupportHero from "@/modules/support/sections/SupportHero";
+import SupportImageSection from "@/modules/support/sections/SupportImageSection";
 
 export default function SupportPage() {
   return (

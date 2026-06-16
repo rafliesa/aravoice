@@ -1,4 +1,4 @@
-import { DataIntegrityIcon, InclusivityIcon, TransparencyIcon } from "@/components/about/icons";
+import { DataIntegrityIcon, InclusivityIcon, TransparencyIcon } from "@/modules/about/component/icons";
 
 const values = [
   {

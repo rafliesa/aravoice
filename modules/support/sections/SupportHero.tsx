@@ -1,5 +1,5 @@
-import { CommunityIcon, DatabaseIcon, MegaphoneIcon, ReportIcon } from "@/components/support/icons";
-import SupportForm from "@/components/support/SupportForm";
+import { CommunityIcon, DatabaseIcon, MegaphoneIcon, ReportIcon } from "@/modules/support/component/icons";
+import SupportForm from "@/modules/support/component/SupportForm";
 
 const benefits = [
   {

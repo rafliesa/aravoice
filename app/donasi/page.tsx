@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import DonationPage from "@/components/donation/DonationPage";
+import DonationPage from "@/modules/donation";
 
 export const metadata: Metadata = {
   title: "Donasi | Paravoice.id",

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowIcon } from "@/components/support/icons";
+import { ArrowIcon } from "@/modules/support/component/icons";
 
 export default function SupportImageSection() {
   return (

@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { formatPublishedDate } from "@/lib/news";
-import HomeHero from "@/components/home/sections/HomeHero";
-import HomeFeatured from "@/components/home/sections/HomeFeatured";
-import HomeCategories from "@/components/home/sections/HomeCategories";
-import HomeBottomCta from "@/components/home/sections/HomeBottomCta";
-import { CARD_FETCH_LIMIT, CATEGORY_SECTIONS, SECTION_CARD_LIMIT } from "@/components/home/sections/HomeCategories";
+import HomeHero from "@/modules/home/sections/HomeHero";
+import HomeFeatured from "@/modules/home/sections/HomeFeatured";
+import HomeCategories from "@/modules/home/sections/HomeCategories";
+import HomeBottomCta from "@/modules/home/sections/HomeBottomCta";
+import { CARD_FETCH_LIMIT, CATEGORY_SECTIONS, SECTION_CARD_LIMIT } from "@/modules/home/sections/HomeCategories";
 
 import type { NewsCardData } from "@/lib/news";
 

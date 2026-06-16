@@ -1,4 +1,4 @@
-import DonationForm from "@/components/donation/DonationForm";
+import DonationForm from "@/modules/donation/component/DonationForm";
 
 const stats = [
   { value: "150+", label: "Liputan Khusus" },

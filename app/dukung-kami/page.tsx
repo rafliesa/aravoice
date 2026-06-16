@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SupportPage from "@/components/support/SupportPage";
+import SupportPage from "@/modules/support";
 
 export const metadata: Metadata = {
   title: "Dukung Kami | Paravoice.id",

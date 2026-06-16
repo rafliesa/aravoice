@@ -1,8 +1,8 @@
 import { EditorialCard } from "@/components/design-system/Editorial";
 import { type NewsCardData } from "@/lib/news";
-import SectionHeading from "../SectionHeading";
-import EmptySection from "../EmptySection";
-import { getNewsFormat } from "../lib";
+import SectionHeading from "@/modules/rubrik/component/SectionHeading";
+import EmptySection from "@/modules/rubrik/component/EmptySection";
+import { getNewsFormat } from "@/modules/rubrik/lib";
 
 type RubrikArticlesProps = {
   otherNews: NewsCardData[];
