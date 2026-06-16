@@ -4,10 +4,9 @@ import { type NewsCardData, formatPublishedDate } from "@/lib/news";
 
 type RubrikHeroProps = {
   leadNews: NewsCardData;
-  category: string;
 };
 
-export default function RubrikHero({ leadNews, category }: RubrikHeroProps) {
+export default function RubrikHero({ leadNews }: RubrikHeroProps) {
   return (
     <section className="mt-10 grid grid-cols-1 gap-10 border-y border-zinc-200 py-10 lg:grid-cols-2">
       <div className="flex flex-col justify-center">

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { DesignLink, StatusBadge } from "@/components/design-system/Primitives";
 import { type NewsCardData, formatPublishedDate } from "@/lib/news";
 import MetaItem from "../MetaItem";

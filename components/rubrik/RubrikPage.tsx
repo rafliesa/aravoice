@@ -138,7 +138,7 @@ export default function RubrikPage({
           />
         ) : leadNews ? (
           <>
-            <RubrikHero leadNews={leadNews} category={category} />
+            <RubrikHero leadNews={leadNews} />
 
             <RubrikArticles otherNews={otherNews} category={category} />
 
