@@ -11,7 +11,7 @@ export default function RubrikHero({ category, leadNews }: RubrikHeroProps) {
   const formats = leadNews.formats.map((format) => format.toUpperCase());
 
   return (
-    <section className="pt-8">
+    <section className="motion-fade-up pt-8">
       <nav
         aria-label="Breadcrumb"
         className="flex items-center gap-2 text-sm text-[#5b5b5b]"
@@ -71,14 +71,14 @@ export default function RubrikHero({ category, leadNews }: RubrikHeroProps) {
         <Link
           href={`/${leadNews.slug}`}
           aria-label={`Baca ${leadNews.title}`}
-          className="block overflow-hidden rounded-lg border border-[#d0b894] bg-white"
+          className="group motion-card motion-slide-in-right block overflow-hidden rounded-lg border border-[#d0b894] bg-white"
         >
           {leadNews.cover_image ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={leadNews.cover_image}
               alt={leadNews.title}
-              className="aspect-[16/10] w-full bg-black object-cover"
+              className="motion-image aspect-[16/10] w-full bg-black object-cover"
             />
           ) : (
             <div className="aspect-[16/10] w-full bg-black" />

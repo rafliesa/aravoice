@@ -56,7 +56,7 @@ export default function DonationForm() {
 
   return (
     <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-      <div>
+      <div className="motion-fade-up">
         <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9a5a00]">
           Donasi Sekali Jalan
         </p>
@@ -77,7 +77,7 @@ export default function DonationForm() {
               setSelectedAmount(amount);
               setError("");
             }}
-            className={`h-20 rounded-lg border px-3 text-lg font-extrabold transition-all ${
+            className={`h-20 rounded-lg border px-3 text-lg font-extrabold transition-all hover:-translate-y-0.5 ${
               selectedAmount === amount
                 ? "border-[#9a5a00] bg-[#9a5a00] text-white shadow-lg shadow-[#9a5a00]/20"
                 : "border-[#c8ccd5] bg-white text-[#101522] hover:border-[#9a5a00] hover:bg-[#fff8ef]"
@@ -93,7 +93,7 @@ export default function DonationForm() {
             setSelectedAmount("custom");
             setError("");
           }}
-          className={`h-20 rounded-lg border px-3 text-lg font-extrabold transition-all ${
+          className={`h-20 rounded-lg border px-3 text-lg font-extrabold transition-all hover:-translate-y-0.5 ${
             selectedAmount === "custom"
               ? "border-[#9a5a00] bg-[#9a5a00] text-white shadow-lg shadow-[#9a5a00]/20"
               : "border-[#c8ccd5] bg-white text-[#101522] hover:border-[#9a5a00] hover:bg-[#fff8ef]"
@@ -143,13 +143,13 @@ export default function DonationForm() {
             setError("");
             setSubmitted(true);
           }}
-          className="mt-8 flex h-14 w-full max-w-md items-center justify-center rounded-md bg-[#9a5a00] px-8 text-base font-extrabold text-white shadow-lg shadow-[#9a5a00]/20 transition-colors hover:bg-[#7c4800]"
+          className="mt-8 flex h-14 w-full max-w-md items-center justify-center rounded-md bg-[#9a5a00] px-8 text-base font-extrabold text-white shadow-lg shadow-[#9a5a00]/20 transition-all hover:-translate-y-0.5 hover:bg-[#7c4800]"
         >
           Lanjutkan ke Pembayaran
         </button>
       </div>
 
-      <aside className="rounded-3xl border border-[#d7dbe4] bg-white p-7 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+      <aside className="motion-slide-in-right rounded-3xl border border-[#d7dbe4] bg-white p-7 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
         <div className="rounded-2xl bg-[#f6f0e7] p-6">
           <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9a5a00]">
             Dampak Pilihan Anda

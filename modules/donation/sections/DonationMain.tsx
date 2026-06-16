@@ -10,7 +10,7 @@ export default function DonationMain() {
   return (
     <section className="bg-[#062747] px-6 py-16 text-white">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div className="motion-fade-up flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <h2 className="text-4xl font-extrabold tracking-tight">
               Alokasi Dana Donasi
@@ -28,10 +28,11 @@ export default function DonationMain() {
         </div>
 
         <div className="mt-14 grid gap-x-12 gap-y-8 md:grid-cols-2">
-          {allocations.map((allocation) => (
+          {allocations.map((allocation, index) => (
             <div
               key={allocation.label}
-              className={allocation.wide ? "md:col-span-2" : undefined}
+              className={`motion-fade-up ${allocation.wide ? "md:col-span-2" : ""}`}
+              style={{ animationDelay: `${120 + index * 80}ms` }}
             >
               <div className="flex items-center justify-between gap-4 text-sm font-semibold uppercase tracking-[0.14em]">
                 <span>{allocation.label} ({allocation.value}%)</span>
@@ -39,7 +40,7 @@ export default function DonationMain() {
               </div>
               <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/14">
                 <div
-                  className="h-full rounded-full bg-white"
+                  className="motion-bar-fill h-full rounded-full bg-white"
                   style={{ width: `${allocation.value}%` }}
                 />
               </div>

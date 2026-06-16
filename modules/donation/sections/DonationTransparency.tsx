@@ -32,15 +32,16 @@ export default function DonationTransparency() {
   return (
     <section className="border-t border-[#d4d8e0] bg-white px-6 py-20">
       <div className="mx-auto max-w-7xl">
-        <h2 className="text-center text-4xl font-extrabold tracking-tight">
+        <h2 className="motion-fade-up text-center text-4xl font-extrabold tracking-tight">
           Komitmen Transparansi
         </h2>
 
         <div className="mt-10 grid gap-8 md:grid-cols-3">
-          {transparencyItems.map((item) => (
+          {transparencyItems.map((item, index) => (
             <article
               key={item.title}
-              className="flex gap-5 rounded-lg border border-[#cdd2dc] bg-white p-6"
+              className="motion-card motion-fade-up flex gap-5 rounded-lg border border-[#cdd2dc] bg-white p-6"
+              style={{ animationDelay: `${index * 90}ms` }}
             >
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded bg-[#f1e9dd] text-[#9a5a00]">
                 {item.icon}

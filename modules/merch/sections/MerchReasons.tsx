@@ -37,17 +37,21 @@ export default function MerchReasons() {
   return (
     <section className="overflow-hidden bg-[#111f42] px-6 py-24 text-white">
       <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
+        <div className="motion-fade-up">
           <h2 className="max-w-xl text-4xl font-extrabold leading-tight md:text-5xl">
             Mengapa Memilih Koleksi Para Merch?
           </h2>
 
           <div className="mt-10 space-y-8">
-            {reasons.map((reason) => {
+            {reasons.map((reason, index) => {
               const Icon = reason.icon;
 
               return (
-                <article key={reason.title} className="flex gap-5">
+                <article
+                  key={reason.title}
+                  className="motion-fade-up flex gap-5"
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded bg-white/16 text-white">
                     <Icon className="h-6 w-6" />
                   </div>
@@ -63,7 +67,7 @@ export default function MerchReasons() {
           </div>
         </div>
 
-        <div className="relative min-h-[30rem] lg:min-h-[39rem]">
+        <div className="motion-slide-in-right relative min-h-[30rem] lg:min-h-[39rem]">
           <div className="absolute left-8 right-[-9rem] top-8 h-[31rem] rotate-3 rounded-3xl border-8 border-[#1e315d] bg-[#13254b] shadow-2xl shadow-black/25" />
           <div className="absolute left-0 right-0 top-0 grid grid-cols-2 gap-5 rounded-2xl p-4 md:grid-cols-3 lg:left-8 lg:right-[-3rem] lg:top-10">
             {[

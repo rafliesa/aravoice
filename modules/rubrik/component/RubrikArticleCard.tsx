@@ -8,14 +8,14 @@ type RubrikArticleCardProps = {
 
 export default function RubrikArticleCard({ news }: RubrikArticleCardProps) {
   return (
-    <Link href={`/${news.slug}`} aria-label={`Baca ${news.title}`} className="group block h-full">
-      <article className="flex h-full flex-col overflow-hidden rounded-lg border border-[#ecd7bd] bg-white">
+    <Link href={`/${news.slug}`} aria-label={`Baca ${news.title}`} className="group motion-fade-up block h-full">
+      <article className="motion-card flex h-full flex-col overflow-hidden rounded-lg border border-[#ecd7bd] bg-white">
         {news.cover_image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={news.cover_image}
             alt={news.title}
-            className="aspect-[16/9] w-full bg-black object-cover"
+            className="motion-image aspect-[16/9] w-full bg-black object-cover"
           />
         ) : (
           <div className="aspect-[16/9] w-full bg-black" />

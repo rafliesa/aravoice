@@ -29,18 +29,19 @@ export default function MerchImpact() {
   return (
     <section className="border-b border-[#d8dbe2] bg-[#f7f7f7] px-6 py-18">
       <div className="mx-auto max-w-7xl">
-        <h1 className="text-center text-4xl font-extrabold leading-tight text-[#070a1d] md:text-5xl">
+        <h1 className="motion-fade-up text-center text-4xl font-extrabold leading-tight text-[#070a1d] md:text-5xl">
           Setiap Pembelian Membawa Dampak
         </h1>
 
         <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {impactItems.map((item) => {
+          {impactItems.map((item, index) => {
             const Icon = item.icon;
 
             return (
               <article
                 key={item.title}
-                className="min-h-64 rounded-lg border border-[#bfc4cf] bg-white p-8"
+                className="motion-card motion-fade-up min-h-64 rounded-lg border border-[#bfc4cf] bg-white p-8"
+                style={{ animationDelay: `${index * 90}ms` }}
               >
                 <Icon className="h-9 w-9 text-[#9a5a00]" />
                 <h2 className="mt-8 text-2xl font-extrabold leading-8 text-[#25272d]">

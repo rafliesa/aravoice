@@ -22,7 +22,7 @@ export default function HomeBottomCta() {
   return (
     <>
       <section className="mx-auto mt-20 grid max-w-7xl grid-cols-1 gap-12 px-6 pb-16 md:grid-cols-2">
-        <article className="rounded-2xl border border-[#d7dbe4] bg-[#fbf8f1] px-12 py-12 text-center">
+        <article className="motion-card motion-fade-up rounded-2xl border border-[#d7dbe4] bg-[#fbf8f1] px-12 py-12 text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-[#182036]">
             Jadi Anggota ParaVoice
           </h2>
@@ -60,7 +60,8 @@ export default function HomeBottomCta() {
         <Link
           href="/merch"
           aria-label="Lihat Official ParaMerch"
-          className="rounded-2xl border border-[#d7dbe4] bg-[#f4f4f3] px-8 py-12 transition-colors hover:border-[#9a5a00]"
+          className="motion-card motion-fade-up rounded-2xl border border-[#d7dbe4] bg-[#f4f4f3] px-8 py-12 transition-colors hover:border-[#9a5a00]"
+          style={{ animationDelay: "90ms" }}
         >
           <article>
             <h2 className="text-center text-3xl font-extrabold tracking-tight text-[#182036]">
@@ -88,7 +89,7 @@ export default function HomeBottomCta() {
                       alt=""
                       fill
                       sizes="(min-width: 768px) 12vw, 35vw"
-                      className="object-cover"
+                      className="motion-image object-cover"
                     />
                   </div>
                 ))}
@@ -98,7 +99,7 @@ export default function HomeBottomCta() {
         </Link>
       </section>
 
-      <section className="bg-[#062747] px-6 py-18 text-center text-white">
+      <section className="motion-fade-up bg-[#062747] px-6 py-18 text-center text-white">
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto flex w-fit text-white">
             <HandHeartIcon />

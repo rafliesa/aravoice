@@ -21,14 +21,14 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [liked, setLiked] = useState(false);
 
   return (
-    <article className="group">
+    <article className="group motion-card">
       <div className="relative aspect-square overflow-hidden rounded-lg bg-white shadow-sm">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="motion-image object-cover"
         />
         <button
           type="button"

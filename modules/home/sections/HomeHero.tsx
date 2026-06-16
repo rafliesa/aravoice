@@ -20,7 +20,7 @@ export default function HomeHero({
   leadNews,
 }: HomeHeroProps) {
   return (
-    <section className="pt-8">
+    <section className="motion-fade-up pt-8">
       <nav className="flex items-center gap-2 text-sm text-[#5b5b5b]">
         <Link href="/" className="hover:text-[#202020]">Home</Link>
         <span aria-hidden="true">›</span>
@@ -69,14 +69,14 @@ export default function HomeHero({
         <Link
           href={leadNews ? `/${leadNews.slug}` : "/"}
           aria-label={leadNews ? `Baca ${leadNews.title}` : "Berita utama"}
-          className="block overflow-hidden rounded-lg border border-[#d0b894] bg-white"
+          className="group motion-card motion-slide-in-right block overflow-hidden rounded-lg border border-[#d0b894] bg-white"
         >
           {leadNews?.cover_image ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={leadNews.cover_image}
               alt={leadNews.title}
-              className="aspect-[16/10] w-full bg-black object-cover"
+              className="motion-image aspect-[16/10] w-full bg-black object-cover"
             />
           ) : (
             <div className="aspect-[16/10] w-full bg-black" />

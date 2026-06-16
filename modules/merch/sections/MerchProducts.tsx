@@ -74,7 +74,7 @@ export default function MerchProducts() {
   return (
     <section className="bg-white px-6 pb-24 pt-8">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-wrap justify-center gap-4 border-b border-[#d8dbe2] pb-8">
+        <div className="motion-fade-up flex flex-wrap justify-center gap-4 border-b border-[#d8dbe2] pb-8">
           {categories.map((category) => {
             const isActive = activeCategory === category;
 
@@ -84,7 +84,7 @@ export default function MerchProducts() {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => setActiveCategory(category)}
-                className={`h-10 min-w-36 rounded-lg border px-6 text-sm font-extrabold transition-colors ${
+                className={`h-10 min-w-36 rounded-lg border px-6 text-sm font-extrabold transition-all hover:-translate-y-0.5 ${
                   isActive
                     ? "border-[#070a1d] bg-[#070a1d] text-white"
                     : "border-[#c9ced8] bg-white text-[#4c5360] hover:border-[#070a1d] hover:text-[#070a1d]"
@@ -97,8 +97,14 @@ export default function MerchProducts() {
         </div>
 
         <div className="mt-10 grid gap-x-12 gap-y-18 md:grid-cols-2 lg:grid-cols-3">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {filteredProducts.map((product, index) => (
+            <div
+              key={product.id}
+              className="motion-fade-up"
+              style={{ animationDelay: `${index * 80}ms` }}
+            >
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
       </div>

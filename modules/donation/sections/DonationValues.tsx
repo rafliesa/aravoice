@@ -25,15 +25,16 @@ export default function DonationValues() {
   return (
     <section className="bg-[#f7f7f7] px-6 py-20">
       <div className="mx-auto max-w-7xl">
-        <h2 className="text-center text-4xl font-extrabold tracking-tight">
+        <h2 className="motion-fade-up text-center text-4xl font-extrabold tracking-tight">
           Mengapa Dukungan Anda Penting
         </h2>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {values.map((value) => (
+          {values.map((value, index) => (
             <article
               key={value.description}
-              className="rounded-lg border border-[#d4d8e0] bg-[#fbf8f3] p-8"
+              className="motion-card motion-fade-up rounded-lg border border-[#d4d8e0] bg-[#fbf8f3] p-8"
+              style={{ animationDelay: `${index * 90}ms` }}
             >
               <span className="text-[#9a5a00]">
                 {value.icon}

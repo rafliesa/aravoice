@@ -43,8 +43,12 @@ export default function DonationPartnershipForm() {
           </h2>
 
           <div className="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
-            {benefits.map((benefit) => (
-              <article key={benefit.title} className="flex gap-4">
+            {benefits.map((benefit, index) => (
+              <article
+                key={benefit.title}
+                className="motion-fade-up flex gap-4"
+                style={{ animationDelay: `${index * 70}ms` }}
+              >
                 <span className="mt-0.5 shrink-0 text-[#062747]">
                   <CheckDotIcon />
                 </span>
@@ -59,7 +63,7 @@ export default function DonationPartnershipForm() {
           </div>
         </div>
 
-        <form className="rounded-2xl bg-[#f4f4f4] p-9 shadow-[0_24px_60px_rgba(15,23,42,0.14)]">
+        <form className="motion-slide-in-right rounded-2xl bg-[#f4f4f4] p-9 shadow-[0_24px_60px_rgba(15,23,42,0.14)]">
           <h2 className="text-center text-2xl font-extrabold">
             Kirim Permohonan Kemitraan
           </h2>

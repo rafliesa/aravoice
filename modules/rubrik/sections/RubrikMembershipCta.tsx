@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function RubrikMembershipCta() {
   return (
-    <section className="mt-14 border-t border-[#d8d0c2] px-6 py-20 text-center">
+    <section className="motion-fade-up mt-14 border-t border-[#d8d0c2] px-6 py-20 text-center">
       <h2 className="text-4xl font-extrabold tracking-tight text-[#182036]">
         Bergabung dengan&nbsp; ParaVoice
       </h2>
