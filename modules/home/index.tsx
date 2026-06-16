@@ -1,13 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { formatPublishedDate } from "@/lib/news";
 import HomeHero from "@/modules/home/sections/HomeHero";
 import HomeFeatured from "@/modules/home/sections/HomeFeatured";
-import HomeCategories from "@/modules/home/sections/HomeCategories";
 import HomeBottomCta from "@/modules/home/sections/HomeBottomCta";
-import { CARD_FETCH_LIMIT, CATEGORY_SECTIONS, SECTION_CARD_LIMIT } from "@/modules/home/sections/HomeCategories";
+import { CARD_FETCH_LIMIT } from "@/modules/home/sections/HomeCategories";
 
 import type { NewsCardData } from "@/lib/news";
 
@@ -43,8 +41,8 @@ export default function HomePage() {
   }, []);
 
   const leadNews = cardNews[0];
-  const latestNews = cardNews.slice(0, 3);
-  const featuredNews = cardNews.slice(1, 3);
+  const articleNews = cardNews.slice(1, 7);
+  const latestNews = cardNews.slice(0, 7);
   const availableFormats = leadNews?.formats.map((format) => format.toUpperCase()) ?? [];
   const heroCategory = leadNews?.category.toUpperCase() ?? "BERITA";
   const initialLoading = loadingCards && cardNews.length === 0;
@@ -57,13 +55,6 @@ export default function HomePage() {
     ? newsError
     : leadNews?.excerpt ?? "Berita yang dipublikasikan dari halaman admin akan tampil di sini.";
 
-  const categorySections = CATEGORY_SECTIONS.map((section) => ({
-    ...section,
-    items: cardNews
-      .filter((news) => news.category.toLowerCase() === section.key.toLowerCase())
-      .slice(0, SECTION_CARD_LIMIT),
-  })).filter((section) => section.items.length > 0);
-
   const latestArticles = latestNews.map((news) => ({
     category: news.category,
     title: news.title,
@@ -72,14 +63,8 @@ export default function HomePage() {
   }));
 
   return (
-    <div className="bg-surface-warm text-neutral flex-1">
-      <div className="mx-auto max-w-7xl px-6 py-8">
-        <nav className="flex items-center gap-2 text-sm text-zinc-500">
-          <Link href="/" className="hover:text-zinc-800">Home</Link>
-          <span>›</span>
-          <span className="text-secondary-700 font-semibold">{heroCategory}</span>
-        </nav>
-
+    <div className="flex-1 bg-surface-warm text-neutral">
+      <div className="mx-auto max-w-7xl px-6 pb-12">
         <HomeHero
           availableFormats={availableFormats}
           heroCategory={heroCategory}
@@ -89,20 +74,17 @@ export default function HomePage() {
         />
 
         <HomeFeatured
-          featuredNews={featuredNews}
+          articleNews={articleNews}
           initialLoading={initialLoading}
           latestArticles={latestArticles}
           newsError={newsError}
         />
 
-        <HomeCategories sections={categorySections} />
-
         {!loadingCards && newsError && cardNews.length > 0 && (
           <p className="mt-6 text-center text-sm text-red-600">{newsError}</p>
         )}
-
-        <HomeBottomCta />
       </div>
+      <HomeBottomCta />
     </div>
   );
 }

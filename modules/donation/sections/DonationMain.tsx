@@ -1,58 +1,51 @@
-import DonationForm from "@/modules/donation/component/DonationForm";
-
-const stats = [
-  { value: "150+", label: "Liputan Khusus" },
-  { value: "50+", label: "Atlet Disorot" },
-  { value: "100%", label: "Independen" },
-];
-
 const allocations = [
-  { label: "Liputan Lapangan", value: 60 },
-  { label: "Riset Aksesibilitas", value: 25 },
-  { label: "Operasional & Teknis", value: 15 },
+  { label: "Produksi Berita & Liputan Khusus", value: 40, wide: true },
+  { label: "Web Development & Aksesibilitas", value: 25 },
+  { label: "Program Edukasi Komunitas", value: 15 },
+  { label: "Pelatihan Jurnalis Disabilitas", value: 10 },
+  { label: "Operasional & Administrasi", value: 10 },
 ];
 
 export default function DonationMain() {
   return (
-    <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-6 py-4 lg:grid-cols-[1.4fr_1fr]">
-      <DonationForm />
-
-      <div className="space-y-5">
-        <div className="space-y-3">
-          {stats.map((stat) => (
-            <article
-              key={stat.label}
-              className="rounded-lg border-l-4 border-[#F29100] bg-[#142044] px-6 py-5 text-white"
-            >
-              <p className="text-3xl font-extrabold text-[#ffd4aa]">
-                {stat.value}
-              </p>
-              <p className="mt-1 text-xs font-bold uppercase tracking-wide text-[#8792b0]">
-                {stat.label}
-              </p>
-            </article>
-          ))}
+    <section className="bg-[#062747] px-6 py-16 text-white">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <h2 className="text-4xl font-extrabold tracking-tight">
+              Alokasi Dana Donasi
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-[#8aa4c1]">
+              Transparansi adalah kunci. Setiap rupiah yang Anda berikan
+              dikelola secara profesional untuk memaksimalkan dampak sosial
+              bagi komunitas disabilitas.
+            </p>
+          </div>
+          <div className="text-left md:text-right">
+            <p className="text-sm font-extrabold">Target 2024</p>
+            <p className="mt-1 text-base text-[#8aa4c1]">Rp 2.500.000.000</p>
+          </div>
         </div>
 
-        <article className="rounded-lg border border-zinc-300 bg-white p-7">
-          <h2 className="font-caslon text-2xl font-bold">Alokasi Dana</h2>
-          <div className="mt-7 space-y-6">
-            {allocations.map((allocation) => (
-              <div key={allocation.label}>
-                <div className="flex items-center justify-between gap-4 text-sm font-bold">
-                  <span>{allocation.label}</span>
-                  <span className="text-[#9A5A00]">{allocation.value}%</span>
-                </div>
-                <div className="mt-2 h-2 overflow-hidden rounded-full bg-zinc-200">
-                  <div
-                    className="h-full rounded-full bg-[#ff9827]"
-                    style={{ width: `${allocation.value}%` }}
-                  />
-                </div>
+        <div className="mt-14 grid gap-x-12 gap-y-8 md:grid-cols-2">
+          {allocations.map((allocation) => (
+            <div
+              key={allocation.label}
+              className={allocation.wide ? "md:col-span-2" : undefined}
+            >
+              <div className="flex items-center justify-between gap-4 text-sm font-semibold uppercase tracking-[0.14em]">
+                <span>{allocation.label} ({allocation.value}%)</span>
+                <span>{allocation.value}%</span>
               </div>
-            ))}
-          </div>
-        </article>
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/14">
+                <div
+                  className="h-full rounded-full bg-white"
+                  style={{ width: `${allocation.value}%` }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,76 +1,47 @@
-import { AccessibilityIcon, CommunityIcon, ShieldIcon } from "@/modules/donation/component/icons";
+import { ChartIcon, FlagIcon, PersonIcon } from "@/modules/donation/component/icons";
 
 const values = [
   {
-    title: "Kepercayaan & Akurasi",
+    title: "Lorem ipsum dolor sit amet",
     description:
-      "Setiap laporan melewati verifikasi editorial agar informasi yang diterbitkan tetap akurat dan dapat dipercaya.",
-    theme: "light" as const,
-    icon: <ShieldIcon />,
+      "Memberikan panggung yang layak bagi atlet disabilitas melalui liputan profesional dan mendalam di kancah nasional maupun internasional.",
+    icon: <FlagIcon />,
   },
   {
-    title: "Aksesibilitas",
+    title: "Lorem ipsum dolor sit amet",
     description:
-      "Kami mengembangkan pengalaman membaca yang dapat digunakan lebih banyak orang dengan kebutuhan yang beragam.",
-    theme: "dark" as const,
-    icon: <AccessibilityIcon />,
+      "Mengembangkan panduan pemberitaan yang sensitif dan edukatif untuk menciptakan masyarakat yang lebih inklusif dan memahami keberagaman.",
+    icon: <PersonIcon />,
   },
   {
-    title: "Komunitas",
+    title: "Lorem ipsum dolor sit amet",
     description:
-      "Dukungan Anda mempertemukan atlet, penggemar, pemerintah, dan sektor swasta dalam ekosistem yang setara.",
-    theme: "orange" as const,
-    icon: <CommunityIcon />,
+      "Menghasilkan laporan investigasi dan berbasis data mengenai infrastruktur serta kebijakan publik bagi penyandang disabilitas di Indonesia.",
+    icon: <ChartIcon />,
   },
 ] as const;
 
 export default function DonationValues() {
   return (
-    <section className="border-t border-zinc-300 bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
-        <div className="text-center">
-          <h2 className="font-caslon text-3xl font-bold sm:text-4xl">
-            Mengapa Dukungan Anda Berharga?
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-600">
-            Model bisnis nirlaba kami memastikan independensi editorial tanpa
-            campur tangan kepentingan politik atau komersial.
-          </p>
-        </div>
+    <section className="bg-[#f7f7f7] px-6 py-20">
+      <div className="mx-auto max-w-7xl">
+        <h2 className="text-center text-4xl font-extrabold tracking-tight">
+          Mengapa Dukungan Anda Penting
+        </h2>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           {values.map((value) => (
             <article
-              key={value.title}
-              className={`flex min-h-64 flex-col items-center justify-center rounded-lg border p-7 text-center ${
-                value.theme === "dark"
-                  ? "border-[#020718] bg-[#020718] text-white"
-                  : value.theme === "orange"
-                    ? "border-[#ff9827] bg-[#ff9827] text-[#3f2608]"
-                    : "border-zinc-300 bg-white text-zinc-900"
-              }`}
+              key={value.description}
+              className="rounded-lg border border-[#d4d8e0] bg-[#fbf8f3] p-8"
             >
-              <span
-                className={`flex h-12 w-12 items-center justify-center rounded ${
-                  value.theme === "orange"
-                    ? "bg-[#e88717] text-[#281500]"
-                    : "bg-[#142044] text-[#ffd4aa]"
-                }`}
-              >
+              <span className="text-[#9a5a00]">
                 {value.icon}
               </span>
-              <h3 className="mt-6 font-caslon text-xl font-bold">
+              <h3 className="mt-8 text-xl font-extrabold leading-7">
                 {value.title}
               </h3>
-              <p
-                className={`mt-4 max-w-xs text-xs leading-6 ${
-                  value.theme === "dark"
-                    ? "text-[#8792b0]"
-                    : value.theme === "orange"
-                      ? "text-[#795019]"
-                      : "text-zinc-600"
-                }`}
-              >
+              <p className="mt-5 text-sm leading-7 text-[#5d6574]">
                 {value.description}
               </p>
             </article>

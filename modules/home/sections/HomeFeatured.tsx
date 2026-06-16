@@ -1,53 +1,38 @@
-import { EditorialCard, LatestArticles } from "@/components/design-system/Editorial";
 import { type NewsCardData } from "@/lib/news";
-import { getNewsFormat } from "../lib";
-
-type LatestArticleItem = {
-  category: string;
-  title: string;
-  meta: string;
-  href: string;
-};
+import HomeArticleCard from "@/modules/home/component/HomeArticleCard";
+import HomeLatestSidebar, {
+  type SidebarArticle,
+} from "@/modules/home/component/HomeLatestSidebar";
 
 type HomeFeaturedProps = {
-  featuredNews: NewsCardData[];
+  articleNews: NewsCardData[];
   initialLoading: boolean;
-  latestArticles: LatestArticleItem[];
+  latestArticles: SidebarArticle[];
   newsError: string;
 };
 
 export default function HomeFeatured({
-  featuredNews,
+  articleNews,
   initialLoading,
   latestArticles,
   newsError,
 }: HomeFeaturedProps) {
   return (
-    <section className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
-      <div className="lg:col-span-2">
+    <section className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_22rem]">
+      <div>
         {initialLoading ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {Array.from({ length: 2 }, (_, index) => (
+          <div className="grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
+            {Array.from({ length: 6 }, (_, index) => (
               <div
                 key={index}
-                className="h-96 animate-pulse rounded-lg border border-zinc-200 bg-zinc-100"
+                className="h-[26rem] animate-pulse rounded-lg border border-zinc-200 bg-zinc-100"
               />
             ))}
           </div>
-        ) : featuredNews.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {featuredNews.map((news) => (
-              <EditorialCard
-                key={news.id}
-                category={news.category}
-                title={news.title}
-                excerpt={news.excerpt}
-                format={getNewsFormat(news)}
-                readingTime={`${news.reading_time} menit`}
-                href={`/${news.slug}`}
-                imageSrc={news.cover_image || undefined}
-                imageAlt={news.title}
-              />
+        ) : articleNews.length > 0 ? (
+          <div className="grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
+            {articleNews.map((news) => (
+              <HomeArticleCard key={news.id} news={news} />
             ))}
           </div>
         ) : (
@@ -57,18 +42,14 @@ export default function HomeFeatured({
         )}
       </div>
 
-      <aside id="berita-terbaru">
-        <LatestArticles
-          title="Terbaru di ParaVoice.id"
-          items={latestArticles}
-          allArticlesHref="/para-report"
-          emptyMessage={
-            initialLoading
-              ? "Memuat berita terbaru..."
-              : newsError || "Belum ada berita yang diterbitkan."
-          }
-        />
-      </aside>
+      <HomeLatestSidebar
+        items={latestArticles}
+        emptyMessage={
+          initialLoading
+            ? "Memuat berita terbaru..."
+            : newsError || "Belum ada berita yang diterbitkan."
+        }
+      />
     </section>
   );
 }

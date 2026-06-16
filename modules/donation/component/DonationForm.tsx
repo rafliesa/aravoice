@@ -2,27 +2,21 @@
 
 import { useMemo, useState } from "react";
 
-const amounts = [50_000, 100_000, 250_000, 500_000, 1_000_000] as const;
-const paymentMethods = [
-  "GoPay",
-  "OVO",
-  "DANA",
-  "ShopeePay",
-  "QRIS",
-  "Transfer",
-] as const;
+const amounts = [25_000, 50_000, 100_000, 250_000, 500_000] as const;
 
-type Frequency = "once" | "monthly";
+const impactCopy = {
+  25_000: "Membantu riset awal untuk satu ide liputan.",
+  50_000: "Mendukung transkrip dan aksesibilitas satu artikel.",
+  100_000: "Ikut membiayai produksi satu paket liputan pendek.",
+  250_000: "Membantu biaya narasumber dan verifikasi data.",
+  500_000: "Menopang liputan mendalam bersama komunitas.",
+} as const;
 
 export default function DonationForm() {
-  const [frequency, setFrequency] = useState<Frequency>("once");
   const [selectedAmount, setSelectedAmount] = useState<number | "custom">(
-    50_000,
+    100_000,
   );
   const [customAmount, setCustomAmount] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState<
-    (typeof paymentMethods)[number]
-  >("GoPay");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -31,70 +25,49 @@ export default function DonationForm() {
     return Number(customAmount.replace(/\D/g, ""));
   }, [customAmount, selectedAmount]);
 
+  const selectedImpact =
+    selectedAmount === "custom"
+      ? "Nominal pilihan Anda akan dialokasikan ke kebutuhan redaksi yang paling mendesak."
+      : impactCopy[selectedAmount as keyof typeof impactCopy];
+
   if (submitted) {
     return (
-      <div className="flex min-h-[34rem] flex-col justify-center rounded-lg border border-zinc-300 bg-white p-8 shadow-[0_18px_45px_rgba(15,23,42,0.10)] sm:p-10">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#ff9827] text-[#07112c]">
+      <div className="mx-auto max-w-3xl rounded-2xl border border-[#d7dbe4] bg-white p-8 text-center shadow-[0_22px_55px_rgba(15,23,42,0.10)]">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#9a5a00] text-white">
           <CheckIcon />
         </div>
-        <p className="mt-6 text-xs font-extrabold uppercase tracking-[0.18em] text-[#F29100]">
-          Ringkasan Donasi
-        </p>
-        <h2 className="mt-2 font-caslon text-3xl font-bold">
-          Pilihan dukunganmu sudah siap
+        <h2 className="mt-5 text-3xl font-extrabold">
+          Dukungan {formatRupiah(donationAmount)} sudah siap
         </h2>
-        <dl className="mt-7 divide-y divide-zinc-200 border-y border-zinc-200 text-sm">
-          <SummaryRow
-            label="Frekuensi"
-            value={frequency === "once" ? "Sekali" : "Bulanan"}
-          />
-          <SummaryRow
-            label="Nominal"
-            value={formatRupiah(donationAmount)}
-          />
-          <SummaryRow label="Metode" value={paymentMethod} />
-        </dl>
-        <p className="mt-6 text-sm leading-7 text-zinc-600">
-          Belum ada transaksi yang dilakukan. Integrasi payment gateway
-          diperlukan sebelum pembayaran dapat diproses.
+        <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-zinc-600">
+          Belum ada transaksi yang diproses. Tahap berikutnya membutuhkan
+          integrasi payment gateway resmi.
         </p>
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          className="mt-7 inline-flex w-fit items-center gap-2 bg-[#07112c] px-5 py-3 text-sm font-bold text-white hover:bg-[#101d42]"
+          className="mt-7 inline-flex h-12 items-center justify-center rounded-md border border-[#07112c] px-6 text-sm font-extrabold text-[#07112c] hover:bg-[#07112c] hover:text-white"
         >
-          Ubah pilihan
-          <ArrowIcon />
+          Ubah nominal
         </button>
       </div>
     );
   }
 
   return (
-    <div className="rounded-lg border border-zinc-300 bg-white p-7 shadow-[0_18px_45px_rgba(15,23,42,0.10)] sm:p-10">
-      <h2 className="font-caslon text-3xl font-bold">
-        Pilih Nominal Kontribusi
-      </h2>
-      <p className="mt-2 text-sm text-zinc-600">
-        Pilih frekuensi dan jumlah dukungan yang sesuai bagi Anda.
-      </p>
+    <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div>
+        <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9a5a00]">
+          Donasi Sekali Jalan
+        </p>
+        <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
+          Pilih Nominal Donasi
+        </h1>
+        <p className="mt-4 max-w-xl text-base leading-7 text-[#5d6574]">
+          Langkah kecil Anda, perubahan besar bagi inklusivitas.
+        </p>
 
-      <div className="mt-8 inline-grid grid-cols-2 rounded-xl bg-zinc-100 p-1">
-        <FrequencyButton
-          active={frequency === "once"}
-          onClick={() => setFrequency("once")}
-        >
-          Sekali
-        </FrequencyButton>
-        <FrequencyButton
-          active={frequency === "monthly"}
-          onClick={() => setFrequency("monthly")}
-        >
-          Bulanan
-        </FrequencyButton>
-      </div>
-
-      <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
         {amounts.map((amount) => (
           <button
             key={amount}
@@ -104,13 +77,13 @@ export default function DonationForm() {
               setSelectedAmount(amount);
               setError("");
             }}
-            className={`min-h-14 rounded border px-3 text-sm font-bold transition-colors ${
+            className={`h-20 rounded-lg border px-3 text-lg font-extrabold transition-all ${
               selectedAmount === amount
-                ? "border-[#ff9827] bg-[#ff9827] text-[#19120b]"
-                : "border-zinc-300 bg-white text-zinc-800 hover:border-[#ff9827]"
+                ? "border-[#9a5a00] bg-[#9a5a00] text-white shadow-lg shadow-[#9a5a00]/20"
+                : "border-[#c8ccd5] bg-white text-[#101522] hover:border-[#9a5a00] hover:bg-[#fff8ef]"
             }`}
           >
-            {formatRupiah(amount)}
+            {formatCompactRupiah(amount)}
           </button>
         ))}
         <button
@@ -120,123 +93,89 @@ export default function DonationForm() {
             setSelectedAmount("custom");
             setError("");
           }}
-          className={`min-h-14 rounded border px-3 text-left text-sm font-bold transition-colors ${
+          className={`h-20 rounded-lg border px-3 text-lg font-extrabold transition-all ${
             selectedAmount === "custom"
-              ? "border-[#ff9827] bg-[#fff3e4] text-zinc-900"
-              : "border-zinc-300 bg-white text-zinc-500 hover:border-[#ff9827]"
+              ? "border-[#9a5a00] bg-[#9a5a00] text-white shadow-lg shadow-[#9a5a00]/20"
+              : "border-[#c8ccd5] bg-white text-[#101522] hover:border-[#9a5a00] hover:bg-[#fff8ef]"
           }`}
         >
           Custom
         </button>
+        </div>
+
+        {selectedAmount === "custom" && (
+          <label className="mt-5 block max-w-xl">
+            <span className="mb-2 block text-xs font-extrabold uppercase tracking-[0.14em] text-zinc-700">
+              Nominal custom
+            </span>
+            <div className="flex h-14 items-center rounded-lg border border-zinc-300 bg-white px-4 focus-within:border-[#9a5a00] focus-within:ring-1 focus-within:ring-[#9a5a00]">
+              <span className="text-sm font-bold text-zinc-500">Rp</span>
+              <input
+                type="text"
+                inputMode="numeric"
+                value={customAmount}
+                onChange={(event) => {
+                  setCustomAmount(
+                    event.target.value.replace(/\D/g, "").slice(0, 10),
+                  );
+                  setError("");
+                }}
+                placeholder="Masukkan nominal"
+                className="h-full min-w-0 flex-1 bg-transparent px-2 text-sm font-semibold outline-none placeholder:text-zinc-300"
+              />
+            </div>
+          </label>
+        )}
+
+        {error && (
+          <p role="alert" className="mt-5 text-sm font-semibold text-red-700">
+            {error}
+          </p>
+        )}
+
+        <button
+          type="button"
+          onClick={() => {
+            if (!Number.isFinite(donationAmount) || donationAmount < 10_000) {
+              setError("Nominal donasi minimal Rp 10.000.");
+              return;
+            }
+            setError("");
+            setSubmitted(true);
+          }}
+          className="mt-8 flex h-14 w-full max-w-md items-center justify-center rounded-md bg-[#9a5a00] px-8 text-base font-extrabold text-white shadow-lg shadow-[#9a5a00]/20 transition-colors hover:bg-[#7c4800]"
+        >
+          Lanjutkan ke Pembayaran
+        </button>
       </div>
 
-      {selectedAmount === "custom" && (
-        <label className="mt-4 block">
-          <span className="mb-2 block text-xs font-extrabold uppercase tracking-[0.14em] text-zinc-700">
-            Nominal custom
-          </span>
-          <div className="flex h-14 items-center rounded border border-zinc-300 bg-white px-4 focus-within:border-[#ff9827] focus-within:ring-1 focus-within:ring-[#ff9827]">
-            <span className="text-sm font-bold text-zinc-500">Rp</span>
-            <input
-              type="text"
-              inputMode="numeric"
-              value={customAmount}
-              onChange={(event) => {
-                setCustomAmount(
-                  event.target.value.replace(/\D/g, "").slice(0, 10),
-                );
-                setError("");
-              }}
-              placeholder="Masukkan nominal"
-              className="h-full min-w-0 flex-1 bg-transparent px-2 text-sm font-semibold outline-none placeholder:text-zinc-300"
-            />
-          </div>
-        </label>
-      )}
-
-      <fieldset className="mt-8">
-        <legend className="text-xs font-extrabold uppercase tracking-[0.14em] text-zinc-700">
-          Metode pembayaran
-        </legend>
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {paymentMethods.map((method) => (
-            <button
-              key={method}
-              type="button"
-              aria-pressed={paymentMethod === method}
-              onClick={() => setPaymentMethod(method)}
-              className={`min-h-11 rounded border px-2 text-xs font-extrabold uppercase transition-colors ${
-                paymentMethod === method
-                  ? "border-[#07112c] bg-[#07112c] text-white"
-                  : "border-zinc-300 bg-white text-zinc-700 hover:border-[#ff9827]"
-              }`}
-            >
-              {method}
-            </button>
+      <aside className="rounded-3xl border border-[#d7dbe4] bg-white p-7 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+        <div className="rounded-2xl bg-[#f6f0e7] p-6">
+          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9a5a00]">
+            Dampak Pilihan Anda
+          </p>
+          <p className="mt-4 text-4xl font-extrabold text-[#101522]">
+            {formatRupiah(donationAmount || 0)}
+          </p>
+          <p className="mt-4 min-h-14 text-base leading-7 text-[#5d6574]">
+            {selectedImpact}
+          </p>
+        </div>
+        <div className="mt-5 grid grid-cols-3 gap-3 text-center">
+          {[
+            ["150+", "Liputan"],
+            ["50+", "Atlet"],
+            ["100%", "Independen"],
+          ].map(([value, label]) => (
+            <div key={label} className="rounded-xl border border-[#e2e4ea] p-4">
+              <p className="text-2xl font-extrabold text-[#101522]">{value}</p>
+              <p className="mt-1 text-xs font-bold uppercase tracking-wide text-[#7a8190]">
+                {label}
+              </p>
+            </div>
           ))}
         </div>
-      </fieldset>
-
-      {error && (
-        <p role="alert" className="mt-5 text-sm font-semibold text-red-700">
-          {error}
-        </p>
-      )}
-
-      <button
-        type="button"
-        onClick={() => {
-          if (!Number.isFinite(donationAmount) || donationAmount < 10_000) {
-            setError("Nominal donasi minimal Rp 10.000.");
-            return;
-          }
-          setError("");
-          setSubmitted(true);
-        }}
-        className="mt-8 flex w-full items-center justify-center gap-3 rounded bg-[#ff9827] px-6 py-4 text-base font-extrabold text-[#4b2a00] transition-colors hover:bg-[#eb8615]"
-      >
-        Donasi Sekarang
-        <ArrowIcon />
-      </button>
-
-      <p className="mt-5 text-center text-xs leading-6 text-zinc-500">
-        Transaksi akan diproses setelah layanan pembayaran resmi
-        diintegrasikan.
-      </p>
-    </div>
-  );
-}
-
-function FrequencyButton({
-  active,
-  children,
-  onClick,
-}: {
-  active: boolean;
-  children: React.ReactNode;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      aria-pressed={active}
-      onClick={onClick}
-      className={`rounded-lg px-7 py-2.5 text-xs font-extrabold transition-colors ${
-        active
-          ? "bg-[#03081c] text-white shadow-sm"
-          : "text-zinc-600 hover:text-zinc-950"
-      }`}
-    >
-      {children}
-    </button>
-  );
-}
-
-function SummaryRow({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex items-center justify-between gap-4 py-4">
-      <dt className="text-zinc-500">{label}</dt>
-      <dd className="font-bold text-zinc-900">{value}</dd>
+      </aside>
     </div>
   );
 }
@@ -249,23 +188,8 @@ function formatRupiah(value: number) {
   }).format(value);
 }
 
-function ArrowIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M5 12h14" />
-      <path d="m13 6 6 6-6 6" />
-    </svg>
-  );
+function formatCompactRupiah(value: number) {
+  return `Rp ${value / 1000}k`;
 }
 
 function CheckIcon() {
