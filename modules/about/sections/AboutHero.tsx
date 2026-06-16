@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function AboutHero() {
   return (
-    <div className="mx-auto max-w-7xl px-6 pt-8">
+    <div className="motion-fade-up mx-auto max-w-7xl px-6 pt-8">
       <nav className="flex items-center gap-2 text-sm text-zinc-500">
         <Link href="/" className="hover:text-zinc-800">Home</Link>
         <span>›</span>

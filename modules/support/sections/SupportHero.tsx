@@ -31,7 +31,7 @@ const benefits = [
 export default function SupportHero() {
   return (
     <section className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-14 lg:grid-cols-[1.35fr_0.95fr] lg:gap-16 lg:py-20">
-      <div>
+      <div className="motion-fade-up">
         <p className="text-xs font-extrabold tracking-[0.18em] text-[#F29100]">
           COMMUNITY HUB
         </p>
@@ -45,10 +45,11 @@ export default function SupportHero() {
         </p>
 
         <div className="mt-12 space-y-8">
-          {benefits.map((benefit) => (
+          {benefits.map((benefit, index) => (
             <article
               key={benefit.title}
-              className="grid grid-cols-[1.5rem_1fr] gap-3"
+              className="motion-fade-up grid grid-cols-[1.5rem_1fr] gap-3"
+              style={{ animationDelay: `${index * 80}ms` }}
             >
               <span className="mt-1 text-[#F29100]">{benefit.icon}</span>
               <div>
@@ -64,7 +65,9 @@ export default function SupportHero() {
         </div>
       </div>
 
-      <SupportForm />
+      <div className="motion-slide-in-right">
+        <SupportForm />
+      </div>
     </section>
   );
 }

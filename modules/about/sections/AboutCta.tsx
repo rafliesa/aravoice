@@ -6,7 +6,7 @@ export default function AboutCta() {
   return (
     <section className="bg-[#0b1020] text-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-2">
-        <div>
+        <div className="motion-fade-up">
           <h2 className="font-serif text-4xl font-bold leading-tight tracking-tight">
             Berkolaborasi<br />Membangun Inklusi
           </h2>
@@ -32,12 +32,13 @@ export default function AboutCta() {
           </div>
         </div>
 
-        <div className="rounded-lg bg-[#111935] p-8">
+        <div className="motion-slide-in-right rounded-lg bg-[#111935] p-8">
           <div className="grid grid-cols-2 gap-5">
-            {partners.map((p) => (
+            {partners.map((p, index) => (
               <div
                 key={p}
-                className="flex h-20 items-center justify-center rounded-md border border-white/10 bg-[#0b1020] text-sm font-bold tracking-wider text-zinc-400"
+                className="motion-fade-up flex h-20 items-center justify-center rounded-md border border-white/10 bg-[#0b1020] text-sm font-bold tracking-wider text-zinc-400"
+                style={{ animationDelay: `${index * 70}ms` }}
               >
                 {p}
               </div>
