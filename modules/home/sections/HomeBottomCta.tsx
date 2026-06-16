@@ -57,40 +57,45 @@ export default function HomeBottomCta() {
           </p>
         </article>
 
-        <article className="grid gap-8 rounded-2xl border border-[#d7dbe4] bg-[#f4f4f3] px-8 py-12 md:grid-cols-[0.7fr_1fr] md:items-center">
-          <div>
-            <h2 className="text-center text-3xl font-extrabold tracking-tight text-[#182036] md:text-left">
+        <Link
+          href="/merch"
+          aria-label="Lihat Official ParaMerch"
+          className="rounded-2xl border border-[#d7dbe4] bg-[#f4f4f3] px-8 py-12 transition-colors hover:border-[#9a5a00]"
+        >
+          <article>
+            <h2 className="text-center text-3xl font-extrabold tracking-tight text-[#182036]">
               Official ParaMerch
             </h2>
-            <p className="mt-8 text-base leading-8 text-[#4f5564]">
-              Dapatkan Merchandise eksklusif dari ParaVoice secara langsung
-            </p>
-            <p className="mt-8 text-base leading-8 text-[#4f5564]">
-              Jadilah bagian dari kami dan miliki koleksi eksklusifnya sekarang!
-            </p>
-            <p className="mt-8 text-base font-extrabold text-[#182036]">
-              Grab Yours Now!
-            </p>
-          </div>
 
-          <Link
-            href="/merch"
-            aria-label="Lihat Official ParaMerch"
-            className="grid aspect-[4/5] grid-cols-2 gap-3 overflow-hidden rounded-2xl border border-[#cfd3db] bg-white p-4 shadow-lg shadow-black/10"
-          >
-            {merchImages.map((image) => (
-              <div key={image} className="relative overflow-hidden rounded-lg bg-[#f8f8f8]">
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  sizes="(min-width: 768px) 12vw, 35vw"
-                  className="object-cover"
-                />
+            <div className="mt-8 grid gap-8 md:grid-cols-[0.7fr_1fr] md:items-center">
+              <div>
+                <p className="text-base leading-8 text-[#4f5564]">
+                  Dapatkan Merchandise eksklusif dari ParaVoice secara langsung
+                </p>
+                <p className="mt-8 text-base leading-8 text-[#4f5564]">
+                  Jadilah bagian dari kami dan miliki koleksi eksklusifnya sekarang!
+                </p>
+                <p className="mt-8 text-base font-extrabold text-[#182036]">
+                  Grab Yours Now!
+                </p>
               </div>
-            ))}
-          </Link>
-        </article>
+
+              <div className="grid aspect-[4/5] grid-cols-2 gap-3 overflow-hidden rounded-2xl border border-[#cfd3db] bg-white p-4 shadow-lg shadow-black/10">
+                {merchImages.map((image) => (
+                  <div key={image} className="relative overflow-hidden rounded-lg bg-[#f8f8f8]">
+                    <Image
+                      src={image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 12vw, 35vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        </Link>
       </section>
 
       <section className="bg-[#062747] px-6 py-18 text-center text-white">
