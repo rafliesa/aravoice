@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import AdminLoginPage from "@/modules/admin-login";
@@ -8,6 +9,10 @@ import {
 
 type LoginPageProps = {
   searchParams: Promise<{ error?: string }>;
+};
+
+export const metadata: Metadata = {
+  title: "Login Admin",
 };
 
 export default async function Page({ searchParams }: LoginPageProps) {
