@@ -5,11 +5,11 @@ const columns = [
   {
     title: "FORMAT BERITA",
     links: [
-      { label: "Video", href: "/video" },
-      { label: "Artikel", href: "/artikel" },
-      { label: "Spesial", href: "/spesial" },
-      { label: "Cerita Fitur", href: "/cerita-fitur" },
-      { label: "Terbaru", href: "/terbaru" },
+      { label: "Para Report", href: "/para-report" },
+      { label: "Para Edu", href: "/para-edu" },
+      { label: "Para Atlet", href: "/para-atlet" },
+      { label: "Para Data", href: "/para-data" },
+      { label: "Para Pop", href: "/para-pop" },
     ],
   },
   {
