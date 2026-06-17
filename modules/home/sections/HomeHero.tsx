@@ -38,7 +38,7 @@ export default function HomeHero({
           {heroExcerpt}
         </p>
 
-          <div className="mt-9 border-t border-b border-[#d8d0c2] py-3">
+          <div className="mt-9 border-t border-b border-[#DAC2AE] py-3">
             {leadNews && (
               <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
                 <MetaItem icon={<UserIcon />}>Oleh {leadNews.author}</MetaItem>
