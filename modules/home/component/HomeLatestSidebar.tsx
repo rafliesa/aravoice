@@ -18,10 +18,12 @@ export default function HomeLatestSidebar({
 }: HomeLatestSidebarProps) {
   return (
     <aside className="motion-slide-in-right self-start rounded-lg border border-[#d9dce2] bg-white p-6">
-      <h2 className="text-2xl font-extrabold tracking-tight text-[#202020]">
-        Artikel Lainnya
-      </h2>
-      <div className="mt-3 h-1 w-36 bg-[#9a5a00]" />
+      <div className="inline-block">
+        <h2 className="text-2xl font-extrabold tracking-tight text-[#202020]">
+          Artikel Lainnya
+        </h2>
+        <div className="mt-3 h-1 w-full bg-[#9a5a00]" />
+      </div>
 
       <div className="mt-3 divide-y divide-[#d8d8d8]">
         {items.map((item, index) => (
