@@ -32,10 +32,7 @@ export default function SupportHero() {
   return (
     <section className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-14 lg:grid-cols-[1.35fr_0.95fr] lg:gap-16 lg:py-20">
       <div className="motion-fade-up">
-        <p className="text-xs font-extrabold tracking-[0.18em] text-[#F29100]">
-          COMMUNITY HUB
-        </p>
-        <h1 className="mt-3 font-caslon text-5xl font-bold leading-[1.04] tracking-tight sm:text-6xl">
+        <h1 className="mt-3 text-5xl font-bold leading-[1.04] tracking-tight sm:text-5xl">
           Bergabung Dengan Kami
         </h1>
         <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-600 sm:text-lg">
@@ -51,9 +48,9 @@ export default function SupportHero() {
               className="motion-fade-up grid grid-cols-[1.5rem_1fr] gap-3"
               style={{ animationDelay: `${index * 80}ms` }}
             >
-              <span className="mt-1 text-[#F29100]">{benefit.icon}</span>
+              <span className="mt-1 text-secondary-800">{benefit.icon}</span>
               <div>
-                <h2 className="font-caslon text-xl font-bold sm:text-2xl">
+                <h2 className="text-xl font-bold sm:text-2xl">
                   {benefit.title}
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-7 text-zinc-600 sm:text-base">
