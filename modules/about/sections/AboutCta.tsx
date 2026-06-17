@@ -1,50 +1,24 @@
 import Link from "next/link";
 
-const partners = ["PARTNER_1", "PARTNER_2", "PARTNER_3", "PARTNER_4"];
-
 export default function AboutCta() {
   return (
-    <section className="bg-[#0b1020] text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 lg:grid-cols-2">
-        <div className="motion-fade-up">
-          <h2 className="font-serif text-4xl font-bold leading-tight tracking-tight">
-            Berkolaborasi<br />Membangun Inklusi
-          </h2>
-          <p className="mt-6 max-w-lg text-sm leading-7 text-zinc-300">
-            Kami percaya bahwa perubahan besar membutuhkan kolaborasi. Paravoice.id
-            membuka pintu seluas-luasnya bagi komunitas, institusi riset, dan mitra
-            korporasi yang memiliki visi yang sama dalam memperjuangkan hak-hak difabel
-            melalui data.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="#"
-              className="inline-flex items-center gap-2 bg-[#F29100] px-6 py-3 text-xs font-bold tracking-wider text-white transition-colors hover:bg-[#d97f00]"
-            >
-              AJUKAN KERJASAMA →
-            </Link>
-            <Link
-              href="#"
-              className="inline-flex items-center gap-2 border border-[#F29100] px-6 py-3 text-xs font-bold tracking-wider text-[#F29100] transition-colors hover:bg-[#F29100]/10"
-            >
-              DONASI UNTUK RISET
-            </Link>
-          </div>
-        </div>
-
-        <div className="motion-slide-in-right rounded-lg bg-[#111935] p-8">
-          <div className="grid grid-cols-2 gap-5">
-            {partners.map((p, index) => (
-              <div
-                key={p}
-                className="motion-fade-up flex h-20 items-center justify-center rounded-md border border-white/10 bg-[#0b1020] text-sm font-bold tracking-wider text-zinc-400"
-                style={{ animationDelay: `${index * 70}ms` }}
-              >
-                {p}
-              </div>
-            ))}
-          </div>
-        </div>
+    <section className="bg-[#062342] text-white">
+      <div className="motion-fade-up mx-auto flex max-w-7xl flex-col items-center px-6 py-14 text-center sm:py-16 lg:py-[3.9rem]">
+        <h2 className="text-4xl font-bold leading-tight tracking-tight sm:text-[2.5rem]">
+          Berkolaborasi Membangun Inklusi
+        </h2>
+        <p className="mt-7 max-w-xl text-sm leading-6 text-white/78 sm:text-[0.95rem] sm:leading-7">
+          Kami percaya bahwa perubahan besar membutuhkan kolaborasi.
+          Paravoice.id membuka pintu seluas-luasnya bagi komunitas,
+          institusi riset, dan mitra korporasi yang memiliki visi yang sama
+          dalam memperjuangkan hak-hak difabel melalui data.
+        </p>
+        <Link
+          href="#"
+          className="mt-7 inline-flex min-h-10 items-center justify-center rounded-md bg-secondary-800 px-6 text-sm font-bold text-white transition-colors hover:bg-[#b26a00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          Ajukan Kerjasama
+        </Link>
       </div>
     </section>
   );
