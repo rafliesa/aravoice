@@ -55,7 +55,7 @@ export default function DonationForm() {
   }
 
   return (
-    <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+    <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
       <div className="motion-fade-up">
         <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9a5a00]">
           Donasi Sekali Jalan
@@ -68,48 +68,86 @@ export default function DonationForm() {
         </p>
 
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-        {amounts.map((amount) => (
+          {amounts.map((amount) => (
+            <button
+              key={amount}
+              type="button"
+              aria-pressed={selectedAmount === amount}
+              onClick={() => {
+                setSelectedAmount(amount);
+                setError("");
+              }}
+              className={`h-20 rounded-lg border px-3 text-lg font-extrabold transition-all hover:-translate-y-0.5 ${
+                selectedAmount === amount
+                  ? "border-[#9a5a00] bg-[#9a5a00] text-white shadow-lg shadow-[#9a5a00]/20"
+                  : "border-[#c8ccd5] bg-white text-[#101522] hover:border-[#9a5a00] hover:bg-[#fff8ef]"
+              }`}
+            >
+              {formatCompactRupiah(amount)}
+            </button>
+          ))}
           <button
-            key={amount}
             type="button"
-            aria-pressed={selectedAmount === amount}
+            aria-pressed={selectedAmount === "custom"}
             onClick={() => {
-              setSelectedAmount(amount);
+              setSelectedAmount("custom");
               setError("");
             }}
             className={`h-20 rounded-lg border px-3 text-lg font-extrabold transition-all hover:-translate-y-0.5 ${
-              selectedAmount === amount
+              selectedAmount === "custom"
                 ? "border-[#9a5a00] bg-[#9a5a00] text-white shadow-lg shadow-[#9a5a00]/20"
                 : "border-[#c8ccd5] bg-white text-[#101522] hover:border-[#9a5a00] hover:bg-[#fff8ef]"
             }`}
           >
-            {formatCompactRupiah(amount)}
+            Nominal lain
           </button>
-        ))}
-        <button
-          type="button"
-          aria-pressed={selectedAmount === "custom"}
-          onClick={() => {
-            setSelectedAmount("custom");
-            setError("");
-          }}
-          className={`h-20 rounded-lg border px-3 text-lg font-extrabold transition-all hover:-translate-y-0.5 ${
-            selectedAmount === "custom"
-              ? "border-[#9a5a00] bg-[#9a5a00] text-white shadow-lg shadow-[#9a5a00]/20"
-              : "border-[#c8ccd5] bg-white text-[#101522] hover:border-[#9a5a00] hover:bg-[#fff8ef]"
-          }`}
-        >
-          Custom
-        </button>
         </div>
 
-        {selectedAmount === "custom" && (
-          <label className="mt-5 block max-w-xl">
-            <span className="mb-2 block text-xs font-extrabold uppercase tracking-[0.14em] text-zinc-700">
-              Nominal custom
+        <div
+          className={`mt-5 overflow-hidden rounded-xl border bg-white transition-colors ${
+            selectedAmount === "custom"
+              ? "border-[#9a5a00] shadow-lg shadow-[#9a5a00]/10"
+              : "border-[#d7dbe4]"
+          }`}
+        >
+          <button
+            type="button"
+            aria-pressed={selectedAmount === "custom"}
+            onClick={() => {
+              setSelectedAmount("custom");
+              setError("");
+            }}
+            className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+          >
+            <span>
+              <span className="block text-sm font-extrabold text-[#101522]">
+                Mau isi nominal sendiri?
+              </span>
+              <span className="mt-1 block text-sm leading-6 text-[#5d6574]">
+                Pilih opsi ini kalau nominal di atas belum sesuai.
+              </span>
             </span>
-            <div className="flex h-14 items-center rounded-lg border border-zinc-300 bg-white px-4 focus-within:border-[#9a5a00] focus-within:ring-1 focus-within:ring-[#9a5a00]">
-              <span className="text-sm font-bold text-zinc-500">Rp</span>
+            <span
+              className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
+                selectedAmount === "custom"
+                  ? "border-[#9a5a00] bg-[#9a5a00]"
+                  : "border-[#a7adba]"
+              }`}
+              aria-hidden="true"
+            >
+              {selectedAmount === "custom" && (
+                <span className="h-2 w-2 rounded-full bg-white" />
+              )}
+            </span>
+          </button>
+
+          {selectedAmount === "custom" && (
+            <label className="block border-t border-[#ece0d1] bg-[#fff8ef] px-5 py-4">
+              <span className="mb-2 block text-xs font-extrabold uppercase tracking-[0.14em] text-zinc-700">
+                Nominal donasi
+              </span>
+              <div className="flex h-14 items-center rounded-lg border border-[#d2b98f] bg-white px-4 focus-within:border-[#9a5a00] focus-within:ring-1 focus-within:ring-[#9a5a00]">
+                <span className="text-sm font-bold text-zinc-500">Rp</span>
               <input
                 type="text"
                 inputMode="numeric"
@@ -120,12 +158,16 @@ export default function DonationForm() {
                   );
                   setError("");
                 }}
-                placeholder="Masukkan nominal"
+                  placeholder="Contoh: 75000"
                 className="h-full min-w-0 flex-1 bg-transparent px-2 text-sm font-semibold outline-none placeholder:text-zinc-300"
               />
             </div>
-          </label>
-        )}
+              <span className="mt-2 block text-xs font-semibold text-[#7a8190]">
+                Minimal Rp 10.000.
+              </span>
+            </label>
+          )}
+        </div>
 
         {error && (
           <p role="alert" className="mt-5 text-sm font-semibold text-red-700">
