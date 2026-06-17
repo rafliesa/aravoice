@@ -424,7 +424,7 @@ export default function AdminDashboard() {
                 onChange={(e) => update("title", e.target.value)}
                 placeholder="Judul cerita…"
                 required
-                className="w-full bg-transparent font-serif text-4xl font-bold leading-tight tracking-tight outline-none placeholder:text-zinc-300 sm:text-5xl"
+                className="w-full bg-transparent text-4xl font-bold leading-tight tracking-tight outline-none placeholder:text-zinc-300 sm:text-5xl"
               />
               <div className="mt-6">
                 <RichTextEditor
