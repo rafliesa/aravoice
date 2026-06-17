@@ -23,7 +23,7 @@ export default function RubrikHero({ category, leadNews }: RubrikHeroProps) {
         <span className="font-semibold text-[#9a5a00]">{category}</span>
       </nav>
 
-      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1.06fr_1fr] lg:items-start">
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1.06fr_1fr] lg:items-stretch">
         <div>
           <p className="text-sm font-extrabold uppercase tracking-[0.14em] text-[#9a5a00]">
             Liputan Khusus
@@ -71,17 +71,17 @@ export default function RubrikHero({ category, leadNews }: RubrikHeroProps) {
         <Link
           href={`/${leadNews.slug}`}
           aria-label={`Baca ${leadNews.title}`}
-          className="group motion-card motion-slide-in-right block overflow-hidden rounded-lg border border-[#d0b894] bg-white"
+          className="group motion-card motion-slide-in-right flex h-full flex-col overflow-hidden rounded-lg border border-[#d0b894] bg-white"
         >
           {leadNews.cover_image ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={leadNews.cover_image}
               alt={leadNews.title}
-              className="motion-image aspect-[16/10] w-full bg-black object-cover"
+              className="motion-image aspect-[16/10] w-full flex-1 bg-black object-cover lg:aspect-auto"
             />
           ) : (
-            <div className="aspect-[16/10] w-full bg-black" />
+            <div className="aspect-[16/10] w-full flex-1 bg-black lg:aspect-auto" />
           )}
           <div className="px-4 py-3">
             <p className="text-xs leading-5 text-[#5f5f5f]">
