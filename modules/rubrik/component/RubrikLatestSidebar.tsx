@@ -11,7 +11,7 @@ export default function RubrikLatestSidebar({
   articles,
 }: RubrikLatestSidebarProps) {
   return (
-    <aside className="motion-slide-in-right rounded-lg border border-[#d9dce2] bg-white p-6">
+    <aside className="motion-slide-in-right self-start rounded-lg border border-[#d9dce2] bg-white p-6">
       <h2 className="text-2xl font-extrabold tracking-tight text-[#202020]">
         Artikel Lainnya
       </h2>

@@ -18,7 +18,7 @@ export default function HomeFeatured({
   newsError,
 }: HomeFeaturedProps) {
   return (
-    <section className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_22rem]">
+    <section className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_22rem] lg:items-start">
       <div>
         {initialLoading ? (
           <div className="grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
