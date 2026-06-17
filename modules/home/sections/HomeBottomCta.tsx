@@ -11,13 +11,6 @@ const memberBenefits = [
   "Undangan Event Komunitas",
 ];
 
-const merchImages = [
-  "/merch/sticker-sheet.png",
-  "/merch/hoodie-inklusif.png",
-  "/merch/tote-bag.png",
-  "/merch/tumbler-orange.png",
-];
-
 export default function HomeBottomCta() {
   return (
     <>
@@ -81,18 +74,14 @@ export default function HomeBottomCta() {
                 </p>
               </div>
 
-              <div className="grid aspect-[4/5] grid-cols-2 gap-3 overflow-hidden rounded-2xl border border-[#cfd3db] bg-white p-4 shadow-lg shadow-black/10">
-                {merchImages.map((image) => (
-                  <div key={image} className="relative overflow-hidden rounded-lg bg-[#f8f8f8]">
-                    <Image
-                      src={image}
-                      alt=""
-                      fill
-                      sizes="(min-width: 768px) 12vw, 35vw"
-                      className="motion-image object-cover"
-                    />
-                  </div>
-                ))}
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[#cfd3db] bg-white shadow-lg shadow-black/10">
+                <Image
+                  src="/merch/merchs.jpeg"
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 28vw, 80vw"
+                  className="motion-image object-cover"
+                />
               </div>
             </div>
           </article>
