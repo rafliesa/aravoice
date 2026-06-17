@@ -35,7 +35,10 @@ const benefits = [
 
 export default function DonationPartnershipForm() {
   return (
-    <section className="border-t border-[#d4d8e0] bg-white px-6 py-20">
+    <section
+      id="manfaat-bermitra"
+      className="scroll-mt-24 border-t border-[#d4d8e0] bg-white px-6 py-20"
+    >
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-start">
         <div>
           <h2 className="text-4xl font-extrabold tracking-tight">

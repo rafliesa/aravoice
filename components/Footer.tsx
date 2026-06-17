@@ -95,7 +95,7 @@ export default function Footer() {
             kualitas informasi.
           </p>
           <Link
-            href="/kontak"
+            href="/donasi#manfaat-bermitra"
             className="inline-flex w-fit items-center justify-center border border-zinc-500 px-6 py-3 text-xs font-bold tracking-wider text-white transition-colors hover:bg-white hover:text-[#0b0f1a]"
           >
             HUBUNGI KAMI
