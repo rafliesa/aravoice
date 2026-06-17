@@ -171,7 +171,7 @@ export default function Navbar() {
                   aria-expanded={searchOpen}
                   aria-controls="navbar-search-results"
                   autoComplete="off"
-                  containerClassName="h-12 py-0 pr-2 shadow-lg"
+                  containerClassName="h-12 py-0 pr-2"
                   endAdornment={
                     <button
                       type="button"
@@ -188,7 +188,7 @@ export default function Navbar() {
               {searchOpen && query.trim().length >= 2 && (
                 <div
                   id="navbar-search-results"
-                  className="absolute right-0 top-[calc(100%+0.5rem)] max-h-[min(28rem,70vh)] w-full overflow-y-auto rounded-lg border border-tertiary-200 bg-white p-2 shadow-2xl"
+                  className="absolute right-0 top-[calc(100%+0.5rem)] max-h-[min(28rem,70vh)] w-full overflow-y-auto rounded-lg border border-tertiary-200 bg-white p-2"
                 >
                   {searchStatus === "loading" && (
                     <p className="px-3 py-4 text-sm text-zinc-500">
