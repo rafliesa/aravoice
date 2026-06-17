@@ -1,41 +1,169 @@
+"use client";
+
 import Image from "next/image";
-import { ArrowIcon } from "@/modules/support/component/icons";
+import { useEffect, useState } from "react";
+
+const slides = [
+  {
+    title: "Suara Dari Lapangan: Perjuangan Tanpa Batas",
+    description:
+      "Melihat lebih dekat dedikasi atlet para nasional saat sesi latihan intensif di pusat olahraga nasional.",
+    image: "/dukung-kami-hero.png",
+    imagePosition: "center",
+  },
+  {
+    title: "Dukungan Publik untuk Arena yang Lebih Inklusif",
+    description:
+      "Setiap kontribusi membantu membuka ruang liputan yang adil bagi atlet disabilitas Indonesia.",
+    image: "/dukung-kami-hero.png",
+    imagePosition: "45% center",
+  },
+  {
+    title: "Cerita Atlet yang Layak Terdengar Lebih Luas",
+    description:
+      "Kami membawa kisah latihan, perjuangan, dan prestasi dari lapangan ke hadapan pembaca.",
+    image: "/dukung-kami-hero.png",
+    imagePosition: "55% center",
+  },
+];
 
 export default function SupportImageSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const activeSlide = slides[activeIndex];
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % slides.length);
+    }, 6500);
+
+    return () => window.clearInterval(timer);
+  }, [isPaused]);
+
+  const goToPrevious = () => {
+    setActiveIndex((current) => (current === 0 ? slides.length - 1 : current - 1));
+  };
+
+  const goToNext = () => {
+    setActiveIndex((current) => (current + 1) % slides.length);
+  };
+
   return (
-    <section className="relative min-h-[32rem] overflow-hidden lg:min-h-[38rem]">
-      <Image
-        src="/dukung-kami-hero.png"
-        alt="Atlet balap kursi roda bersiap di lintasan stadion"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/5" />
+    <section
+      aria-label="Sorotan dukungan"
+      className="relative overflow-hidden bg-[#080d16]"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="relative min-h-[28rem] overflow-hidden sm:min-h-[34rem] lg:min-h-[35rem]">
+        {slides.map((slide, index) => (
+          <Image
+            key={`${slide.title}-${index}`}
+            src={slide.image}
+            alt=""
+            fill
+            priority={index === 0}
+            sizes="100vw"
+            className={`object-cover transition-opacity duration-1000 ease-out ${
+              index === activeIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ objectPosition: slide.imagePosition }}
+          />
+        ))}
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/28 to-transparent" />
 
-      <div className="absolute inset-x-0 bottom-0 mx-auto flex max-w-7xl flex-col gap-8 px-6 pb-10 text-white sm:pb-14 lg:flex-row lg:items-end lg:justify-between">
-        <div className="motion-fade-up max-w-3xl">
-          <p className="inline-flex bg-[#5a3108]/85 px-3 py-1 text-[0.68rem] font-extrabold tracking-[0.18em] text-[#ffe7cb]">
-            MOMEN INSPIRASI
-          </p>
-          <h2 className="mt-4 font-caslon text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
-            Suara Dari Lapangan: Perjuangan Tanpa Batas
-          </h2>
-          <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-200 sm:text-base">
-            Melihat lebih dekat dedikasi atlet para nasional saat menjalani
-            sesi latihan intensif menuju panggung kompetisi.
-          </p>
+        <div className="absolute inset-x-0 bottom-0 mx-auto flex max-w-7xl flex-col gap-7 px-6 pb-8 text-white sm:pb-10 lg:flex-row lg:items-end lg:justify-between">
+          <div className="motion-fade-up max-w-5xl">
+            <h2 className="max-w-5xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
+              {activeSlide.title}
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-white/82 sm:text-base">
+              {activeSlide.description}
+            </p>
+          </div>
+
+          <div className="motion-slide-in-right flex items-end justify-between gap-8 lg:min-w-96">
+            <div className="flex items-center gap-2" aria-label="Slide carousel">
+              {slides.map((slide, index) => {
+                const isActive = index === activeIndex;
+
+                return (
+                  <button
+                    key={slide.title}
+                    type="button"
+                    aria-label={`Tampilkan slide ${index + 1}`}
+                    aria-current={isActive ? "true" : undefined}
+                    onClick={() => setActiveIndex(index)}
+                    className={`h-2 rounded-full transition-all duration-500 ${
+                      isActive ? "w-7 bg-white" : "w-2 bg-white/45 hover:bg-white/75"
+                    }`}
+                  />
+                );
+              })}
+            </div>
+
+            <div className="flex items-center gap-4">
+              <button
+                type="button"
+                aria-label="Slide sebelumnya"
+                onClick={goToPrevious}
+                className="flex h-12 w-12 items-center justify-center border border-white/35 bg-white/5 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-[#101522]"
+              >
+                <ArrowLeftIcon />
+              </button>
+              <button
+                type="button"
+                aria-label="Slide berikutnya"
+                onClick={goToNext}
+                className="flex h-12 w-12 items-center justify-center border border-white/35 bg-white/5 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-[#101522]"
+              >
+                <ArrowRightIcon />
+              </button>
+            </div>
+          </div>
         </div>
-
-        <a
-          href="#support-form"
-          className="motion-slide-in-right inline-flex w-fit items-center gap-3 border border-white/50 bg-black/20 px-5 py-3 text-xs font-bold tracking-[0.16em] backdrop-blur-sm transition-colors hover:bg-white hover:text-zinc-950"
-        >
-          GABUNG SEKARANG
-          <ArrowIcon />
-        </a>
       </div>
     </section>
+  );
+}
+
+function ArrowLeftIcon() {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M19 12H5" />
+      <path d="m12 19-7-7 7-7" />
+    </svg>
+  );
+}
+
+function ArrowRightIcon() {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg>
   );
 }
