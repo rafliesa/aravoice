@@ -3,7 +3,7 @@ import DesignSystemPage from "@/components/design-system/pages/DesignSystemPage"
 
 export const metadata: Metadata = {
   title: "Design System",
-  description: "Komponen, token, dan pola antarmuka ParaVoice.",
+  description: "Komponen, token, dan pola antarmuka Aravoice.id.",
 };
 
 export default function Page() {

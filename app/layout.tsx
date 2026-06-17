@@ -34,8 +34,8 @@ const lexend = Lexend({
 
 export const metadata: Metadata = {
   title: {
-    default: "Paravoice.id",
-    template: "%s | Paravoice.id",
+    default: "Aravoice.id",
+    template: "%s | Aravoice.id",
   },
   description:
     "Media olahraga disabilitas independen yang berkomitmen pada integritas jurnalisme dan inklusivitas tanpa batas.",

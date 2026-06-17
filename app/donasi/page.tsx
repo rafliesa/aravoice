@@ -4,7 +4,7 @@ import DonationPage from "@/modules/donation";
 export const metadata: Metadata = {
   title: "Donasi",
   description:
-    "Dukung jurnalisme olahraga disabilitas yang independen, akurat, dan inklusif bersama Paravoice.id.",
+    "Dukung jurnalisme olahraga disabilitas yang independen, akurat, dan inklusif bersama Aravoice.id.",
 };
 
 export default function Page() {

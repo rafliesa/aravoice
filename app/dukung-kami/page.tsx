@@ -4,7 +4,7 @@ import SupportPage from "@/modules/support";
 export const metadata: Metadata = {
   title: "Dukung Kami",
   description:
-    "Bergabung dengan komunitas Paravoice.id dan dukung jurnalisme olahraga disabilitas yang independen dan inklusif.",
+    "Bergabung dengan komunitas Aravoice.id dan dukung jurnalisme olahraga disabilitas yang independen dan inklusif.",
 };
 
 export default function Page() {

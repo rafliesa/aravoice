@@ -4,7 +4,7 @@ import AboutPage from "@/modules/about";
 export const metadata: Metadata = {
   title: "Tentang Kami",
   description:
-    "Kenali Paravoice.id, media olahraga disabilitas independen yang mengangkat jurnalisme data dan inklusivitas.",
+    "Kenali Aravoice.id, media olahraga disabilitas independen yang mengangkat jurnalisme data dan inklusivitas.",
 };
 
 export default function Page() {
