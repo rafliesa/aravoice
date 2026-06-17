@@ -44,7 +44,7 @@ export default function HomeBottomCta() {
           </ul>
 
           <Link
-            href="/buletin"
+            href="/dukung-kami"
             className="mx-auto mt-16 flex h-14 max-w-md items-center justify-center rounded-md bg-[#9a5a00] px-8 text-base font-extrabold text-white transition-colors hover:bg-[#7c4800]"
           >
             Daftar Sekarang
