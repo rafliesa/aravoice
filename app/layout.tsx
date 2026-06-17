@@ -8,6 +8,7 @@ import {
 import AccessibilityWidget from "@/components/accessibility/AccessibilityWidget";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollAnimations from "@/components/ScrollAnimations";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -49,6 +50,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
+      data-scroll-animations="ready"
       className={`${plusJakartaSans.variable} ${libreCaslonText.variable} ${geistMono.variable} ${lexend.variable} h-full antialiased`}
     >
       <body className={`${plusJakartaSans.className} min-h-full flex flex-col`}>
@@ -63,6 +65,7 @@ export default function RootLayout({
           </div>
           <Footer />
         </div>
+        <ScrollAnimations />
         <AccessibilityWidget />
       </body>
     </html>
