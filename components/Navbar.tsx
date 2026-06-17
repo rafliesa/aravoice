@@ -28,6 +28,8 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const isSupportActive = pathname === "/dukung-kami";
+  const navItemsRef = useRef<HTMLDivElement>(null);
+  const activeUnderlineRef = useRef<HTMLSpanElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -92,6 +94,40 @@ export default function Navbar() {
     };
   }, [query, searchOpen]);
 
+  useEffect(() => {
+    const navItems = navItemsRef.current;
+    const underline = activeUnderlineRef.current;
+    if (!navItems || !underline) return;
+
+    const updateUnderline = () => {
+      const activeLink = navItems.querySelector<HTMLElement>(
+        "[data-navbar-active='true']",
+      );
+
+      if (!activeLink) {
+        underline.style.opacity = "0";
+        underline.style.width = "0px";
+        return;
+      }
+
+      const navRect = navItems.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+
+      underline.style.opacity = "1";
+      underline.style.width = `${linkRect.width}px`;
+      underline.style.transform = `translateX(${linkRect.left - navRect.left}px)`;
+    };
+
+    const animationFrame = window.requestAnimationFrame(updateUnderline);
+    window.addEventListener("resize", updateUnderline);
+    document.fonts?.ready.then(updateUnderline);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("resize", updateUnderline);
+    };
+  }, [pathname]);
+
   const submitSearch = (event: React.FormEvent) => {
     event.preventDefault();
     if (!results[0]) return;
@@ -119,26 +155,33 @@ export default function Navbar() {
           />
         </Link>
 
-        <ul className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`font-sans text-base transition-colors ${
-                    isActive ? "font-bold" : "font-semibold"
-                  }`}
-                  style={{ color: isActive ? "#8A5100" : "#544434" }}
-                >
-                  <span className={isActive ? "underline underline-offset-8" : undefined}>
+        <div ref={navItemsRef} className="relative hidden lg:block">
+          <ul className="flex items-center gap-8">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    data-navbar-active={isActive ? "true" : undefined}
+                    className={`relative z-10 font-sans text-base transition-colors ${
+                      isActive ? "font-bold" : "font-semibold"
+                    }`}
+                    style={{ color: isActive ? "#8A5100" : "#544434" }}
+                  >
                     {link.label}
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <span
+            ref={activeUnderlineRef}
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-2 left-0 h-0.5 rounded-full bg-[#8A5100] opacity-0 transition-[transform,width,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none"
+            style={{ width: 0, transform: "translateX(0)" }}
+          />
+        </div>
 
         <div className="flex items-center gap-5">
           <div ref={searchContainerRef} className="relative flex h-11 w-5 items-center">
