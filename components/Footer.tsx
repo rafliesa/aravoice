@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const columns = [
   {
-    title: "FORMAT BERITA",
+    title: "KANAL",
     links: [
       { label: "Para Report", href: "/para-report" },
       { label: "Para Edu", href: "/para-edu" },
