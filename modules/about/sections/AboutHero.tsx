@@ -6,11 +6,11 @@ export default function AboutHero() {
       <nav className="flex items-center gap-2 text-sm text-zinc-500">
         <Link href="/" className="hover:text-zinc-800">Home</Link>
         <span>›</span>
-        <span className="font-semibold text-[#F29100]">Tentang Kami</span>
+        <span className="font-semibold text-secondary-800">Tentang Kami</span>
       </nav>
 
       <div className="border-b border-zinc-200 py-10">
-        <h1 className="font-caslon text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+        <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
           Menyuarakan Inklusivitas Melalui
           <br />
           <span className="italic font-normal">Jurnalisme Data</span>

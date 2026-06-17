@@ -7,7 +7,9 @@ import AboutValues from "@/modules/about/sections/AboutValues";
 export default function AboutPage() {
   return (
     <div className="flex-1 bg-white text-[#1a1a1a]">
-      <AboutHero />
+      <div className='border-b border-[#C6C6CF]'>
+        <AboutHero />
+      </div>
       <AboutJourney />
       <AboutValues />
       <AboutTeam />

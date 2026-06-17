@@ -8,10 +8,9 @@ const team = Array.from({ length: 7 }, () => ({
 export default function AboutTeam() {
   return (
     <section className="mx-auto max-w-7xl px-6 pb-16">
-      <div className="motion-fade-up mb-2 h-1 w-12 rounded bg-[#F29100]" />
       <div className="motion-fade-up flex items-center justify-between">
-        <h2 className="font-serif text-3xl font-bold tracking-tight">Tim Editorial</h2>
-        <Link href="#" className="text-xs font-bold tracking-wider text-[#F29100] hover:underline">
+        <h2 className="text-3xl font-bold tracking-tight">Tim Editorial</h2>
+        <Link href="#" className="text-xs font-bold tracking-wider text-secondary-800 hover:underline">
           LIHAT SEMUA STAF →
         </Link>
       </div>
@@ -24,8 +23,8 @@ export default function AboutTeam() {
             style={{ animationDelay: `${i * 55}ms` }}
           >
             <div className="aspect-square w-full bg-zinc-200" />
-            <h3 className="mt-4 font-serif text-lg font-bold">{member.name}</h3>
-            <p className="text-xs font-bold tracking-wider text-[#F29100]">{member.role}</p>
+            <h3 className="mt-4 text-lg font-bold">{member.name}</h3>
+            <p className="text-xs font-bold tracking-wider text-secondary-800">{member.role}</p>
           </div>
         ))}
       </div>

@@ -21,7 +21,7 @@ const values = [
 export default function AboutValues() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-16">
-      <h2 className="motion-fade-up text-center font-serif text-3xl font-bold tracking-tight">Nilai-Nilai Kami</h2>
+      <h2 className="motion-fade-up text-center text-3xl font-bold tracking-tight">Nilai-Nilai Kami</h2>
       <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
         {values.map((v, index) => (
           <div
@@ -32,7 +32,7 @@ export default function AboutValues() {
             <div className="flex h-12 w-12 items-center justify-center rounded-md bg-[#0b1f3a] text-white">
               {v.icon}
             </div>
-            <h3 className="mt-6 font-serif text-xl font-bold">{v.title}</h3>
+            <h3 className="mt-6 text-xl font-bold">{v.title}</h3>
             <p className="mt-4 text-sm leading-7 text-zinc-600">{v.body}</p>
           </div>
         ))}
