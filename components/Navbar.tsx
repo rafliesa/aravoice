@@ -235,10 +235,10 @@ export default function Navbar() {
           <Link
             href="/dukung-kami"
             aria-current={isSupportActive ? "page" : undefined}
-            className={`rounded-md px-5 py-2.5 text-base font-semibold transition-colors ${
+            className={`rounded-md px-5 py-1.5 text-sm font-semibold transition-colors ${
               isSupportActive
-                ? "bg-[#9A5A00] text-white"
-                : "bg-[#F29100] text-[#5B3400] hover:bg-[#dc8500]"
+                ? "bg-secondary-800 text-tertiary"
+                : "bg-secondary-800 text-tertiary"
             }`}
           >
             Dukung Kami
