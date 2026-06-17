@@ -15,7 +15,7 @@ export default function SupportForm() {
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#F29100] text-white">
           <CheckIcon />
         </div>
-        <h2 className="mt-6 font-caslon text-3xl font-bold">
+        <h2 className="mt-6 text-3xl font-bold">
           Terima kasih telah bergabung
         </h2>
         <p className="mt-4 max-w-sm text-sm leading-7 text-zinc-600">
@@ -38,7 +38,7 @@ export default function SupportForm() {
       id="support-form"
       className="scroll-mt-24 border border-[#d5d0c9] bg-[#f8f6f3] px-6 py-8 shadow-[0_1px_0_rgba(0,0,0,0.04)] sm:px-10 sm:py-10"
     >
-      <h2 className="font-caslon text-3xl font-bold sm:text-4xl">
+      <h2 className="text-3xl font-bold sm:text-4xl">
         Mulai Sekarang
       </h2>
       <p className="mt-4 text-sm leading-7 text-zinc-600">
@@ -89,7 +89,7 @@ export default function SupportForm() {
             Saya setuju dengan{" "}
             <a
               href="#kebijakan-privasi"
-              className="font-semibold text-[#F29100] hover:underline"
+              className="text-secondary-800 hover:underline"
             >
               Kebijakan Privasi
             </a>{" "}
