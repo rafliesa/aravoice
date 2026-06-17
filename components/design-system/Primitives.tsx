@@ -162,7 +162,7 @@ type DesignButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 const BUTTON_VARIANTS: Record<ButtonVariant, string> = {
   primary: "border-primary bg-primary text-white hover:bg-primary-800",
   secondary: "border-neutral bg-white text-neutral hover:bg-neutral-100",
-  inverted: "border-secondary bg-secondary text-white hover:bg-secondary-600",
+  inverted: "border-secondary-800 bg-secondary-800 text-white hover:bg-secondary-600",
   next: "border-primary bg-primary text-white hover:bg-primary-800",
 };
 
@@ -220,7 +220,7 @@ export function StatusBadge({
     verified: "bg-emerald-100 text-emerald-700",
     pending: "bg-blue-100 text-blue-700",
     admin: "bg-primary text-white",
-    new: "bg-secondary text-white",
+    new: "bg-secondary-800/10 text-secondary-800",
   };
 
   return (
