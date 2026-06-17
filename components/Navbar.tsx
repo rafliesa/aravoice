@@ -16,7 +16,6 @@ import {
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Tentang Kami", href: "/tentang-kami" },
   { label: "Para Report", href: "/para-report" },
   { label: "Para Edu", href: "/para-edu" },
   { label: "Para Atlet", href: "/para-atlet" },
