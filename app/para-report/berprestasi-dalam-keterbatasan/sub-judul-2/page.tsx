@@ -1,0 +1,26 @@
+import type { Metadata } from "next";
+import MedproReportPage from "@/modules/medpro-report";
+import { medproArticleDescription } from "@/modules/medpro-report/data";
+import SubtitleTwoContent, {
+  subtitleTwoHeading,
+} from "@/modules/medpro-report/content/SubtitleTwoContent";
+
+const title = "Inklusivitas Hanya di Atas Kertas";
+
+export const metadata: Metadata = {
+  title,
+  description: medproArticleDescription,
+};
+
+export default function SubtitleTwoPage() {
+  return (
+    <MedproReportPage
+      activeIndex={1}
+      currentLabel="Sub Judul 2 dari 7"
+      nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-3"
+      subtitleLabel={subtitleTwoHeading}
+    >
+      <SubtitleTwoContent />
+    </MedproReportPage>
+  );
+}

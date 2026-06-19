@@ -10,6 +10,22 @@ import { CARD_FETCH_LIMIT } from "@/modules/home/sections/HomeCategories";
 
 import type { NewsCardData } from "@/lib/news";
 
+const medproLeadNews: NewsCardData = {
+  id: -1,
+  slug: "para-report/berprestasi-dalam-keterbatasan",
+  category: "Liputan Khusus",
+  title: "Berprestasi dalam Keterbatasan di Kesejahteraan yang Tak Pasti",
+  excerpt:
+    "Menelisik realita atlet Bandung disabilitas, dari tuntutan prestasi hingga kesejahteraan yang masih penuh ketidakpastian.",
+  author: "Redaksi ParaVoice",
+  reading_time: 12,
+  cover_image: "",
+  caption:
+    "Atlet disabilitas terus berlatih di tengah keterbatasan dukungan dan kepastian kesejahteraan.",
+  formats: ["TEKS", "AUDIO", "VIDEO"],
+  published_at: "2026-06-20T00:00:00.000Z",
+};
+
 export default function HomePage() {
   const [cardNews, setCardNews] = useState<NewsCardData[]>([]);
   const [loadingCards, setLoadingCards] = useState(true);
@@ -41,18 +57,14 @@ export default function HomePage() {
     return () => controller.abort();
   }, []);
 
-  const leadNews = cardNews[0];
-  const articleNews = cardNews.slice(1, 7);
+  const leadNews = medproLeadNews;
+  const articleNews = cardNews.slice(0, 6);
   const latestNews = cardNews.slice(0, 7);
   const availableFormats = leadNews?.formats.map((format) => format.toUpperCase()) ?? [];
   const heroCategory = leadNews?.category.toUpperCase() ?? "BERITA";
-  const initialLoading = loadingCards && cardNews.length === 0;
-  const heroTitle = newsError && cardNews.length === 0
-      ? "Berita belum dapat dimuat"
-      : leadNews?.title ?? "Belum ada berita terbit";
-  const heroExcerpt = newsError && cardNews.length === 0
-    ? newsError
-    : leadNews?.excerpt ?? "Berita yang dipublikasikan dari halaman admin akan tampil di sini.";
+  const initialLoading = false;
+  const heroTitle = leadNews.title;
+  const heroExcerpt = leadNews.excerpt;
 
   const latestArticles = latestNews.map((news) => ({
     category: news.category,

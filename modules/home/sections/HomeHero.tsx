@@ -19,6 +19,8 @@ export default function HomeHero({
   heroTitle,
   leadNews,
 }: HomeHeroProps) {
+  const heroHref = leadNews ? `/${leadNews.slug}` : "/";
+
   return (
     <section className="motion-fade-up pt-8">
       <nav className="flex items-center gap-2 text-sm text-[#5b5b5b]">
@@ -32,8 +34,13 @@ export default function HomeHero({
           {heroCategory}
         </p>
           <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-[#202020] sm:text-5xl lg:text-[3.4rem]">
-          {heroTitle}
-        </h1>
+            <Link
+              href={heroHref}
+              className="transition-colors hover:text-[#9a5a00]"
+            >
+              {heroTitle}
+            </Link>
+          </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-[#5f5f5f]">
           {heroExcerpt}
         </p>
@@ -67,7 +74,7 @@ export default function HomeHero({
         </div>
 
         <Link
-          href={leadNews ? `/${leadNews.slug}` : "/"}
+          href={heroHref}
           aria-label={leadNews ? `Baca ${leadNews.title}` : "Berita utama"}
           className="group motion-card motion-slide-in-right flex h-full flex-col overflow-hidden rounded-lg border border-[#d0b894] bg-white"
         >

@@ -4,6 +4,7 @@ import {
   BulbIcon,
   DesignLink,
 } from "@/components/design-system/Primitives";
+import AnimatedDataPoint from "@/components/design-system/AnimatedDataPoint";
 
 export function EditorialCard({
   category,
@@ -170,22 +171,12 @@ export function InfographicCard({
           </p>
           <div className="mt-7 space-y-5">
             {data.map((item) => (
-              <div key={item.label}>
-                <div className="flex justify-between gap-4 text-sm">
-                  <span>{item.label}</span>
-                  <strong>{item.value}%</strong>
-                </div>
-                <div className="mt-2 h-3 overflow-hidden rounded-full bg-zinc-200">
-                  <div
-                    className={`h-full rounded-full ${
-                      item.tone === "primary"
-                        ? "bg-secondary-700"
-                        : "bg-tertiary-600"
-                    }`}
-                    style={{ width: `${item.value}%` }}
-                  />
-                </div>
-              </div>
+              <AnimatedDataPoint
+                key={item.label}
+                label={item.label}
+                tone={item.tone}
+                value={item.value}
+              />
             ))}
           </div>
           <p className="mt-10 text-xs italic leading-5 text-zinc-500">
