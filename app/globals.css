@@ -492,3 +492,19 @@ html[data-a11y-text-align="4"] #site-shell :where(p, li, blockquote) {
     margin: 1.5rem 0;
   }
 }
+
+/* Chart blocks */
+.article-prose div[data-chart],
+.chart-node {
+  clear: both;
+  display: block;
+  margin: 1.5rem 0;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+}
+
+.article-prose div[data-chart] svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}

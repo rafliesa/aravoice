@@ -3,6 +3,7 @@ import { normalizeEmbedUrl } from "@/components/editor/embed";
 
 const UPLOAD_URL =
   /^\/api\/uploads\/[a-f0-9]{32}\.(jpe?g|png|webp|gif|mp3|wav|ogg|oga|m4a|mp4|webm|ogv)$/;
+const CHART_DATA_RE = /^[A-Za-z0-9+/=_%.-]+$/;
 const HEX_COLOR = /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i;
 const FONT_SIZE = /^(?:14|16|18|20|24|28|32|36|40)px$/;
 const FONT_WEIGHT = /^(?:300|400|500|600|700|800)$/;
@@ -71,6 +72,7 @@ export function sanitizeNewsHtml(value: string) {
     allowedTags: [
       "a",
       "audio",
+      "div",
       "b",
       "blockquote",
       "br",
@@ -100,6 +102,7 @@ export function sanitizeNewsHtml(value: string) {
       p: ["style"],
       h2: ["style"],
       h3: ["style"],
+      div: ["data-chart"],
       img: ["src", "alt", "title", "data-align", "data-width", "style"],
       audio: ["src", "controls", "preload"],
       video: ["src", "controls", "preload", "playsinline"],
@@ -197,6 +200,18 @@ export function sanitizeNewsHtml(value: string) {
               : {}),
           },
         };
+      },
+      div: (_tagName, attributes) => {
+        const raw = attributes["data-chart"] ?? "";
+        if (!raw || !CHART_DATA_RE.test(raw)) {
+          return { tagName: "span", attribs: {} };
+        }
+        try {
+          JSON.parse(decodeURIComponent(raw));
+        } catch {
+          return { tagName: "span", attribs: {} };
+        }
+        return { tagName: "div", attribs: { "data-chart": raw } as Record<string, string> };
       },
       ol: (_tagName, attributes) => {
         const start = Number(attributes.start);

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { use, useEffect, useMemo, useRef, useState } from "react";
 import { ARTICLE_PROSE } from "@/components/editor/articleProse";
+import { renderChartSvg, type ChartData } from "@/components/editor/chartRender";
 import {
   type News,
   fetchNewsBySlug,
@@ -283,19 +284,56 @@ export default function ArticlePage({
               )}
             </div>
 
-            <div
+            <ArticleBody
+              html={news.body}
               className={`mt-8 max-w-none ${ARTICLE_PROSE} ${
                 highContrast
                   ? "[&&]:text-black [&_a]:text-black [&_blockquote]:border-black [&_blockquote]:text-black"
                   : "text-[#082b4d]"
               }`}
               style={{ fontSize: `${textScale}em` }}
-              dangerouslySetInnerHTML={{ __html: news.body }}
             />
           </article>
         )}
       </div>
     </div>
+  );
+}
+
+function ArticleBody({
+  html,
+  className,
+  style,
+}: {
+  html: string;
+  className: string;
+  style?: React.CSSProperties;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = ref.current;
+    if (!container) return;
+    const nodes = container.querySelectorAll<HTMLElement>("div[data-chart]");
+    for (const node of nodes) {
+      const raw = node.getAttribute("data-chart") ?? "";
+      if (!raw) continue;
+      try {
+        const data = JSON.parse(decodeURIComponent(raw)) as ChartData;
+        node.innerHTML = renderChartSvg(data);
+      } catch {
+        // leave the div empty if data is malformed
+      }
+    }
+  }, [html]);
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={style}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
   );
 }
 

@@ -77,6 +77,97 @@ function sortNews(items: News[]) {
   });
 }
 
+function CoverImageInput({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (url: string) => void;
+}) {
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  async function handleFile(file: File) {
+    if (!file.type.startsWith("image/")) {
+      setError("File harus berupa gambar.");
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      setError("Ukuran file melebihi batas 10 MB.");
+      return;
+    }
+    setError("");
+    setUploading(true);
+    try {
+      const strategyRes = await fetch("/api/uploads", { cache: "no-store" });
+      if (!strategyRes.ok) throw new Error(await getResponseError(strategyRes));
+      const strategy = (await strategyRes.json()) as { strategy: string };
+      if (strategy.strategy === "unavailable") {
+        throw new Error("Penyimpanan media belum dikonfigurasi.");
+      }
+
+      let url: string;
+      if (strategy.strategy === "blob") {
+        const { upload } = await import("@vercel/blob/client");
+        const blob = await upload(`news/${file.name}`, file, {
+          access: "public",
+          contentType: file.type,
+          handleUploadUrl: "/api/uploads",
+          multipart: true,
+          clientPayload: JSON.stringify({ mimeType: file.type, size: file.size }),
+        });
+        url = blob.url;
+      } else {
+        const data = new FormData();
+        data.append("file", file);
+        const res = await fetch("/api/uploads", { method: "POST", body: data });
+        if (!res.ok) throw new Error(await getResponseError(res));
+        const result = (await res.json()) as { url: string };
+        url = result.url;
+      }
+      onChange(url);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Gagal mengunggah gambar.");
+    } finally {
+      setUploading(false);
+      if (inputRef.current) inputRef.current.value = "";
+    }
+  }
+
+  return (
+    <div className="space-y-2">
+      <div className="flex gap-2">
+        <input
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="https://…"
+          className="min-w-0 flex-1 rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#F29100]"
+        />
+        <button
+          type="button"
+          onClick={() => inputRef.current?.click()}
+          disabled={uploading}
+          className="shrink-0 rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-xs font-semibold text-zinc-700 transition-colors hover:border-zinc-400 hover:bg-zinc-50 disabled:cursor-wait disabled:opacity-60"
+        >
+          {uploading ? "Mengunggah…" : "Pilih Gambar"}
+        </button>
+      </div>
+      <input
+        ref={inputRef}
+        type="file"
+        accept="image/jpeg,image/png,image/webp,image/gif"
+        className="hidden"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) handleFile(file);
+        }}
+      />
+      {error && <p className="text-xs text-red-600">{error}</p>}
+    </div>
+  );
+}
+
 export default function AdminDashboard() {
   const [form, setForm] = useState<FormState>(createEmptyForm);
   const [news, setNews] = useState<News[]>([]);
@@ -348,11 +439,9 @@ export default function AdminDashboard() {
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <Field label="URL Gambar Sampul">
-                  <input
+                  <CoverImageInput
                     value={form.coverImage}
-                    onChange={(e) => update("coverImage", e.target.value)}
-                    placeholder="https://…"
-                    className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#F29100]"
+                    onChange={(url) => update("coverImage", url)}
                   />
                 </Field>
                 <Field label="Caption Gambar">

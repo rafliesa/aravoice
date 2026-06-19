@@ -8,6 +8,9 @@ import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
 import TextAlign from "@tiptap/extension-text-align";
 import { TextStyleKit } from "@tiptap/extension-text-style";
+import ChartDialog from "@/components/editor/ChartDialog";
+import ChartNode from "@/components/editor/ChartNode";
+import type { ChartData } from "@/components/editor/chartRender";
 import EmbedNode from "@/components/editor/EmbedNode";
 import FloatImage, { type ImageAlign } from "@/components/editor/FloatImage";
 import FontWeight from "@/components/editor/FontWeight";
@@ -53,6 +56,8 @@ const IMAGE_WIDTHS = ["25%", "40%", "60%", "80%", "100%"];
 
 export default function RichTextEditor({ value, onChange, placeholder }: Props) {
   const [mediaDialogOpen, setMediaDialogOpen] = useState(false);
+  const [chartDialogOpen, setChartDialogOpen] = useState(false);
+  const [editingChartData, setEditingChartData] = useState<ChartData | null>(null);
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
@@ -71,6 +76,7 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
       FloatImage.configure({ inline: false }),
       MediaNode,
       EmbedNode,
+      ChartNode,
     ],
     content: value,
     editorProps: {
@@ -114,6 +120,10 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
           | ImageAlign
           | null,
         imageWidth: (currentEditor.getAttributes("image").width ?? "") as string,
+        isChart: currentEditor.isActive("chart"),
+        chartData: currentEditor.isActive("chart")
+          ? (currentEditor.getAttributes("chart").chartData as ChartData | null)
+          : null,
       };
     },
   });
@@ -329,6 +339,15 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
           Media
         </ToolBtn>
         <ToolBtn
+          onClick={() => {
+            setEditingChartData(null);
+            setChartDialogOpen(true);
+          }}
+          title="Sisipkan grafik"
+        >
+          Grafik
+        </ToolBtn>
+        <ToolBtn
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
           title="Pembatas"
         >
@@ -339,7 +358,7 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
       <BubbleMenu
         editor={editor}
         shouldShow={({ editor: currentEditor }) => currentEditor.isActive("image")}
-        className="flex items-center gap-1 rounded-lg bg-zinc-900 p-1 text-white shadow-xl"
+        className="z-20 flex items-center gap-1 rounded-lg bg-zinc-900 p-1 text-white shadow-xl"
       >
         {IMAGE_ALIGNMENTS.map((alignment) => (
           <button
@@ -379,7 +398,38 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
         </select>
       </BubbleMenu>
 
+      <BubbleMenu
+        editor={editor}
+        shouldShow={({ editor: e }) => e.isActive("chart")}
+        className="z-20 flex items-center gap-1 rounded-lg bg-zinc-900 p-1 text-white shadow-xl"
+      >
+        <button
+          type="button"
+          onClick={() => {
+            setEditingChartData(state?.chartData ?? null);
+            setChartDialogOpen(true);
+          }}
+          className="rounded px-3 py-1 text-xs font-semibold hover:bg-white/15"
+        >
+          Edit Grafik
+        </button>
+      </BubbleMenu>
+
       <EditorContent editor={editor} />
+      {chartDialogOpen && (
+        <ChartDialog
+          initial={editingChartData}
+          onClose={() => setChartDialogOpen(false)}
+          onSave={(data) => {
+            if (editingChartData) {
+              editor.chain().focus().updateChart(data).run();
+            } else {
+              editor.chain().focus().insertChart(data).run();
+            }
+            setChartDialogOpen(false);
+          }}
+        />
+      )}
       {mediaDialogOpen && (
         <MediaDialog
           open
