@@ -5,8 +5,6 @@ import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder
 import Pasal53DataCard from "@/modules/medpro-report/component/Pasal53DataCard";
 import { articleHeadingClass, articleKickerClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
-export const subtitleOneHeading = "SUB JUDUL 1: BERPRESTASI DALAM KETERBATASAN DI KESEJAHTERAAN YANG TAK PASTI (JUDUL BESAR)";
-
 const konoStoryImages = [
   {
     src: "/pak-ono/DIO_4745.webp",

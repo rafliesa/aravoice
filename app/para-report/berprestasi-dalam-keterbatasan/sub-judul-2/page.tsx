@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import MedproReportPage from "@/modules/medpro-report";
 import { medproArticleDescription } from "@/modules/medpro-report/data";
-import SubtitleTwoContent, {
-  subtitleTwoHeading,
-} from "@/modules/medpro-report/content/SubtitleTwoContent";
+import SubtitleTwoContent from "@/modules/medpro-report/content/SubtitleTwoContent";
 
 const title = "Inklusivitas Hanya di Atas Kertas";
 
@@ -17,8 +15,8 @@ export default function SubtitleTwoPage() {
     <MedproReportPage
       activeIndex={1}
       currentLabel="Sub Judul 2 dari 7"
+      heroTitle={title}
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-3"
-      subtitleLabel={subtitleTwoHeading}
     >
       <SubtitleTwoContent />
     </MedproReportPage>

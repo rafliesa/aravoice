@@ -1,7 +1,5 @@
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
-export const subtitleFourHeading = "SUB JUDUL 4: EKONOMI";
-
 export default function SubtitleFourContent() {
   return (
     <>

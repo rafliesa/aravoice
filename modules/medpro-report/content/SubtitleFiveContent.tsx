@@ -1,8 +1,6 @@
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
-export const subtitleFiveHeading = "SUB JUDUL 5: PENDIDIKAN/LAPANGAN PEKERJAAN";
-
 export default function SubtitleFiveContent() {
   return (
     <>

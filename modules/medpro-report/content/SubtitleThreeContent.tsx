@@ -1,7 +1,5 @@
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
-export const subtitleThreeHeading = "SUB JUDUL 3: Dana yang Berputar, Kebutuhan yang Bertambah";
-
 export default function SubtitleThreeContent() {
   return (
     <>

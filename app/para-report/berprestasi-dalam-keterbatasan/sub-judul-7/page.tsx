@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import MedproReportPage from "@/modules/medpro-report";
 import { medproArticleDescription } from "@/modules/medpro-report/data";
-import SubtitleSevenContent, {
-  subtitleSevenHeading,
-} from "@/modules/medpro-report/content/SubtitleSevenContent";
+import SubtitleSevenContent from "@/modules/medpro-report/content/SubtitleSevenContent";
 
 const title = "Bab Advokasi";
 
@@ -17,8 +15,8 @@ export default function SubtitleSevenPage() {
     <MedproReportPage
       activeIndex={6}
       currentLabel="Sub Judul 7 dari 7"
+      heroTitle={title}
       nextHref="#"
-      subtitleLabel={subtitleSevenHeading}
     >
       <SubtitleSevenContent />
     </MedproReportPage>

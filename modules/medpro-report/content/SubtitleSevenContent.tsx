@@ -3,8 +3,6 @@ import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder
 import SourceLink from "@/modules/medpro-report/component/SourceLink";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
-export const subtitleSevenHeading = "SUB JUDUL 7: BAB ADVOKASI";
-
 export default function SubtitleSevenContent() {
   return (
     <>

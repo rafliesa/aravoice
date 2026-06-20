@@ -1,8 +1,6 @@
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
-export const subtitleSixHeading = "SUB JUDUL 6: PSIKOLOGIS";
-
 export default function SubtitleSixContent() {
   return (
     <>

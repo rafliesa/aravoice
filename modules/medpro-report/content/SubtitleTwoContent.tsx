@@ -1,10 +1,10 @@
 import EditorialNote from "@/modules/medpro-report/component/EditorialNote";
+import AccessibilityPrinciplesTable from "@/modules/medpro-report/component/AccessibilityPrinciplesTable";
 import ArticleComparisonTable from "@/modules/medpro-report/component/ArticleComparisonTable";
 import ArticleRightsList from "@/modules/medpro-report/component/ArticleRightsList";
+import ConstitutionHighlightsInfographic from "@/modules/medpro-report/component/ConstitutionHighlightsInfographic";
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
-
-export const subtitleTwoHeading = "SUB JUDUL 2: INKLUSIVITAS HANYA DI ATAS KERTAS";
 
 const disabilityRights = [
   {
@@ -171,19 +171,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-4">
         {"Jaminan ini kemudian dipertegas berdasarkan UUD 1945 melalui dua prinsip utama:"}
       </p>
-      <ul className="space-y-3 rounded-lg border border-[#d9d2c7] bg-white p-5 font-sans text-sm font-normal leading-7 text-[#0a3358]">
-        <li>
-          <strong>Kesetaraan Hukum (Pasal 28H ayat 2):</strong>{" "}
-          Menegaskan bahwa setiap individu berhak atas perlakuan khusus dan
-          kemudahan untuk mendapatkan kesempatan serta manfaat yang sama demi
-          mencapai keadilan dan persamaan.
-        </li>
-        <li>
-          <strong>Hak Asasi yang Melekat (Pasal 28I ayat 1):</strong>{" "}
-          Menjamin hak-hak dasar yang tidak dapat dikurangi dalam keadaan apa
-          pun, seperti hak untuk tidak disiksa dan hak kebebasan beragama.
-        </li>
-      </ul>
+      <ConstitutionHighlightsInfographic />
       <p className={articleParagraphClass} key="paragraph-7">
         {"Indonesia kemudian meratifikasi konvensi tersebut melalui Undang-Undang Nomor 19 Tahun 2011, menjadikannya bagian dari komitmen negara dalam menjamin hak-hak penyandang disabilitas yang mengubah paradigma dari model medis yakni melihat disabilitas sebagai penyakit, menjadi model hak asasi manusia."}
       </p>
@@ -252,20 +240,9 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-56">
         {"Ia kemudian menjelaskan bahwa aksesibilitas bukan sekadar soal ada atau tidaknya ramp."}
       </p>
-      <p className={articleParagraphClass} key="paragraph-57">
-        {"Aksesibilitas harus memenuhi empat asas yang saling berkaitan: 1)​ KEGUNAAN Fasilitas bisa benar-benar digunakan oleh penyandang disabilitas, bukan sekadar ada secara fisik."}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-58">
-        {"2)​ KESELAMATAN Tidak menimbulkan pengguna."}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-59">
-        {"3)​ KENYAMANAN Fasilitas yang membuat atlet tidak harus berjuang keras hanya untuk masuk ke gedung latihan."}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-60">
-        {"4)​ KEMANDIRIAN Penyandang disabilitas bisa mengakses tanpa harus selalu dibantu atau \"digotong\" orang lain."}
-      </p>
+      <AccessibilityPrinciplesTable />
       <p className={articleParagraphClass} key="paragraph-61">
-        {"risiko bagi Menjelang ajang besar seperti Peparda, para atlet memang ditempatkan di mess sebagai bagian dari persiapan pertandingan. Namun fasilitas yang tersedia belum sepenuhnya menjawab kebutuhan dasar mereka. Opik Jaya, atlet blind judo NPCI Kota Bandung kerap menginap di mess, mengungkapkan bahwa organisasi hanya menyediakan beras dan magic com."}
+        {"Menjelang ajang besar seperti Peparda, para atlet memang ditempatkan di mess sebagai bagian dari persiapan pertandingan. Namun fasilitas yang tersedia belum sepenuhnya menjawab kebutuhan dasar mereka. Opik Jaya, atlet blind judo NPCI Kota Bandung kerap menginap di mess, mengungkapkan bahwa organisasi hanya menyediakan beras dan magic com."}
       </p>
       <p className={articleParagraphClass} key="quote-62">{"\"Disediakan beras dan magic com. Kalau lauk beli sendiri,\""}</p>
       <p className={articleParagraphClass} key="paragraph-63">

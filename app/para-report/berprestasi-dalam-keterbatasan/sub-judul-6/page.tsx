@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import MedproReportPage from "@/modules/medpro-report";
 import { medproArticleDescription } from "@/modules/medpro-report/data";
-import SubtitleSixContent, {
-  subtitleSixHeading,
-} from "@/modules/medpro-report/content/SubtitleSixContent";
+import SubtitleSixContent from "@/modules/medpro-report/content/SubtitleSixContent";
 
 const title = "Psikologis";
 
@@ -17,8 +15,8 @@ export default function SubtitleSixPage() {
     <MedproReportPage
       activeIndex={5}
       currentLabel="Sub Judul 6 dari 7"
+      heroTitle={title}
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-7"
-      subtitleLabel={subtitleSixHeading}
     >
       <SubtitleSixContent />
     </MedproReportPage>
