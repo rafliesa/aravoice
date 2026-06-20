@@ -16,7 +16,7 @@ export default function SubtitleSevenPage() {
       activeIndex={6}
       currentLabel="Sub Judul 7 dari 7"
       heroTitle={title}
-      nextHref="#"
+      previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-6"
     >
       <SubtitleSevenContent />
     </MedproReportPage>

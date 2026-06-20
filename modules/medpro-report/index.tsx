@@ -14,6 +14,7 @@ type MedproReportPageProps = {
   currentLabel?: string;
   heroTitle: string;
   nextHref?: string;
+  previousHref?: string;
 };
 
 export default function MedproReportPage({
@@ -22,6 +23,7 @@ export default function MedproReportPage({
   currentLabel = "Sub Judul 1 dari 7",
   heroTitle,
   nextHref = "/para-report/berprestasi-dalam-keterbatasan/sub-judul-2",
+  previousHref,
 }: MedproReportPageProps) {
   return (
     <main className="flex-1 bg-[#faf8f3] text-[#082b4d]">
@@ -32,7 +34,9 @@ export default function MedproReportPage({
           description={medproArticleDescription}
         />
         <ArticleMeta currentLabel={currentLabel} />
-        <ArticleContent nextHref={nextHref}>{children}</ArticleContent>
+        <ArticleContent nextHref={nextHref} previousHref={previousHref}>
+          {children}
+        </ArticleContent>
       </article>
     </main>
   );

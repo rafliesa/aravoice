@@ -17,6 +17,7 @@ export default function SubtitleThreePage() {
       currentLabel="Sub Judul 3 dari 7"
       heroTitle={title}
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-4"
+      previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-2"
     >
       <SubtitleThreeContent />
     </MedproReportPage>
