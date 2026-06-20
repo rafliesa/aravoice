@@ -1,4 +1,3 @@
-import Quote from "@/modules/medpro-report/component/Quote";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
 export const subtitleFourHeading = "SUB JUDUL 4: EKONOMI";
@@ -6,7 +5,7 @@ export const subtitleFourHeading = "SUB JUDUL 4: EKONOMI";
 export default function SubtitleFourContent() {
   return (
     <>
-      <Quote key="quote-0">{"“Tahun ini belum ada uang pembinaan yang turun. Katanya sekarang SK baru turun. Tapi dari Januari sampai Juni ini belum ada yang cair, baik untuk atlet angkat berat maupun cabang olahraga lain,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-0">{"“Tahun ini belum ada uang pembinaan yang turun. Katanya sekarang SK baru turun. Tapi dari Januari sampai Juni ini belum ada yang cair, baik untuk atlet angkat berat maupun cabang olahraga lain,”"}</p>
       <p className={articleParagraphClass} key="paragraph-1">
         {"Ucap Kono Saipudin (49), atlet angkat berat NPCI Kota Bandung."}
       </p>
@@ -28,7 +27,7 @@ export default function SubtitleFourContent() {
       <p className={articleParagraphClass} key="paragraph-7">
         {"Bahkan dengan tiga pemasukan tersebut juga belum tentu bisa mencukupi kebutuhan keluarganya karena permintaan pasar yang tidak pasti."}
       </p>
-      <Quote key="quote-8">{"“(Penghasilan utama) dari usaha itu. Tapi usaha kan kadang naik turun. Nah itu yang sering menjadi tekanan. Karena setiap hari ada kebutuhan keluarga, kebutuhan istri, dan terutama biaya sekolah anak,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-8">{"“(Penghasilan utama) dari usaha itu. Tapi usaha kan kadang naik turun. Nah itu yang sering menjadi tekanan. Karena setiap hari ada kebutuhan keluarga, kebutuhan istri, dan terutama biaya sekolah anak,”"}</p>
       <p className={articleParagraphClass} key="paragraph-9">
         {"Jelas Kono."}
       </p>
@@ -47,7 +46,7 @@ export default function SubtitleFourContent() {
       <p className={articleParagraphClass} key="paragraph-14">
         {"Situasi itu terlihat jelas dalam kesaksian Wiryadharma, Koordinator Pelatih cabang olahraga Blind Judo Kota Bandung. Tidak jarang lebih dari separuh atlet binaannya berhalangan hadir latihan karena persoalan ekonomi."}
       </p>
-      <Quote key="quote-15">{"“Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya juga tidak bisa memaksa mereka,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-15">{"“Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya juga tidak bisa memaksa mereka,”"}</p>
       <p className={articleParagraphClass} key="paragraph-16">
         {"Terang Wiryadharma. KUTIPAN PENTING Bagi Wiryadharma, pelatih tidak selalu dalam posisi untuk menuntut kehadiran atlet. Di satu sisi,"}
       </p>
@@ -75,7 +74,7 @@ export default function SubtitleFourContent() {
       <p className={articleParagraphClass} key="paragraph-24">
         {"Pemasukan yang ia sebut secara langsung adalah bonus setelah meraih medali perak di Peparnas 2024. Bonus tersebut ia terima dari NPCI Jawa Barat dan Kota Bandung karena ia merupakan salah satu kontingen Jawa Barat atau pengcab Kota Bandung."}
       </p>
-      <Quote key="quote-25">{"“Bonus dapat, karena sesuai mendali kan, waktu itu aku dapat perak, terus penyalurannya aku nggak tahu sih kak, dari itu, pokoknya aku dapat bonus itu dari NPC Jawa Barat sama NPC Kota Bandung,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-25">{"“Bonus dapat, karena sesuai mendali kan, waktu itu aku dapat perak, terus penyalurannya aku nggak tahu sih kak, dari itu, pokoknya aku dapat bonus itu dari NPC Jawa Barat sama NPC Kota Bandung,”"}</p>
       <p className={articleParagraphClass} key="paragraph-26">
         {"Ujarnya."}
       </p>
@@ -100,14 +99,14 @@ export default function SubtitleFourContent() {
       <p className={articleParagraphClass} key="paragraph-33">
         {"Menurutnya, banyak atlet mendapat perhatian besar setelah ketika masih berprestasi, tetapi kembali menghadapi kesulitan ekonomi setelah amsa produktifnya berakhir. Salah satu hal yang ia soroti adalah literasi keuangan."}
       </p>
-      <Quote key="quote-34">{"“Selain itu, ada persoalan yang menurut saya sangat penting, yaitu literasi keuangan. Banyak atlet, baik disabilitas maupun non-disabilitas, mendapatkan bonus yang sangat besar ketika berprestasi. Satu medali emas tingkat ASEAN saja bisa bernilai satu miliar rupiah,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-34">{"“Selain itu, ada persoalan yang menurut saya sangat penting, yaitu literasi keuangan. Banyak atlet, baik disabilitas maupun non-disabilitas, mendapatkan bonus yang sangat besar ketika berprestasi. Satu medali emas tingkat ASEAN saja bisa bernilai satu miliar rupiah,”"}</p>
       <p className={articleParagraphClass} key="paragraph-35">
         {"Ujar Jonna."}
       </p>
       <p className={articleParagraphClass} key="paragraph-36">
         {"NPCI Kota Bandung sendiri masih belum menyediakan pelatihan literasi keuangan yang dapat membantu para atlet untuk mengelola serta memanfaatkan dana pribadi dan bonus yang mereka dapatkan. Komisioner Komisi Nasional Disabilitas (KND) Jonna Aman Damanik menyebutkan bahwa literasi keuangan merupakan hal yang sangat penting untuk dikuasai. Menurutnya, banyak atlet yang mendapatkan bonus besar, tetapi tidak memiliki kemampuan untuk mengelola uang dengan baik."}
       </p>
-      <Quote key="quote-37">{"“...yang paling penting menurut saya adalah literasi keuangan. Banyak atlet mendapatkan bonus besar, tetapi tidak memiliki kemampuan mengelola keuangan dengan baik. Akhirnya setelah beberapa tahun kondisi ekonominya kembali sulit. Karena itu sekarang Kemenpora bekerja sama dengan OJK untuk memberikan pendidikan literasi keuangan kepada para atlet,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-37">{"“...yang paling penting menurut saya adalah literasi keuangan. Banyak atlet mendapatkan bonus besar, tetapi tidak memiliki kemampuan mengelola keuangan dengan baik. Akhirnya setelah beberapa tahun kondisi ekonominya kembali sulit. Karena itu sekarang Kemenpora bekerja sama dengan OJK untuk memberikan pendidikan literasi keuangan kepada para atlet,”"}</p>
       <p className={articleParagraphClass} key="paragraph-38">
         {"Jelas Jonna."}
       </p>

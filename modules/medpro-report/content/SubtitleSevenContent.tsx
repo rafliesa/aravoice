@@ -1,6 +1,5 @@
 import EditorialNote from "@/modules/medpro-report/component/EditorialNote";
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
-import Quote from "@/modules/medpro-report/component/Quote";
 import SourceLink from "@/modules/medpro-report/component/SourceLink";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
@@ -19,7 +18,7 @@ export default function SubtitleSevenContent() {
       <p className={articleParagraphClass} key="paragraph-3">
         {"KND juga membuka kanal pengaduan Disabilitas Tanah Air 143 yang menerima laporan dari berbagai sektor, mulai dari pendidikan, ketenagakerjaan, layanan publik, hingga ruang digital."}
       </p>
-      <Quote key="quote-4">{"“Kalau dari sisi regulasi sebenarnya sudah ada. Undang-undangnya juga sudah ada. Tetapi implementasinya secara keseluruhan masih belum memenuhi kebutuhan,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-4">{"“Kalau dari sisi regulasi sebenarnya sudah ada. Undang-undangnya juga sudah ada. Tetapi implementasinya secara keseluruhan masih belum memenuhi kebutuhan,\""}</p>
       <p className={articleParagraphClass} key="paragraph-5">
         {"Ujar Jona."}
       </p>
@@ -43,7 +42,7 @@ export default function SubtitleSevenContent() {
         {"Ketika NPCI menyebut keberadaan \"bidang hukum\", yang dimaksud bukanlah lembaga yang menangani persoalan hak, kesejahteraan, atau perlindungan atlet. Bidang tersebut lebih berfungsi untuk mengurus klasifikasi ketunaan dalam sistem pertandingan olahraga disabilitas. Dengan kata lain, mekanisme yang menentukan apakah seorang atlet masuk kategori S1 atau S2 memang tersedia."}
       </p>
       <EditorialNote key="note-13" text={"[INFOGRAFIS Hak dalam Regulasi — Realita Atlet]"} />
-      <Quote key="quote-14">{"“Sementara ini belum ada ya masalah itu. Belum ada masalah itu. Karena pembinaan kesejahteraan itu langsung ada di pengcab-pengcab. Tetapi seandainya mereka membutuhkan itu,"}</Quote>
+      <p className={articleParagraphClass} key="quote-14">{"“Sementara ini belum ada ya masalah itu. Belum ada masalah itu. Karena pembinaan kesejahteraan itu langsung ada di pengcab-pengcab. Tetapi seandainya mereka membutuhkan itu,"}</p>
       <p className={articleParagraphClass} key="paragraph-15">
         {"tim Jawa Barat siap,” ungkap Dodi saat menjawab laporan dari atlet terkait pemberdayaan atlet disabilitas."}
       </p>
@@ -51,7 +50,7 @@ export default function SubtitleSevenContent() {
         {"Kondisi ini berbeda dengan mekanisme yang berlaku di Komite Olahraga Nasional Indonesia"}
       </p>
       <EditorialNote key="note-17" text={"(KONI) Kota Bandung. Wakil Ketua II KONI Kota Bandung, Mulyana, menjelaskan bahwa terdapat alur penanganan yang lebih jelas ketika atlet menghadapi permasalahan."} />
-      <Quote key="quote-18">{"“Yang pertama bertanggung jawab adalah cabang olahraganya. Kalau misalnya cabang olahraga tidak bisa mengatasi, biasanya datang ke KONI. Contohnya ada kasus kecelakaan, cabang olahraga tidak bisa membackup, ya datang ke KONI. Kalau KONI bisa membackup, ya kita bantu,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-18">{"“Yang pertama bertanggung jawab adalah cabang olahraganya. Kalau misalnya cabang olahraga tidak bisa mengatasi, biasanya datang ke KONI. Contohnya ada kasus kecelakaan, cabang olahraga tidak bisa membackup, ya datang ke KONI. Kalau KONI bisa membackup, ya kita bantu,”"}</p>
       <p className={articleParagraphClass} key="paragraph-19">
         {"Ungkap Mulyana di KONI GOR Bandung."}
       </p>
@@ -109,7 +108,7 @@ export default function SubtitleSevenContent() {
       <p className={articleParagraphClass} key="paragraph-38">
         {"Pak Iman dari bidang pembinaan prestasi NPCI Jawa Barat mengungkap dimensi yang bahkan lebih mendasar terkait kebutuhan akan pendamping yang merupakan profesi tersendiri, berbeda dari pelatih,"}
       </p>
-      <Quote key="quote-39">{"“Seharusnya dana atlet disabilitas agak lebih besar daripada dana ke atlet olahraga lain. Kenapa?"}</Quote>
+      <p className={articleParagraphClass} key="quote-39">{"“Seharusnya dana atlet disabilitas agak lebih besar daripada dana ke atlet olahraga lain. Kenapa?"}</p>
       <p className={articleParagraphClass} key="paragraph-40">
         {"Satu atlet butuh pelatih, butuh pendamping. Pendamping inilah yang harus memahami atlet,"}
       </p>
@@ -128,7 +127,7 @@ export default function SubtitleSevenContent() {
       <p className={articleParagraphClass} key="paragraph-45">
         {"Muslim, atlet catur tunanetra menjelaskan mekanisme BPJS atlet disabilitas NPCI Kota Bandung hanya aktif menjelang kompetisi. Di luar periode itu, tidak ada perlindungan kesehatan yang aktif."}
       </p>
-      <Quote key="quote-46">{"“BPJS itu tidak selalu aktif. Jadi nanti kalau misalnya pas kejadian, baru dibikin sama organisasi,"}</Quote>
+      <p className={articleParagraphClass} key="quote-46">{"“BPJS itu tidak selalu aktif. Jadi nanti kalau misalnya pas kejadian, baru dibikin sama organisasi,"}</p>
       <p className={articleParagraphClass} key="paragraph-47">
         {"itu baru aktif. Kalau sebelum itu enggak aktif. Harusnya sudah, harusnya sudah. Sudah pernah ngajukan. Cuma berbagai alasan, harus bayar. Jadi memang masalahnya adalah tidak ada pemasukan rutin,” jelasnya."}
       </p>
@@ -138,7 +137,7 @@ export default function SubtitleSevenContent() {
       <p className={articleParagraphClass} key="paragraph-49">
         {"Iman menyebut angka yang seharusnya membuat semua pemangku kepentingan bangkit dari kursi mereka: 57 persen dari 347 atlet kontingen Peparnas Jawa Barat terakhir berusia di atas 40 tahun."}
       </p>
-      <Quote key="quote-50">{"“Saya selalu bermain data. 347 atlet. Peparnas Jawa Barat itu 57% di atas 40 tahun. Jadi ini pekerjaan kami untuk menghadapi Peparnas 2028 — harus mempersiapkan apakah menggunakan atlet yang dulu atau regenerasi atlet. Kami kekurangan. Kami kurang bahan."}</Quote>
+      <p className={articleParagraphClass} key="quote-50">{"“Saya selalu bermain data. 347 atlet. Peparnas Jawa Barat itu 57% di atas 40 tahun. Jadi ini pekerjaan kami untuk menghadapi Peparnas 2028 — harus mempersiapkan apakah menggunakan atlet yang dulu atau regenerasi atlet. Kami kekurangan. Kami kurang bahan."}</p>
       <p className={articleParagraphClass} key="paragraph-51">
         {"Sehingga atlet-atlet kami di atas 40 tahun, 50 tahun. Yang namanya olahragawan itu kan adu raga. Kalau raga sudah tua, ya nggak akan mampu sebetulnya. Tapi karena susah mencarinya,"}
       </p>
@@ -151,7 +150,7 @@ export default function SubtitleSevenContent() {
       <p className={articleParagraphClass} key="paragraph-54">
         {"Aditya Nandang Saputra, anak dari seorang atlet disabilitas, mengisahkan bagaimana stigma terhadap disabilitas masih terjadi di tingkat keluarga dan lingkungan terdekat."}
       </p>
-      <Quote key="quote-55">{"“Yang awalnya anak yang ditanya cuma perengah-perengih, senyam-senyum. Ya tahu sendiri lah ketika anak disabilitas tidak masuk SD biasa, dia masuknya di SLB. Itu yang jadi permasalahan."}</Quote>
+      <p className={articleParagraphClass} key="quote-55">{"“Yang awalnya anak yang ditanya cuma perengah-perengih, senyam-senyum. Ya tahu sendiri lah ketika anak disabilitas tidak masuk SD biasa, dia masuknya di SLB. Itu yang jadi permasalahan."}</p>
       <p className={articleParagraphClass} key="paragraph-56">
         {"Akibat orang tuanya ketakutan. Anaknya ini nanti di SD dibully. Padahal ya itu peluangnya sebenarnya di situ. Sekarang nih, wah siapa yang enggak tahu Ridho? Ridho Wijana. Coba lihat TikToknya. Se-PD itu nanti ya. Kemarin di Jakarta emas. Rizki Mulyana, CV juga. Sekarang atlet pelatnas.”Ucap Aditya Nandang Saputra, Bidang Pemberdayaan Prestasi Atlet NPCI Kabupaten Bandung."}
       </p>
@@ -161,14 +160,14 @@ export default function SubtitleSevenContent() {
       <p className={articleParagraphClass} key="paragraph-58">
         {"Acep Wahyu Ramdan selaku Sub Olahraga Pendidikan Dispora Kota Bandung menjelaskan tantangannya terkait sosialisasi disabilitas."}
       </p>
-      <Quote key="quote-59">{"“Masih ada orang tua yang menyembunyikan anak disabilitas karena merasa malu."}</Quote>
+      <p className={articleParagraphClass} key="quote-59">{"“Masih ada orang tua yang menyembunyikan anak disabilitas karena merasa malu."}</p>
       <p className={articleParagraphClass} key="paragraph-60">
         {"Padahal sekarang tidak boleh seperti itu.Justru organisasi seperti NPCI harus aktif melakukan sosialisasi agar anak-anak disabilitas memiliki kesempatan berkembang melalui olahraga.”"}
       </p>
       <p className={articleParagraphClass} key="paragraph-61">
         {"Acep juga mengatakan Dispora tidak terlibat langsung dalam pelaksanaan sosialisasi teknis kepada penyandang disabilitas. Tugas tersebut diserahkan kepada NPCI yang dinilai lebih memahami kebutuhan atlet dan komunitas disabilitas. Dalam posisi tersebut, Dispora berperan sebagai mitra yang mendukung pembinaan melalui penyediaan anggaran dan fasilitas."}
       </p>
-      <Quote key="quote-62">{"“Masih ada orang tua yang menyembunyikan anak disabilitas karena merasa malu. Padahal sekarang tidak boleh seperti itu. Justru organisasi seperti NPCI harus aktif melakukan sosialisasi agar anak-anak disabilitas memiliki kesempatan berkembang melalui olahraga,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-62">{"“Masih ada orang tua yang menyembunyikan anak disabilitas karena merasa malu. Padahal sekarang tidak boleh seperti itu. Justru organisasi seperti NPCI harus aktif melakukan sosialisasi agar anak-anak disabilitas memiliki kesempatan berkembang melalui olahraga,”"}</p>
       <p className={articleParagraphClass} key="paragraph-63">
         {"Lanjut Acep Melihat persoalan tersebut berakar dari stigma yang masih hidup di lingkungan, akibatnya bannyak anak disabilitas yang tidak pernah mengenal dunia olahraga prestasi bukan karena potensi, melainkan karena tidak pernah mendapatkan kesempatan untuk mengaksesnya."}
       </p>
@@ -184,7 +183,7 @@ export default function SubtitleSevenContent() {
       <p className={articleParagraphClass} key="paragraph-67">
         {"Aden Ahmad Muhammad Rahman, aktivis hak disabilitas sekaligus atlet tenis yang kembali bertanding pada usia 59 tahun, menilai belum ada sistem yang secara khusus menjamin keberlangsungan hidup atlet disabilitas setelah mereka tidak lagi berkompetisi."}
       </p>
-      <Quote key="quote-68">{"“Nah, itu yang belum ada. Saat masih menjadi atlet biasanya ada uang pembinaan bulanan."}</Quote>
+      <p className={articleParagraphClass} key="quote-68">{"“Nah, itu yang belum ada. Saat masih menjadi atlet biasanya ada uang pembinaan bulanan."}</p>
       <p className={articleParagraphClass} key="paragraph-69">
         {"Misalnya atlet yang sedang dipersiapkan untuk Peparda akan mendapat bantuan selama masa persiapan. Tetapi setelah pensiun, belum ada regulasi yang menjamin kehidupan mereka. Belum ada santunan pensiun atlet.” Ucap Aden."}
       </p>

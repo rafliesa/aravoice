@@ -1,10 +1,125 @@
 import EditorialNote from "@/modules/medpro-report/component/EditorialNote";
+import ArticleImageCarousel from "@/modules/medpro-report/component/ArticleImageCarousel";
+import AthleteNeedsInfographic from "@/modules/medpro-report/component/AthleteNeedsInfographic";
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import Pasal53DataCard from "@/modules/medpro-report/component/Pasal53DataCard";
-import Quote from "@/modules/medpro-report/component/Quote";
 import { articleHeadingClass, articleKickerClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
 export const subtitleOneHeading = "SUB JUDUL 1: BERPRESTASI DALAM KETERBATASAN DI KESEJAHTERAAN YANG TAK PASTI (JUDUL BESAR)";
+
+const konoStoryImages = [
+  {
+    src: "/pak-ono/DIO_4745.webp",
+    alt: "Kono Saipudin dalam rangkaian sesi latihan angkat berat.",
+    caption:
+      "Kono Saipudin dalam rangkaian sesi latihan angkat berat di Gedung NPCI Kota Bandung.",
+  },
+  {
+    src: "/pak-ono/DIO_4750.webp",
+    alt: "Kono Saipudin bersiap di area latihan.",
+    caption:
+      "Kono bersiap sebelum memulai latihan, menghadapi rutinitas yang tetap berjalan meski dukungan belum selalu pasti.",
+  },
+  {
+    src: "/pak-ono/DIO_4773.webp",
+    alt: "Detail aktivitas Kono Saipudin saat latihan.",
+    caption:
+      "Latihan menjadi ruang Kono menjaga peluang bertanding dan mempertahankan prestasi.",
+  },
+  {
+    src: "/pak-ono/DIO_4807.webp",
+    alt: "Kono Saipudin menjalani sesi latihan.",
+    caption:
+      "Setiap sesi latihan menuntut tenaga, waktu, dan biaya transportasi yang harus ditanggung secara mandiri.",
+  },
+  {
+    src: "/pak-ono/DIO_4814.webp",
+    alt: "Kono Saipudin di ruang latihan NPCI Kota Bandung.",
+    caption:
+      "Di ruang latihan NPCI Kota Bandung, Kono terus menyiapkan diri menuju agenda pertandingan berikutnya.",
+  },
+  {
+    src: "/pak-ono/DIO_4828.webp",
+    alt: "Kono Saipudin mempersiapkan peralatan latihan.",
+    caption:
+      "Peralatan angkat berat sebagian besar merupakan produk impor dan membutuhkan dukungan biaya yang tidak kecil.",
+  },
+  {
+    src: "/pak-ono/DIO_4836.webp",
+    alt: "Kono Saipudin fokus saat latihan.",
+    caption:
+      "Fokus latihan tetap dijaga di tengah ketidakpastian pembinaan dan kebutuhan hidup harian.",
+  },
+  {
+    src: "/pak-ono/DIO_4844.webp",
+    alt: "Kono Saipudin dalam sesi latihan pagi.",
+    caption:
+      "Kono Saipudin mempersiapkan beban di sesi latihan pagi, Gedung NPCI Kota Bandung.",
+  },
+  {
+    src: "/pak-ono/DIO_4869.webp",
+    alt: "Kono Saipudin dan suasana latihan angkat berat.",
+    caption:
+      "Sorak-sorai podium menyimpan peluh latihan yang terus berlangsung di balik keterbatasan.",
+  },
+  {
+    src: "/pak-ono/DIO_4882.webp",
+    alt: "Kono Saipudin berada di dekat peralatan latihan.",
+    caption:
+      "Ongkos transportasi, kebutuhan nutrisi, dan pengeluaran tak terduga menjadi bagian dari rutinitas latihan.",
+  },
+  {
+    src: "/pak-ono/DIO_4900.webp",
+    alt: "Kono Saipudin menjalani aktivitas di sela latihan.",
+    caption:
+      "Di luar arena, Kono juga menjalani pekerjaan tambahan untuk menopang kebutuhan keluarga.",
+  },
+  {
+    src: "/pak-ono/DIO_4925.webp",
+    alt: "Kono Saipudin dalam rangkaian foto cerita.",
+    caption:
+      "Bagi Kono, olahraga bukan hanya soal medali, tetapi juga cara bertahan di tengah ketidakpastian.",
+  },
+  {
+    src: "/pak-ono/DIO_4931.webp",
+    alt: "Kono Saipudin di lokasi latihan.",
+    caption:
+      "Latihan terus berjalan meski pencairan pembinaan dan kepastian dukungan belum selalu mengikuti ritme atlet.",
+  },
+  {
+    src: "/pak-ono/DIO_4943.webp",
+    alt: "Kono Saipudin beraktivitas setelah latihan.",
+    caption:
+      "Setelah sesi latihan berakhir, perjuangan lain dimulai untuk memastikan kebutuhan rumah tetap terpenuhi.",
+  },
+  {
+    src: "/pak-ono/DIO_4957.webp",
+    alt: "Kono Saipudin dalam dokumentasi foto cerita.",
+    caption:
+      "Kesejahteraan atlet disabilitas masih bertumpu pada daya tahan pribadi dan pekerjaan sampingan.",
+  },
+  {
+    src: "/pak-ono/DIO_4970.webp",
+    alt: "Kono Saipudin dalam penutup rangkaian foto cerita.",
+    caption:
+      "Kisah Kono memperlihatkan bagaimana prestasi dan kehidupan sehari-hari saling bertarung di luar arena.",
+  },
+];
+
+const blindJudoTransportImages = [
+  {
+    src: "/1/blindjudo.webp",
+    alt: "Sesi latihan blind judo atlet disabilitas.",
+    caption:
+      "Blind judo menjadi salah satu cabang yang masih menghadapi tantangan akses fasilitas latihan.",
+  },
+  {
+    src: "/1/transportasi.webp",
+    alt: "Transportasi yang digunakan atlet disabilitas menuju tempat latihan.",
+    caption:
+      "Transportasi menuju lokasi latihan menjadi beban harian bagi atlet disabilitas yang harus tetap menjaga konsistensi latihan.",
+  },
+];
 
 export default function SubtitleOneContent() {
   return (
@@ -12,16 +127,13 @@ export default function SubtitleOneContent() {
       <p className={articleKickerClass} key="kicker-0">
         {"Menelisik Realita Atlet Bandung Disabilitas"}
       </p>
-      <MediaPlaceholder assetNumber={1} key="media-1" text={"Alt text: penjelasan/informasi tentang FOTO HEADLINE (ONO)"} />
-      <EditorialNote key="note-2" text={"(bisa put suara, ini saran aja depends di dalam kalimat pembuka)"} />
-      <MediaPlaceholder assetNumber={2} key="media-3" text={"DIO_4869.jpg Sorak-sorai podium menggema kencang, menggetarkan semangat para atlet disabilitas di lapangan. Di balik semangat itu, ada peluh yang jatuh senyap, menyisakan jejak keringat pion penting negara yang nyaris terlihat. Senyum terus terukir lebar di muka mereka, meskipun kesejahteraan yang dijanjikan negara justru tertatih jauh di belakang prestasi mereka. Bagi atlet disabilitas, pertandingan tidak hanya selesai ketika peluit berbunyi. Di luar lapangan, mereka masih harus berhadapan dengan serentetan pertandingan melawan kehidupan. Kelayakan sosial menjadi kemewahan, dan kepastian masa depan terasa lebih jauh daripada garis finish yang mereka kejar."} />
       <p className={articleParagraphClass} key="paragraph-4">
         {"Tarikan napas dan barbell yang terangkat perlahan dari lantai. Otot-otot di lengan Kono Saipudin menegang, sementara peluh mulai membasahi wajahnya. Napas itu membawa kisah panjang dari lelaki 49 tahun dalam tubuhnya yang menyimpan keterbatasan pada kakinya. Sejak 2018,"}
       </p>
       <p className={articleParagraphClass} key="paragraph-5">
         {"kecintaannya pada olahraga membawanya menekuni angkat beban yang membawanya ke berbagai arena prestasi dan menemukan ruang saluran kemampuan untuknya."}
       </p>
-      <Quote key="quote-6">{"“Ya namanya hidup harus jalan,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-6">{"“Ya namanya hidup harus jalan,”"}</p>
       <p className={articleParagraphClass} key="paragraph-7">
         {"Ucap Kono pelan sambil tersenyum sukar. Ekspresinya seakan damai dengan keadaan sekalipun keadaan itu tidak pernah benar-benar adil. Harus menghadapi beban kehidupan dan beratnya besi yang melampaui badan sendiri."}
       </p>
@@ -40,14 +152,14 @@ export default function SubtitleOneContent() {
       <p className={articleParagraphClass} key="paragraph-12">
         {"Komisioner Komisi Nasional Disabilitas (KND), Jonna Damanik menjelaskan terkait kondisi olahraga disabilitas “Kalau melihat perkembangannya, setidaknya sejak lahirnya Undang-Undang Nomor 8 Tahun 2016, perkembangan atlet disabilitas sangat luar biasa. Momentum pentingnya adalah Asian Para Games 2018. Dari situ prestasi atlet disabilitas meningkat pesat. Tentu hal itu tidak lepas dari sistem pembinaan, tata kelola kelembagaan, serta dukungan negara,”"}
       </p>
-      <MediaPlaceholder assetNumber={3} key="media-13" text={"VN statement Jonna Damanik"} />
+      <MediaPlaceholder assetNumber={1} key="media-13" text={"VN statement Jonna Damanik"} />
       <p className={articleParagraphClass} key="paragraph-14">
         {"Di tengah persiapan menuju Peparda ini, National Paralympic Committee of Indonesia (NPCI)"}
       </p>
       <p className={articleParagraphClass} key="paragraph-15">
         {"Jawa Barat terpaksa melakukan penyesuaian di berbagai sektor agar program pembinaan tetap berjalan di tengah keterbatasan sumber daya."}
       </p>
-      <Quote key="quote-16">{"\"Terjadi juga di NPCI. Dalam rangka persiapan Pekan Paralimpik Daerah (Peparda) November 2026, kami harus melakukan pengetatan anggaran supaya semua kebutuhan tetap bisa diakomodasi. Baik pembinaan 17 cabang olahraga, kebutuhan organisasi, maupun kebutuhan lainnya semuanya harus diefisiensikan,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-16">{"\"Terjadi juga di NPCI. Dalam rangka persiapan Pekan Paralimpik Daerah (Peparda) November 2026, kami harus melakukan pengetatan anggaran supaya semua kebutuhan tetap bisa diakomodasi. Baik pembinaan 17 cabang olahraga, kebutuhan organisasi, maupun kebutuhan lainnya semuanya harus diefisiensikan,\""}</p>
       <p className={articleParagraphClass} key="paragraph-17">
         {"Ujar Ketua NPCI Kota Bandung, Djumono."}
       </p>
@@ -57,11 +169,11 @@ export default function SubtitleOneContent() {
       <p className={articleParagraphClass} key="paragraph-19">
         {"Bagi atlet, jadwal latihan tidak mengenal penundaan sebagaimana proses administrasi. Ketika pencairan dana masih menunggu keputusan dan anggaran, tuntutan untuk menjaga performa tetap berlangsung setiap hari."}
       </p>
-      <Quote key="quote-20">{"“Karena dari Januari sampai Juni belum ada uang pembinaan yang turun. Padahal banyak atlet disabilitas yang tidak bekerja tetap. Ada yang tinggal di kontrakan dan harus membayar biaya hidup setiap bulan,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-20">{"“Karena dari Januari sampai Juni belum ada uang pembinaan yang turun. Padahal banyak atlet disabilitas yang tidak bekerja tetap. Ada yang tinggal di kontrakan dan harus membayar biaya hidup setiap bulan,”"}</p>
       <p className={articleParagraphClass} key="paragraph-21">
         {"Ujar Kono yang memastikan persiapan menuju Peparda tetap berjalan."}
       </p>
-      <Quote key="quote-22">{"“Kalau dulu, meskipun SK belum turun, uang pembinaan sudah bisa cair. Sekarang mungkin karena Kota Bandung menjadi tuan rumah Peparda, jadi anggarannya berbeda. Tapi saya juga tidak tahu pasti,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-22">{"“Kalau dulu, meskipun SK belum turun, uang pembinaan sudah bisa cair. Sekarang mungkin karena Kota Bandung menjadi tuan rumah Peparda, jadi anggarannya berbeda. Tapi saya juga tidak tahu pasti,”"}</p>
       <p className={articleParagraphClass} key="paragraph-23">
         {"Lanjutnya."}
       </p>
@@ -74,12 +186,14 @@ export default function SubtitleOneContent() {
       <h2 className={articleHeadingClass} key="heading-26">
         {"REALITA ATLET"}
       </h2>
-      <MediaPlaceholder assetNumber={4} key="media-27" text={"[FOTO STORY MEMULAI TRANSISI KE KEHIDUPAN ATLET]"} />
-      <MediaPlaceholder assetNumber={5} key="media-29" text={"Kono Saipudin (49) mempersiapkan beban di sesi latihan pagi, Gedung NPCI Kota Bandung. Peralatan angkat berat yang sebagian besar merupakan produk impor. Rp700-800 ribu/bulan habis hanya untuk ongkos transportasi, belum termasuk suplemen dan biaya tak terduga di jalan."} />
+      <ArticleImageCarousel
+        images={konoStoryImages}
+        title="Foto Story Kono Saipudin"
+      />
       <p className={articleParagraphClass} key="paragraph-30">
         {"Ketika pertama kali memutuskan menekuni olahraga angkat berat, dukungan tidak langsung datang. Orang-orang terdekat justru menyambut pilihannya dengan kekhawatiran. Bagi penyandang tunadaksa, risiko cedera sering dipandang lebih besar, sementara akses terhadap layanan pemulihan dan perlindungan karir atlet tidak selalu tersedia."}
       </p>
-      <Quote key="quote-31">{"\"Orang tua sempat bilang, 'Kamu kan tunadaksa, jalan saja susah. Nanti kalau cedera bagaimana?'’ Kenang Kono."}</Quote>
+      <p className={articleParagraphClass} key="quote-31">{"\"Orang tua sempat bilang, 'Kamu kan tunadaksa, jalan saja susah. Nanti kalau cedera bagaimana?'’ Kenang Kono."}</p>
       <p className={articleParagraphClass} key="paragraph-32">
         {"Tahun 2018 yang membuatnya terjun ke dalam cabang olahraga angkat berat khusus disabilitas ini bukan keputusan yang mudah dan perlu keyakinan untuk bisa bertanding sesuai dengan kemampuannya. Salah satu pencapaian yang paling diingatnya datang pada Peparnas 2022 di Kabupaten Bekasi. Medali perunggu yang ia raih saat itu menghasilkan bonus sebesar Rp25 juta,"}
       </p>
@@ -89,7 +203,7 @@ export default function SubtitleOneContent() {
       <p className={articleParagraphClass} key="paragraph-34">
         {"Biaya transportasi dan kebutuhan gizi yang harus dijaga agar kondisi tubuh tetap prima terus mengiringi setiap sesi latihan. Di saat yang sama, kebutuhan hidup sehari-hari tidak ikut berhenti menunggu uang pembinaan cair."}
       </p>
-      <Quote key="quote-35">{"\"Ya kita mah latihan terus. Mau ada uang atau enggak, latihan harus jalan,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-35">{"\"Ya kita mah latihan terus. Mau ada uang atau enggak, latihan harus jalan,\""}</p>
       <p className={articleParagraphClass} key="paragraph-36">
         {"Ujar Kono."}
       </p>
@@ -102,11 +216,11 @@ export default function SubtitleOneContent() {
       <p className={articleParagraphClass} key="paragraph-39">
         {"Bukan pula karena tidak pernah dijanjikan. Surat Keputusan (SK) baru turun pada pertengahan Juni. Artinya, selama enam bulan pertama 2026, Kono dan atlet lainnya harus menanggung sendiri biaya untuk mempertahankan performa menjelang Peparda. Ongkos perjalanan dari rumah ke tempat latihan menghabiskan sekitar Rp700.000 hingga Rp800.000 setiap bulan. Di luar itu, ada kebutuhan nutrisi, suplemen, serta berbagai pengeluaran tak terduga yang datang seiring rutinitas latihan yang terus berjalan."}
       </p>
-      <MediaPlaceholder assetNumber={6} key="media-40" text={"[FOTO KONO LAGI DI CIBABAT]"} />
+      <MediaPlaceholder assetNumber={2} key="media-40" text={"[FOTO KONO LAGI DI CIBABAT]"} />
       <p className={articleParagraphClass} key="paragraph-41">
         {"Selain mengangkat beban di arena latihan, Kono juga mengangkat beban kehidupan. Biaya rumah tangga, kebutuhan keluarga, dan pengeluaran rutin tetap harus dipenuhi, atlet angkat berat asal Kota Bandung itu bertani hidroponik di Cibabat sekaligus membuka praktik pengobatan alternatif sebagai sumber penghasilan tambahan. Bagi Kono, pekerjaan-pekerjaan tersebut bukan sekadar aktivitas sampingan, melainkan cara bertahan hidup di tengah ketidakpastian penghasilan sebagai atlet."}
       </p>
-      <Quote key="quote-42">{"\"Dari usaha itu. Tapi usaha kan kadang naik turun. Nah itu yang sering jadi tekanan,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-42">{"\"Dari usaha itu. Tapi usaha kan kadang naik turun. Nah itu yang sering jadi tekanan,\""}</p>
       <p className={articleParagraphClass} key="paragraph-43">
         {"Ujarnya."}
       </p>
@@ -116,7 +230,7 @@ export default function SubtitleOneContent() {
       <p className={articleParagraphClass} key="paragraph-45">
         {"Tahun 2026 membuat tekanan tersebut semakin berat. Selain menghadapi ketidakpastian uang pembinaan, Kono juga kehilangan salah satu sumber penghasilannya. Sebelumnya, ia bekerja sebagai instruktur pertanian di lingkungan Dinas Sosial Jawa Barat. Pekerjaan itu menjadi penopang penting di luar aktivitasnya sebagai atlet. Namun kebijakan efisiensi anggaran membuat posisinya ikut terdampak."}
       </p>
-      <Quote key="quote-46">{"\"Jadi saya juga termasuk korban efisiensi,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-46">{"\"Jadi saya juga termasuk korban efisiensi,\""}</p>
       <p className={articleParagraphClass} key="paragraph-47">
         {"Katanya datar."}
       </p>
@@ -154,14 +268,14 @@ export default function SubtitleOneContent() {
       <p className={articleParagraphClass} key="paragraph-60">
         {"hingga peluang kerja setelah atau di luar karier olahraga."}
       </p>
-      <Quote key="quote-61">{"\"Kalau bicara perhatian terhadap atlet disabilitas, menurut saya masih sangat jauh dari cukup."}</Quote>
+      <p className={articleParagraphClass} key="quote-61">{"\"Kalau bicara perhatian terhadap atlet disabilitas, menurut saya masih sangat jauh dari cukup."}</p>
       <p className={articleParagraphClass} key="paragraph-62">
         {"Baik dari segi uang pembinaan, fasilitas, perhatian, maupun peluang pekerjaan untuk atlet disabilitas,\" ujarnya."}
       </p>
       <p className={articleParagraphClass} key="paragraph-63">
         {"Sebagai pelatih, ia menyaksikan langsung bagaimana persoalan ekonomi menjadi hambatan yang lebih nyata dibanding lawan di arena pertandingan."}
       </p>
-      <Quote key="quote-64">{"“Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya tidak bisa memaksa mereka ,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-64">{"“Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya tidak bisa memaksa mereka ,”"}</p>
       <p className={articleParagraphClass} key="paragraph-65">
         {"Ujarnya."}
       </p>
@@ -174,22 +288,25 @@ export default function SubtitleOneContent() {
       <p className={articleParagraphClass} key="paragraph-68">
         {"jarak yang ditempuh tidak dekat, dan tidak ada fasilitas transportasi khusus yang membantunya mencapai venue."}
       </p>
-      <Quote key="quote-69">{"“Tidak punya ongkos. Mereka harus mencari nafkah sendiri.Contohnya Opik tadi. Dengan kondisi low vision, dia tetap datang latihan sendiri, bahkan mengendarai motor sendiri.Padahal jaraknya cukup jauh. Itu pengorbanan yang luar biasa”"}</Quote>
+      <p className={articleParagraphClass} key="quote-69">{"“Tidak punya ongkos. Mereka harus mencari nafkah sendiri.Contohnya Opik tadi. Dengan kondisi low vision, dia tetap datang latihan sendiri, bahkan mengendarai motor sendiri.Padahal jaraknya cukup jauh. Itu pengorbanan yang luar biasa”"}</p>
       <p className={articleParagraphClass} key="paragraph-70">
         {"Ujar Opik."}
       </p>
-      <MediaPlaceholder assetNumber={7} key="media-71" text={"[FOTO DIGESER - BLIND JUDO DAN FOTO TRANSPORTASI]"} />
+      <ArticleImageCarousel
+        images={blindJudoTransportImages}
+        title="Blind Judo dan Transportasi"
+      />
       <p className={articleParagraphClass} key="paragraph-74">
         {"Persoalan itu diperparah oleh minimnya perlindungan kesehatan. Menurut Wiryadharma, hingga saat ini atlet masih mengandalkan BPJS pribadi ketika sakit atau mengalami cedera. Padahal risiko cedera dalam olahraga bela diri seperti judo sering membutuhkan terapi maupun fisioterapi yang biayanya tidak murah."}
       </p>
       <p className={articleParagraphClass} key="paragraph-75">
         {"Dalam banyak kasus, peran pelatih akhirnya melampaui tugas teknis di arena latihan. Mereka menjadi pendamping mental, penghubung dengan keluarga atlet, bahkan turut mencari solusi ketika atlet mengalami kesulitan biaya pengobatan."}
       </p>
-      <Quote key="quote-76">{"\"Kalau ada yang harus dibawa ke rumah sakit, kami antar. Kalau belum ada biaya, kadang kami urunan dulu,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-76">{"\"Kalau ada yang harus dibawa ke rumah sakit, kami antar. Kalau belum ada biaya, kadang kami urunan dulu,\""}</p>
       <p className={articleParagraphClass} key="paragraph-77">
         {"Kata Wiryadharma."}
       </p>
-      <EditorialNote key="note-78" text={"[INFOGRAFIS KEBUTUHAN ATLET]"} />
+      <AthleteNeedsInfographic />
       <h2 className={articleHeadingClass} key="heading-80">
         {"KESEMPATAN YANG DATANG"}
       </h2>
@@ -204,11 +321,11 @@ export default function SubtitleOneContent() {
         {"Kekhawatiran itu yang mendorong Aditya Nandang Saputra, pengurus pemberdayaan atlet NPCI Kabupaten Bandung, mengembangkan pembinaan di luar aspek olahraga."}
       </p>
       <EditorialNote key="note-85" text={"[Kalau kita tuh ada kelas, Alhamdulillah kelas yang di luar dari pembelajaran pendidikan. Jadi kita jelasin tuh bahwa ada di luar sana itu ada saham, ada deposito, ada reksadana. Nah ini kita bongkar sedikit demi sedikit. Jadi di setiap hari Senin sampai Minggu itu kita ada sebenarnya ada kelas ngaji. Terus kalau yang dari SLB yang tuna grahita itu ada guru SLB yang datang ke sini untuk ngasih pembelajaran tetap belajar sekolah. Terus ada, nah ini yang setiap hari Jumat ini ada kelas pembelajaran yang di luar dari pembelajaran pendidikan. Nah itu ya kita. Dari pembelajaran pendidikan. Nah itu ya kita ada pengembangan diri, bagaimana caranya menjadi seorang pemimpin, bagaimana caranya melihat peta politik di luar sana, terus bagaimana caranya dia mendapatkan ya itu tadi, pembelajaran saham, reksadana, yang ya kita mengajarkan dari hal kecil lah y]"} />
-      <Quote key="quote-86">{"“Kita selamanya tidak bisa menjadi atlet, tapi bagaimana caranya uang yang bekerja untuk menjadi atlet tersebut, apalagi atlet tersebut adalah orang yang disabilitas,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-86">{"“Kita selamanya tidak bisa menjadi atlet, tapi bagaimana caranya uang yang bekerja untuk menjadi atlet tersebut, apalagi atlet tersebut adalah orang yang disabilitas,”"}</p>
       <p className={articleParagraphClass} key="paragraph-87">
         {"Ujar Aditya."}
       </p>
-      <MediaPlaceholder assetNumber={8} key="media-88" text={"FOTO ADEN AHMAD Satu dari sedikit yang berhasil keluar dari lingkaran itu. Di sudut lapangan tenis UPI Bandung,"} />
+      <MediaPlaceholder assetNumber={3} key="media-88" text={"FOTO ADEN AHMAD Satu dari sedikit yang berhasil keluar dari lingkaran itu. Di sudut lapangan tenis UPI Bandung,"} />
       <p className={articleParagraphClass} key="paragraph-89">
         {"seorang pria 59 tahun bernama Aden Ahmad Muhammad Rahman. Ia pernah menjadi atlet tennis dan meraih tiga medali perunggu tingkat Jawa Barat. Di usianya sekarang, tubuhnya tidak lagi mampu menanggung intensitas latihan seperti dulu. Pembengkakan jantung yang dipicu riwayat tekanan darah tinggi membuatnya harus membatasi aktivitas fisik."}
       </p>
@@ -221,7 +338,7 @@ export default function SubtitleOneContent() {
       <p className={articleParagraphClass} key="paragraph-92">
         {"Aden membangun kehidupan yang tidak bergantung pada prestasi. Ia berhasil mengubah pengalaman pribadinya sebagai penyandang disabilitas menjadi modal untuk memperjuangkan kehidupan orang lain. Ketika banyak kursi roda berkualitas masih harus diimpor dengan harga mahal, Aden memilih terlibat dalam usaha yang mendekatkan kebutuhan penyandang disabilitas dengan akses yang lebih terjangkau."}
       </p>
-      <MediaPlaceholder assetNumber={9} key="media-93" text={"FOTO/VIDEO WAWANCARA ADEN AHMAD DI KURSI RODA"} />
+      <MediaPlaceholder assetNumber={4} key="media-93" text={"FOTO/VIDEO WAWANCARA ADEN AHMAD DI KURSI RODA"} />
     </>
   );
 }

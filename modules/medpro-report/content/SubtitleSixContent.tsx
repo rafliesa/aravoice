@@ -1,5 +1,4 @@
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
-import Quote from "@/modules/medpro-report/component/Quote";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
 export const subtitleSixHeading = "SUB JUDUL 6: PSIKOLOGIS";
@@ -13,7 +12,7 @@ export default function SubtitleSixContent() {
       <p className={articleParagraphClass} key="paragraph-1">
         {"tetapi juga menghadirkan tekanan psikologis yang berkaitan dengan keberlangsungan hidup mereka."}
       </p>
-      <Quote key="quote-2">{"“Saat mereka kalah, ini perlu dibesarkan hatinya karena takut mengecewakan tim dan kepikiran bonusnya ga dapet jadi kecewa dan takut gak dipanggil lagi,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-2">{"“Saat mereka kalah, ini perlu dibesarkan hatinya karena takut mengecewakan tim dan kepikiran bonusnya ga dapet jadi kecewa dan takut gak dipanggil lagi,”"}</p>
       <p className={articleParagraphClass} key="paragraph-3">
         {"Ucap Yulia Permatasari (35),"}
       </p>
@@ -29,7 +28,7 @@ export default function SubtitleSixContent() {
       <p className={articleParagraphClass} key="paragraph-7">
         {"Kono juga menyebut tekanan terbesarnya bukan berasal dari latihan, melainkan dari kondisi ekonomi keluarga."}
       </p>
-      <Quote key="quote-8">{"“Namanya juga hidup pasti ada tekanan mental. Tapi tekanan saya bukan dari latihan. Justru dari luar latihan. Biasanya masalah ekonomi keluarga,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-8">{"“Namanya juga hidup pasti ada tekanan mental. Tapi tekanan saya bukan dari latihan. Justru dari luar latihan. Biasanya masalah ekonomi keluarga,”"}</p>
       <p className={articleParagraphClass} key="paragraph-9">
         {"Ujar Kono."}
       </p>
@@ -42,7 +41,7 @@ export default function SubtitleSixContent() {
       <p className={articleParagraphClass} key="paragraph-12">
         {"Dari sisi keluarga, Toto, pendamping sekaligus suami atlet Ten Pin Bowling, Asti, melihat kondisi rumah ikut memengaruhi performa atlet di arena. Menurutnya, kemampuan mengelola emosi tidak bisa dilepaskan dari lingkungan rumah dan dukungan orang terdekat."}
       </p>
-      <Quote key="quote-13">{"“Ketika emosi Ibu di rumah tidak stabil, dalam artian misalkan mempunyai satu permasalahan,"}</Quote>
+      <p className={articleParagraphClass} key="quote-13">{"“Ketika emosi Ibu di rumah tidak stabil, dalam artian misalkan mempunyai satu permasalahan,"}</p>
       <p className={articleParagraphClass} key="paragraph-14">
         {"itu terlihat sekali pada waktu Ibu bermain. Kadang dia lemparannya menjadi terlalu cepat, atau kadang-kadang tidak ada semangat. Itu pengaruh sekali,” kata Toto."}
       </p>
@@ -61,7 +60,7 @@ export default function SubtitleSixContent() {
       <p className={articleParagraphClass} key="paragraph-19">
         {"stigma lahir dari cara pandang yang keliru terhadap penyandang disabilitas."}
       </p>
-      <Quote key="quote-20">{"“Advokasi paling berat dalam isu disabilitas adalah stigma. Stigma lahir dari paradigma yang tidak tepat dalam memandang penyandang disabilitas. Selama ini banyak masyarakat melihat disabilitas dengan pendekatan belas kasihan, ketidakmampuan, atau menganggap penyandang disabilitas tidak bisa berprestasi,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-20">{"“Advokasi paling berat dalam isu disabilitas adalah stigma. Stigma lahir dari paradigma yang tidak tepat dalam memandang penyandang disabilitas. Selama ini banyak masyarakat melihat disabilitas dengan pendekatan belas kasihan, ketidakmampuan, atau menganggap penyandang disabilitas tidak bisa berprestasi,”"}</p>
       <p className={articleParagraphClass} key="paragraph-21">
         {"Jelas Jonna."}
       </p>
@@ -71,7 +70,7 @@ export default function SubtitleSixContent() {
       <p className={articleParagraphClass} key="paragraph-23">
         {"Ia menyebut ada orang yang meragukan kemampuannya bermain karena kondisi fisiknya."}
       </p>
-      <Quote key="quote-24">{"“Kadang ada yang ngomong, “Tangan kamu begitu, memang kamu bisa main bulu tangkis?”"}</Quote>
+      <p className={articleParagraphClass} key="quote-24">{"“Kadang ada yang ngomong, “Tangan kamu begitu, memang kamu bisa main bulu tangkis?”"}</p>
       <p className={articleParagraphClass} key="paragraph-25">
         {"Tapi saya nggak masukin ke hati. Biarin saja. Yang penting saya bisa membuktikan kalau kita harus juara,” kata Randi."}
       </p>
@@ -81,7 +80,7 @@ export default function SubtitleSixContent() {
       <p className={articleParagraphClass} key="paragraph-27">
         {"Stigma juga dapat hadir dalam bentuk yang sistemik. Lopita menyadari bahwa diskriminasi juga muncul dari ruang kota yang belum sepenuhnya aksesibel. Ia menyebut Bandung belum 100 persen inklusif. Trotoar, guiding block, parkir kendaraan, dan pot besar yang menghalangi jalur bisa menjadi pengalaman harian bagi yang tunanetra. Lopita juga mencontohkan pengalaman ketika tongkatnya tidak sengaja menyenggol kendaraan yang parkir di bahu jalan."}
       </p>
-      <Quote key="quote-28">{"“Orang kalau di depan panjajaran itu kan banyak yang parkir ya, mobil-mobil di bahu jalan."}</Quote>
+      <p className={articleParagraphClass} key="quote-28">{"“Orang kalau di depan panjajaran itu kan banyak yang parkir ya, mobil-mobil di bahu jalan."}</p>
       <p className={articleParagraphClass} key="paragraph-29">
         {"Kalau misalkan kita lihat lewat trotoar gitu, trotoarnya juga tuh sebenarnya nggak aksesibel banget, Kak. Karena kakak tahu kalau yang kuning-kuning gading blok, kalau gading bloknya itu... Misalkan ada gading blok, tiba-tiba ada pot besar kayak gitu di tengah-tengah. Menurut kami yang tunanetra itu sangat-sangat tidak akses. Seharusnya boleh mungkin mengedepankan estetika, tapi kayak pot-pot besar itu seharusnya ditaruh di pinggir. Jadi nggak menghalangi gading blok mau nggak mau. Kan kita lewat bawah, lewat bawah tuh kayak banyak. Mobil parkir apalagi kalau ada acara kayak gitu bisa dua ruas, tiga ruas, kadang-kadang kayak gitu. Terus kan kita jalan pakai tongkat. Ada aja orang yang marah kalau misalkan mobilnya kesenggol atau cerminnya kesenggol kayak gitu”"}
       </p>
@@ -95,7 +94,7 @@ export default function SubtitleSixContent() {
       <p className={articleParagraphClass} key="paragraph-32">
         {"Hal tersebut juga didukung dengan status psikolog olahraga yang masih dipandang sebagai pelengkap, bukan prioritas dalam pemberdayaan atlet. Keterlibatan psikolog dalam olahraga disabilitas sendiri baru mulai diperhatikan beberapa tahun terakhir. Berdasarkan pengalaman Yulia saat ASEAN Para Games 2022 di Solo, Indonesia, hanya ada sekitar sepuluh psikolog yang turun langsung mendampingi para atlet. Sementara pada saat ASEAN Para Games 2023 di Kamboja, hanya dua psikolog yang diberangkatkan untuk mendampingi para atlet yang bertanding."}
       </p>
-      <Quote key="quote-33">{"“Saat ini pun keterlibatan psikolog masih terbatas pada cabang olahraga tertentu. Ada beberapa cabang yang sudah menggandeng psikolog secara aktif, tetapi belum merata di semua cabang olahraga,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-33">{"“Saat ini pun keterlibatan psikolog masih terbatas pada cabang olahraga tertentu. Ada beberapa cabang yang sudah menggandeng psikolog secara aktif, tetapi belum merata di semua cabang olahraga,”"}</p>
       <p className={articleParagraphClass} key="paragraph-34">
         {"Kata Yulia Keterbatasan itu juga terlihat dari waktu pendampingan. Pada pengalaman Yulia di ASEAN Para Games 2022, hadirnya psikolog olahraga sebagai pendamping terbilang terlambat karena baru diturunkan empat hari sebelum kegiatan dimulai. Hal ini mempersulit para psikolog untuk membangun rasa kepercayaan dari para atlet, khususnya kepada atlet yang sebetulnya membutuhkan pendampingan psikologis tetapi tidak terbuka dengan psikolog yang hadir karena kurangnya rasa percaya."}
       </p>
@@ -117,14 +116,14 @@ export default function SubtitleSixContent() {
       <p className={articleParagraphClass} key="paragraph-40">
         {"Bambang juga mengatakan belum ada pendampingan psikologis khusus yang ia lihat secara langsung. Selama ini, atlet lebih banyak saling menguatkan sebagai teman."}
       </p>
-      <Quote key="quote-41">{"“Belum ada secara khusus. Padahal menurut saya itu penting, misalnya menyediakan psikolog olahraga untuk membantu kondisi mental atlet. Sejauh ini kami lebih banyak saling menguatkan sebagai teman,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-41">{"“Belum ada secara khusus. Padahal menurut saya itu penting, misalnya menyediakan psikolog olahraga untuk membantu kondisi mental atlet. Sejauh ini kami lebih banyak saling menguatkan sebagai teman,”"}</p>
       <p className={articleParagraphClass} key="paragraph-42">
         {"Kata Bambang."}
       </p>
       <p className={articleParagraphClass} key="paragraph-43">
         {"Toto menilai pendampingan idealnya psikologis perlu hadir sejak awal proses latihan, bukan hanya setelah atlet mengalami tekanan atau kegagalan. Menurutnya, tekanan tidak terkelola setelah pertandingan dapat membuat atlet drop, sementara tekanan pertandingannya bisa membuat atlet “kalah duluan” secara mental."}
       </p>
-      <Quote key="quote-44">{"“Yang berbahaya adalah ketika pressure-nya itu setelah bertanding. Jadi dia tidak ter-manage tuh."}</Quote>
+      <p className={articleParagraphClass} key="quote-44">{"“Yang berbahaya adalah ketika pressure-nya itu setelah bertanding. Jadi dia tidak ter-manage tuh."}</p>
       <p className={articleParagraphClass} key="paragraph-45">
         {"Dan di kalangan atlet banyak. Karena apa? Dari awal tidak ada pendampingan. Jadi ketika akhir pertandingan selesai, dia drop. Atau sebelum pertandingan dia sudah kalah duluan mentalnya,”"}
       </p>

@@ -1,5 +1,4 @@
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
-import Quote from "@/modules/medpro-report/component/Quote";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
 export const subtitleFiveHeading = "SUB JUDUL 5: PENDIDIKAN/LAPANGAN PEKERJAAN";
@@ -13,7 +12,7 @@ export default function SubtitleFiveContent() {
       <p className={articleParagraphClass} key="paragraph-1">
         {"Sekretaris Umum NPCI Kota Bandung, melihat bahwa persoalan penyandang disabilitas tidak bisa berhenti pada pembinaan prestasi saja."}
       </p>
-      <Quote key="quote-2">{"“Tapi persoalannya tidak hanya olahraga. Bagaimana pendidikan? Bagaimana aksesibilitas?"}</Quote>
+      <p className={articleParagraphClass} key="quote-2">{"“Tapi persoalannya tidak hanya olahraga. Bagaimana pendidikan? Bagaimana aksesibilitas?"}</p>
       <p className={articleParagraphClass} key="paragraph-3">
         {"Bagaimana kesehatan? Bagaimana pekerjaan? Bagaimana fasilitas? Ada 23 hak penyandang disabilitas. Yang baru bagus itu baru olahraga.”"}
       </p>
@@ -36,7 +35,7 @@ export default function SubtitleFiveContent() {
       <p className={articleParagraphClass} key="paragraph-10">
         {"Hambatan tersebut tidak berhenti di jenjang sekolah. Di perguruan tinggi, aksesibilitas juga masih menjadi persoalan. Djumono memberikan contoh rekannya F, seorang atlet boccia yang menempuh pendidikan S2 dan mendapat beasiswa, tetapi tetap harus menghadapi ruang kuliah yang tidak ramah disabilitas."}
       </p>
-      <Quote key="quote-11">{"“Bagaimana kampus yang aksesibel? Sudah ramah disabilitas atau belum? Teman saya, F, atlet boccia, sekarang sedang S2. Dia dapat beasiswa. Waktu kuliah di Universitas X, ruang kuliahnya di lantai dua. Dia harus ngesot-ngesot ke lantai dua. Bayangkan,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-11">{"“Bagaimana kampus yang aksesibel? Sudah ramah disabilitas atau belum? Teman saya, F, atlet boccia, sekarang sedang S2. Dia dapat beasiswa. Waktu kuliah di Universitas X, ruang kuliahnya di lantai dua. Dia harus ngesot-ngesot ke lantai dua. Bayangkan,”"}</p>
       <p className={articleParagraphClass} key="paragraph-12">
         {"Cerita Djumono."}
       </p>
@@ -67,7 +66,7 @@ export default function SubtitleFiveContent() {
       <p className={articleParagraphClass} key="paragraph-21">
         {"Jonna melihat masalah tersebut tidak hanya pada perusahan atau pemerintah yang belum menjalankan aturan, tetapi juga pada rendahnya akses pendidikan penyandang disabilitas. Ketika lowongan kerja mensyaratkan pendidikan tertentu, jumlah pelamar penyandang disabilitas yang memenuhi syarat ikut terbatas."}
       </p>
-      <Quote key="quote-22">{"“Masalahnya bukan hanya pada perusahaan atau pemerintah yang belum menjalankan aturan,"}</Quote>
+      <p className={articleParagraphClass} key="quote-22">{"“Masalahnya bukan hanya pada perusahaan atau pemerintah yang belum menjalankan aturan,"}</p>
       <p className={articleParagraphClass} key="paragraph-23">
         {"tetapi juga pada akses pendidikan yang masih rendah bagi penyandang disabilitas. Data yang kami miliki menunjukkan bahwa akses pendidikan penyandang disabilitas masih sangat rendah,"}
       </p>
@@ -80,14 +79,14 @@ export default function SubtitleFiveContent() {
       <p className={articleParagraphClass} key="paragraph-26">
         {"Sulitnya akses ruang kerja juga terlihat dari sisi pelatih. Bambang Basuki, pelatih Ten Pin Bowling NPCI Kota Bandung sekaligus penyandang tunanetra, menilai pelatihan dari pemerintah saja tidak cukup jika tidak dibersamai dengan peluang kerja nyata."}
       </p>
-      <Quote key="quote-27">{"“Harapannya akses dan kesempatan kerja lebih merata. Pelatihan sebenarnya sudah ada dari pemerintah atau Kemensos, tapi peluang kerjanya masih kurang diperhatikan. Menurut saya,"}</Quote>
+      <p className={articleParagraphClass} key="quote-27">{"“Harapannya akses dan kesempatan kerja lebih merata. Pelatihan sebenarnya sudah ada dari pemerintah atau Kemensos, tapi peluang kerjanya masih kurang diperhatikan. Menurut saya,"}</p>
       <p className={articleParagraphClass} key="paragraph-28">
         {"yang paling dibutuhkan teman-teman difabel itu kesempatan kerja nyata,” ungkap Bambang."}
       </p>
       <p className={articleParagraphClass} key="paragraph-29">
         {"Pernyataan Bambang menempatkan masalah kerja bukan hanya pada kesiapan individu penyandang disabilitas, tetapi juga pada kesiapan lingkungan kerja menerima mereka. Dalam konteks atlet disabilitas, pekerjaan di luar olahraga menjadi penting karena tidak semua atlet memiliki pemasukan rutin dari kompetisi. Namun, bagi Bambang, masuk ke dunia kerja di luar olahraga masih bukan perkara mudah."}
       </p>
-      <Quote key="quote-30">{"“Masih cukup sulit, kecuali yang sudah berprestasi besar dan mendapat penghargaan khusus dari pemerintah, misalnya kesempatan menjadi ASN,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-30">{"“Masih cukup sulit, kecuali yang sudah berprestasi besar dan mendapat penghargaan khusus dari pemerintah, misalnya kesempatan menjadi ASN,”"}</p>
       <p className={articleParagraphClass} key="paragraph-31">
         {"Lanjut Bambang."}
       </p>
@@ -100,7 +99,7 @@ export default function SubtitleFiveContent() {
       <p className={articleParagraphClass} key="paragraph-34">
         {"Mengetahui hal tersebut, Jonna juga mendorong penguatan pendidikan vokasional dan sertifikasi kompetensi agar penyandang disabilitas tidak hanya bergantung pada jalur pendidikan formal."}
       </p>
-      <Quote key="quote-35">{"“Karena saat ini kami juga mendorong pengembangan jalur vokasional. Kalau akses ke pendidikan formal masih sangat menantang, mengapa tidak memperkuat pendidikan vokasional?"}</Quote>
+      <p className={articleParagraphClass} key="quote-35">{"“Karena saat ini kami juga mendorong pengembangan jalur vokasional. Kalau akses ke pendidikan formal masih sangat menantang, mengapa tidak memperkuat pendidikan vokasional?"}</p>
       <p className={articleParagraphClass} key="paragraph-36">
         {"Yang penting seseorang memiliki kompetensi yang teruji dan tersertifikasi oleh lembaga yang berwenang.”"}
       </p>
@@ -110,14 +109,14 @@ export default function SubtitleFiveContent() {
       <p className={articleParagraphClass} key="paragraph-38">
         {"Meski mendapatkan pekerjaan formal, Dandan sempat berada dalam dilema dengan keinginan menjadi atlet sepenuhnya. Namun, keinginan tersebut harus ia kurung karena mempertimbangkan kebutuhan keluarganya. Menurutnya, organisasi olahraga belum bisa menanggung kebutuhan kehidupan keluarganya. Pengalaman Dandan memperlihatkan bahwa pekerjaan formal dapat menjadi penopang penting bagi atlet disabilitas, terutama ketika olahraga belum sepenuhnya mampu menjamin kebutuhan jangka panjang."}
       </p>
-      <Quote key="quote-39">{"“Saya sempat bilang, saya mundur dari ASN. Saya mau memundurkan diri dari ASN, saya ingin menjadi atlet ini. Tapi setelah dipikir-pikir dengan kondisi ya, kondisi apa, di organisasinya sendiri, nggak akan bisa meng-cover itu untuk kehidupan saya,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-39">{"“Saya sempat bilang, saya mundur dari ASN. Saya mau memundurkan diri dari ASN, saya ingin menjadi atlet ini. Tapi setelah dipikir-pikir dengan kondisi ya, kondisi apa, di organisasinya sendiri, nggak akan bisa meng-cover itu untuk kehidupan saya,”"}</p>
       <p className={articleParagraphClass} key="paragraph-40">
         {"Ungkap Dandan."}
       </p>
       <p className={articleParagraphClass} key="paragraph-41">
         {"Pertimbangan keluarga menjadi bagian penting dari keputusan tersebut. Dandan juga menyebut bahwa dukungan keluarga tetap ada, tetapi kebutuhan anak dan rumah tangga membuat pekerjaan tetap tidak bisa ditinggalkan begitu saja. Hal ini kembali menunjukkan bahwa beban ekonomi menjadi salah satu masalah yang kerap terbawa ke dunia olahraga. Ia menyebut persoalan internal atlet biasanya datang dari keluarga atau ekonomi, dan masalah itu bisa ikut memengaruhi kondisi atlet ketika berlatih atau bertanding."}
       </p>
-      <Quote key="quote-42">{"“Biasanya ya kayak ada masalah dengan keluarga di rumah, dengan istri atau apa. Itu biasanya seperti itu. Atau yang paling sering sih biasanya masalah ekonomi ya. Yang saya lihat lah. Yang saya lihat, yang saya alamin juga,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-42">{"“Biasanya ya kayak ada masalah dengan keluarga di rumah, dengan istri atau apa. Itu biasanya seperti itu. Atau yang paling sering sih biasanya masalah ekonomi ya. Yang saya lihat lah. Yang saya lihat, yang saya alamin juga,”"}</p>
       <p className={articleParagraphClass} key="paragraph-43">
         {"Ucap Dandan."}
       </p>

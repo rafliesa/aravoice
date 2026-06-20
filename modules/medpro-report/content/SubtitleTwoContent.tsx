@@ -2,7 +2,6 @@ import EditorialNote from "@/modules/medpro-report/component/EditorialNote";
 import ArticleComparisonTable from "@/modules/medpro-report/component/ArticleComparisonTable";
 import ArticleRightsList from "@/modules/medpro-report/component/ArticleRightsList";
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
-import Quote from "@/modules/medpro-report/component/Quote";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
 export const subtitleTwoHeading = "SUB JUDUL 2: INKLUSIVITAS HANYA DI ATAS KERTAS";
@@ -203,7 +202,7 @@ export default function SubtitleTwoContent() {
         {"Berdasarkan ketentuan tersebut, terdapat 22 hak dasar yang wajib dipenuhi oleh pemerintah dan masyarakat."}
       </p>
       <ArticleRightsList items={disabilityRights} />
-      <Quote key="quote-33">{"\"Sudah lama, jadi sudah pada tahu,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-33">{"\"Sudah lama, jadi sudah pada tahu,\""}</p>
       <p className={articleParagraphClass} key="paragraph-34">
         {"Lanjut Opik saat ditanya apakah tangga itu menjadi masalah baginya."}
       </p>
@@ -214,12 +213,12 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-37">
         {"tanpa penanda taktil. Opik bahkan menempuh jarak 2,5 kilometer menuju lokasi latihan dengan sepeda motornya."}
       </p>
-      <Quote key="quote-38">{"“Judo masih bergabung menggunakan dojo milik PJSI Jawa Barat. Karena NPCI sendiri belum memiliki fasilitas latihan khusus untuk judo,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-38">{"“Judo masih bergabung menggunakan dojo milik PJSI Jawa Barat. Karena NPCI sendiri belum memiliki fasilitas latihan khusus untuk judo,”"}</p>
       <p className={articleParagraphClass} key="paragraph-39">
         {"Ucap pelatih Judo Wiryadharma terkait dojo"}
       </p>
       <EditorialNote key="note-40" text={"(tempat latihan beladiri) yang masih menyewa."} />
-      <Quote key="quote-41">{"“Fasilitas yang benar-benar aksesibel bagi tunanetra sampai sekarang belum tersedia."}</Quote>
+      <p className={articleParagraphClass} key="quote-41">{"“Fasilitas yang benar-benar aksesibel bagi tunanetra sampai sekarang belum tersedia."}</p>
       <p className={articleParagraphClass} key="paragraph-42">
         {"Contohnya tempat latihan kami masih harus naik tangga. Mereka harus beradaptasi sendiri karena belum ada tempat latihan yang sepenuhnya ramah disabilitas,” Lanjut Wiryadharma."}
       </p>
@@ -229,14 +228,14 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-44">
         {"Sekretaris Umum NPCI Kota Bandung, Djumono, menyebut persoalan transportasi sebagai kebutuhan yang paling mendesak."}
       </p>
-      <Quote key="quote-45">{"\"Yang paling penting sekarang adalah sarana transportasi. Atlet, khususnya pengguna kursi roda,"}</Quote>
+      <p className={articleParagraphClass} key="quote-45">{"\"Yang paling penting sekarang adalah sarana transportasi. Atlet, khususnya pengguna kursi roda,"}</p>
       <p className={articleParagraphClass} key="paragraph-46">
         {"masih kesulitan mengakses transportasi yang aman dan nyaman menuju tempat latihan,\" ujarnya."}
       </p>
       <p className={articleParagraphClass} key="paragraph-47">
         {"Menurut Djumono, biaya yang harus dikeluarkan pun tidak setara. Atlet umum bisa datang latihan dengan biaya bensin Rp10.000. Atlet dengan kursi roda harus menyewa kendaraan yang muat untuk kursi rodanya. Atlet tunanetra perlu pendamping selama perjalanan."}
       </p>
-      <Quote key="quote-48">{"\"Selain itu, banyak gedung dan fasilitas latihan yang belum aksesibel. Masih banyak bangunan bertangga dan toilet yang tidak ramah disabilitas. Hal-hal seperti itu masih harus terus disampaikan kepada pemerintah dan pemilik kebijakan,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-48">{"\"Selain itu, banyak gedung dan fasilitas latihan yang belum aksesibel. Masih banyak bangunan bertangga dan toilet yang tidak ramah disabilitas. Hal-hal seperti itu masih harus terus disampaikan kepada pemerintah dan pemilik kebijakan,\""}</p>
       <p className={articleParagraphClass} key="paragraph-49">
         {"Kata Djumono."}
       </p>
@@ -246,7 +245,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-53">
         {"Pengalaman tinggal di Australia memberi Aden Ahmad Muhammad Rahman yang merupakan atlet sekaligus pria yang aktif mengadvokasi hak disabilitas memberikan gambaran tajam dengan aksesibilitas di Indonesia."}
       </p>
-      <Quote key="quote-54">{"“Di sana saya merasa bukan penyandang disabilitas karena semua fasilitas memungkinkan saya mandiri. Naik transportasi sendiri bisa. Pergi ke mana-mana bisa. Sementara di Indonesia sering kali masih harus dibantu atau bahkan digotong,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-54">{"“Di sana saya merasa bukan penyandang disabilitas karena semua fasilitas memungkinkan saya mandiri. Naik transportasi sendiri bisa. Pergi ke mana-mana bisa. Sementara di Indonesia sering kali masih harus dibantu atau bahkan digotong,”"}</p>
       <p className={articleParagraphClass} key="paragraph-55">
         {"Ujarnya."}
       </p>
@@ -268,7 +267,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-61">
         {"risiko bagi Menjelang ajang besar seperti Peparda, para atlet memang ditempatkan di mess sebagai bagian dari persiapan pertandingan. Namun fasilitas yang tersedia belum sepenuhnya menjawab kebutuhan dasar mereka. Opik Jaya, atlet blind judo NPCI Kota Bandung kerap menginap di mess, mengungkapkan bahwa organisasi hanya menyediakan beras dan magic com."}
       </p>
-      <Quote key="quote-62">{"\"Disediakan beras dan magic com. Kalau lauk beli sendiri,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-62">{"\"Disediakan beras dan magic com. Kalau lauk beli sendiri,\""}</p>
       <p className={articleParagraphClass} key="paragraph-63">
         {"Kata Opik."}
       </p>
@@ -278,7 +277,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-65">
         {"Kesetaraan di arena pertandingan tidak selalu diikuti kesetaraan biaya. Peralatan catur bagi atlet netra, misalnya, dapat berharga dua hingga tiga kali lebih mahal dibanding catur biasa. \"Kursi roda balap di atletik harganya sangat mahal, bahkan bisa setara mobil,\" ujar Ketua Umum NPCI Kota Bandung, Yadi."}
       </p>
-      <Quote key="quote-66">{"\"Yang paling terasa adalah kebutuhan peralatan atlet. Banyak alat olahraga disabilitas yang mahal dan sebagian besar bukan produksi Indonesia... Akhirnya pengadaan alat harus dikurangi sedikit demi sedikit supaya program lain tetap berjalan.\""}</Quote>
+      <p className={articleParagraphClass} key="quote-66">{"\"Yang paling terasa adalah kebutuhan peralatan atlet. Banyak alat olahraga disabilitas yang mahal dan sebagian besar bukan produksi Indonesia... Akhirnya pengadaan alat harus dikurangi sedikit demi sedikit supaya program lain tetap berjalan.\""}</p>
       <p className={articleParagraphClass} key="paragraph-67">
         {"Djumono mengakui bahwa adanya dampak efisiensi pada 2026 yang terasa sangat pada peralatan."}
       </p>
@@ -324,18 +323,18 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-81">
         {"Atlet pada umumnya bisa menerima program latihan dan informasi yang dapat dipelajarinya kembali secara mandiri dengan menggunakan braille (alat untuk membaca secara mandiri dengan meraba titik-titik timbul). Namun bagi atlet tunanetra, hal sesederhana itu belum tentu bisa dilakukan."}
       </p>
-      <Quote key="quote-82">{"\"Pelatih tidak bisa kasih program tertulis ke atlet tunanetra karena alat untuk itu belum ada.\""}</Quote>
+      <p className={articleParagraphClass} key="quote-82">{"\"Pelatih tidak bisa kasih program tertulis ke atlet tunanetra karena alat untuk itu belum ada.\""}</p>
       <p className={articleParagraphClass} key="paragraph-83">
         {"Ucap Dodi, Sekretaris Umum NPCI Jawa Barat."}
       </p>
       <p className={articleParagraphClass} key="paragraph-84">
         {"Bambang Basuki, pelatih bowling tunanetra yang juga seorang tunanetra, menggambarkan metode yang ia gunakan."}
       </p>
-      <Quote key="quote-85">{"\"Karena kami tidak banyak mengandalkan penglihatan, jadi lebih banyak mengandalkan pendengaran dan deskripsi verbal,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-85">{"\"Karena kami tidak banyak mengandalkan penglihatan, jadi lebih banyak mengandalkan pendengaran dan deskripsi verbal,”"}</p>
       <p className={articleParagraphClass} key="paragraph-86">
         {"Ujar Bambang terkait tidak ada pelatihan khusus yang ia terima untuk melatih atlet tunanetra."}
       </p>
-      <Quote key="quote-87">{"\"Secara khusus belum ada. Saya lebih banyak belajar sendiri dari pengalaman sebagai atlet,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-87">{"\"Secara khusus belum ada. Saya lebih banyak belajar sendiri dari pengalaman sebagai atlet,”"}</p>
       <p className={articleParagraphClass} key="paragraph-88">
         {"jelasnya."}
       </p>
@@ -352,7 +351,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-93">
         {"olahraga disabilitas dan olahraga umum pada awalnya berada dalam satu payung organisasi yang sama."}
       </p>
-      <Quote key="quote-94">{"\"Dulu memang kita satu organisasi. NPCI itu dulu badan fungsional di bawah KONI. Dari sisi pendanaan berada di bawah KONI. Jadi dulu dana dari Dispora masuk ke KONI. Kemudian KONI yang menyalurkan ke badan-badan fungsional tadi,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-94">{"\"Dulu memang kita satu organisasi. NPCI itu dulu badan fungsional di bawah KONI. Dari sisi pendanaan berada di bawah KONI. Jadi dulu dana dari Dispora masuk ke KONI. Kemudian KONI yang menyalurkan ke badan-badan fungsional tadi,\""}</p>
       <p className={articleParagraphClass} key="paragraph-95">
         {"Jelasnya terkait pisahnya kedua lembaga."}
       </p>
@@ -366,7 +365,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-99">
         {"Komisioner Komisi Nasional Disabilitas (KND), Jonna Damanik, menjelaskan bahwa penyelenggaraan ajang olahraga disabilitas membutuhkan kesiapan yang jauh lebih kompleks dibanding olahraga umum."}
       </p>
-      <Quote key="quote-100">{"\"Menyelenggarakan event olahraga disabilitas tidak sesederhana menyelenggarakan olahraga umum. Venue harus aksesibel. Transportasi harus aksesibel. Kendaraan yang digunakan harus mampu mengakomodasi pengguna kursi roda. Ada kebutuhan hydraulic lift dan berbagai fasilitas lain yang memang menjadi standar. Karena itu, tidak semua daerah siap menjadi tuan rumah event olahraga disabilitas,\""}</Quote>
+      <p className={articleParagraphClass} key="quote-100">{"\"Menyelenggarakan event olahraga disabilitas tidak sesederhana menyelenggarakan olahraga umum. Venue harus aksesibel. Transportasi harus aksesibel. Kendaraan yang digunakan harus mampu mengakomodasi pengguna kursi roda. Ada kebutuhan hydraulic lift dan berbagai fasilitas lain yang memang menjadi standar. Karena itu, tidak semua daerah siap menjadi tuan rumah event olahraga disabilitas,\""}</p>
       <p className={articleParagraphClass} key="paragraph-101">
         {"Jelasnya mengenai realita penyelenggaraan."}
       </p>
@@ -409,7 +408,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-114">
         {"Perkembangan infrastruktur olahraga disabilitas di Indonesia dinilai belum sepenuhnya memenuhi standar negara-negara maju seperti Jepang yang masih menjadi acuan dalam penyediaan fasilitas olahraga sekaligus aksesibilitas bagi penyandang disabilitas."}
       </p>
-      <Quote key="quote-115">{"“Asian Para Games. Pokoknya yang nomor dunia ya itu di Jepang, karena Jepang sudah pasti ditanya oke ya. Baik di pertandingan, baik di sarananya. Contoh kecil toilet ya kan, tidak semua toilet aksesibilitas. Itu buat kenyamanan. Sampai hotel-hotel. Karena dari segi hak mereka sangat sama. Cuma ya kadang kita sendiri masih kurang. Tidak semua ada, tapi tidak semua ya. Itu harusnya ada jalan khususnya,”"}</Quote>
+      <p className={articleParagraphClass} key="quote-115">{"“Asian Para Games. Pokoknya yang nomor dunia ya itu di Jepang, karena Jepang sudah pasti ditanya oke ya. Baik di pertandingan, baik di sarananya. Contoh kecil toilet ya kan, tidak semua toilet aksesibilitas. Itu buat kenyamanan. Sampai hotel-hotel. Karena dari segi hak mereka sangat sama. Cuma ya kadang kita sendiri masih kurang. Tidak semua ada, tapi tidak semua ya. Itu harusnya ada jalan khususnya,”"}</p>
       <p className={articleParagraphClass} key="paragraph-116">
         {"Ungkap Tri perihal Jepang yang masih menjadi standar yang baik dari segi fasilitas."}
       </p>
@@ -419,7 +418,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-118">
         {"Sementara di Indonesia, atlet masih sering harus menyesuaikan diri dengan fasilitas yang belum sepenuhnya dirancang untuk kebutuhan mereka."}
       </p>
-      <Quote key="quote-119">{"“Kalau di kita iya (belum ada tempat latihan khusus). Tapi kalau di luar negeri, contoh di Jerman, semua ada. Jadi memang lapangan khusus. Jadi memang latihan di sini terus. Di Brazil ada, Jepang sendiri ada, Cina ada. Kita aja yang belum. Makanya yang saya bilang tadi bahwa kita belum, apa ya, perhatian untuk awareness gitu kan belum. Sekarang gini, kalau kita melihat ya kesetaraan, mereka ada voli duduk ya harus ada dong lapang khusus voli duduk. Lapang khusus indoor voli orang non disabilitas juga ada, kenapa ini nggak ada?”"}</Quote>
+      <p className={articleParagraphClass} key="quote-119">{"“Kalau di kita iya (belum ada tempat latihan khusus). Tapi kalau di luar negeri, contoh di Jerman, semua ada. Jadi memang lapangan khusus. Jadi memang latihan di sini terus. Di Brazil ada, Jepang sendiri ada, Cina ada. Kita aja yang belum. Makanya yang saya bilang tadi bahwa kita belum, apa ya, perhatian untuk awareness gitu kan belum. Sekarang gini, kalau kita melihat ya kesetaraan, mereka ada voli duduk ya harus ada dong lapang khusus voli duduk. Lapang khusus indoor voli orang non disabilitas juga ada, kenapa ini nggak ada?”"}</p>
       <p className={articleParagraphClass} key="paragraph-120">
         {"Lanjutnya. Padahal, voli duduk memiliki karakter berbeda dari voli berdiri. Ukuran lapangan, tinggi net, cara bergerak, dan posisi tubuh atlet berbeda. Atlet tidak hanya membutuhkan bola dan net, tetapi juga permukaan lapangan, garis, ruang gerak, dan fasilitas pendukung yang sesuai dengan kebutuhan cabang olahraga tersebut."}
       </p>

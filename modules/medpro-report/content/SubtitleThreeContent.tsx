@@ -1,4 +1,3 @@
-import Quote from "@/modules/medpro-report/component/Quote";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
 export const subtitleThreeHeading = "SUB JUDUL 3: Dana yang Berputar, Kebutuhan yang Bertambah";
@@ -51,14 +50,14 @@ export default function SubtitleThreeContent() {
       <p className={articleParagraphClass} key="paragraph-14">
         {"Dana hibah yang didapatkan NPCI Kota Bandung menunjukkan adanya penyesuaian yang cukup signifikan pada tahun ini. Bendahara NPCI Kota Bandung, Komarudin, menyebut lembaganya sempat mengajukan anggaran sekitar Rp15 miliar. Namun, setelah adanya efisiensi tingkat nasional dan evaluasi pemerintah provinsi, besaran hibah yang diterima menyusut menjadi Rp5 miliar."}
       </p>
-      <Quote key="quote-15">{"“Bahwa angka awal masih dulu itu 15 (miliar).Tapi kalau efisiensi tingkat nasional itu dipotong jadi 9,5 (miliar). 9,5 (miliar) kena evaluasi gubernur. Karena harus ngurus sama Pak Gubernur."}</Quote>
+      <p className={articleParagraphClass} key="quote-15">{"“Bahwa angka awal masih dulu itu 15 (miliar).Tapi kalau efisiensi tingkat nasional itu dipotong jadi 9,5 (miliar). 9,5 (miliar) kena evaluasi gubernur. Karena harus ngurus sama Pak Gubernur."}</p>
       <p className={articleParagraphClass} key="paragraph-16">
         {"Karena dia yang meloloskan, yang menandatangani. Kalau tidak ada pemotongan itu, kalau tidak ada efisiensi lagi, kalau kita masih Alhamdulillah gitu kan. Belum sampai 5 miliar” ucap Komarudin."}
       </p>
       <p className={articleParagraphClass} key="paragraph-17">
         {"Sekretaris Umum NPCI Kota Bandung, Djumono, juga mengakui bahwa lembaganya ikut merasakan dampak dari kebijakan tersebut. Terlebih lagi relokasi kegiatan Peparda 2026 yang ditetapkan secara mendadak dari Kabupaten Indramayu ke Kota Bandung. Permasalahan tersebut, membuat NPCI Kota Bandung terpaksa melakukan pengetatan anggaran agar seluruh kebutuhan dasar pembinaan tetap dapat berjalan."}
       </p>
-      <Quote key="quote-18">{"“(Pemangkasan anggaran) terjadi juga di NPCI (Kota Bandung). Dalam rangka persiapan Pekan Paralimpik Daerah (Peparda) November 2026, kami harus melakukan pengetatan anggaran supaya semua kebutuhan tetap bisa diakomodasi. Baik pembinaan 17 cabang olahraga,"}</Quote>
+      <p className={articleParagraphClass} key="quote-18">{"“(Pemangkasan anggaran) terjadi juga di NPCI (Kota Bandung). Dalam rangka persiapan Pekan Paralimpik Daerah (Peparda) November 2026, kami harus melakukan pengetatan anggaran supaya semua kebutuhan tetap bisa diakomodasi. Baik pembinaan 17 cabang olahraga,"}</p>
       <p className={articleParagraphClass} key="paragraph-19">
         {"kebutuhan organisasi, maupun kebutuhan lainnya semuanya harus diefisiensikan,” jelas Djumono."}
       </p>
@@ -95,7 +94,7 @@ export default function SubtitleThreeContent() {
       <p className={articleParagraphClass} key="paragraph-30">
         {"Di sisi lain, NPCI Kota Bandung menerima dana yang jauh lebih kecil. Komarudin, Bendahara NPCI Kota Bandung, menyebut lembaganya hanya mendapatkan dana sebesar Rp5 miliar setelah efisiensi. Dengan dana tersebut, NPCI Kota Bandung tetap harus membiayai pembinaan 17 cabang olahraga dan menyeleksi 516 atlet menjadi 250 atlet kontingen untuk Peparda Jawa Barat 2026. Tidak hanya itu, peralatan tambahan yang dibutuhkan atlet disabilitas tentu saja lebih beragam jika dibandingkan dengan atlet nondisabilitas, seperti kursi roda, alat penyangga, dan lain sebagainya."}
       </p>
-      <Quote key="quote-31">{"“Ternyata seharusnya, seharusnya. Jadi dana atlet disabilitas agak lebih besar daripada dana ke atlet olahraga lain (atlet nondisabilitas). Kenapa? Satu atlet butuh pelatih, butuh pendamping."}</Quote>
+      <p className={articleParagraphClass} key="quote-31">{"“Ternyata seharusnya, seharusnya. Jadi dana atlet disabilitas agak lebih besar daripada dana ke atlet olahraga lain (atlet nondisabilitas). Kenapa? Satu atlet butuh pelatih, butuh pendamping."}</p>
       <p className={articleParagraphClass} key="paragraph-32">
         {"Pendamping inilah yang harus memahami atlet. Entah itu psikologis dan kebutuhan. Sehingga,"}
       </p>
