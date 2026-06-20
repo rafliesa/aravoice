@@ -1,3 +1,5 @@
+import GrantFlowInfographic from "@/modules/medpro-report/component/GrantFlowInfographic";
+import GrantTrendChart from "@/modules/medpro-report/component/GrantTrendChart";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
 export default function SubtitleThreeContent() {
@@ -21,9 +23,7 @@ export default function SubtitleThreeContent() {
       <p className={articleParagraphClass} key="paragraph-5">
         {"menerima dukungan serupa sesuai bidang dan kebutuhan masing-masing."}
       </p>
-      <p className={articleParagraphClass} key="paragraph-6">
-        {"INFOGRAFIS ALUR DANA HIBAH DARI DISPORA KE NPCI: NPCI ngasih proposal 1 tahun sebelumnya (ajuin 2026 utk 2027) → Dispora cek/verfikasi→ Dispora menyesuaikan anggaran dengan kemampuan anggaran pemerintah (pemda/apbd) → Turun ke NPCI → NPCI bikin SK → SK Turun → cair (esp utk atlet) (LANDSCAPE) NANTI INI KAYAK RUNNING"}
-      </p>
+      <GrantFlowInfographic />
       <h2 className={articleHeadingClass} key="heading-7">
         {"TRACK"}
       </h2>
@@ -39,8 +39,9 @@ export default function SubtitleThreeContent() {
       <p className={articleParagraphClass} key="paragraph-11">
         {"hingga menjadi panitia teknis Peparda Jawa Barat 2026 yang akan terlaksana di Kota Bandung."}
       </p>
+      <GrantTrendChart />
       <p className={articleParagraphClass} key="paragraph-12">
-        {"GRAFIK TREN HIBAH 2021-2026 2021: 2,7M 2022: 2,7M 2023: 2,7M 2024: 5M 2025: 4,5M 2026: 5M Seiring tahun berganti, dana hibah NPCI Kota Bandung bergerak dalam ruang yang terbatas."}
+        {"Seiring tahun berganti, dana hibah NPCI Kota Bandung bergerak dalam ruang yang terbatas."}
       </p>
       <p className={articleParagraphClass} key="paragraph-13">
         {"Ketika nominal hibah akhirnya meningkat, kebutuhan organisasi juga bertambah. Dana yang diterima tidak hanya digunakan untuk pembinaan atlet, tetapi juga harus dibagi untuk kebutuhan operasional, penyelenggaraan kegiatan, pengadaan sarana, hingga persiapan menghadapi Pekan Paralimpik Daerah (Peparda) Jawa Barat 2026."}

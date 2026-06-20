@@ -3,6 +3,8 @@ import AccessibilityPrinciplesTable from "@/modules/medpro-report/component/Acce
 import ArticleComparisonTable from "@/modules/medpro-report/component/ArticleComparisonTable";
 import ArticleRightsList from "@/modules/medpro-report/component/ArticleRightsList";
 import ConstitutionHighlightsInfographic from "@/modules/medpro-report/component/ConstitutionHighlightsInfographic";
+import EquipmentComparisonTable from "@/modules/medpro-report/component/EquipmentComparisonTable";
+import KoniNpciComparisonInfographic from "@/modules/medpro-report/component/KoniNpciComparisonInfographic";
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
@@ -264,39 +266,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-69">
         {"Dengan 23 atlet catur dan hanya satu jam tersedia, kekurangan mencapai 10 jam."}
       </p>
-      <h2 className={articleHeadingClass} key="heading-70">
-        {"PERALATAN"}
-      </h2>
-      <h2 className={articleHeadingClass} key="heading-71">
-        {"NON DISABILITAS DISABILITAS"}
-      </h2>
-      <p className={articleParagraphClass} key="paragraph-72">
-        {"Kursi roda harian Tidak Diperlukan Rp4jt (Tiongkok) → Rp 6,7jt (Tiba di Bandung)"}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-73">
-        {"Kursi roda balap (atletik)"}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-74">
-        {"Tidak Diperlukan Rp140-210jt (Amerika, titanium)"}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-75">
-        {"Rp100jt (Indonesia, baja)"}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-76">
-        {"Timer catur (standar)"}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-77">
-        {"Rp 2jt Rp7,5jt/unit (edisi Braille/Taktil)"}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-78">
-        {"Guide rail (bowling tunanetra)"}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-79">
-        {"Tidak Diperlukan Tersedia dengan jumlah terbatas→ baru ada sejak 2014 Raket/shuttlecock bulutangkis Bisa habis slop/hari 1 Sama Sumber: Aden Ahmad (Atlet Tennis), Muslim (Atlet Catur), Bambang Basuki (Atlet Bowling),"}
-      </p>
-      <p className={articleParagraphClass} key="paragraph-80">
-        {"Djumono Sekretaris Umum NPCI Kota Bandung."}
-      </p>
+      <EquipmentComparisonTable />
       <p className={articleParagraphClass} key="paragraph-81">
         {"Atlet pada umumnya bisa menerima program latihan dan informasi yang dapat dipelajarinya kembali secara mandiri dengan menggunakan braille (alat untuk membaca secara mandiri dengan meraba titik-titik timbul). Namun bagi atlet tunanetra, hal sesederhana itu belum tentu bisa dilakukan."}
       </p>
@@ -338,7 +308,7 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="paragraph-97">
         {"Djumono, yang sudah bergabung dengan organisasi ini sejak 1999 ketika kakinya harus diamputasi, menyaksikan perjalanan ini dari dekat. \"Saya berharap dampaknya tidak hanya pada olahraga, tetapi para pengambil kebijakan juga melihat bahwa penyandang disabilitas punya potensi, jumlahnya banyak, dan masih ada 22 hak lainnya yang harus dipenuhi.\""}
       </p>
-      <EditorialNote key="note-98" text={"[INFOGRAFIS PERBANDINGAN KONI DAN NPCI]"} />
+      <KoniNpciComparisonInfographic />
       <p className={articleParagraphClass} key="paragraph-99">
         {"Komisioner Komisi Nasional Disabilitas (KND), Jonna Damanik, menjelaskan bahwa penyelenggaraan ajang olahraga disabilitas membutuhkan kesiapan yang jauh lebih kompleks dibanding olahraga umum."}
       </p>
