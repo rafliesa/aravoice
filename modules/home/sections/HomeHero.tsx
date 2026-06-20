@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { StatusBadge } from "@/components/design-system/Primitives";
 import { type NewsCardData, formatPublishedDate } from "@/lib/news";
 import MetaItem from "@/modules/home/component/MetaItem";
@@ -79,10 +80,12 @@ export default function HomeHero({
           className="group motion-card motion-slide-in-right flex h-full flex-col overflow-hidden rounded-lg border border-[#d0b894] bg-white"
         >
           {leadNews?.cover_image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={leadNews.cover_image}
               alt={leadNews.title}
+              width={960}
+              height={600}
+              priority
               className="motion-image aspect-[16/10] w-full flex-1 bg-black object-cover lg:aspect-auto"
             />
           ) : (

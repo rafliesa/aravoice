@@ -19,7 +19,7 @@ const medproLeadNews: NewsCardData = {
     "Menelisik realita atlet Bandung disabilitas, dari tuntutan prestasi hingga kesejahteraan yang masih penuh ketidakpastian.",
   author: "Redaksi ParaVoice",
   reading_time: 12,
-  cover_image: "",
+  cover_image: "/hero/pak-ono.webp",
   caption:
     "Atlet disabilitas terus berlatih di tengah keterbatasan dukungan dan kepastian kesejahteraan.",
   formats: ["TEKS", "AUDIO", "VIDEO"],
