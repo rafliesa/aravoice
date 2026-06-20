@@ -1,5 +1,8 @@
 import GrantFlowInfographic from "@/modules/medpro-report/component/GrantFlowInfographic";
 import GrantTrendChart from "@/modules/medpro-report/component/GrantTrendChart";
+import LawReferenceLink, {
+  lawReferenceUrls,
+} from "@/modules/medpro-report/component/LawReferenceLink";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
 export default function SubtitleThreeContent() {
@@ -28,7 +31,17 @@ export default function SubtitleThreeContent() {
         {"TRACK"}
       </h2>
       <p className={articleParagraphClass} key="paragraph-8">
-        {"Penyaluran dana hibah telah ditetapkan dalam UU Nomor 11 Tahun 2022 tentang Keolahragaan Pasal 79 yang menjelaskan bahwa alokasi hibah yang diberikan harus sesuai dengan kemampuan keuangan daerah dan mempertimbangkan target capaian. Pada proses pengalokasian dana hibah tersebut, berbagai kebutuhan organisasi mulai diseleksi berdasarkan skala prioritas. Tidak seluruh usulan dapat diakomodasi secara penuh karena besaran hibah yang diberikan harus disesuaikan dengan kondisi keuangan daerah serta kebutuhan sektor lain yang juga dibiayai melalui APBD."}
+        Penyaluran dana hibah telah ditetapkan dalam{" "}
+        <LawReferenceLink href={lawReferenceUrls.uuKeolahragaan}>
+          UU Nomor 11 Tahun 2022 tentang Keolahragaan Pasal 79
+        </LawReferenceLink>{" "}
+        yang menjelaskan bahwa alokasi hibah yang diberikan harus sesuai dengan
+        kemampuan keuangan daerah dan mempertimbangkan target capaian. Pada
+        proses pengalokasian dana hibah tersebut, berbagai kebutuhan organisasi
+        mulai diseleksi berdasarkan skala prioritas. Tidak seluruh usulan dapat
+        diakomodasi secara penuh karena besaran hibah yang diberikan harus
+        disesuaikan dengan kondisi keuangan daerah serta kebutuhan sektor lain
+        yang juga dibiayai melalui APBD.
       </p>
       <p className={articleParagraphClass} key="paragraph-9">
         {"Meski besaran hibah 2026 akhirnya ditetapkan sebesar Rp5 miliar, dana tersebut tidak langsung diterima secara penuh dan akan diturunkan secara bertahap. Hingga bulan Maret 2026 lalu, NPCI Kota Bandung baru menerima pencairan tahap pertama sebesar 55 persen atau sekitar Rp2,61 miliar. Sisa anggaran baru dapat dicairkan setelah organisasi menyelesaikan laporan pertanggungjawaban dan melalui proses verifikasi dari Dispora Kota Bandung."}
@@ -82,7 +95,15 @@ export default function SubtitleThreeContent() {
         {"SUB PERBANDINGAN KONI DAN NPCI"}
       </h2>
       <p className={articleParagraphClass} key="paragraph-27">
-        {"Di atas kertas, kesetaraan atlet disabilitas dan non-disabilitas kerap dibaca dari besaran bonus medali. Hal ini tertulis pada UU No 11 Tahun 2022 tentang Keolahragaan Pasal 60 ayat 2e yang menyebutkan bahwa setiap olahragawan berhak mendapatkan hak yang sama untuk memperoleh penghargaan sesuai prestasi yang dicapai. Dalam praktiknya, Kemenpora juga menyatakan bonus atlet penyandang disabilitas berprestasi telah disetarakan dengan atlet non-disabilitas."}
+        Di atas kertas, kesetaraan atlet disabilitas dan non-disabilitas kerap
+        dibaca dari besaran bonus medali. Hal ini tertulis pada{" "}
+        <LawReferenceLink href={lawReferenceUrls.uuKeolahragaan}>
+          UU No 11 Tahun 2022 tentang Keolahragaan Pasal 60 ayat 2e
+        </LawReferenceLink>{" "}
+        yang menyebutkan bahwa setiap olahragawan berhak mendapatkan hak yang
+        sama untuk memperoleh penghargaan sesuai prestasi yang dicapai. Dalam
+        praktiknya, Kemenpora juga menyatakan bonus atlet penyandang disabilitas
+        berprestasi telah disetarakan dengan atlet non-disabilitas.
       </p>
       <p className={articleParagraphClass} key="paragraph-28">
         {"Namun, kesetaraan bonus tidak berarti kesetaraan dalam proses pembinaan sehari-hari. Di titik inilah perbedaan dana antara KONI dan NPCI menjadi benang merah ketimpangan."}

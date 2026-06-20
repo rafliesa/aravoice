@@ -1,3 +1,8 @@
+import LawReferenceLink, {
+  lawReferenceUrls,
+} from "@/modules/medpro-report/component/LawReferenceLink";
+import type { ReactNode } from "react";
+
 export default function ConstitutionHighlightsInfographic() {
   return (
     <section className="overflow-hidden rounded-[1.75rem] bg-[#061025] p-5 shadow-2xl shadow-[#07102d]/20 sm:p-6">
@@ -18,7 +23,9 @@ export default function ConstitutionHighlightsInfographic() {
           Jaminan hak bagi Penyandang Disabilitas tidak hanya diatur dalam
           kebijakan teknis, tetapi juga dipertegas dalam{" "}
           <strong className="font-extrabold text-yellow-300">
-            Undang-Undang Dasar 1945
+            <LawReferenceLink href={lawReferenceUrls.indonesiaConstitution}>
+              Undang-Undang Dasar 1945
+            </LawReferenceLink>
           </strong>{" "}
           sebagai dasar konstitusional{" "}
           <strong className="font-extrabold text-sky-300">
@@ -29,14 +36,22 @@ export default function ConstitutionHighlightsInfographic() {
 
       <div className="mt-5 grid gap-4 md:grid-cols-2">
         <ConstitutionCard
-          badge="Pasal 28H Ayat (2)"
+          badge={
+            <LawReferenceLink href={lawReferenceUrls.indonesiaConstitution}>
+              Pasal 28H Ayat (2)
+            </LawReferenceLink>
+          }
           description="Setiap individu berhak atas perlakuan khusus dan kemudahan untuk memperoleh kesempatan dan manfaat yang sama demi mencapai keadilan dan persamaan."
           icon="scale"
           title="Kesetaraan Hukum"
           tone="blue"
         />
         <ConstitutionCard
-          badge="Pasal 28I Ayat (1)"
+          badge={
+            <LawReferenceLink href={lawReferenceUrls.indonesiaConstitution}>
+              Pasal 28I Ayat (1)
+            </LawReferenceLink>
+          }
           description="Hak-hak dasar dijamin sebagai hak yang melekat dan tidak dapat dikurangi dalam keadaan apa pun."
           footnote="Termasuk perlindungan terhadap hak-hak fundamental, seperti kebebasan beragama dan hak untuk bebas dari perlakuan yang merendahkan martabat manusia."
           icon="shield"
@@ -47,7 +62,10 @@ export default function ConstitutionHighlightsInfographic() {
 
       <div className="mt-5 rounded-2xl border border-white/8 bg-white/[0.025] px-5 py-4">
         <p className="font-sans text-xs font-normal leading-6 text-slate-400">
-          Sumber: Undang-Undang Dasar Negara Republik Indonesia Tahun 1945
+          Sumber:{" "}
+          <LawReferenceLink href={lawReferenceUrls.indonesiaConstitution}>
+            Undang-Undang Dasar Negara Republik Indonesia Tahun 1945
+          </LawReferenceLink>
         </p>
       </div>
     </section>
@@ -62,7 +80,7 @@ function ConstitutionCard({
   title,
   tone,
 }: {
-  badge: string;
+  badge: ReactNode;
   description: string;
   footnote?: string;
   icon: "scale" | "shield";

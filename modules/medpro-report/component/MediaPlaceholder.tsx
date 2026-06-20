@@ -1,9 +1,11 @@
+import type { ReactNode } from "react";
+
 export default function MediaPlaceholder({
   assetNumber,
   text,
 }: {
   assetNumber?: number;
-  text: string;
+  text: ReactNode;
 }) {
   return (
     <aside className="overflow-hidden rounded-lg border border-[#d9d2c7] bg-white">

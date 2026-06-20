@@ -1,3 +1,6 @@
+import LawReferenceLink, {
+  lawReferenceUrls,
+} from "@/modules/medpro-report/component/LawReferenceLink";
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
@@ -53,7 +56,12 @@ export default function SubtitleFiveContent() {
         {"Keterbatasan pendidikan itu tidak berhenti di ruang kelas. Ketika penyandang disabilitas sulit mengakses pendidikan yang layak, dampaknya ikut terbawa ke dunia kerja. Berbagai macam berkas, seperti ijazah, keterampilan, dan pengalaman menjadi syarat yang sering menentukan apakah seseorang bisa masuk ke pekerjaan formal atau tidak."}
       </p>
       <p className={articleParagraphClass} key="paragraph-18">
-        {"Secara regulasi, negara sebenarnya sudah membuka ruang afirmatif. UU Nomor 8 Tahun 2016 tentang Penyandang Disabilitas Pasal 53 telah mengatur kuota yang berhak didapatkan oleh penyandang disabilitas untuk menempuh dunia kerja yang formal seperti ruang pemerintahan,"}
+        Secara regulasi, negara sebenarnya sudah membuka ruang afirmatif.{" "}
+        <LawReferenceLink href={lawReferenceUrls.uuDisability}>
+          UU Nomor 8 Tahun 2016 tentang Penyandang Disabilitas Pasal 53
+        </LawReferenceLink>{" "}
+        telah mengatur kuota yang berhak didapatkan oleh penyandang disabilitas
+        untuk menempuh dunia kerja yang formal seperti ruang pemerintahan,
       </p>
       <p className={articleParagraphClass} key="paragraph-19">
         {"BUMN, BUMD, maupun perusahaan swasta. Namun, kuota tersebut tidak otomatis berubah menjadi kesempatan nyata. Aturan memang bisa membuka jalan, tetapi pendidikan,"}

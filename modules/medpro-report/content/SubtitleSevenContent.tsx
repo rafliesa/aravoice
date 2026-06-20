@@ -1,4 +1,7 @@
 import EditorialNote from "@/modules/medpro-report/component/EditorialNote";
+import LawReferenceLink, {
+  lawReferenceUrls,
+} from "@/modules/medpro-report/component/LawReferenceLink";
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import SourceLink from "@/modules/medpro-report/component/SourceLink";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
@@ -10,7 +13,17 @@ export default function SubtitleSevenContent() {
         {"Di atas kertas Indonesia memiliki regulasi yang tertuju kepada hak-hak atlet disabilitas."}
       </p>
       <p className={articleParagraphClass} key="paragraph-1">
-        {"Komisioner Komisi Nasional Disabilitas (KND), Jonna Damanik, menjelaskan bahwa perubahan besar dalam kebijakan disabilitas di Indonesia berawal dari perubahan cara pandang negara terhadap penyandang disabilitas. Sebelum Indonesia meratifikasi Convention on the Rights of Persons with Disabilities (CRPD) pada 2011, penyandang disabilitas cenderung diposisikan sebagai objek bantuan sosial yang harus dikasihani. Setelah ratifikasi tersebut, paradigma itu berubah. Penyandang disabilitas mulai dipandang sebagai subjek hukum yang memiliki hak setara dengan warga negara lainnya."}
+        Komisioner Komisi Nasional Disabilitas (KND), Jonna Damanik,
+        menjelaskan bahwa perubahan besar dalam kebijakan disabilitas di
+        Indonesia berawal dari perubahan cara pandang negara terhadap penyandang
+        disabilitas. Sebelum Indonesia meratifikasi{" "}
+        <LawReferenceLink href={lawReferenceUrls.crpd}>
+          Convention on the Rights of Persons with Disabilities (CRPD)
+        </LawReferenceLink>{" "}
+        pada 2011, penyandang disabilitas cenderung diposisikan sebagai objek
+        bantuan sosial yang harus dikasihani. Setelah ratifikasi tersebut,
+        paradigma itu berubah. Penyandang disabilitas mulai dipandang sebagai
+        subjek hukum yang memiliki hak setara dengan warga negara lainnya.
       </p>
       <EditorialNote key="note-2" text={"[INFOGRAFIS PERGANTIAN MEDICAL MODEL - SOCIAL MODEL - HUMAN RIGHTS MODEL]"} />
       <p className={articleParagraphClass} key="paragraph-3">
@@ -189,7 +202,15 @@ export default function SubtitleSevenContent() {
         {"Acep saat di Kantor Dispora Bandung juga menjelaskan terkait program setelah atlet pensiun yang belum terlaksana,"}
       </p>
       <p className={articleParagraphClass} key="paragraph-71">
-        {"“Kalau program khusus belum ada yang benar-benar berjalan. Namun di Perda (Peraturan Daerah) sudah tercantum bahwa atlet berprestasi bisa mendapatkan penghargaan. Penghargaan itu bisa berupa:Uang pembinaan, Kesempatan kerja dan Bentuk penghargaan lainnya. Tetapi untuk penyaluran pekerjaan harus melibatkan instansi lain seperti Disnaker, BKD, atau lembaga terkait lainnya. Jadi prosesnya cukup panjang.”"}
+        “Kalau program khusus belum ada yang benar-benar berjalan. Namun di{" "}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Perda (Peraturan Daerah)
+        </LawReferenceLink>{" "}
+        sudah tercantum bahwa atlet berprestasi bisa mendapatkan penghargaan.
+        Penghargaan itu bisa berupa:Uang pembinaan, Kesempatan kerja dan Bentuk
+        penghargaan lainnya. Tetapi untuk penyaluran pekerjaan harus melibatkan
+        instansi lain seperti Disnaker, BKD, atau lembaga terkait lainnya. Jadi
+        prosesnya cukup panjang.”
       </p>
       <p className={articleParagraphClass} key="paragraph-72">
         {"Pernyataan yang menunjukkan bahwa pembinaan atlet disabilitas di Indonesia masih berorientasi pada pencapaian prestasi, bukan pada keberlanjutan kesejahteraan atlet sebagai individu."}
@@ -212,10 +233,28 @@ export default function SubtitleSevenContent() {
       </p>
       <EditorialNote key="note-79" text={"(interaktf)"} />
       <p className={articleParagraphClass} key="paragraph-80">
-        {"Bagian Kedelapan Keolahragaan Pasal 18 Pemerintah Daerah Kota dalam Penghormatan, Pelindungan dan Pemenuhan hak keolahragaan wajib menjamin Penyandang Disabilitas, dalam: a.​ melakukan kegiatan keolahragaan; b.​ mendapatkan penghargaan yang sama dalam kegiatan keolahragaan; c.​ memperoleh pelayanan dalam kegiatan keolahragaan; d.​ memperoleh sarana dan prasarana keolahragaan yang mudah diakses; e.​ memilih dan mengikuti jenis atau cabang olahraga; f.​ memperoleh pengarahan, dukungan, bimbingan, pembinaan, dan pengembangan dalam keolahragaan; g.​ menjadi pelaku keolahragaan; h.​ engembangkan industri keolahragaan; i.​ meningkatkan prestasi dan mengikuti kejuaraan di semua tingkatan."}
+        Bagian Kedelapan Keolahragaan{" "}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Pasal 18
+        </LawReferenceLink>{" "}
+        Pemerintah Daerah Kota dalam Penghormatan, Pelindungan dan Pemenuhan
+        hak keolahragaan wajib menjamin Penyandang Disabilitas, dalam: a.​
+        melakukan kegiatan keolahragaan; b.​ mendapatkan penghargaan yang sama
+        dalam kegiatan keolahragaan; c.​ memperoleh pelayanan dalam kegiatan
+        keolahragaan; d.​ memperoleh sarana dan prasarana keolahragaan yang
+        mudah diakses; e.​ memilih dan mengikuti jenis atau cabang olahraga; f.​
+        memperoleh pengarahan, dukungan, bimbingan, pembinaan, dan pengembangan
+        dalam keolahragaan; g.​ menjadi pelaku keolahragaan; h.​ engembangkan
+        industri keolahragaan; i.​ meningkatkan prestasi dan mengikuti kejuaraan
+        di semua tingkatan.
       </p>
       <p className={articleParagraphClass} key="paragraph-81">
-        {"Pasal 19 1)​ Pemerintah Daerah Kota wajib membina dan mengembangkan keolahragaan bagi Penyandang Disabilitas, yang dilaksanakan dan diarahkan untuk meningkatkan kesehatan, rasa percaya diri, dan prestasi dalam olahraga."}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Pasal 19
+        </LawReferenceLink>{" "}
+        1)​ Pemerintah Daerah Kota wajib membina dan mengembangkan keolahragaan
+        bagi Penyandang Disabilitas, yang dilaksanakan dan diarahkan untuk
+        meningkatkan kesehatan, rasa percaya diri, dan prestasi dalam olahraga.
       </p>
       <p className={articleParagraphClass} key="paragraph-82">
         {"2)​ Pemerintah Daerah Kota menyediakan peralatan dan perlengkapan cabang olahraga sesuai dengan pilihan dan potensi Penyandang Disabilitas."}
@@ -230,7 +269,22 @@ export default function SubtitleSevenContent() {
         {"4)​ Pembinaan dan pengembangan olahraga penyandang disabilitas sebagaimana dimaksud pada ayat (1) dan ayat (2), dilaksanakan sesuai dengan ragam dan derajat kedisabilitasannya."}
       </p>
       <p className={articleParagraphClass} key="paragraph-86">
-        {"Bagian Kesepuluh Kesejahteraan Sosial Paragraf 1 Umum Pasal 22 Pemerintah Daerah Kota dalam Penghormatan, Pelindungan dan Pemenuhan hak kesejahteraan sosial wajib menjamin akses bagi Penyandang Disabilitas untuk mendapatkan: a.​ Rehabilitasi Sosial b.​ Jaminan Sosial c.​ Pemberdayaan Sosial d.​ Perlindungan Sosial Paragraf 2 Rehabilitasi Sosial Pasal 23 1)​ Rehabilitasi Sosial sebagaimana dimaksud dalam Pasal 22 huruf a dimaksudkan untuk memulihkan dan mengembangkan kemampuan Penyandang Disabilitas yang mengalami disfungsi sosial agar dapat melaksanakan fungsi sosialnya secara wajar."}
+        Bagian Kesepuluh Kesejahteraan Sosial Paragraf 1 Umum{" "}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Pasal 22
+        </LawReferenceLink>{" "}
+        Pemerintah Daerah Kota dalam Penghormatan, Pelindungan dan Pemenuhan
+        hak kesejahteraan sosial wajib menjamin akses bagi Penyandang
+        Disabilitas untuk mendapatkan: a.​ Rehabilitasi Sosial b.​ Jaminan
+        Sosial c.​ Pemberdayaan Sosial d.​ Perlindungan Sosial Paragraf 2
+        Rehabilitasi Sosial{" "}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Pasal 23
+        </LawReferenceLink>{" "}
+        1)​ Rehabilitasi Sosial sebagaimana dimaksud dalam Pasal 22 huruf a
+        dimaksudkan untuk memulihkan dan mengembangkan kemampuan Penyandang
+        Disabilitas yang mengalami disfungsi sosial agar dapat melaksanakan
+        fungsi sosialnya secara wajar.
       </p>
       <p className={articleParagraphClass} key="paragraph-87">
         {"2)​ Rehabilitasi Sosial dilakukan dengan pemberian pelayanan sosial secara utuh dan terpadu paling sedikit melalui kegiatan: a.​ motivasi dan diagnosis psikososial; b.​ perawatan dan pengasuhan; c.​ pelatihan vokasional kewirausahaan; d.​ bimbingan mental spiritual; e.​ bimbingan fisik; f.​ pembinaan bimbingan sosial dan konseling psikososial; g.​ pelayanan Aksesibilitas; h.​ bantuan dan asistensi sosial; i.​ bimbingan resosialisasi; j.​ bimbingan lanjut; dan/atau k.​ rujukan."}
@@ -245,7 +299,13 @@ export default function SubtitleSevenContent() {
         {"4)​ Pelaksanaan Rehabilitasi Sosial bagi Penyandang Disabilitas berpedoman pada ketentuan peraturan perundang-undangan."}
       </p>
       <p className={articleParagraphClass} key="paragraph-91">
-        {"Paragraf 3 Jaminan Sosial Pasal 24 1)​ Jaminan Sosial sebagaimana dimaksud dalam Pasal 22 huruf b, untuk menjamin Penyandang Disabilitas yang mengalami masalah ketidakmampuan sosial dan ekonomi agar kebutuhan dasarnya terpenuhi."}
+        Paragraf 3 Jaminan Sosial{" "}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Pasal 24
+        </LawReferenceLink>{" "}
+        1)​ Jaminan Sosial sebagaimana dimaksud dalam Pasal 22 huruf b, untuk
+        menjamin Penyandang Disabilitas yang mengalami masalah ketidakmampuan
+        sosial dan ekonomi agar kebutuhan dasarnya terpenuhi.
       </p>
       <p className={articleParagraphClass} key="paragraph-92">
         {"2)​ Jaminan Sosial sebagaimana dimaksud pada ayat (1) ditujukan kepada Penyandang Disabilitas miskin atau yang tidak memiliki penghasilan."}
@@ -257,13 +317,32 @@ export default function SubtitleSevenContent() {
         {"4)​ Pelaksanaan Jaminan Sosial sebagaimana dimaksud pada ayat (3) berpedoman pada ketentuan peraturan perundang-undangan."}
       </p>
       <p className={articleParagraphClass} key="paragraph-95">
-        {"Paragraf 4 Pemberdayaan Sosial Pasal 25 Pemberdayaan Sosial bagi Penyandang Disabilitas sebagaimana dimaksud dalam Pasal 22 huruf c untuk: a.​ memberdayakan Penyandang Disabilitas agar mampu memenuhi kebutuhannya secara mandiri; b.​ meningkatkan partisipasi lembaga dan/atau sumber daya penyelenggaraan kesetaraan Pemberdayaan Penyandang Disabilitas."}
+        Paragraf 4 Pemberdayaan Sosial{" "}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Pasal 25
+        </LawReferenceLink>{" "}
+        Pemberdayaan Sosial bagi Penyandang Disabilitas sebagaimana dimaksud
+        dalam Pasal 22 huruf c untuk: a.​ memberdayakan Penyandang Disabilitas
+        agar mampu memenuhi kebutuhannya secara mandiri; b.​ meningkatkan
+        partisipasi lembaga dan/atau sumber daya penyelenggaraan kesetaraan
+        Pemberdayaan Penyandang Disabilitas.
       </p>
       <p className={articleParagraphClass} key="paragraph-96">
-        {"Paragraf 5 Perlindungan Sosial Pasal 27 Perlindungan Sosial sebagaimana dimaksud dalam Pasal 22 huruf d dilaksanakan paling sedikit melalui: a.​ bantuan Sosial; b.​ advokasi sosial; c.​ dan/atau bantuan hukum."}
+        Paragraf 5 Perlindungan Sosial{" "}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Pasal 27
+        </LawReferenceLink>{" "}
+        Perlindungan Sosial sebagaimana dimaksud dalam Pasal 22 huruf d
+        dilaksanakan paling sedikit melalui: a.​ bantuan Sosial; b.​ advokasi
+        sosial; c.​ dan/atau bantuan hukum.
       </p>
       <p className={articleParagraphClass} key="paragraph-97">
-        {"Pasal 28 1)​ Bantuan Sosial sebagaimana dimaksud dalam Pasal 27 huruf a diberikan kepada Penyandang Disabilitas, keluarga Penyandang Penyandang Disabilitas, Disabilitas,"}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Pasal 28
+        </LawReferenceLink>{" "}
+        1)​ Bantuan Sosial sebagaimana dimaksud dalam Pasal 27 huruf a diberikan
+        kepada Penyandang Disabilitas, keluarga Penyandang Penyandang
+        Disabilitas, Disabilitas,
       </p>
       <p className={articleParagraphClass} key="paragraph-98">
         {"dan/atau kelompok komunitas Penyandang Disabilitas yang mengalami risiko sosial agar dapat tetap hidup secara wajar."}
@@ -275,7 +354,13 @@ export default function SubtitleSevenContent() {
         {"3)​ Pemberian Bantuan Sosial sebagaimana dimaksud pada ayat (2) berpedoman pada ketentuan peraturan perundang-undangan."}
       </p>
       <p className={articleParagraphClass} key="paragraph-101">
-        {"Pasal 29 1)​ Advokasi sosial sebagaimana dimaksud dalam Pasal 27 huruf b dimaksudkan untuk melindungi dan membela Penyandang Disabilitas, Disabilitas, kelompok keluarga Penyandang Penyandang Disabilitas, dan/atau komunitas Penyandang Disabilitas yang dilanggar haknya."}
+        <LawReferenceLink href={lawReferenceUrls.perdaBandungDisability}>
+          Pasal 29
+        </LawReferenceLink>{" "}
+        1)​ Advokasi sosial sebagaimana dimaksud dalam Pasal 27 huruf b
+        dimaksudkan untuk melindungi dan membela Penyandang Disabilitas,
+        Disabilitas, kelompok keluarga Penyandang Penyandang Disabilitas,
+        dan/atau komunitas Penyandang Disabilitas yang dilanggar haknya.
       </p>
       <p className={articleParagraphClass} key="paragraph-102">
         {"2)​ Advokasi sosial sebagaimana dimaksud pada ayat (1) diberikan dalam bentuk penyadaran hak dan kewajiban, pembelaan dan pemenuhan hak."}

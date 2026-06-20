@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import LawReferenceLink, {
+  lawReferenceUrls,
+} from "@/modules/medpro-report/component/LawReferenceLink";
 
 export default function Pasal53Infographic() {
   return (
@@ -10,7 +13,10 @@ export default function Pasal53Infographic() {
           Regulasi Ketenagakerjaan Inklusif
         </span>
         <h2 className="mt-4 font-sans text-3xl font-extrabold leading-tight text-white sm:text-4xl">
-          Highlights <span className="text-sky-300">Pasal 53</span>
+          Highlights{" "}
+          <LawReferenceLink href={lawReferenceUrls.uuDisability}>
+            Pasal 53
+          </LawReferenceLink>
         </h2>
         <p className="mt-2 font-sans text-sm font-semibold text-sky-100/80 sm:text-base">
           Kewajiban Mempekerjakan Penyandang Disabilitas
@@ -18,9 +24,12 @@ export default function Pasal53Infographic() {
 
         <div className="mt-6 rounded-xl border-l-4 border-sky-300 bg-white/8 px-5 py-4">
           <p className="font-sans text-sm font-normal leading-7 text-sky-50/86">
-            Pasal 53 menegaskan kewajiban instansi pemerintah, BUMN, BUMD,
-            dan perusahaan swasta untuk menyediakan peluang kerja yang
-            inklusif bagi Penyandang Disabilitas melalui{" "}
+            <LawReferenceLink href={lawReferenceUrls.uuDisability}>
+              Pasal 53
+            </LawReferenceLink>{" "}
+            menegaskan kewajiban instansi pemerintah, BUMN, BUMD, dan
+            perusahaan swasta untuk menyediakan peluang kerja yang inklusif bagi
+            Penyandang Disabilitas melalui{" "}
             <strong className="font-extrabold text-white">
               kuota minimal sesuai jenis lembaga.
             </strong>
@@ -55,7 +64,10 @@ export default function Pasal53Infographic() {
 
       <div className="bg-[#050b22] px-5 py-4 sm:px-8">
         <p className="font-sans text-xs font-normal text-slate-500">
-          Sumber: Pasal 53 Undang-Undang tentang Penyandang Disabilitas
+          Sumber:{" "}
+          <LawReferenceLink href={lawReferenceUrls.uuDisability}>
+            Pasal 53 Undang-Undang tentang Penyandang Disabilitas
+          </LawReferenceLink>
         </p>
       </div>
     </section>

@@ -5,6 +5,9 @@ import ArticleRightsList from "@/modules/medpro-report/component/ArticleRightsLi
 import ConstitutionHighlightsInfographic from "@/modules/medpro-report/component/ConstitutionHighlightsInfographic";
 import EquipmentComparisonTable from "@/modules/medpro-report/component/EquipmentComparisonTable";
 import KoniNpciComparisonInfographic from "@/modules/medpro-report/component/KoniNpciComparisonInfographic";
+import LawReferenceLink, {
+  lawReferenceUrls,
+} from "@/modules/medpro-report/component/LawReferenceLink";
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 
@@ -166,22 +169,68 @@ export default function SubtitleTwoContent() {
   return (
     <>
       <p className={articleParagraphClass} key="paragraph-0">
-        {"Negara sudah menulis aksesibilitas dalam Undang-Undang Nomor 8 Tahun 2016 tentang Penyandang Disabilitas. Tapi di lantai dua gedung dojo (tempat latihan kompetisi) NPCI Kota Bandung, seorang atlet blind judo masih harus meraba-raba tangga yang tidak pernah dirancang untuknya."}
+        Negara sudah menulis aksesibilitas dalam{" "}
+        <LawReferenceLink href={lawReferenceUrls.uuDisability}>
+          Undang-Undang Nomor 8 Tahun 2016 tentang Penyandang Disabilitas
+        </LawReferenceLink>
+        . Tapi di lantai dua gedung dojo (tempat latihan kompetisi) NPCI Kota
+        Bandung, seorang atlet blind judo masih harus meraba-raba tangga yang
+        tidak pernah dirancang untuknya.
       </p>
       <MediaPlaceholder assetNumber={1} key="media-1" text={"Foto utama: tangga menuju dojo blind judo di lantai dua – satu-satunya akses yang tersedia Foto kedua: Opik, atlet low vision mengendarai motor 2,5 km sendiri ke tempat latihan"} />
-      <MediaPlaceholder assetNumber={2} key="media-3" text={"Foto ketiga: Mess atlet, berisi beras dan magic com yang disediakan organisasi. Lauk beli sendiri Secara hukum, hak-hak penyandang disabilitas sebenarnya telah mendapat pengakuan kuat di tingkat internasional maupun nasional. Salah satu tonggaknya adalah Konvensi tentang Hak-Hak Penyandang Disabilitas atau Convention on the Rights of Persons with Disabilities/CRPD yang disahkan melalui Resolusi Majelis Umum Perserikatan Bangsa-Bangsa pada 13 Desember 2006."} />
+      <MediaPlaceholder
+        assetNumber={2}
+        key="media-3"
+        text={
+          <>
+            Foto ketiga: Mess atlet, berisi beras dan magic com yang disediakan
+            organisasi. Lauk beli sendiri Secara hukum, hak-hak penyandang
+            disabilitas sebenarnya telah mendapat pengakuan kuat di tingkat
+            internasional maupun nasional. Salah satu tonggaknya adalah
+            Konvensi tentang Hak-Hak Penyandang Disabilitas atau{" "}
+            <LawReferenceLink href={lawReferenceUrls.crpd}>
+              Convention on the Rights of Persons with Disabilities/CRPD
+            </LawReferenceLink>{" "}
+            yang disahkan melalui Resolusi Majelis Umum Perserikatan
+            Bangsa-Bangsa pada 13 Desember 2006.
+          </>
+        }
+      />
       <p className={articleParagraphClass} key="paragraph-4">
-        {"Jaminan ini kemudian dipertegas berdasarkan UUD 1945 melalui dua prinsip utama:"}
+        Jaminan ini kemudian dipertegas berdasarkan{" "}
+        <LawReferenceLink href={lawReferenceUrls.indonesiaConstitution}>
+          UUD 1945
+        </LawReferenceLink>{" "}
+        melalui dua prinsip utama:
       </p>
       <ConstitutionHighlightsInfographic />
       <p className={articleParagraphClass} key="paragraph-7">
-        {"Indonesia kemudian meratifikasi konvensi tersebut melalui Undang-Undang Nomor 19 Tahun 2011, menjadikannya bagian dari komitmen negara dalam menjamin hak-hak penyandang disabilitas yang mengubah paradigma dari model medis yakni melihat disabilitas sebagai penyakit, menjadi model hak asasi manusia."}
+        Indonesia kemudian meratifikasi konvensi tersebut melalui{" "}
+        <LawReferenceLink href={lawReferenceUrls.uuRatificationCrpd}>
+          Undang-Undang Nomor 19 Tahun 2011
+        </LawReferenceLink>
+        , menjadikannya bagian dari komitmen negara dalam menjamin hak-hak
+        penyandang disabilitas yang mengubah paradigma dari model medis yakni
+        melihat disabilitas sebagai penyakit, menjadi model hak asasi manusia.
       </p>
       <p className={articleParagraphClass} key="paragraph-8">
-        {"Selanjutnya dalam Undang Undang Nomor 8 Tahun 2016, negara memperjelas komitmennya untuk menjamin keberlangsungan hidup setiap warga negara tanpa kecuali. Ketentuan ini menegaskan bahwa penyandang disabilitas memiliki hak-hak dasar dan perlindungan hukum yang sama dengan warga negara lainnya dalam kehidupan berbangsa dan bernegara."}
+        Selanjutnya dalam{" "}
+        <LawReferenceLink href={lawReferenceUrls.uuDisability}>
+          Undang Undang Nomor 8 Tahun 2016
+        </LawReferenceLink>
+        , negara memperjelas komitmennya untuk menjamin keberlangsungan hidup
+        setiap warga negara tanpa kecuali. Ketentuan ini menegaskan bahwa
+        penyandang disabilitas memiliki hak-hak dasar dan perlindungan hukum
+        yang sama dengan warga negara lainnya dalam kehidupan berbangsa dan
+        bernegara.
       </p>
       <p className={articleParagraphClass} key="paragraph-9">
-        {"Prinsip inklusivitas dan aksesibilitas adalah mandat yang tertuang dalam Pasal 5, 83, dan 84 UU No. 8 Tahun 2016 di mana negara diwajibkan membangun sistem keolahragaan yang inklusif,"}
+        Prinsip inklusivitas dan aksesibilitas adalah mandat yang tertuang
+        dalam{" "}
+        <LawReferenceLink href={lawReferenceUrls.uuDisability}>
+          Pasal 5, 83, dan 84 UU No. 8 Tahun 2016
+        </LawReferenceLink>{" "}
+        di mana negara diwajibkan membangun sistem keolahragaan yang inklusif,
       </p>
       <p className={articleParagraphClass} key="paragraph-10">
         {"mencakup olahraga pendidikan, rekreasi, hingga olahraga prestasi yang disesuaikan dengan jenis disabilitasnya."}

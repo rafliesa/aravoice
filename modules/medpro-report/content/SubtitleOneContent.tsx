@@ -1,6 +1,9 @@
 import EditorialNote from "@/modules/medpro-report/component/EditorialNote";
 import ArticleImageCarousel from "@/modules/medpro-report/component/ArticleImageCarousel";
 import AthleteNeedsInfographic from "@/modules/medpro-report/component/AthleteNeedsInfographic";
+import LawReferenceLink, {
+  lawReferenceUrls,
+} from "@/modules/medpro-report/component/LawReferenceLink";
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import Pasal53DataCard from "@/modules/medpro-report/component/Pasal53DataCard";
 import { articleHeadingClass, articleKickerClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
@@ -148,7 +151,16 @@ export default function SubtitleOneContent() {
         {"transportasi, hingga ketersediaan peralatan khusus harus dipastikan dapat digunakan oleh berbagai ragam disabilitas secara aman dan setara."}
       </p>
       <p className={articleParagraphClass} key="paragraph-12">
-        {"Komisioner Komisi Nasional Disabilitas (KND), Jonna Damanik menjelaskan terkait kondisi olahraga disabilitas “Kalau melihat perkembangannya, setidaknya sejak lahirnya Undang-Undang Nomor 8 Tahun 2016, perkembangan atlet disabilitas sangat luar biasa. Momentum pentingnya adalah Asian Para Games 2018. Dari situ prestasi atlet disabilitas meningkat pesat. Tentu hal itu tidak lepas dari sistem pembinaan, tata kelola kelembagaan, serta dukungan negara,”"}
+        Komisioner Komisi Nasional Disabilitas (KND), Jonna Damanik
+        menjelaskan terkait kondisi olahraga disabilitas “Kalau melihat
+        perkembangannya, setidaknya sejak lahirnya{" "}
+        <LawReferenceLink href={lawReferenceUrls.uuDisability}>
+          Undang-Undang Nomor 8 Tahun 2016
+        </LawReferenceLink>
+        , perkembangan atlet disabilitas sangat luar biasa. Momentum
+        pentingnya adalah Asian Para Games 2018. Dari situ prestasi atlet
+        disabilitas meningkat pesat. Tentu hal itu tidak lepas dari sistem
+        pembinaan, tata kelola kelembagaan, serta dukungan negara,”
       </p>
       <MediaPlaceholder assetNumber={1} key="media-13" text={"VN statement Jonna Damanik"} />
       <p className={articleParagraphClass} key="paragraph-14">
@@ -239,7 +251,13 @@ export default function SubtitleOneContent() {
         {"Dari sekitar 2.500 atlet disabilitas aktif di Jawa Barat, sebagian besar harus mencari sumber penghidupan di luar arena olahraga. Namun pekerjaan yang mereka geluti umumnya berada di sektor informal dengan tingkat pendapatan yang tidak menentu seperti membuka usaha kecil-kecilan, menjadi buruh harian, pekerja lepas, terapis pijat, hingga pekerjaan serabutan yang bergantung pada ada atau tidaknya pelanggan."}
       </p>
       <p className={articleParagraphClass} key="paragraph-50">
-        {"Secara hukum, hak-hak penyandang disabilitas sebenarnya telah dijamin melalui Undang-Undang Nomor 8 Tahun 2016 tentang Penyandang Disabilitas. Regulasi tersebut mengatur hak atas aksesibilitas, pekerjaan, kesehatan, kesejahteraan sosial, hingga olahraga."}
+        Secara hukum, hak-hak penyandang disabilitas sebenarnya telah dijamin
+        melalui{" "}
+        <LawReferenceLink href={lawReferenceUrls.uuDisability}>
+          Undang-Undang Nomor 8 Tahun 2016 tentang Penyandang Disabilitas
+        </LawReferenceLink>
+        . Regulasi tersebut mengatur hak atas aksesibilitas, pekerjaan,
+        kesehatan, kesejahteraan sosial, hingga olahraga.
       </p>
       <Pasal53DataCard key="pasal53-51" />
       <p className={articleParagraphClass} key="paragraph-53">
