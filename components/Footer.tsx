@@ -18,7 +18,7 @@ const columns = [
       { label: "Tentang Kami", href: "/tentang-kami" },
       { label: "Kontak", href: "/kontak" },
       { label: "Donasi", href: "/donasi" },
-      { label: "Buletin", href: "/buletin" },
+      { label: "Newsletter", href: "/dukung-kami" },
       { label: "Panduan Kontributor", href: "/panduan-kontributor" },
     ],
   },
