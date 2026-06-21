@@ -2,16 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import type { MerchProduct } from "@/lib/merch";
 import { HeartIcon } from "@/modules/merch/component/icons";
-
-export type MerchProduct = {
-  id: string;
-  name: string;
-  category: string;
-  description: string;
-  price: string;
-  image: string;
-};
 
 type ProductCardProps = {
   product: MerchProduct;

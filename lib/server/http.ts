@@ -16,10 +16,10 @@ export function errorResponse(error: unknown) {
 
   if (error instanceof Prisma.PrismaClientKnownRequestError) {
     if (error.code === "P2002") {
-      return Response.json({ error: "news slug already exists" }, { status: 409 });
+      return Response.json({ error: "data already exists" }, { status: 409 });
     }
     if (error.code === "P2025") {
-      return Response.json({ error: "news not found" }, { status: 404 });
+      return Response.json({ error: "data not found" }, { status: 404 });
     }
   }
 

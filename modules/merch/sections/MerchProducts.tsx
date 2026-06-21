@@ -1,9 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import ProductCard, {
-  type MerchProduct,
-} from "@/modules/merch/component/ProductCard";
+import { useEffect, useMemo, useState } from "react";
+import { fetchMerchProducts, type MerchProduct } from "@/lib/merch";
+import ProductCard from "@/modules/merch/component/ProductCard";
 
 const categories = [
   "Semua Produk",
@@ -15,67 +14,107 @@ const categories = [
 
 const products: MerchProduct[] = [
   {
-    id: "sticker-sheet",
+    id: 1,
     name: 'T-Shirt "Suara Setara"',
     category: "Pakaian",
     description: "Bahan katun organik premium dengan logo eksklusif ParaVoice.",
     price: "Rp 189.000",
     image: "/merch/sticker-sheet.png",
+    sort_order: 10,
+    is_active: true,
   },
   {
-    id: "hoodie-inklusif",
+    id: 2,
     name: 'Hoodie "Inklusi" Edition',
     category: "Pakaian",
     description: "Hoodie nyaman dengan detail sulaman logo di dada.",
     price: "Rp 349.000",
     image: "/merch/hoodie-inklusif.png",
+    sort_order: 20,
+    is_active: true,
   },
   {
-    id: "tote-bag",
+    id: 3,
     name: "Tote Bag ParaVoice",
     category: "Aksesori",
     description: "Tas jinjing kanvas kuat untuk menemani keseharian Anda.",
     price: "Rp 85.000",
     image: "/merch/tote-bag.png",
+    sort_order: 30,
+    is_active: true,
   },
   {
-    id: "mug-jurnalis",
+    id: 4,
     name: "Mug Jurnalis Matte",
     category: "Peralatan Harian",
     description: "Temani waktu baca Anda dengan mug desain eksklusif.",
     price: "Rp 120.000",
     image: "/merch/mug-jurnalis.png",
+    sort_order: 40,
+    is_active: true,
   },
   {
-    id: "tumbler-orange",
+    id: 5,
     name: "Tumblr ParaVoice Orange",
     category: "Peralatan Harian",
     description: "Tetap terhidrasi sambil menyebarkan semangat inklusivitas.",
     price: "Rp 215.000",
     image: "/merch/tumbler-orange.png",
+    sort_order: 50,
+    is_active: true,
   },
   {
-    id: "topi-para",
+    id: 6,
     name: 'Topi "PARA" Signature',
     category: "Aksesori",
     description: "Aksesori esensial dengan detail sulaman 3D yang premium.",
     price: "Rp 145.000",
     image: "/merch/topi-para.png",
+    sort_order: 60,
+    is_active: true,
   },
 ];
 
 export default function MerchProducts() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [merchProducts, setMerchProducts] = useState<MerchProduct[]>(products);
+  const dynamicCategories = useMemo(
+    () => [
+      "Semua Produk",
+      ...Array.from(
+        new Set([
+          ...categories.slice(1),
+          ...merchProducts.map((product) => product.category),
+        ]),
+      ),
+    ],
+    [merchProducts],
+  );
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchMerchProducts(controller.signal)
+      .then((items) => {
+        if (items.length > 0) setMerchProducts(items);
+      })
+      .catch(() => {
+        setMerchProducts(products);
+      });
+
+    return () => controller.abort();
+  }, []);
+
   const filteredProducts = useMemo(() => {
-    if (activeCategory === "Semua Produk") return products;
-    return products.filter((product) => product.category === activeCategory);
-  }, [activeCategory]);
+    if (activeCategory === "Semua Produk") return merchProducts;
+    return merchProducts.filter((product) => product.category === activeCategory);
+  }, [activeCategory, merchProducts]);
 
   return (
     <section className="bg-white px-6 pb-24 pt-8">
       <div className="mx-auto max-w-7xl">
         <div className="motion-fade-up flex flex-wrap justify-center gap-4 border-b border-[#d8dbe2] pb-8">
-          {categories.map((category) => {
+          {dynamicCategories.map((category) => {
             const isActive = activeCategory === category;
 
             return (
