@@ -5,13 +5,13 @@ const benefits = [
   {
     title: "Data Eksklusif Para-Sports",
     description:
-      "Dapatkan akses ke basis data performa atlet, statistik kompetisi, dan analisis mendalam yang tidak tersedia di media arus utama.",
+      "Dapatkan akses ke data performa atlet, statistik kompetisi, dan liputan mendalam olahraga disabilitas eksklusif kami.",
     icon: <DatabaseIcon />,
   },
   {
     title: "Laporan Jurnalistik Mendalam",
     description:
-      "Laporan investigasi dan feature khusus yang ditulis oleh para ahli di bidang olahraga disabilitas secara berkala.",
+      "Baca laporan investigasi, feature, dan liputan berbasis data eksklusif tentang isu olahraga disabilitas secara berkala.",
     icon: <ReportIcon />,
   },
   {
@@ -23,7 +23,7 @@ const benefits = [
   {
     title: "Dukung Jurnalisme Inklusif",
     description:
-      "Keanggotaan Anda mendanai liputan bagi atlet disabilitas yang sering kali luput dari perhatian media nasional.",
+      "Paravox membantu Paravoice.id memproduksi liputan yang memberi ruang lebih adil bagi atlet disabilitas.",
     icon: <MegaphoneIcon />,
   },
 ];
@@ -33,12 +33,12 @@ export default function SupportHero() {
     <section className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-14 lg:grid-cols-[1.35fr_0.95fr] lg:gap-16 lg:py-20">
       <div className="motion-fade-up">
         <h1 className="mt-3 text-5xl font-bold leading-[1.04] tracking-tight sm:text-5xl">
-          Bergabung Dengan Kami
+          Jadilah Bagian dari Paravox!
         </h1>
         <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-600 sm:text-lg">
-          Jadilah bagian dari suara yang menginspirasi. Dukung jurnalisme
-          inklusif yang mengangkat prestasi dan perjuangan para atlet
-          disabilitas Indonesia.
+          Dengan menjadi bagian dari Paravox, kamu ikut menyuarakan isu atlet
+          disabilitas melalui liputan, edukasi, kampanye, dan komunitas yang
+          inklusif.
         </p>
 
         <div className="mt-12 space-y-8">

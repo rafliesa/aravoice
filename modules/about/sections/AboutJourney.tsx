@@ -7,22 +7,32 @@ export default function AboutJourney() {
           <h2 className="text-3xl font-bold tracking-tight">Perjalanan Kami</h2>
           <div className="mt-6 space-y-5 text-sm leading-7 text-zinc-600">
             <p>
-              Paravoice.id lahir dari Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat.
+              Paravoice.id lahir dari kegelisahan atas masih terbatasnya
+              pemberitaan mengenai atlet disabilitas dan ekosistem olahraga
+              paralimpik di Indonesia. Banyak prestasi yang berhasil diraih di
+              tingkat daerah, nasional, hingga internasional, namun belum
+              mendapatkan ruang yang setara dalam arus utama media.
             </p>
             <p>
-              Sejak didirikan, kami berkomitmen untuk Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-              ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Berangkat dari kesadaran tersebut, Paravoice.id dibangun sebagai
+              ruang independen yang secara khusus mendokumentasikan perjalanan
+              para atlet disabilitas. Kami melihat bahwa setiap atlet memiliki
+              cerita yang layak didengar. Cerita tentang latihan, pengorbanan,
+              keluarga, pekerjaan, pendidikan, hingga perjuangan menghadapi
+              berbagai hambatan sosial dan ekonomi.
             </p>
             <p>
-              Misi kami jelas: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo consequat.
+              Sejak awal berdiri, kami berkomitmen untuk menghasilkan
+              jurnalisme yang berpihak pada nilai kemanusiaan, kesetaraan, dan
+              aksesibilitas informasi. Kami percaya bahwa pemberitaan yang
+              berkualitas dapat menjadi alat untuk mengubah cara pandang
+              masyarakat terhadap disabilitas.
+            </p>
+            <p>
+              Misi kami adalah menghadirkan informasi yang kredibel, memperluas
+              representasi atlet disabilitas dalam ruang publik, serta menjadi
+              jembatan antara komunitas olahraga disabilitas dan masyarakat
+              luas.
             </p>
           </div>
         </div>

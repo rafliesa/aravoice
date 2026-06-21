@@ -5,11 +5,11 @@ import { useMemo, useState } from "react";
 const amounts = [25_000, 50_000, 100_000, 250_000, 500_000] as const;
 
 const impactCopy = {
-  25_000: "Membantu riset awal untuk satu ide liputan.",
-  50_000: "Mendukung transkrip dan aksesibilitas satu artikel.",
-  100_000: "Ikut membiayai produksi satu paket liputan pendek.",
-  250_000: "Membantu biaya narasumber dan verifikasi data.",
-  500_000: "Menopang liputan mendalam bersama komunitas.",
+  25_000: "Dukunganmu membantu kami mengangkat cerita, data, dan suara atlet disabilitas ke ruang publik.",
+  50_000: "Dukunganmu membantu kami mengangkat cerita, data, dan suara atlet disabilitas ke ruang publik.",
+  100_000: "Dukunganmu membantu kami mengangkat cerita, data, dan suara atlet disabilitas ke ruang publik.",
+  250_000: "Dukunganmu membantu kami mengangkat cerita, data, dan suara atlet disabilitas ke ruang publik.",
+  500_000: "Dukunganmu membantu kami mengangkat cerita, data, dan suara atlet disabilitas ke ruang publik.",
 } as const;
 
 export default function DonationForm() {
@@ -27,7 +27,7 @@ export default function DonationForm() {
 
   const selectedImpact =
     selectedAmount === "custom"
-      ? "Nominal pilihan Anda akan dialokasikan ke kebutuhan redaksi yang paling mendesak."
+      ? "Dukunganmu membantu kami mengangkat cerita, data, dan suara atlet disabilitas ke ruang publik."
       : impactCopy[selectedAmount as keyof typeof impactCopy];
 
   if (submitted) {
@@ -58,13 +58,14 @@ export default function DonationForm() {
     <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
       <div className="motion-fade-up">
         <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9a5a00]">
-          Donasi Sekali Jalan
+          Donasi: Hasna
         </p>
         <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
           Pilih Nominal Donasi
         </h1>
         <p className="mt-4 max-w-xl text-base leading-7 text-[#5d6574]">
-          Langkah kecil Anda, perubahan besar bagi inklusivitas.
+          Dukung redaksi Paravoice.id! Langkah kecil kamu, perubahan besar
+          bagi jurnalisme berkualitas.
         </p>
 
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
@@ -124,7 +125,7 @@ export default function DonationForm() {
                 Mau isi nominal sendiri?
               </span>
               <span className="mt-1 block text-sm leading-6 text-[#5d6574]">
-                Pilih opsi ini kalau nominal di atas belum sesuai.
+                Pilih nominal dukungan yang paling sesuai untukmu.
               </span>
             </span>
             <span
@@ -187,14 +188,14 @@ export default function DonationForm() {
           }}
           className="mt-8 flex h-14 w-full max-w-md items-center justify-center rounded-md bg-[#9a5a00] px-8 text-base font-extrabold text-white shadow-lg shadow-[#9a5a00]/20 transition-all hover:-translate-y-0.5 hover:bg-[#7c4800]"
         >
-          Lanjutkan ke Pembayaran
+          Ya, saya mau mendukung
         </button>
       </div>
 
       <aside className="motion-slide-in-right rounded-3xl border border-[#d7dbe4] bg-white p-7 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
         <div className="rounded-2xl bg-[#f6f0e7] p-6">
           <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9a5a00]">
-            Dampak Pilihan Anda
+            Dampak Kamu Nyata!
           </p>
           <p className="mt-4 text-4xl font-extrabold text-[#101522]">
             {formatRupiah(donationAmount || 0)}

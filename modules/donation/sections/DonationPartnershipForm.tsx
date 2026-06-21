@@ -4,17 +4,17 @@ const benefits = [
   {
     title: "Kolaborasi Konten",
     description:
-      "Akses prioritas untuk sindikasi berita dan konten eksklusif atlet disabilitas.",
+      "Produksi liputan, kampanye, atau konten edukatif bersama Paravoice.id.",
   },
   {
     title: "Eksposur Media",
     description:
-      "Pencantuman logo mitra di platform ParaVoice dan jaringan media kami.",
+      "Pencantuman logo mitra di platform Paravoice.id dan jaringan media kami.",
   },
   {
     title: "Kampanye Sosial",
     description:
-      "Kerjasama kampanye inklusi dan keberagaman yang disesuaikan.",
+      "Kerja sama kampanye inklusi, aksesibilitas, dan keberagaman.",
   },
   {
     title: "Akses Komunitas",
@@ -22,14 +22,14 @@ const benefits = [
       "Jaringan langsung ke atlet, pelatih, dan penggerak isu disabilitas.",
   },
   {
-    title: "Workshop Eksklusif",
+    title: "Lokakarya Eksklusif",
     description:
-      "Pelatihan aksesibilitas digital dan komunikasi inklusif untuk tim Anda.",
+      "Pelatihan aksesibilitas digital dan komunikasi inklusif untuk kamu.",
   },
   {
-    title: "Event Co-hosting",
+    title: "Kolaborasi Acara",
     description:
-      "Peluang menjadi partner resmi di acara-acara olahraga disabilitas.",
+      "Peluang menjadi mitra resmi dalam acara-acara olahraga disabilitas.",
   },
 ];
 

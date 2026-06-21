@@ -16,7 +16,7 @@ const reasons = [
   {
     title: "Mendukung Misi Sosial",
     description:
-      "Keuntungan digunakan langsung untuk membiayai jurnalisme inklusif yang independen.",
+      "Keuntungan digunakan langsung untuk mendukung media olahraga yang inklusif dan independen.",
     icon: HeartIcon,
   },
   {

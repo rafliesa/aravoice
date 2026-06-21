@@ -8,10 +8,22 @@ export default function AboutCta() {
           Berkolaborasi Membangun Inklusi
         </h2>
         <p className="mt-7 max-w-xl text-sm leading-6 text-white/78 sm:text-[0.95rem] sm:leading-7">
-          Kami percaya bahwa perubahan besar membutuhkan kolaborasi.
-          Paravoice.id membuka pintu seluas-luasnya bagi komunitas,
-          institusi riset, dan mitra korporasi yang memiliki visi yang sama
-          dalam memperjuangkan hak-hak difabel melalui data.
+          Perubahan tidak dapat dilakukan sendirian. Karena itu, Paravoice.id
+          membuka ruang kolaborasi bagi komunitas disabilitas, organisasi
+          olahraga, akademisi, lembaga riset, media, institusi pendidikan,
+          organisasi masyarakat sipil, dan mitra korporasi yang memiliki
+          komitmen terhadap inklusivitas.
+        </p>
+        <p className="mt-5 max-w-xl text-sm leading-6 text-white/78 sm:text-[0.95rem] sm:leading-7">
+          Kami percaya bahwa kolaborasi dapat memperluas dampak jurnalisme.
+          Melalui riset, peliputan bersama, kampanye publik, pengembangan data,
+          hingga program edukasi, kita dapat membangun ekosistem olahraga
+          disabilitas yang lebih kuat, lebih terlihat, dan lebih dihargai.
+        </p>
+        <p className="mt-5 max-w-xl text-sm leading-6 text-white/78 sm:text-[0.95rem] sm:leading-7">
+          Paravoice.id tidak hanya ingin menceritakan kisah atlet disabilitas.
+          Kami ingin memastikan bahwa suara mereka didengar, dipahami, dan
+          menjadi bagian penting dari percakapan publik Indonesia.
         </p>
         <Link
           href="#"

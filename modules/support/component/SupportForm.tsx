@@ -39,11 +39,11 @@ export default function SupportForm() {
       className="scroll-mt-24 border border-[#d5d0c9] bg-[#f8f6f3] px-6 py-8 shadow-[0_1px_0_rgba(0,0,0,0.04)] sm:px-10 sm:py-10"
     >
       <h2 className="text-3xl font-bold sm:text-4xl">
-        Mulai Sekarang
+        Aku Mau Jadi Paravox!
       </h2>
       <p className="mt-4 text-sm leading-7 text-zinc-600">
-        Daftar secara gratis untuk mendapatkan pembaruan mingguan dan akses
-        komunitas.
+        Daftar secara gratis untuk artikel, newsletter, dan konten eksklusif
+        mingguan.
       </p>
 
       <form
@@ -101,7 +101,7 @@ export default function SupportForm() {
           type="submit"
           className="flex w-full items-center justify-center gap-3 bg-[#052848] px-6 py-4 text-sm font-bold tracking-[0.18em] text-white transition-colors hover:bg-[#031d35]"
         >
-          DAFTAR SEKARANG
+          AKU MAU JADI PARAVOX!
           <ArrowIcon />
         </button>
 

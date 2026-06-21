@@ -2,21 +2,21 @@ import { ChartIcon, FlagIcon, PersonIcon } from "@/modules/donation/component/ic
 
 const values = [
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Membuka ruang bagi suara atlet disabilitas",
     description:
-      "Memberikan panggung yang layak bagi atlet disabilitas melalui liputan profesional dan mendalam di kancah nasional maupun internasional.",
+      "Dukunganmu membantu Paravoice.id menghadirkan liputan yang adil, mendalam, dan bermartabat tentang atlet disabilitas, baik di tingkat nasional maupun internasional.",
     icon: <FlagIcon />,
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Mendorong pemberitaan yang lebih inklusif",
     description:
-      "Mengembangkan panduan pemberitaan yang sensitif dan edukatif untuk menciptakan masyarakat yang lebih inklusif dan memahami keberagaman.",
+      "Paravoice.id mengedepankan konten dan pemberitaan isu atlet disabilitas, agar publik dapat memahami keberagaman dengan lebih terbuka dan setara.",
     icon: <PersonIcon />,
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Mengawal data, kebijakan, dan aksesibilitas",
     description:
-      "Menghasilkan laporan investigasi dan berbasis data mengenai infrastruktur serta kebijakan publik bagi penyandang disabilitas di Indonesia.",
+      "Dukunganmu turut membantu kami memproduksi laporan berbasis data tentang fasilitas, infrastruktur, dan kebijakan publik bagi penyandang disabilitas di Indonesia.",
     icon: <ChartIcon />,
   },
 ] as const;

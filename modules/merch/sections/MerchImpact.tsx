@@ -8,13 +8,13 @@ const impactItems = [
   {
     title: "Mendukung Liputan Atlet Disabilitas",
     description:
-      "Hasil penjualan mendanai reporter kami untuk meliput turnamen paralimpiade di pelosok negeri.",
+      "Hasil penjualan mendanai reporter kami untuk meliput cerita, prestasi, dan realitas kehidupan atlet disabilitas di Indonesia.",
     icon: AthletesIcon,
   },
   {
     title: "Mendukung Jurnalisme Inklusif",
     description:
-      "Kami memastikan setiap narasi ditulis dengan rasa hormat dan integritas jurnalisme yang tinggi.",
+      "Kami memastikan setiap narasi ditulis dengan rasa hormat, dan integritas jurnalisme yang tinggi.",
     icon: JournalismIcon,
   },
   {

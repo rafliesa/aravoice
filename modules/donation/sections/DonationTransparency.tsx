@@ -8,21 +8,21 @@ const transparencyItems = [
   {
     title: "Laporan Dana",
     description:
-      "Akses rincian pemasukan dan pengeluaran setiap bulan secara terbuka.",
+      "Akses rincian pemasukan dan penggunaan dana secara berkala.",
     action: "Unduh Laporan",
     icon: <ReportIcon />,
   },
   {
     title: "Dampak Program",
     description:
-      "Lihat metrik keberhasilan dari donasi yang telah disalurkan kepada penerima.",
+      "Lihat bagaimana dukungan kamu membantu liputan, edukasi, dan pengembangan Paravoice.id.",
     action: "Lihat Dampak",
     icon: <ImpactIcon />,
   },
   {
     title: "Evaluasi Tahunan",
     description:
-      "Laporan tahunan yang telah diaudit oleh pihak ketiga independen.",
+      "Baca catatan tahunan tentang capaian, tantangan, dan perbaikan Paravoice.id.",
     action: "Buka Arsip",
     icon: <AuditIcon />,
   },

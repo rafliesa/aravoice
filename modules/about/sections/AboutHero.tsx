@@ -16,10 +16,25 @@ export default function AboutHero() {
           <span className="italic font-normal">Jurnalisme Data</span>
         </h1>
         <p className="mt-6 max-w-3xl text-base leading-7 text-zinc-600">
-          Kami hadir untuk Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-          ex ea commodo consequat.
+          Paravoice.id hadir untuk mengangkat cerita, prestasi, dan realitas
+          kehidupan atlet disabilitas di Indonesia. Kami percaya bahwa olahraga
+          disabilitas tidak hanya tentang medali dan kemenangan, tetapi juga
+          tentang perjuangan, hak, akses, kesetaraan, serta kemanusiaan.
+        </p>
+        <p className="mt-5 max-w-3xl text-base leading-7 text-zinc-600">
+          Di tengah minimnya ruang pemberitaan yang secara konsisten membahas
+          olahraga disabilitas, Paravoice.id berupaya menjadi media yang
+          memberikan perhatian khusus pada suara-suara yang sering
+          terpinggirkan. Kami menghadirkan liputan mendalam, laporan berbasis
+          data, dokumentasi visual, serta cerita human interest yang menempatkan
+          atlet disabilitas sebagai subjek utama, bukan sekadar objek
+          pemberitaan.
+        </p>
+        <p className="mt-5 max-w-3xl text-base leading-7 text-zinc-600">
+          Melalui karya jurnalistik yang akurat, berimbang, dan berperspektif
+          inklusif, kami ingin membangun pemahaman publik yang lebih luas
+          mengenai dunia olahraga disabilitas sekaligus mendorong terciptanya
+          masyarakat yang lebih setara.
         </p>
       </div>
     </div>

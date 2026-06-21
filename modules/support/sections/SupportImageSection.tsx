@@ -5,23 +5,23 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    title: "Suara Dari Lapangan: Perjuangan Tanpa Batas",
+    title: "Dari Tribun yang Sepi, Suara Itu Tetap Tumbuh",
     description:
-      "Melihat lebih dekat dedikasi atlet para nasional saat sesi latihan intensif di pusat olahraga nasional.",
+      "Di balik arena yang jauh dari sorotan, para atlet disabilitas terus berjuang dengan fasilitas, waktu, dan tenaga yang sering kali terbatas.",
     image: "/dukung-kami-hero.png",
     imagePosition: "center",
   },
   {
-    title: "Dukungan Publik untuk Arena yang Lebih Inklusif",
+    title: "Janji di Atas Kertas, Latihan di Atas Keterbatasan",
     description:
-      "Setiap kontribusi membantu membuka ruang liputan yang adil bagi atlet disabilitas Indonesia.",
+      "Undang-undang telah memberi pedoman bagi pemenuhan hak penyandang disabilitas. Namun, bagi sebagian atlet NPCI Kota Bandung, hak itu masih harus dicari di antara ruang latihan, pekerjaan, dan insentif yang tidak selalu pasti.",
     image: "/dukung-kami-hero.png",
     imagePosition: "45% center",
   },
   {
-    title: "Cerita Atlet yang Layak Terdengar Lebih Luas",
+    title: "Alat Impor, Mimpi yang Tetap Dipikul Sendiri",
     description:
-      "Kami membawa kisah latihan, perjuangan, dan prestasi dari lapangan ke hadapan pembaca.",
+      "Saat dana pembinaan harus dibagi untuk banyak cabang olahraga, atlet disabilitas tetap dituntut berprestasi dengan peralatan yang mahal, terbatas, dan tidak selalu mudah dirawat.",
     image: "/dukung-kami-hero.png",
     imagePosition: "55% center",
   },
@@ -77,6 +77,9 @@ export default function SupportImageSection() {
 
         <div className="absolute inset-x-0 bottom-0 mx-auto flex max-w-7xl flex-col gap-7 px-6 pb-8 text-white sm:pb-10 lg:flex-row lg:items-end lg:justify-between">
           <div className="motion-fade-up max-w-5xl">
+            <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.18em] text-white/70">
+              Artikel
+            </p>
             <h2 className="max-w-5xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.25rem]">
               {activeSlide.title}
             </h2>

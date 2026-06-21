@@ -2,18 +2,18 @@ import { DataIntegrityIcon, InclusivityIcon, TransparencyIcon } from "@/modules/
 
 const values = [
   {
-    title: "Transparency",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "Transparansi",
+    body: "Kami menjunjung tinggi keterbukaan dalam proses jurnalistik. Setiap informasi yang kami sajikan bersumber dari proses peliputan yang dapat dipertanggungjawabkan, didukung data yang valid, serta mematuhi kode etik jurnalistik.",
     icon: <TransparencyIcon />,
   },
   {
-    title: "Inclusivity",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "Inklusivitas",
+    body: "Kami percaya bahwa setiap individu memiliki hak yang sama untuk didengar dan wakili dirinya sendiri. Karena itu, kami mengedepankan perspektif inklusif dalam setiap liputan, bahasa, dan produk jurnalistik yang kami hasilkan.",
     icon: <InclusivityIcon />,
   },
   {
-    title: "Data-Driven Integrity",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "Liputan Berbasis Data",
+    body: "Kami memadukan kekuatan cerita manusia dengan data yang akurat. Data membantu kami memahami persoalan secara lebih utuh, mengungkap ketimpangan yang terjadi, serta menghasilkan liputan yang lebih mendalam dan berdampak.",
     icon: <DataIntegrityIcon />,
   },
 ];
