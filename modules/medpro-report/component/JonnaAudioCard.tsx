@@ -43,7 +43,7 @@ export default function JonnaAudioCard() {
             className="mt-5 w-full accent-secondary-700"
             aria-label="Putar cuplikan audio Jonna Aman Damanik"
           >
-            <source src="/VN/KND Jonna Aman 1 (PBM).m4a" type="audio/mpeg" />
+            <source src="/4/jonna-vn.MP3" type="audio/mpeg" />
             <source src="/design-system/sample-audio" type="audio/wav" />
             Browser Anda belum mendukung pemutar audio HTML.
           </audio>

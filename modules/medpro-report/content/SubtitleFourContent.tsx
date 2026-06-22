@@ -5,8 +5,65 @@ import JudoAttendanceInfographic from "@/modules/medpro-report/component/JudoAtt
 import LovitaVideoCard from "@/modules/medpro-report/component/LovitaVideoCard";
 import FinancialLiteracySteps from "@/modules/medpro-report/component/FinancialLiteracySteps";
 import VoiceNoteCard from "@/modules/medpro-report/component/VoiceNoteCard";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function SubtitleFourContent() {
+  const evaAudioRef = useRef<HTMLAudioElement>(null);
+  const [isEvaPlaying, setIsEvaPlaying] = useState(false);
+  const [evaDuration, setEvaDuration] = useState(0);
+  const [evaCurrentTime, setEvaCurrentTime] = useState(0);
+
+  useEffect(() => {
+    const audio = evaAudioRef.current;
+    if (!audio) return;
+
+    const updateTime = () => setEvaCurrentTime(audio.currentTime);
+    const updateDuration = () => setEvaDuration(audio.duration || 0);
+    const handleEnded = () => setIsEvaPlaying(false);
+
+    audio.addEventListener("timeupdate", updateTime);
+    audio.addEventListener("loadedmetadata", updateDuration);
+    audio.addEventListener("ended", handleEnded);
+
+    return () => {
+      audio.removeEventListener("timeupdate", updateTime);
+      audio.removeEventListener("loadedmetadata", updateDuration);
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, []);
+
+  const toggleEvaPlay = () => {
+    const audio = evaAudioRef.current;
+    if (!audio) return;
+
+    if (isEvaPlaying) {
+      audio.pause();
+      setIsEvaPlaying(false);
+    } else {
+      audio.play().then(() => {
+        setIsEvaPlaying(true);
+      }).catch((err) => {
+        console.error("Playback failed", err);
+      });
+    }
+  };
+
+  const handleEvaSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const audio = evaAudioRef.current;
+    if (!audio) return;
+    const value = parseFloat(e.target.value);
+    audio.currentTime = value;
+    setEvaCurrentTime(value);
+  };
+
+  const formatTime = (time: number) => {
+    if (isNaN(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
   return (
     <>
       <p className={articleParagraphClass} key="quote-0">
@@ -96,14 +153,79 @@ export default function SubtitleFourContent() {
         {"“Kebetulan saya di rumah buka tempat gym. Karena suami saya juga kebetulan atlet, NPCI juga. Dia atlet angkat berat. Sebelum saya kan dia udah mulai duluan. Jadi tiap kita mendapatkan prestasi, bonus itu kita modalkan ke usaha kita. Sama, ada bikin motor roda tiga gitu kayak reseller alat-alat fitness gitu,” cerita Eva."}
       </p>
 
-      <div className="max-w-xs mx-auto my-6">
-        <VoiceNoteCard 
-          audioSrc="/audio/eva-arianti.mp3"
-          speakerName="Eva Arianti"
-          speakerRole="Atlet Panahan NPCI Kota Bandung"
-          imageSrc="/Eva Ariyanti.jpeg"
-        />
-      </div>
+      <article className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm my-8">
+        <div className="grid md:grid-cols-[220px_minmax(0,1fr)]">
+          <div className="relative min-h-64 md:min-h-full bg-zinc-900">
+            <Image
+              src="/4/Eva Ariyanti.jpeg"
+              alt="Foto narasumber Eva Ariyanti"
+              fill
+              sizes="(min-width: 768px) 220px, 100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+            <p className="absolute inset-x-5 bottom-5 text-[10px] font-extrabold uppercase tracking-[0.12em] text-white">
+              Profil narasumber
+            </p>
+          </div>
+
+          <div className="p-6 sm:p-8">
+            <p className="text-secondary-700 text-[10px] font-black uppercase tracking-[0.14em]">
+              Audio story
+            </p>
+            <h3 className="mt-2 text-xl font-bold text-zinc-900 leading-snug">
+              Kesaksian Eva Ariyanti: Usaha Mandiri dari Hasil Bonus Prestasi
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+              Eva Ariyanti, atlet panahan disabilitas Jawa Barat, membagikan kisahnya memanfaatkan bonus medali yang ia peroleh untuk membangun modal usaha gym dan alat fitness bersama suaminya yang juga seorang atlet angkat berat.
+            </p>
+
+            <audio ref={evaAudioRef} src="/4/eva-vn.mp3" preload="metadata" />
+
+            {/* Custom Audio Player Controls */}
+            <div className="mt-5 mb-4 flex items-center gap-3">
+              {/* Play/Pause Button */}
+              <button
+                onClick={toggleEvaPlay}
+                className="flex size-10 items-center justify-center rounded-full bg-[#082b4d] text-white hover:bg-[#061f38] transition-colors shadow-sm cursor-pointer flex-shrink-0"
+                aria-label={isEvaPlaying ? "Jeda" : "Putar"}
+                type="button"
+              >
+                {isEvaPlaying ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                    <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 ml-0.5">
+                    <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
+                  </svg>
+                )}
+              </button>
+
+              {/* Progress & Waveform Slider */}
+              <div className="flex flex-1 flex-col">
+                <input
+                  type="range"
+                  min={0}
+                  max={evaDuration || 100}
+                  value={evaCurrentTime}
+                  onChange={handleEvaSeek}
+                  className="h-1.5 w-full cursor-pointer appearance-none rounded-lg bg-zinc-200 accent-[#082b4d] outline-none [&::-webkit-slider-runnable-track]:bg-zinc-200 [&::-webkit-slider-thumb]:size-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#082b4d]"
+                  aria-label="Timeline voice note"
+                />
+                <div className="mt-1 flex justify-between text-[10px] font-medium text-zinc-500">
+                  <span>{formatTime(evaCurrentTime)}</span>
+                  <span>{formatTime(evaDuration)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs sm:text-sm leading-6 text-amber-950 font-medium">
+              “Kebetulan saya di rumah buka tempat gym. Karena suami saya juga kebetulan atlet, NPCI juga. Dia atlet angkat berat. Sebelum saya kan dia udah mulai duluan. Jadi tiap kita mendapatkan prestasi, bonus itu kita modalkan ke usaha kita. Sama, ada bikin motor roda tiga gitu kayak reseller alat-alat fitness gitu,”
+            </div>
+          </div>
+        </div>
+      </article>
 
       <p className={articleParagraphClass} key="paragraph-29">
         {"Di balik konflik kekurangan dana pribadi bagi para atlet, terdapat literasi keuangan yang masih harus ditingkatkan yang juga menjadi permasalahan. Tanpa literasi keuangan yang baik, para atlet akan kesulitan untuk mengelola dan memanfaatkan dana pribadi untuk memenuhi kebutuhan sehari-hari, terlebih lagi ketika mendapatkan bonus saat menjadi juara di suatu pertandingan."}
@@ -136,10 +258,10 @@ export default function SubtitleFourContent() {
       {/* Jonna Damanik Audio VN card */}
       <div className="max-w-xs mx-auto my-6">
         <VoiceNoteCard 
-          audioSrc="/audio/jonna-literasi-keuangan.mp3"
+          audioSrc="/4/jonna-vn.MP3"
           speakerName="Jonna Aman Damanik"
           speakerRole="Komisioner Komisi Nasional Disabilitas (KND)"
-          imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
+          imageSrc="/jonna.jpg"
         />
       </div>
 

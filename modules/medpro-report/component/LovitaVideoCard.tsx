@@ -11,7 +11,7 @@ type LovitaVideoCardProps = {
 };
 
 export default function LovitaVideoCard({
-  videoSrc = "/uploads/VID LOVITA BONUS.mp4",
+  videoSrc = "/4/lovita.mp4",
   title = "VIDEO KESAKSIAN LOVITA",
   description = "Kisah bonus medali perak Lovita Uki Damayanti di Peparnas 2024",
 }: LovitaVideoCardProps) {
