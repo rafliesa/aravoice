@@ -102,10 +102,12 @@ export default function SubtitleFourContent() {
         {"Situasi itu terlihat jelas dalam kesaksian Wirya Dharma, Koordinator Pelatih cabang olahraga Blind Judo Kota Bandung. Tidak jarang lebih dari separuh atlet binaannya berhalangan hadir latihan karena persoalan ekonomi."}
       </p>
 
-      {/* Wirya Dharma Highlighted Quote */}
-      <div className="my-6 pl-4 border-l-4 border-secondary-500 italic text-base text-zinc-700 bg-zinc-50 py-3.5 pr-4 rounded-r-xl font-sans">
-        “Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya juga tidak bisa memaksa mereka,”
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2">
+      {/* Centered highlighted quote */}
+      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          “Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya juga tidak bisa memaksa mereka,”
+        </p>
+        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
           — Wirya Dharma, Koordinator Pelatih Blind Judo
         </span>
       </div>

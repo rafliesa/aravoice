@@ -34,7 +34,10 @@ export const medproSubnav = [
     label: "Perlindungan Minim",
     href: "/para-report/berprestasi-dalam-keterbatasan/sub-judul-7",
   },
-  { label: "Rangkuman", href: "#" },
+  {
+    label: "Rangkuman",
+    href: "/para-report/berprestasi-dalam-keterbatasan/rangkuman",
+  },
 ];
 
 

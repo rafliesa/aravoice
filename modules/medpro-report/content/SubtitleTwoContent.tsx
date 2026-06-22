@@ -228,14 +228,14 @@ export default function SubtitleTwoContent() {
           Tangga menuju dojo NPCI Kota Bandung yang curam menjadi makanan sehari-hari atlet judo disabilitas.
         </figcaption>
       </figure>
-      <blockquote className="my-6 pl-5 border-l-4 border-secondary/40">
-        <p className="text-xl sm:text-2xl font-semibold italic leading-snug text-[#0a3358]">
+      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
           "Sudah lama, jadi sudah pada tahu,"
         </p>
-        <cite className="mt-2 block text-sm not-italic text-zinc-400">
+        <cite className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
           — Opik, saat ditanya apakah tangga itu menjadi masalah baginya
         </cite>
-      </blockquote>
+      </div>
 
       <p className={articleParagraphClass} key="paragraph-36">
         {"Setiap sesi latihan blind judo, atlet dengan kondisi low vision itu harus menaiki anak tangga menuju lantai dua gedung latihan yang tidak dilengkapi ramp, tanpa pegangan yang memadai, tanpa penanda taktil. Opik bahkan menempuh jarak 2,5 kilometer menuju lokasi latihan dengan sepeda motornya."}

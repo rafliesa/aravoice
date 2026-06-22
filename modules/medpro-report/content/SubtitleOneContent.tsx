@@ -43,7 +43,7 @@ export default function SubtitleOneContent() {
         {"Ketika pertama kali memutuskan menekuni olahraga angkat berat disabilitas, dukungan tidak langsung datang. Orang-orang terdekat justru menyambut pilihannya dengan kekhawatiran. Bagi penyandang tunadaksa, risiko cedera sering dipandang lebih besar, sementara akses terhadap layanan pemulihan dan perlindungan karier atlet tidak selalu tersedia."}
       </p>
       <p className={articleParagraphClass}>
-        {"\"Orang tua sempat bilang, 'Kamu kan tunadaksa, jalan saja susah. Nanti kalau cedera bagaimana?'’ Kenang Kono."}
+        {"\"Orang tua sempat bilang, 'Kamu kan tunadaksa, jalan saja susah. Nanti kalau cedera bagaimana?'’ Kenang Ono."}
       </p>
       <p className={articleParagraphClass}>
         {"Terjun ke dalam cabang olahraga angkat berat disabilitas di tahun 2018 bukanlah keputusan yang mudah. Salah satu pencapaian yang paling diingatnya datang pada Peparnas 2022 di Kabupaten Bekasi. Medali perunggu yang ia raih saat itu menghasilkan bonus sebesar Rp25 juta, cukup untuk menghidupi beberapa bulan kehidupannya. Sayangnya, bonus hanyalah titik puncak, bukan pondasi."}
@@ -51,16 +51,20 @@ export default function SubtitleOneContent() {
       <p className={articleParagraphClass}>
         {"Biaya transportasi dan kebutuhan gizi yang harus dijaga agar kondisi tubuh tetap prima terus mengiringi setiap sesi latihan. Sementara itu, kebutuhan hidup sehari-hari tidak bisa menunggu uang pembinaan cair."}
       </p>
-      <div className="mx-auto my-8 max-w-lg border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-xl sm:text-2xl font-bold leading-relaxed text-secondary-800 italic">
-          {"“Ya kita mah latihan terus. Mau ada uang atau enggak, latihan harus jalan,” ujar Kono."}
+      {/* Centered highlighted quote */}
+      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          “Ya namanya hidup harus jalan,”
         </p>
+        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
+          — Ono Saipudin, Atlet Angkat Berat
+        </span>
       </div>
       <p className={articleParagraphClass}>
         {"Baginya, latihan bukan sekadar rutinitas olahraga. Ia mencari cara untuk mempertahankan peluang bertanding dan harapan meraih prestasi. Sebab ketika latihan terhenti, kesempatan tampil di kompetisi, memperoleh bonus, dan mendapatkan insentif juga semakin jauh."}
       </p>
       <p className={articleParagraphClass}>
-        {"Bukan karena tidak pernah dijanjikan, Surat Keputusan (SK) baru turun pada pertengahan Juni. Artinya, selama enam bulan pertama 2026, Kono dan atlet lainnya harus menanggung sendiri biaya untuk mempertahankan performa menjelang Peparda. Ongkos perjalanan dari rumah ke tempat latihan menghabiskan sekitar Rp700.000 hingga Rp800.000 setiap bulan. Di luar itu, ada kebutuhan nutrisi, suplemen, serta berbagai pengeluaran tak terduga yang datang seiring rutinitas latihan yang terus berjalan."}
+        {"Bukan karena tidak pernah dijanjikan, Surat Keputusan (SK) baru turun pada pertengahan Juni. Artinya, selama enam bulan pertama 2026, Ono dan atlet lainnya harus menanggung sendiri biaya untuk mempertahankan performa menjelang Peparda. Ongkos perjalanan dari rumah ke tempat latihan menghabiskan sekitar Rp700.000 hingga Rp800.000 setiap bulan. Di luar itu, ada kebutuhan nutrisi, suplemen, serta berbagai pengeluaran tak terduga yang datang seiring rutinitas latihan yang terus berjalan."}
       </p>
       
       <div className="my-10 mx-auto max-w-2xl">
@@ -72,7 +76,7 @@ export default function SubtitleOneContent() {
       </div>
       
       <p className={articleParagraphClass}>
-        {"Selain mengangkat beban di arena latihan, Kono juga mengangkat beban kehidupan. Biaya rumah tangga, kebutuhan keluarga, dan pengeluaran rutin tetap harus dipenuhi. Ia juga bertani hidroponik di Cibabat sekaligus membuka praktik pengobatan alternatif sebagai sumber penghasilan tambahan. Bagi Kono, pekerjaan-pekerjaan tersebut bukan sekadar aktivitas sampingan, melainkan cara bertahan hidup di tengah ketidakpastian penghasilan sebagai atlet."}
+        {"Selain mengangkat beban di arena latihan, Ono juga mengangkat beban kehidupan. Biaya rumah tangga, kebutuhan keluarga, dan pengeluaran rutin tetap harus dipenuhi. Ia juga bertani hidroponik di Cibabat sekaligus membuka praktik pengobatan alternatif sebagai sumber penghasilan tambahan. Bagi Ono, pekerjaan-pekerjaan tersebut bukan sekadar aktivitas sampingan, melainkan cara bertahan hidup di tengah ketidakpastian penghasilan sebagai atlet."}
       </p>
       <p className={articleParagraphClass}>
         {"“Dari usaha itu. Tapi usaha kan kadang naik turun. Nah itu yang sering jadi tekanan,” ujarnya."}
@@ -81,7 +85,7 @@ export default function SubtitleOneContent() {
         {"Di tengah tuntutan menjaga performa dan meraih prestasi, mereka masih harus membagi tenaga dan waktu untuk mencari nafkah. Sebab setelah sesi latihan berakhir, perjuangan berikutnya dimulai untuk memastikan dapurnya tetap mengepul."}
       </p>
       <p className={articleParagraphClass}>
-        {"Tahun 2026 membuat tekanan tersebut semakin berat. Selain menghadapi ketidakpastian uang pembinaan, Kono juga kehilangan salah satu sumber penghasilannya. Sebelumnya, ia bekerja sebagai instruktur pertanian di lingkungan Dinas Sosial Jawa Barat. Pekerjaan itu menjadi penopang penting di luar aktivitasnya sebagai atlet. Namun, kebijakan efisiensi anggaran membuat posisinya ikut terdampak."}
+        {"Tahun 2026 membuat tekanan tersebut semakin berat. Selain menghadapi ketidakpastian uang pembinaan, Ono juga kehilangan salah satu sumber penghasilannya. Sebelumnya, ia bekerja sebagai instruktur pertanian di lingkungan Dinas Sosial Jawa Barat. Pekerjaan itu menjadi penopang penting di luar aktivitasnya sebagai atlet. Namun, kebijakan efisiensi anggaran membuat posisinya ikut terdampak."}
       </p>
       <p className={articleParagraphClass}>
         {"“Jadi saya juga termasuk korban efisiensi,” ucapnya datar."}

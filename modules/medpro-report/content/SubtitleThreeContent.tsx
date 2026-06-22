@@ -61,9 +61,11 @@ export default function SubtitleThreeContent() {
       </p>
 
       {/* Highlighted Quote Komarudin */}
-      <div className="my-6 pl-4 border-l-4 border-secondary-500 italic text-base text-zinc-700 bg-zinc-50 py-3.5 pr-4 rounded-r-xl font-sans">
-        “Bahwa angka awal masih dulu itu 15 (miliar). Tapi kalau efisiensi tingkat nasional itu dipotong jadi 9,5 (miliar). 9,5 (miliar) kena evaluasi gubernur. Karena harus ngurus sama Pak Gubernur. Karena dia yang meloloskan, yang menandatangani. Kalau tidak ada pemotongan itu, kalau tidak ada efisiensi lagi, kalau kita masih Alhamdulillah gitu kan. Belum sampai 5 miliar.”
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2">
+      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          “Bahwa angka awal masih dulu itu 15 (miliar). Tapi kalau efisiensi tingkat nasional itu dipotong jadi 9,5 (miliar). 9,5 (miliar) kena evaluasi gubernur. Karena harus ngurus sama Pak Gubernur. Karena dia yang meloloskan, yang menandatangani. Kalau tidak ada pemotongan itu, kalau tidak ada efisiensi lagi, kalau kita masih Alhamdulillah gitu kan. Belum sampai 5 miliar.”
+        </p>
+        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
           — Komarudin, Bendahara NPCI Kota Bandung
         </span>
       </div>
@@ -138,9 +140,11 @@ export default function SubtitleThreeContent() {
       </p>
 
       {/* Iman Jabar Statement & Audio VN */}
-      <div className="my-6 pl-4 border-l-4 border-secondary-500 italic text-base text-zinc-700 bg-zinc-50 py-3.5 pr-4 rounded-r-xl font-sans">
-        “Ternyata seharusnya, seharusnya. Jadi dana atlet disabilitas agak lebih besar daripada dana ke atlet olahraga lain (atlet non-disabilitas). Kenapa? Satu atlet butuh pelatih, butuh pendamping. Pendamping inilah yang harus memahami atlet. Entah itu psikologis dan kebutuhan. Sehingga, dana kita selain untuk menggaji honor pelatih, ya juga untuk honor pendamping,”
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2">
+      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          “Ternyata seharusnya, seharusnya. Jadi dana atlet disabilitas agak lebih besar daripada dana ke atlet olahraga lain (atlet non-disabilitas). Kenapa? Satu atlet butuh pelatih, butuh pendamping. Pendamping inilah yang harus memahami atlet. Entah itu psikologis dan kebutuhan. Sehingga, dana kita selain untuk menggaji honor pelatih, ya juga untuk honor pendamping,”
+        </p>
+        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
           — Iman Imanudin, Kepala Bidang Pembinaan Prestasi NPCI Jawa Barat
         </span>
       </div>

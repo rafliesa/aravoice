@@ -4,13 +4,13 @@ import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-rep
 import LawReferenceLink, { lawReferenceUrls } from "@/modules/medpro-report/component/LawReferenceLink";
 import VoiceNoteCard from "@/modules/medpro-report/component/VoiceNoteCard";
 import VideoNoteCard from "@/modules/medpro-report/component/VideoNoteCard";
-import DisabilityModelsInfographic from "@/modules/medpro-report/component/DisabilityModelsInfographic";
 import LegalHierarchyInfographic from "@/modules/medpro-report/component/LegalHierarchyInfographic";
-import RightsVsRealityInfographic from "@/modules/medpro-report/component/RightsVsRealityInfographic";
 import KoniNpciScaleComparison from "@/modules/medpro-report/component/KoniNpciScaleComparison";
 import BandungDemographicsChart from "@/modules/medpro-report/component/BandungDemographicsChart";
 import PerdaInteractiveReader from "@/modules/medpro-report/component/PerdaInteractiveReader";
 import ZoomableWrapper from "@/modules/medpro-report/component/ZoomableWrapper";
+import QuoteCard from "@/modules/medpro-report/component/QuoteCard";
+import Image from "next/image";
 
 // ==========================================
 // EDITABLE TEXT CONTENT DICTIONARY
@@ -217,11 +217,18 @@ export default function SubtitleSevenContent() {
         {"pada 2011, penyandang disabilitas cenderung diposisikan sebagai objek bantuan sosial yang harus dikasihani. Setelah ratifikasi tersebut, paradigma itu berubah. Penyandang disabilitas mulai dipandang sebagai subjek hukum yang memiliki hak setara dengan warga negara lainnya."}
       </p>
 
-      {/* Infografis KND Paradigm Shift (Figma 674-1643) - Zoomable */}
-      <div className="my-8" key="knd-paradigm-infographic">
-        <ZoomableWrapper>
-          <DisabilityModelsInfographic />
-        </ZoomableWrapper>
+      {/* Infografis KND Paradigm Shift - Static */}
+      <div className="my-8 max-w-2xl mx-auto overflow-hidden rounded-2xl border border-zinc-200 bg-white p-2 shadow-sm" key="knd-paradigm-infographic">
+        <div className="relative aspect-[1200/644] w-full">
+          <Image
+            src="/7/paradigma-disabilitas.webp"
+            alt="Infografis Tiga Model Perspektif Penyandang Disabilitas"
+            fill
+            className="object-contain rounded-xl"
+            sizes="(min-width: 768px) 672px, 100vw"
+            priority
+          />
+        </div>
       </div>
 
       <p className={articleParagraphClass} key="paragraph-3">
@@ -229,9 +236,13 @@ export default function SubtitleSevenContent() {
       </p>
 
       {/* Jonna Quote */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-jonna">
-        {textContent.quoteJonna}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ujar Jonna.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-jonna">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteJonna}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ujar Jonna.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-6">
@@ -239,9 +250,13 @@ export default function SubtitleSevenContent() {
       </p>
 
       {/* Dodi Dilemma Quote */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-dodi-dilemma">
-        {textContent.quoteDodiDilemma}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">— Dodi, Wakil Sekretaris Umum NPCI</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dodi-dilemma">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteDodiDilemma}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          — Dodi, Wakil Sekretaris Umum NPCI
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-9">
@@ -249,26 +264,40 @@ export default function SubtitleSevenContent() {
       </p>
 
       {/* Dodi Statement */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-dodi-authority">
-        {textContent.quoteDodiAdvocacy}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">jelasnya.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dodi-authority">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteDodiAdvocacy}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          jelasnya.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-explain-dodi">
         {textContent.paragraphExplainDodi}
       </p>
 
-      {/* Hak dalam Regulasi - Realita Atlet (Infografis Nami) - Zoomable */}
-      <div className="my-8" key="rights-vs-reality-infographic-container">
-        <ZoomableWrapper>
-          <RightsVsRealityInfographic />
-        </ZoomableWrapper>
+      {/* Hak dalam Regulasi - Realita Atlet (Infografis Nami) - Static */}
+      <div className="my-8 max-w-xl mx-auto overflow-hidden rounded-2xl border border-zinc-200 bg-white p-2 shadow-sm" key="rights-vs-reality-infographic-container">
+        <div className="relative aspect-[1200/2545] w-full">
+          <Image
+            src="/7/infografis-nami.webp"
+            alt="Hak dalam Regulasi vs Realita Atlet"
+            fill
+            className="object-contain rounded-xl"
+            sizes="(min-width: 768px) 576px, 100vw"
+          />
+        </div>
       </div>
 
       {/* Dodi Quote 2 */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-dodi-ready">
-        {textContent.quoteDodiReady}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ungkap Dodi saat menjawab laporan dari atlet terkait pemberdayaan atlet disabilitas.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dodi-ready">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteDodiReady}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ungkap Dodi saat menjawab laporan dari atlet terkait pemberdayaan atlet disabilitas.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-koni-transition">
@@ -276,9 +305,13 @@ export default function SubtitleSevenContent() {
       </p>
 
       {/* Mulyana Quote 1 */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-mulyana-gor">
-        {textContent.quoteMulyanaGor}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ungkap Mulyana di KONI GOR Bandung.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-mulyana-gor">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteMulyanaGor}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ungkap Mulyana di KONI GOR Bandung.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-koni-explanation">
@@ -289,29 +322,13 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphAcepIntro}
       </p>
 
-      {/* Acep Wahyu Ramdan Quote Card (Kalimat langsung di tengah, foto di bawah) */}
-      <div className="my-8 flex flex-col items-center text-center p-6 bg-zinc-50 border border-zinc-200 rounded-2xl max-w-2xl mx-auto" key="acep-quote-card">
-        <blockquote className="text-sm italic text-zinc-700 font-medium leading-relaxed max-w-lg mb-6">
-          {textContent.quoteAcepCard}
-        </blockquote>
-        <div className="relative size-16 rounded-full overflow-hidden border-2 border-secondary bg-zinc-200 shadow-sm mb-3">
-          <img
-            src="/uploads/Acep.HEIC"
-            alt="Foto Acep Wahyu Ramdan"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              const img = e.target as HTMLImageElement;
-              img.src = "/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg";
-            }}
-          />
-        </div>
-        <cite className="not-italic block font-sans text-xs font-extrabold text-[#082b4d]">
-          Acep Wahyu Ramdan
-        </cite>
-        <span className="block font-sans text-[10px] text-zinc-500 mt-1">
-          Sub Olahraga Pendidikan Dispora Bandung
-        </span>
-      </div>
+      {/* Acep Wahyu Ramdan Quote Card */}
+      <QuoteCard
+        quote={textContent.quoteAcepCard}
+        imageSrc="/7/acep.webp"
+        speakerName="Acep Wahyu Ramdan"
+        speakerRole="Sub Olahraga Pendidikan Dispora Bandung"
+      />
 
       {/* Timbangan Perbandingan KONI vs NPCI - Zoomable */}
       <div className="my-8" key="koni-npci-timbangan-scale">
@@ -325,9 +342,13 @@ export default function SubtitleSevenContent() {
       </p>
 
       {/* Herlinda Savitri Quote 1 */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-herlinda-1">
-        {textContent.quoteHerlinda1}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ujar Herlinda.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-herlinda-1">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteHerlinda1}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ujar Herlinda.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-herlinda-tot">
@@ -354,20 +375,18 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphAdvocacyExplain}
       </p>
 
-      {/* Mulyana Quote Card (Kalimat langsung di tengah, foto di bawah) */}
-      <div className="my-8 flex flex-col items-center text-center p-6 bg-zinc-50 border border-zinc-200 rounded-2xl max-w-2xl mx-auto" key="mulyana-quote-card">
+      {/* Mulyana Quote Card (Ratio 1:1, Larger Photo) */}
+      <div className="my-8 flex flex-col items-center text-center p-6 bg-zinc-50 border border-zinc-200 rounded-2xl max-w-2xl mx-auto font-sans" key="mulyana-quote-card">
         <blockquote className="text-sm italic text-zinc-700 font-medium leading-relaxed max-w-lg mb-6">
           {textContent.quoteMulyanaCard}
         </blockquote>
-        <div className="relative size-16 rounded-full overflow-hidden border-2 border-secondary bg-zinc-200 shadow-sm mb-3">
-          <img
-            src="/uploads/Mulyana.jpg"
-            alt="Mulyana"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              const img = e.target as HTMLImageElement;
-              img.src = "/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg";
-            }}
+        <div className="relative size-24 rounded-2xl overflow-hidden border border-zinc-300 bg-zinc-200 shadow-sm mb-3 shrink-0">
+          <Image
+            src="/7/mulyana.webp"
+            alt="Foto Mulyana"
+            fill
+            sizes="96px"
+            className="object-cover"
           />
         </div>
         <cite className="not-italic block font-sans text-xs font-extrabold text-[#082b4d]">
@@ -382,29 +401,13 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphYuliaIntro}
       </p>
 
-      {/* Yulia Quote Card (Kalimat langsung di tengah, foto di bawah) */}
-      <div className="my-8 flex flex-col items-center text-center p-6 bg-zinc-50 border border-zinc-200 rounded-2xl max-w-2xl mx-auto" key="yulia-quote-card">
-        <blockquote className="text-sm italic text-zinc-700 font-medium leading-relaxed max-w-lg mb-6">
-          {textContent.quoteYuliaCard}
-        </blockquote>
-        <div className="relative size-16 rounded-full overflow-hidden border-2 border-secondary bg-zinc-200 shadow-sm mb-3">
-          <img
-            src="/uploads/Yulia.jpeg"
-            alt="Yulia Sahaja Dewi Permatasari"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              const img = e.target as HTMLImageElement;
-              img.src = "/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg";
-            }}
-          />
-        </div>
-        <cite className="not-italic block font-sans text-xs font-extrabold text-[#082b4d]">
-          Yulia Sahaja Dewi Permatasari
-        </cite>
-        <span className="block font-sans text-[10px] text-zinc-500 mt-1">
-          Psikolog Klinis & Pendamping Atlet Paralimpik
-        </span>
-      </div>
+      {/* Yulia Quote Card */}
+      <QuoteCard
+        quote={textContent.quoteYuliaCard}
+        imageSrc="/6/yulia.webp"
+        speakerName="Yulia Sahaja Dewi Permatasari"
+        speakerRole="Psikolog Klinis & Pendamping Atlet Paralimpik"
+      />
 
       <p className={articleParagraphClass} key="paragraph-eva-anxiety">
         {textContent.paragraphEvaAnxiety}
@@ -415,44 +418,34 @@ export default function SubtitleSevenContent() {
       </p>
 
       {/* Iman Pembina Prestasi Quote - Highlighted */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-iman-highlight">
-        {textContent.quoteImanHighlight}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">— Iman, Bidang Pembinaan Prestasi NPCI Jawa Barat</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-iman-highlight">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteImanHighlight}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          — Iman, Bidang Pembinaan Prestasi NPCI Jawa Barat
+        </cite>
       </blockquote>
 
-      {/* Djumono Quote Card (Foto & Identitas disamping kanan kutipan) */}
-      <div className="my-8 grid md:grid-cols-[1fr_200px] gap-6 items-center p-6 bg-zinc-50 border border-zinc-200 rounded-2xl max-w-2xl mx-auto" key="djumono-card-img1999">
-        <blockquote className="text-sm italic text-zinc-700 font-medium leading-relaxed">
-          {textContent.quoteDjumonoCard}
-        </blockquote>
-        <div className="flex flex-col items-center text-center border-l md:border-l border-zinc-200 md:pl-6 pl-0 pt-4 md:pt-0">
-          <div className="relative size-20 rounded-xl overflow-hidden border border-zinc-300 bg-zinc-200 mb-2.5 shadow-sm">
-            <img
-              src="/uploads/IMG_1999.jpg"
-              alt="Djumono"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                const img = e.target as HTMLImageElement;
-                img.src = "/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg";
-              }}
-            />
-          </div>
-          <cite className="not-italic block font-sans text-xs font-extrabold text-[#082b4d]">
-            Djumono
-          </cite>
-          <span className="block font-sans text-[9px] text-zinc-500 mt-1">
-            Sekretaris Umum NPCI Kota Bandung
-          </span>
-        </div>
-      </div>
+      {/* Djumono Quote Card */}
+      <QuoteCard
+        quote={textContent.quoteDjumonoCard}
+        imageSrc="/7/djumono.webp"
+        speakerName="Djumono"
+        speakerRole="Sekretaris Umum NPCI Kota Bandung"
+      />
 
       <p className={articleParagraphClass} key="paragraph-dispora-official">
         {textContent.paragraphDisporaOfficial}
       </p>
 
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-acep-official">
-        {textContent.quoteAcepOfficial}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ucap Acep sebagai Sub Olahraga Pendidikan kepada tim Paravoice.id di Dispora Kota Bandung.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-acep-official">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteAcepOfficial}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ucap Acep sebagai Sub Olahraga Pendidikan kepada tim Paravoice.id di Dispora Kota Bandung.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-welfare-gap">
@@ -463,9 +456,13 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphMuslimBpjsIntro}
       </p>
 
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-muslim-bpjs-details">
-        {textContent.quoteMuslimBpjsDetails}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">jelasnya.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-muslim-bpjs-details">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteMuslimBpjsDetails}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          jelasnya.
+        </cite>
       </blockquote>
 
       {/* Heading: REGENERASI MANDEK */}
@@ -497,9 +494,13 @@ export default function SubtitleSevenContent() {
       </p>
 
       {/* Iman Stats Quote */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-iman-stats">
-        {textContent.quoteImanStats}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ucapnya.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-iman-stats">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteImanStats}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ucapnya.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-stigma-silent">
@@ -510,9 +511,13 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphDodiStigmaExplain}
       </p>
 
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-dodi-stigma-details">
-        {textContent.quoteDodiStigmaDetails}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">tekannya.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dodi-stigma-details">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteDodiStigmaDetails}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          tekannya.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-aditya-intro">
@@ -540,8 +545,10 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphAcepStigmaIntro}
       </p>
 
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-acep-stigma-details">
-        {textContent.quoteAcepStigmaDetails}
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-acep-stigma-details">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteAcepStigmaDetails}
+        </p>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-opportunity-explain">
@@ -552,9 +559,13 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphImanDinsosIntro}
       </p>
 
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-iman-dinsos-details">
-        {textContent.quoteImanDinsosDetails}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ungkap Iman, Bidang Pembinaan Prestasi NPCI Jawa Barat.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-iman-dinsos-details">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteImanDinsosDetails}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ungkap Iman, Bidang Pembinaan Prestasi NPCI Jawa Barat.
+        </cite>
       </blockquote>
 
       {/* Heading: PENSIUN TANPA PAYUNG */}
@@ -566,9 +577,13 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphAdenIntro}
       </p>
 
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-aden-retirement-details">
-        {textContent.quoteAdenRetirementDetails}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">jelas Aden.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-aden-retirement-details">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteAdenRetirementDetails}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          jelas Aden.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-acep-pension">
@@ -597,30 +612,7 @@ export default function SubtitleSevenContent() {
         </ZoomableWrapper>
       </div>
 
-      {/* Summary */}
-      <h2 className={articleHeadingClass} key="heading-summary">
-        {textContent.headingSummary}
-      </h2>
 
-      <p className={articleParagraphClass} key="paragraph-summary-ono">
-        {textContent.paragraphSummaryOno}
-      </p>
-
-      <p className={articleParagraphClass} key="paragraph-summary-wirya-intro">
-        {textContent.paragraphSummaryWiryaIntro}
-      </p>
-
-      {/* Wirya Dharma Video Feature Outro (Video Feature) */}
-      <div className="my-8 flex justify-center" key="wirya-video-feature-container">
-        <VideoNoteCard
-          videoSrc="/uploads/pak toto perasaan ibu.mov"
-          title="VIDEO FEATURE WIRYA DHARMA"
-          description="Dedikasi dan kekhawatiran dari sudut pandang asisten pelatih blind judo."
-          speakerName="Wirya Dharma"
-          speakerRole="Asisten Pelatih Blind Judo NPCI Kota Bandung"
-          imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
-        />
-      </div>
     </>
   );
 }

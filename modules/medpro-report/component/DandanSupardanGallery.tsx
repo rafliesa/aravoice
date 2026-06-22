@@ -9,14 +9,14 @@ export default function DandanSupardanGallery() {
   const photos = [
     {
       id: 1,
-      src: "/uploads/dandan-menembak.jpg",
+      src: "/5/bidik-sasaran.webp",
       fallback: "/uploads/d42c798d9c02a41627330f928b3c33c2.jpg",
       title: "Fokus Membidik Sasaran",
       desc: "Dandan Supardan memosisikan busur dan membidik sasaran secara presisi saat sesi latihan panahan.",
     },
     {
       id: 2,
-      src: "/uploads/dandan-cabut-panah.jpg",
+      src: "/5/evaluasi-tembakan.webp",
       fallback: "/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg",
       title: "Evaluasi Hasil Tembakan",
       desc: "Dandan Supardan mencabut anak panah dari bantalan sasaran untuk menganalisis akurasi bidikannya.",

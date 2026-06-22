@@ -4,9 +4,10 @@ import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-rep
 import UuDisabilityTypeLink from "@/modules/medpro-report/component/UuDisabilityTypeLink";
 import Uu82016Pasal53Link from "@/modules/medpro-report/component/Uu82016Pasal53Link";
 import VoiceNoteCard from "@/modules/medpro-report/component/VoiceNoteCard";
-import DisabilityEducationChart from "@/modules/medpro-report/component/DisabilityEducationChart";
 import DandanSupardanGallery from "@/modules/medpro-report/component/DandanSupardanGallery";
-import ZoomableWrapper from "@/modules/medpro-report/component/ZoomableWrapper";
+import DisabilityEducationChart from "@/modules/medpro-report/component/DisabilityEducationChart";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 // ==========================================
 // EDITABLE TEXT CONTENT DICTIONARY
@@ -117,6 +118,61 @@ const textContent = {
 };
 
 export default function SubtitleFiveContent() {
+  const lindaAudioRef = useRef<HTMLAudioElement>(null);
+  const [isLindaPlaying, setIsLindaPlaying] = useState(false);
+  const [lindaDuration, setLindaDuration] = useState(0);
+  const [lindaCurrentTime, setLindaCurrentTime] = useState(0);
+
+  useEffect(() => {
+    const audio = lindaAudioRef.current;
+    if (!audio) return;
+
+    const updateTime = () => setLindaCurrentTime(audio.currentTime);
+    const updateDuration = () => setLindaDuration(audio.duration || 0);
+    const handleEnded = () => setIsLindaPlaying(false);
+
+    audio.addEventListener("timeupdate", updateTime);
+    audio.addEventListener("loadedmetadata", updateDuration);
+    audio.addEventListener("ended", handleEnded);
+
+    return () => {
+      audio.removeEventListener("timeupdate", updateTime);
+      audio.removeEventListener("loadedmetadata", updateDuration);
+      audio.removeEventListener("ended", handleEnded);
+    };
+  }, []);
+
+  const toggleLindaPlay = () => {
+    const audio = lindaAudioRef.current;
+    if (!audio) return;
+
+    if (isLindaPlaying) {
+      audio.pause();
+      setIsLindaPlaying(false);
+    } else {
+      audio.play().then(() => {
+        setIsLindaPlaying(true);
+      }).catch((err) => {
+        console.error("Playback failed", err);
+      });
+    }
+  };
+
+  const handleLindaSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const audio = lindaAudioRef.current;
+    if (!audio) return;
+    const value = parseFloat(e.target.value);
+    audio.currentTime = value;
+    setLindaCurrentTime(value);
+  };
+
+  const formatTime = (time: number) => {
+    if (isNaN(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
   return (
     <>
       <p className={articleParagraphClass} key="paragraph-0">
@@ -124,9 +180,13 @@ export default function SubtitleFiveContent() {
       </p>
 
       {/* Djumono's Main Quote - KUTIPAN PENTING */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-djumono-important">
-        {textContent.quoteDjumonoImportant}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">— Djumono, Ketua/Sekretaris NPCI Kota Bandung</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-djumono-important">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteDjumonoImportant}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          — Djumono, Ketua/Sekretaris NPCI Kota Bandung
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-4">
@@ -137,18 +197,80 @@ export default function SubtitleFiveContent() {
         {textContent.paragraphLindaIntro}
       </p>
 
-      {/* Linda Indriani Voice Note */}
-      <div className="my-8" key="linda-vn-container">
-        <VoiceNoteCard
-          audioSrc="/audio/linda-malu.mp3"
-          imageSrc="/uploads/linda-indriani.jpg"
-          speakerName="Linda Indriani"
-          speakerRole="Atlet Voli Duduk NPCI Kota Bandung"
-        />
-        <p className="text-zinc-500 text-xs italic text-center -mt-4 max-w-md mx-auto leading-relaxed">
-          {textContent.lindaVnTranscript}
-        </p>
-      </div>
+      {/* Linda Indriani Custom Audio Story Card */}
+      <article className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm my-8" key="linda-vn-container">
+        <div className="grid md:grid-cols-[220px_minmax(0,1fr)]">
+          <div className="relative min-h-64 md:min-h-full bg-zinc-900">
+            <Image
+              src="/5/linda.webp"
+              alt="Foto narasumber Linda Indriani"
+              fill
+              sizes="(min-width: 768px) 220px, 100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+            <p className="absolute inset-x-5 bottom-5 text-[10px] font-extrabold uppercase tracking-[0.12em] text-white">
+              Profil narasumber
+            </p>
+          </div>
+
+          <div className="p-6 sm:p-8">
+            <p className="text-secondary-700 text-[10px] font-black uppercase tracking-[0.14em]">
+              Audio story
+            </p>
+            <h3 className="mt-2 text-xl font-bold text-zinc-900 leading-snug">
+              Kesaksian Linda Indriani: Hambatan Akses Pendidikan Menengah
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+              Linda Indriani, atlet voli duduk NPCI Kota Bandung, menceritakan kendala mobilitas dan lingkungan sosial yang membatasi akses pendidikannya hingga jenjang SMP.
+            </p>
+
+            <audio ref={lindaAudioRef} src="/5/linda-vn.mp3" preload="metadata" />
+
+            {/* Custom Audio Player Controls */}
+            <div className="mt-5 mb-4 flex items-center gap-3">
+              {/* Play/Pause Button */}
+              <button
+                onClick={toggleLindaPlay}
+                className="flex size-10 items-center justify-center rounded-full bg-[#082b4d] text-white hover:bg-[#061f38] transition-colors shadow-sm cursor-pointer flex-shrink-0"
+                aria-label={isLindaPlaying ? "Jeda" : "Putar"}
+                type="button"
+              >
+                {isLindaPlaying ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                    <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 ml-0.5">
+                    <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
+                  </svg>
+                )}
+              </button>
+
+              {/* Progress & Waveform Slider */}
+              <div className="flex flex-1 flex-col">
+                <input
+                  type="range"
+                  min={0}
+                  max={lindaDuration || 100}
+                  value={lindaCurrentTime}
+                  onChange={handleLindaSeek}
+                  className="h-1.5 w-full cursor-pointer appearance-none rounded-lg bg-zinc-200 accent-[#082b4d] outline-none [&::-webkit-slider-runnable-track]:bg-zinc-200 [&::-webkit-slider-thumb]:size-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#082b4d]"
+                  aria-label="Timeline voice note"
+                />
+                <div className="mt-1 flex justify-between text-[10px] font-medium text-zinc-500">
+                  <span>{formatTime(lindaCurrentTime)}</span>
+                  <span>{formatTime(lindaDuration)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs sm:text-sm leading-6 text-amber-950 font-medium">
+              {textContent.lindaVnTranscript}
+            </div>
+          </div>
+        </div>
+      </article>
 
       <p className={articleParagraphClass} key="paragraph-9">
         {textContent.paragraphLindaStruggleAnalysis}
@@ -159,9 +281,13 @@ export default function SubtitleFiveContent() {
       </p>
 
       {/* Djumono F Story Quote */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-djumono-f">
-        {textContent.quoteDjumonoF}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">cerita Djumono.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-djumono-f">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteDjumonoF}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          cerita Djumono.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-13">
@@ -171,7 +297,7 @@ export default function SubtitleFiveContent() {
       <div className={articleParagraphClass} key="paragraph-disability-data">
         {textContent.paragraphDisabilityDataPrefix}
         <a
-          href="https://www.bps.go.id/id/publication/2022/12/12/f2a4773c52a3be6ec8d3d9cb/potret-penyandang-disabilitas-di-indonesia-2022.html"
+          href="http://indonesia.unfpa.org/sites/default/files/pub-pdf/2025-07/Potret%20Penyandang%20Disabilitas%20di%20Indonesia%20Hasil%20Long%20Form%20Sensus%20Penduduk%202020.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="text-secondary-800 underline decoration-2 underline-offset-4 transition-colors hover:text-secondary-600 font-semibold"
@@ -184,12 +310,8 @@ export default function SubtitleFiveContent() {
         {" masih lebih banyak terkonsentrasi pada jenjang pendidikan rendah dibanding penduduk non-disabilitas."}
       </div>
 
-      {/* BPS Education Inequality Chart - Zoomable */}
-      <div className="my-8" key="edu-chart-zoom">
-        <ZoomableWrapper>
-          <DisabilityEducationChart />
-        </ZoomableWrapper>
-      </div>
+      {/* BPS Education Inequality Chart - Component implementation */}
+      <DisabilityEducationChart />
 
       <p className={articleParagraphClass} key="paragraph-gap-details">
         {textContent.paragraphGapDetails}
@@ -228,19 +350,6 @@ export default function SubtitleFiveContent() {
         {textContent.paragraphJonnaAnalysis}
       </p>
 
-      {/* Jonna Aman Voice Note */}
-      <div className="my-8" key="jonna-vn-container">
-        <VoiceNoteCard
-          audioSrc="/audio/jonna-akses-pendidikan.mp3"
-          imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
-          speakerName="Jonna Aman Damanik"
-          speakerRole="Komisioner Komisi Nasional Disabilitas (KND)"
-        />
-        <p className="text-zinc-500 text-xs italic text-center -mt-4 max-w-md mx-auto leading-relaxed">
-          {textContent.jonnaVnTranscript}
-        </p>
-      </div>
-
       <p className={articleParagraphClass} key="paragraph-24">
         {textContent.paragraphAthleteStruggleEconomics}
       </p>
@@ -250,9 +359,13 @@ export default function SubtitleFiveContent() {
       </p>
 
       {/* Bambang Basuki Quote 1 */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-bambang-1">
-        {textContent.quoteBambang1}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ungkap Bambang.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-bambang-1">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteBambang1}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ungkap Bambang.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-29">
@@ -260,9 +373,13 @@ export default function SubtitleFiveContent() {
       </p>
 
       {/* Bambang Basuki Quote 2 */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-bambang-2">
-        {textContent.quoteBambang2}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">lanjut Bambang.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-bambang-2">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteBambang2}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          lanjut Bambang.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-32">
@@ -274,9 +391,13 @@ export default function SubtitleFiveContent() {
       </p>
 
       {/* Jonna Vocational Quote */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-jonna-vokasional">
-        {textContent.quoteJonnaVocational}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ujar Jonna</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-jonna-vokasional">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteJonnaVocational}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ujar Jonna
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-37">
@@ -293,9 +414,13 @@ export default function SubtitleFiveContent() {
       </div>
 
       {/* Dandan Quote 1 */}
-      <blockquote className="my-6 border-l-4 border-secondary-500 pl-4 italic text-zinc-700 bg-zinc-50 p-4 rounded-r-xl text-sm leading-relaxed" key="quote-dandan-1">
-        {textContent.quoteDandan1}
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2">ungkap Dandan.</cite>
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dandan-1">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteDandan1}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          ungkap Dandan.
+        </cite>
       </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-41">
