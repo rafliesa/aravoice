@@ -1,201 +1,246 @@
 "use client";
 
-import { useState } from "react";
-
-type NeedItem = {
-  category: string;
-  general: {
-    title: string;
-    desc: string;
-    cost: string;
-    icon: string;
-  };
-  disability: {
-    title: string;
-    desc: string;
-    cost: string;
-    icon: string;
-  };
-};
-
-const comparisonData: NeedItem[] = [
-  {
-    category: "Peralatan Olahraga",
-    general: {
-      title: "Peralatan Standar",
-      desc: "Jam catur standar atau papan biasa.",
-      cost: "Rp2.000.000",
-      icon: "chess",
-    },
-    disability: {
-      title: "Peralatan Modifikasi Khusus",
-      desc: "Jam catur taktil/Braille khusus, kursi roda balap titanium impor.",
-      cost: "Rp7.500.000 - Rp210.000.000",
-      icon: "wheelchair",
-    },
-  },
-  {
-    category: "Transportasi Harian",
-    general: {
-      title: "Transportasi Mandiri",
-      desc: "Sepeda motor standar, ojek online, atau kendaraan umum biasa.",
-      cost: "Rp10.000 / hari",
-      icon: "bike",
-    },
-    disability: {
-      title: "Aksesibilitas Khusus & Pendamping",
-      desc: "Sewa kendaraan ramah kursi roda, atau butuh pendamping jalan bagi tunanetra.",
-      cost: "Rp700.000 - Rp800.000 / bulan",
-      icon: "van",
-    },
-  },
-  {
-    category: "Akses Fasilitas Latihan",
-    general: {
-      title: "Akses Bebas",
-      desc: "Bisa menggunakan fasilitas tangga, toilet umum, dan lapangan standar tanpa hambatan.",
-      cost: "Tersedia Bebas",
-      icon: "building",
-    },
-    disability: {
-      title: "Ketergantungan Akses Fisik",
-      desc: "Membutuhkan ramp, lift hidrolik, toilet ramah disabilitas, dan guiding block taktil.",
-      cost: "Terbatas & Harus Sewa",
-      icon: "ramp",
-    },
-  },
-  {
-    category: "Penyampaian Program",
-    general: {
-      title: "Metode Konvensional",
-      desc: "Program tertulis di kertas, WhatsApp, atau papan tulis visual.",
-      cost: "Sederhana & Gratis",
-      icon: "document",
-    },
-    disability: {
-      title: "Format Khusus (Braille & Verbal)",
-      desc: "Memerlukan cetak kertas Braille, petunjuk audio, atau deskripsi verbal bertahap.",
-      cost: "Butuh Alat Khusus",
-      icon: "braille",
-    },
-  },
-];
+import React from "react";
+import Image from "next/image";
 
 export default function AthleteNeedsComparisonInfographic() {
-  const [activeTab, setActiveTab] = useState<"compare" | "general" | "disability">("compare");
-
   return (
-    <section className="w-full bg-gradient-to-br from-[#0c1a30] to-[#050f21] rounded-3xl p-6 sm:p-8 text-white shadow-2xl border border-blue-900/50 my-8 font-sans">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-        <div>
-          <span className="inline-flex rounded-full border border-amber-500/20 bg-amber-500/10 px-4 py-1 text-xs font-black uppercase tracking-[0.2em] text-amber-300">
-            Perbandingan Kebutuhan
-          </span>
-          <h3 className="mt-3 text-2xl sm:text-3xl font-black text-white tracking-tight">
-            Kebutuhan Atlet: Umum vs Disabilitas
-          </h3>
-          <p className="text-sm text-slate-400 mt-1.5">
-            Analisis kesenjangan biaya dan fasilitas yang harus dipenuhi oleh para atlet
-          </p>
+    <div className="my-8 font-sans w-full max-w-5xl mx-auto px-4">
+      {/* ── Title ── */}
+      <h3 className="text-center text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-[0.06em] text-[#2d323b] mb-6">
+        Kebutuhan Atlet
+      </h3>
+
+      {/* ── Main Card ── */}
+      <div className="overflow-hidden rounded-[20px] sm:rounded-[30px] shadow-xl bg-[#001f3f] w-full border border-white/5">
+        
+        {/* Header row */}
+        <div className="grid grid-cols-[1.3fr_0.8fr_1.3fr] sm:grid-cols-[1.4fr_0.9fr_1.4fr] md:grid-cols-[1.5fr_1fr_1.5fr] items-stretch">
+          {/* DISABILITAS Header */}
+          <div className="bg-[#001f3f] text-white flex flex-col justify-center items-center px-4 py-5 md:py-6 border-b-2 border-white">
+            <span className="text-xs sm:text-base md:text-lg font-black uppercase tracking-[0.08em] text-center">
+              Disabilitas
+            </span>
+          </div>
+
+          {/* VS Header */}
+          <div className="bg-white text-[#001f3f] flex flex-col justify-center items-center px-2 py-5 md:py-6 border-x border-[#2f465e] border-b-2 border-[#2d323b]">
+            <span className="text-[10px] sm:text-xs md:text-sm font-black tracking-widest text-center text-[#2d323b]">
+              VS
+            </span>
+          </div>
+
+          {/* NON DISABILITAS Header */}
+          <div className="bg-[#001f3f] text-white flex flex-col justify-center items-center px-4 py-5 md:py-6 border-b-2 border-white">
+            <span className="text-xs sm:text-base md:text-lg font-black uppercase tracking-[0.08em] text-center">
+              Non Disabilitas
+            </span>
+          </div>
         </div>
 
-        {/* Interactive Tabs */}
-        <div className="flex rounded-xl bg-[#112240] p-1 border border-white/5 self-start md:self-auto shrink-0">
-          <button
-            type="button"
-            onClick={() => setActiveTab("compare")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-              activeTab === "compare" 
-                ? "bg-secondary text-white shadow" 
-                : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Bandingkan
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("general")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-              activeTab === "general" 
-                ? "bg-secondary text-white shadow" 
-                : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Atlet Umum
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("disability")}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-              activeTab === "disability" 
-                ? "bg-secondary text-white shadow" 
-                : "text-slate-400 hover:text-white"
-            }`}
-          >
-            Atlet Disabilitas
-          </button>
-        </div>
-      </div>
-
-      <div className="grid gap-6">
-        {comparisonData.map((item) => (
-          <div 
-            key={item.category}
-            className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 hover:bg-white/[0.03] transition-all duration-300"
-          >
-            <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 pb-2 border-b border-white/5">
-              {item.category}
-            </h4>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              {/* General Column */}
-              {(activeTab === "compare" || activeTab === "general") && (
-                <div className={`p-4 rounded-xl border transition-all ${
-                  activeTab === "general" ? "bg-emerald-950/20 border-emerald-500/30" : "bg-[#112240]/40 border-white/5"
-                }`}>
-                  <div className="flex justify-between items-start gap-2 mb-2">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400">
-                      Atlet Umum (Non-Disabilitas)
-                    </span>
-                    <span className="text-xs font-extrabold text-emerald-300 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/20">
-                      {item.general.cost}
-                    </span>
-                  </div>
-                  <h5 className="font-bold text-white text-base">{item.general.title}</h5>
-                  <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">{item.general.desc}</p>
-                </div>
-              )}
-
-              {/* Disability Column */}
-              {(activeTab === "compare" || activeTab === "disability") && (
-                <div className={`p-4 rounded-xl border transition-all ${
-                  activeTab === "disability" || activeTab === "compare" 
-                    ? "bg-orange-950/20 border-orange-500/30" 
-                    : "bg-[#112240]/40 border-white/5"
-                }`}>
-                  <div className="flex justify-between items-start gap-2 mb-2">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-orange-400">
-                      Atlet Disabilitas (NPCI)
-                    </span>
-                    <span className="text-xs font-extrabold text-orange-300 bg-orange-950/60 px-2 py-0.5 rounded border border-orange-500/20">
-                      {item.disability.cost}
-                    </span>
-                  </div>
-                  <h5 className="font-bold text-white text-base">{item.disability.title}</h5>
-                  <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">{item.disability.desc}</p>
-                  
-                  {activeTab === "compare" && (
-                    <div className="mt-3 pt-2.5 border-t border-orange-500/20 text-[11px] text-orange-200/80 flex items-center gap-1">
-                      <span className="text-base">⚠️</span>
-                      Beban finansial jauh lebih tinggi untuk tingkat kesetaraan yang sama.
-                    </div>
-                  )}
-                </div>
-              )}
+        {/* Row 1: Kursi Roda Harian */}
+        <div className="grid grid-cols-[1.3fr_0.8fr_1.3fr] sm:grid-cols-[1.4fr_0.9fr_1.4fr] md:grid-cols-[1.5fr_1fr_1.5fr] items-stretch">
+          {/* Left: Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-start pl-4 sm:pl-6 md:pl-10 pr-2 py-5 border-b border-dashed border-[#374f68]">
+            <div className="flex flex-col gap-1 text-[11px] sm:text-[13px] md:text-[15px] leading-relaxed">
+              <div>
+                <span className="font-extrabold text-white">Rp4 juta</span>{" "}
+                <span className="text-white/80 text-[10px] sm:text-xs md:text-sm">(Tiongkok)</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="text-white/60">→</span>{" "}
+                <span className="font-extrabold text-white">Rp6,7 juta</span>{" "}
+                <span className="text-white/80 text-[10px] sm:text-xs md:text-sm">(Tiba di Bandung)</span>
+              </div>
             </div>
           </div>
-        ))}
+          {/* Center: Illustration & Title */}
+          <div className="bg-white flex items-center justify-between px-2 sm:px-4 py-4 border-x border-[#2f465e] border-b border-dashed border-[#b7babc]">
+            <div className="flex items-center justify-between w-full gap-1.5 sm:gap-2">
+              <div className="relative w-10 sm:w-14 md:w-16 aspect-square flex-shrink-0 flex items-center justify-center">
+                <Image
+                  src="/2/kursi_roda_harian.png"
+                  alt="Kursi Roda Harian"
+                  width={193}
+                  height={177}
+                  className="object-contain max-h-full max-w-full"
+                />
+              </div>
+              <span className="font-black text-[8px] sm:text-[10px] md:text-[11px] tracking-wider text-[#001f3f] leading-tight text-right uppercase flex-grow">
+                Kursi Roda Harian
+              </span>
+            </div>
+          </div>
+          {/* Right: Non Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-center px-4 py-5 border-b border-dashed border-[#374f68]">
+            <div className="text-[11px] sm:text-[13px] md:text-[15px] font-normal text-white/80 text-center">
+              Tidak Diperlukan
+            </div>
+          </div>
+        </div>
+
+        {/* Row 2: Kursi Roda Balap */}
+        <div className="grid grid-cols-[1.3fr_0.8fr_1.3fr] sm:grid-cols-[1.4fr_0.9fr_1.4fr] md:grid-cols-[1.5fr_1fr_1.5fr] items-stretch">
+          {/* Left: Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-start pl-4 sm:pl-6 md:pl-10 pr-2 py-5 border-b border-dashed border-[#374f68]">
+            <div className="flex flex-col gap-1 text-[11px] sm:text-[13px] md:text-[15px] leading-relaxed">
+              <div>
+                <span className="font-extrabold text-white">Rp140–210 juta</span>{" "}
+                <span className="text-white/80 text-[10px] sm:text-xs md:text-sm">(Amerika, Titanium)</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="text-white/60">→</span>{" "}
+                <span className="font-extrabold text-white">Rp100 juta</span>{" "}
+                <span className="text-white/80 text-[10px] sm:text-xs md:text-sm">(Indonesia, baja)</span>
+              </div>
+            </div>
+          </div>
+          {/* Center: Illustration & Title */}
+          <div className="bg-white flex items-center justify-between px-2 sm:px-4 py-4 border-x border-[#2f465e] border-b border-dashed border-[#b7babc]">
+            <div className="flex items-center justify-between w-full gap-1.5 sm:gap-2">
+              <div className="relative w-10 sm:w-14 md:w-16 aspect-square flex-shrink-0 flex items-center justify-center">
+                <Image
+                  src="/2/kursi_roda_balap.png"
+                  alt="Kursi Roda Balap"
+                  width={193}
+                  height={170}
+                  className="object-contain max-h-full max-w-full"
+                />
+              </div>
+              <span className="font-black text-[8px] sm:text-[10px] md:text-[11px] tracking-wider text-[#001f3f] leading-tight text-right uppercase flex-grow">
+                Kursi Roda Balap
+              </span>
+            </div>
+          </div>
+          {/* Right: Non Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-center px-4 py-5 border-b border-dashed border-[#374f68]">
+            <div className="text-[11px] sm:text-[13px] md:text-[15px] font-normal text-white/80 text-center">
+              Tidak Diperlukan
+            </div>
+          </div>
+        </div>
+
+        {/* Row 3: Catur */}
+        <div className="grid grid-cols-[1.3fr_0.8fr_1.3fr] sm:grid-cols-[1.4fr_0.9fr_1.4fr] md:grid-cols-[1.5fr_1fr_1.5fr] items-stretch">
+          {/* Left: Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-start pl-4 sm:pl-6 md:pl-10 pr-2 py-5 border-b border-dashed border-[#374f68]">
+            <div className="text-[11px] sm:text-[13px] md:text-[15px] leading-relaxed text-white">
+              <span className="font-extrabold text-white">Rp7,5 juta</span>
+              <span className="text-white/80 text-[10px] sm:text-xs md:text-sm">/unit (edisi Braille/Taktil)</span>
+            </div>
+          </div>
+          {/* Center: Title & Illustration */}
+          <div className="bg-white flex items-center justify-between px-2 sm:px-4 py-4 border-x border-[#2f465e] border-b border-dashed border-[#b7babc]">
+            <div className="flex items-center justify-between w-full gap-1.5 sm:gap-2">
+              <span className="font-black text-[8px] sm:text-[10px] md:text-[11px] tracking-wider text-[#001f3f] leading-tight text-left uppercase flex-grow">
+                Catur
+              </span>
+              <div className="relative w-10 sm:w-14 md:w-16 aspect-square flex-shrink-0 flex items-center justify-center">
+                <Image
+                  src="/2/catur.png"
+                  alt="Catur"
+                  width={202}
+                  height={166}
+                  className="object-contain max-h-full max-w-full"
+                />
+              </div>
+            </div>
+          </div>
+          {/* Right: Non Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-center px-4 py-5 border-b border-dashed border-[#374f68]">
+            <div className="text-[11px] sm:text-[13px] md:text-[15px] font-extrabold text-white text-center">
+              Rp2 juta
+            </div>
+          </div>
+        </div>
+
+        {/* Row 4: Guide Rail */}
+        <div className="grid grid-cols-[1.3fr_0.8fr_1.3fr] sm:grid-cols-[1.4fr_0.9fr_1.4fr] md:grid-cols-[1.5fr_1fr_1.5fr] items-stretch">
+          {/* Left: Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-start pl-4 sm:pl-6 md:pl-10 pr-2 py-5 border-b border-dashed border-[#374f68]">
+            <div className="flex flex-col gap-1 text-[11px] sm:text-[13px] md:text-[15px] leading-relaxed text-white">
+              <div className="font-normal text-white/90">
+                Tersedia dengan jumlah terbatas
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="text-white/60">→</span>{" "}
+                <span className="font-extrabold text-white">baru ada sejak 2014</span>
+              </div>
+            </div>
+          </div>
+          {/* Center: Title & Illustration */}
+          <div className="bg-white flex items-center justify-between px-2 sm:px-4 py-4 border-x border-[#2f465e] border-b border-dashed border-[#b7babc]">
+            <div className="flex items-center justify-between w-full gap-1.5 sm:gap-2">
+              <span className="font-black text-[8px] sm:text-[10px] md:text-[11px] tracking-wider text-[#001f3f] leading-tight text-left uppercase flex-grow">
+                Guide Rail
+              </span>
+              <div className="relative w-10 sm:w-14 md:w-16 aspect-square flex-shrink-0 flex items-center justify-center">
+                <Image
+                  src="/2/guide_rail.png"
+                  alt="Guide Rail"
+                  width={187}
+                  height={164}
+                  className="object-contain max-h-full max-w-full"
+                />
+              </div>
+            </div>
+          </div>
+          {/* Right: Non Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-center px-4 py-5 border-b border-dashed border-[#374f68]">
+            <div className="text-[11px] sm:text-[13px] md:text-[15px] font-normal text-white/80 text-center">
+              Tidak Diperlukan
+            </div>
+          </div>
+        </div>
+
+        {/* Row 5: Shuttlecock */}
+        <div className="grid grid-cols-[1.3fr_0.8fr_1.3fr] sm:grid-cols-[1.4fr_0.9fr_1.4fr] md:grid-cols-[1.5fr_1fr_1.5fr] items-stretch">
+          {/* Left: Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-start pl-4 sm:pl-6 md:pl-10 pr-2 py-5">
+            <div className="text-[11px] sm:text-[13px] md:text-[15px] leading-relaxed text-white">
+              Bisa habis <span className="font-extrabold text-white">1 slop/hari</span>
+            </div>
+          </div>
+          {/* Center: Illustrations & Title */}
+          <div className="bg-white flex items-center justify-between px-1.5 sm:px-3 py-4 border-x border-[#2f465e]">
+            <div className="flex items-center justify-between w-full gap-1">
+              <div className="relative w-7 sm:w-10 md:w-12 aspect-square flex-shrink-0 flex items-center justify-center">
+                <Image
+                  src="/2/shuttlecock_left.png"
+                  alt="Shuttlecock Left"
+                  width={86}
+                  height={107}
+                  className="object-contain max-h-full max-w-full"
+                />
+              </div>
+              <span className="font-black text-[8px] sm:text-[10px] md:text-[11px] tracking-wider text-[#001f3f] leading-tight text-center uppercase flex-grow">
+                Shuttlecock
+              </span>
+              <div className="relative w-7 sm:w-10 md:w-12 aspect-square flex-shrink-0 flex items-center justify-center">
+                <Image
+                  src="/2/shuttlecock_right.png"
+                  alt="Shuttlecock Right"
+                  width={108}
+                  height={134}
+                  className="object-contain max-h-full max-w-full"
+                />
+              </div>
+            </div>
+          </div>
+          {/* Right: Non Disabilitas */}
+          <div className="bg-[#001f3f] text-white flex items-center justify-center px-4 py-5">
+            <div className="text-[11px] sm:text-[13px] md:text-[15px] leading-relaxed text-white text-center">
+              Bisa habis <span className="font-extrabold text-white">1 slop/hari</span>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </section>
+
+      {/* ── Source footer ── */}
+      <p className="mt-3 text-[10px] sm:text-[11px] text-[#2d323b]/70 leading-relaxed font-medium">
+        <strong>*Sumber:</strong> Aden Ahmad (Atlet Tennis), Muslim (Atlet Catur), Bambang Basuki (Atlet Bowling), Djumono Sekretaris Umum NPCI Kota Bandung.
+      </p>
+    </div>
   );
 }

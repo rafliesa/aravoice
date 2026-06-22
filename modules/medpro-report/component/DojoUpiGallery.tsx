@@ -10,7 +10,7 @@ export default function DojoUpiGallery() {
         <figure className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-md transition-all hover:shadow-lg">
           <div className="relative aspect-[4/3] w-full bg-zinc-950">
             <Image
-              src="/1/blindjudo.webp"
+              src="/2/tangga_2.jpg"
               alt="Tangga menuju dojo blind judo"
               fill
               className="object-cover"
@@ -34,7 +34,7 @@ export default function DojoUpiGallery() {
         <figure className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-md transition-all hover:shadow-lg">
           <div className="relative aspect-[4/3] w-full bg-zinc-950">
             <Image
-              src="/1/transportasi.webp"
+              src="/2/tenis-indoor.png"
               alt="Lapangan tenis indoor UPI"
               fill
               className="object-cover"

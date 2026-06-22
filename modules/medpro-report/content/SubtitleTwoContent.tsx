@@ -2,6 +2,7 @@
 
 import EditorialNote from "@/modules/medpro-report/component/EditorialNote";
 import AccessibilityPrinciplesTable from "@/modules/medpro-report/component/AccessibilityPrinciplesTable";
+import AccessibilityPrinciplesInfographic from "@/modules/medpro-report/component/AccessibilityPrinciplesInfographic";
 import ArticleComparisonTable from "@/modules/medpro-report/component/ArticleComparisonTable";
 import ArticleRightsList from "@/modules/medpro-report/component/ArticleRightsList";
 import EquipmentComparisonTable from "@/modules/medpro-report/component/EquipmentComparisonTable";
@@ -20,6 +21,7 @@ import DojoUpiGallery from "@/modules/medpro-report/component/DojoUpiGallery";
 import AthleteNeedsComparisonInfographic from "@/modules/medpro-report/component/AthleteNeedsComparisonInfographic";
 import InteractiveBrailleSimulator from "@/modules/medpro-report/component/InteractiveBrailleSimulator";
 import NpciHistoryGame from "@/modules/medpro-report/component/NpciHistoryGame";
+import QuoteCard from "@/modules/medpro-report/component/QuoteCard";
 import CoachTriQuote from "@/modules/medpro-report/component/CoachTriQuote";
 
 const disabilityRights = [
@@ -272,25 +274,27 @@ export default function SubtitleTwoContent() {
         di mana negara diwajibkan membangun sistem keolahragaan yang inklusif, mencakup olahraga pendidikan, rekreasi, hingga olahraga prestasi yang disesuaikan dengan jenis disabilitasnya. Berdasarkan ketentuan tersebut, terdapat 22 hak dasar yang wajib dipenuhi oleh pemerintah dan masyarakat.
       </div>
 
-      {/* Interactive Trigger Button for 22 Rights Pop-up */}
-      <div className="my-6 p-4 bg-zinc-50 rounded-2xl border border-zinc-200/80 text-center">
-        <p className="text-xs text-zinc-500 mb-2.5 font-bold uppercase tracking-wider">
-          Informasi Undang-Undang
+      {/* Tangga Photo — full width */}
+      <figure className="my-8 overflow-hidden rounded-2xl border border-zinc-200 shadow-md bg-zinc-950">
+        <div className="relative w-full aspect-[4/3] sm:aspect-[16/9]">
+          <img
+            src="/2/tangga.jpg"
+            alt="Tangga menuju dojo NPCI Kota Bandung"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <figcaption className="px-5 py-3 bg-white border-t border-zinc-100 text-xs text-zinc-500 italic leading-relaxed">
+          Tangga menuju dojo NPCI Kota Bandung yang curam menjadi makanan sehari-hari atlet judo disabilitas.
+        </figcaption>
+      </figure>
+      <blockquote className="my-6 pl-5 border-l-4 border-secondary/40">
+        <p className="text-xl sm:text-2xl font-semibold italic leading-snug text-[#0a3358]">
+          "Sudah lama, jadi sudah pada tahu,"
         </p>
-        <Uu82016Link>
-          Buka &amp; Telusuri 22 Hak Dasar Disabilitas (Pasal 5 UU No. 8/2016)
-        </Uu82016Link>
-      </div>
-
-      <ArticleRightsList items={disabilityRights} />
-
-      {/* Side-by-side Dojo and UPI Gallery */}
-      <DojoUpiGallery />
-
-      <p className={articleParagraphClass} key="quote-33">{"\"Sudah lama, jadi sudah pada tahu,\""}</p>
-      <p className={articleParagraphClass} key="paragraph-34">
-        {"Lanjut Opik saat ditanya apakah tangga itu menjadi masalah baginya."}
-      </p>
+        <cite className="mt-2 block text-sm not-italic text-zinc-400">
+          — Opik, saat ditanya apakah tangga itu menjadi masalah baginya
+        </cite>
+      </blockquote>
 
       <p className={articleParagraphClass} key="paragraph-36">
         {"Setiap sesi latihan blind judo, atlet dengan kondisi low vision itu harus menaiki anak tangga menuju lantai dua gedung latihan yang tidak dilengkapi ramp, tanpa pegangan yang memadai, tanpa penanda taktil. Opik bahkan menempuh jarak 2,5 kilometer menuju lokasi latihan dengan sepeda motornya."}
@@ -311,24 +315,12 @@ export default function SubtitleTwoContent() {
         {"Djumono, Sekretaris Umum NPCI Kota Bandung, menyebut persoalan transportasi sebagai kebutuhan yang paling mendesak."}
       </p>
 
-      {/* Djumono Photo block and Quote */}
-      <div className="my-8 p-6 rounded-2xl border border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row gap-6 items-center">
-        <div className="relative shrink-0 size-24 rounded-full overflow-hidden border-2 border-secondary bg-zinc-800 shadow-md">
-          <img 
-            src="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg" 
-            alt="Djumono"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div>
-          <cite className="not-italic font-black text-primary block text-base">
-            Djumono, Sekretaris Umum NPCI Kota Bandung
-          </cite>
-          <blockquote className="mt-2 text-sm text-zinc-700 italic leading-relaxed">
-            “Yang paling penting sekarang adalah sarana transportasi. Atlet, khususnya pengguna kursi roda, masih kesulitan mengakses transportasi yang aman dan nyaman menuju tempat latihan,” ujarnya.
-          </blockquote>
-        </div>
-      </div>
+      <QuoteCard
+        quote="Yang paling penting sekarang adalah sarana transportasi. Atlet, khususnya pengguna kursi roda, masih kesulitan mengakses transportasi yang aman dan nyaman menuju tempat latihan."
+        imageSrc="/2/djumono.jpg"
+        speakerName="Djumono"
+        speakerRole="Sekretaris Umum NPCI Kota Bandung"
+      />
 
       <p className={articleParagraphClass} key="paragraph-47">
         {"Menurut Djumono, biaya yang harus dikeluarkan pun tidak setara. Atlet umum bisa datang latihan dengan biaya bensin Rp10.000. Atlet dengan kursi roda harus menyewa kendaraan yang muat untuk kursi rodanya. Atlet tunanetra perlu pendamping selama perjalanan."}
@@ -336,43 +328,41 @@ export default function SubtitleTwoContent() {
 
       <p className={articleParagraphClass} key="quote-48">{"\"Selain itu, banyak gedung dan fasilitas latihan yang belum aksesibel. Masih banyak bangunan bertangga dan toilet yang tidak ramah disabilitas. Hal-hal seperti itu masih harus terus disampaikan kepada pemerintah dan pemilik kebijakan,\" kata Djumono."}</p>
 
+      {/* Side-by-side Dojo and UPI Gallery — after Djumono quotes */}
+      <DojoUpiGallery />
+
+      {/* Guiding Block Photo */}
+      <figure className="my-8 overflow-hidden rounded-2xl border border-zinc-200 shadow-md bg-zinc-950">
+        <div className="relative w-full aspect-[4/3] sm:aspect-[16/9]">
+          <img
+            src="/2/guilding-block.jpg"
+            alt="Guiding block tertutup sampah di luar GOR Pajajaran"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <figcaption className="px-5 py-3 bg-white border-t border-zinc-100 text-xs text-zinc-500 italic leading-relaxed">
+          Guiding block tertutup sampah di luar GOR Pajajaran, Kota Bandung
+        </figcaption>
+      </figure>
+
       <p className={articleParagraphClass} key="paragraph-53">
         {"Pengalaman tinggal di Australia memberi Aden Achmad Muhammad Rahman yang merupakan atlet sekaligus pria yang aktif mengadvokasi hak disabilitas memberikan gambaran tajam dengan aksesibilitas di Indonesia."}
       </p>
 
-      <p className={articleParagraphClass} key="quote-54">{"“Di sana saya merasa bukan penyandang disabilitas karena semua fasilitas memungkinkan saya mandiri. Naik transportasi sendiri bisa. Pergi ke mana-mana bisa. Sementara di Indonesia sering kali masih harus dibantu atau bahkan digotong,” ujarnya."}</p>
-
-      {/* Aden Photo block */}
-      <div className="my-8 p-6 rounded-2xl border border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row gap-6 items-center">
-        <div className="relative shrink-0 size-24 rounded-full overflow-hidden border-2 border-secondary bg-zinc-800 shadow-md">
-          <img 
-            src="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg" 
-            alt="Aden Achmad Muhammad Rahman"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = "/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg";
-            }}
-          />
-        </div>
-        <div>
-          <cite className="not-italic font-black text-primary block text-base">
-            Aden Achmad Muhammad Rahman, Atlet Tenis Kursi Roda
-          </cite>
-          <p className="text-xs text-zinc-500 mt-0.5">Aktivis Advokasi Hak Disabilitas</p>
-        </div>
-      </div>
+      <QuoteCard
+        quote="Di sana saya merasa bukan penyandang disabilitas karena semua fasilitas memungkinkan saya mandiri. Naik transportasi sendiri bisa. Pergi ke mana-mana bisa. Sementara di Indonesia sering kali masih harus dibantu atau bahkan digotong."
+        imageSrc="/1/Para%20Atlet%20Aden%20ahmad.jpeg"
+        speakerName="Aden Achmad Muhammad Rahman"
+        speakerRole="Atlet Tenis Kursi Roda · Aktivis Advokasi Hak Disabilitas"
+        reverse
+      />
 
       <p className={articleParagraphClass} key="paragraph-56">
         {"Ia kemudian menjelaskan bahwa aksesibilitas bukan sekadar soal ada atau tidaknya ramp. Aksesibilitas harus memenuhi empat asas yang saling berkaitan:"}
       </p>
 
-      {/* Zoomable 4 Asas Table */}
-      <div className="my-8">
-        <ZoomableWrapper title="Empat Asas Aksesibilitas Disabilitas">
-          <AccessibilityPrinciplesTable />
-        </ZoomableWrapper>
-      </div>
+      {/* 4 Asas Aksesibilitas Infographic */}
+      <AccessibilityPrinciplesInfographic />
 
       <p className={articleParagraphClass} key="paragraph-61">
         {"Menjelang ajang besar seperti Peparda, para atlet memang ditempatkan di mess sebagai bagian dari persiapan pertandingan. Namun, fasilitas yang tersedia belum sepenuhnya menjawab kebutuhan dasar mereka. Opik Jaya, atlet blind judo NPCI Kota Bandung kerap menginap di mess, mengungkapkan bahwa organisasi hanya menyediakan beras dan magic com."}
@@ -498,17 +488,6 @@ export default function SubtitleTwoContent() {
 
       <ArticleComparisonTable rows={accessibilityComparisonRows} />
 
-      {/* Interactive StoryMap Embed iframe */}
-      <div className="my-8 w-full overflow-hidden rounded-2xl border border-zinc-200 shadow-md">
-        <iframe 
-          src="https://uploads.knightlab.com/storymapjs/624b48ba902db5f52c77609bbc693d20/standar-infrastruktur-untuk-atlet-disabilitas/index.html" 
-          frameBorder="0" 
-          width="100%" 
-          height="600"
-          title="Standar Infrastruktur untuk Atlet Disabilitas"
-          className="w-full"
-        />
-      </div>
     </>
   );
 }
