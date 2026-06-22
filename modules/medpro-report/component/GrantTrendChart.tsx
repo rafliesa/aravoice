@@ -3,6 +3,8 @@
 import {
   useId,
   useState,
+  useRef,
+  useEffect,
   type KeyboardEvent as ReactKeyboardEvent,
 } from "react";
 
@@ -43,9 +45,31 @@ const areaPath = `${linePath} L ${points.at(-1)?.x} ${
 } L ${points[0].x} ${chart.top + chartHeight} Z`;
 
 export default function GrantTrendChart() {
+  const containerRef = useRef<HTMLElement>(null);
+  const [isAnimated, setIsAnimated] = useState(false);
   const [selectedYear, setSelectedYear] = useState(2026);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const gradientId = `grant-trend-fill-${useId().replaceAll(":", "")}`;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsAnimated(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
   const selectedIndex = grantData.findIndex(
     (item) => item.year === selectedYear,
   );
@@ -75,7 +99,10 @@ export default function GrantTrendChart() {
   }
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm">
+    <article 
+      ref={containerRef}
+      className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm"
+    >
       <div className="flex flex-col gap-4 border-b border-zinc-200 p-6 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-secondary-700 font-sans text-xs font-extrabold uppercase tracking-[0.14em]">
@@ -159,7 +186,16 @@ export default function GrantTrendChart() {
             y={chart.top}
           />
 
-          <path aria-hidden="true" d={areaPath} fill={`url(#${gradientId})`} />
+          <path 
+            aria-hidden="true" 
+            d={areaPath} 
+            fill={`url(#${gradientId})`} 
+            className="transition-opacity duration-1000 ease-out"
+            style={{
+              opacity: isAnimated ? 1 : 0,
+              transitionDelay: "800ms",
+            }}
+          />
           <path
             aria-hidden="true"
             d={linePath}
@@ -168,6 +204,11 @@ export default function GrantTrendChart() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="4"
+            className="transition-all duration-[1200ms] ease-in-out"
+            style={{
+              strokeDasharray: 1000,
+              strokeDashoffset: isAnimated ? 0 : 1000,
+            }}
           />
 
           {points.map((point, index) => {
@@ -202,6 +243,7 @@ export default function GrantTrendChart() {
                         : "transparent"
                   }
                   strokeWidth="4"
+                  className="transition-all duration-300"
                 />
                 <circle
                   cx={point.x}
@@ -216,6 +258,14 @@ export default function GrantTrendChart() {
                   r={isSelected || isHovered ? 8 : 6}
                   stroke="white"
                   strokeWidth="3"
+                  className="transition-all duration-300"
+                  style={{
+                    transform: isAnimated ? "scale(1)" : "scale(0)",
+                    transformOrigin: `${point.x}px ${point.y}px`,
+                    opacity: isAnimated ? 1 : 0,
+                    transitionDelay: `${200 + index * 150}ms`,
+                    transitionProperty: "transform, opacity",
+                  }}
                 />
                 <text
                   aria-hidden="true"

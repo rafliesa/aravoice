@@ -15,7 +15,7 @@ type CollageImage = {
 
 const collageData: CollageImage[] = [
   {
-    src: "/1/blindjudo.webp",
+    src: "/3/blind-dojo.webp",
     fallback: "/photo-story/1.jpeg",
     alt: "Fasilitas Judo",
     title: "Fasilitas Dojo Blind Judo",
@@ -23,25 +23,25 @@ const collageData: CollageImage[] = [
     externalLink: "https://photos.app.goo.gl/Rbsa8SnB3ja7nMVD8",
   },
   {
-    src: "/IMG_4039.jpg",
+    src: "/3/catur.webp",
     fallback: "/photo-story/2.jpeg",
     alt: "Fasilitas Catur",
     title: "Fasilitas Catur Tunanetra",
     description: "Papan catur dan jam timer taktil/Braille khusus tunanetra. Ketersediaannya sangat terbatas karena harganya yang 2-3x lebih mahal dari catur umum.",
   },
   {
-    src: "/pak-ono/DIO_4745.webp",
+    src: "/3/angkat-beban.webp",
     fallback: "/uploads/d42c798d9c02a41627330f928b3c33c2.jpg",
     alt: "Fasilitas Angkat Berat",
     title: "Fasilitas Angkat Berat Paralimpik",
     description: "Ono Saipudin dan atlet lainnya berlatih menggunakan sarana gym angkat berat di Sekretariat NPCI Kota Bandung.",
   },
   {
-    src: "/IMG_1184.jpg",
+    src: "/3/atletik.webp",
     fallback: "/photo-story/3.jpeg",
     alt: "Fasilitas Atletik",
     title: "Fasilitas Kursi Roda Balap Atletik",
-    description: "Sarana latihan kursi roda balap atletik yang berharga sangat mahal dan membutuhkan perawatan berkala agar optimal dalam perlombaan.",
+    description: "Sarana latihan kursi roda balap atletik yang berharga sangat mahal and membutuhkan perawatan berkala agar optimal dalam perlombaan.",
   },
 ];
 

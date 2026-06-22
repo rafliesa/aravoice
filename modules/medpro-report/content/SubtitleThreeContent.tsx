@@ -81,17 +81,15 @@ export default function SubtitleThreeContent() {
       </p>
 
       <p className={articleParagraphClass} key="paragraph-peparda-2">
-        {"Perpindahan tuan rumah dari Indramayu ke Kota Bandung tidak dapat dilepaskan dari persoalan kesiapan anggaran. Indramayu sebelumnya telah ditetapkan sebagai lokasi penyelenggaraan, tetapi rencana tersebut dihadapkan pada keterbatasan dana dan kesiapan fasilitas. Kebutuhan penyelenggaraan Peparda yang mencapai belasan miliar rupiah membuat pelaksanaan di Indramayu sulit dipertahankan."}
-        {" (Sumber informasi perpindahan dapat diakses melalui portal resmi "}
         <a 
-          href="https://dispora.jabarprov.go.id" 
+          href="https://sumedang.pikiran-rakyat.com/olahraga/pr-569972488/peparda-2026-pindah-ke-bandung-usai-indramayu-mundur"
           target="_blank" 
           rel="noopener noreferrer"
           className="font-bold text-secondary-800 underline hover:text-secondary-600"
         >
-          Dispora Jawa Barat
+          Perpindahan tuan rumah dari Indramayu ke Kota Bandung
         </a>
-        {")"}
+        {" tidak dapat dilepaskan dari persoalan kesiapan anggaran. Indramayu sebelumnya telah ditetapkan sebagai lokasi penyelenggaraan, tetapi rencana tersebut dihadapkan pada keterbatasan dana dan kesiapan fasilitas. Kebutuhan penyelenggaraan Peparda yang mencapai belasan miliar rupiah membuat pelaksanaan di Indramayu sulit dipertahankan."}
       </p>
 
       <p className={articleParagraphClass} key="paragraph-peparda-3">
@@ -121,14 +119,14 @@ export default function SubtitleThreeContent() {
         </Uu112022Pasal60Link>
         {" yang menyebutkan bahwa setiap olahragawan berhak mendapatkan hak yang sama untuk memperoleh penghargaan sesuai prestasi yang dicapai. Dalam praktiknya, "}
         <a 
-          href="https://www.kemenpora.go.id/" 
+          href="https://www.kemenpora.go.id/detail/5566/atlet-disabilitas-punya-hak-yang-sama-kemenpora-ri-tegaskan-komi" 
           target="_blank" 
           rel="noopener noreferrer"
           className="font-bold text-secondary-800 underline hover:text-secondary-600"
         >
-          Kemenpora
+          Kemenpora juga menyatakan bonus atlet
         </a>
-        {" juga menyatakan bonus atlet penyandang disabilitas berprestasi telah disetarakan dengan atlet non-disabilitas. Namun, kesetaraan bonus tidak berarti kesetaraan dalam proses pembinaan sehari-hari. Di titik inilah perbedaan dana antara KONI dan NPCI menjadi benang merah ketimpangan."}
+        {" penyandang disabilitas berprestasi telah disetarakan dengan atlet non-disabilitas. Namun, kesetaraan bonus tidak berarti kesetaraan dalam proses pembinaan sehari-hari. Di titik inilah perbedaan dana antara KONI dan NPCI menjadi benang merah ketimpangan."}
       </div>
 
       <p className={articleParagraphClass} key="paragraph-inklusif-2">
@@ -149,7 +147,7 @@ export default function SubtitleThreeContent() {
 
       <div className="max-w-xs mx-auto my-6">
         <VoiceNoteCard 
-          audioSrc="/audio/iman-npci-jabar.mp3"
+          audioSrc="/3/Iman - NPCI Jabar.mp3"
           speakerName="Iman Imanudin"
           speakerRole="Kabid Binpres NPCI Jawa Barat"
           imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
@@ -202,7 +200,7 @@ export default function SubtitleThreeContent() {
 
       <div className="max-w-xs mx-auto my-6">
         <VoiceNoteCard 
-          audioSrc="/audio/komarudin-npci-bandung.mp3"
+          audioSrc="/3/Komarudin ANGGARAN.wav"
           speakerName="Komarudin"
           speakerRole="Bendahara NPCI Kota Bandung"
           imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
