@@ -471,3 +471,36 @@ export function TagIcon() {
     </svg>
   );
 }
+
+export function DocumentIcon() {
+  return (
+    <svg
+      width="21"
+      height="21"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <path d="M6 2h8l4 4v16H6Z" />
+      <path d="M14 2v5h5M9 12h6M9 16h6" />
+    </svg>
+  );
+}
+
+export function CloseIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
+  );
+}

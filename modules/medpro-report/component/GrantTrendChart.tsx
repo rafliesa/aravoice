@@ -7,12 +7,12 @@ import {
 } from "react";
 
 const grantData = [
-  { year: 2021, value: 2.7, label: "2,7M" },
-  { year: 2022, value: 2.7, label: "2,7M" },
-  { year: 2023, value: 2.7, label: "2,7M" },
-  { year: 2024, value: 5, label: "5M" },
-  { year: 2025, value: 4.5, label: "4,5M" },
-  { year: 2026, value: 5, label: "5M" },
+  { year: 2021, value: 2.7, label: "2,7M", full: "Rp2.700.000.000" },
+  { year: 2022, value: 2.7, label: "2,7M", full: "Rp2.700.000.000" },
+  { year: 2023, value: 2.7, label: "2,7M", full: "Rp2.700.000.000" },
+  { year: 2024, value: 5, label: "5M", full: "Rp5.000.000.000" },
+  { year: 2025, value: 4.5, label: "4,5M", full: "Rp4.500.000.000" },
+  { year: 2026, value: 5, label: "5M", full: "Rp5.000.000.000" },
 ] as const;
 
 const chart = {
@@ -94,13 +94,13 @@ export default function GrantTrendChart() {
         </div>
         <div
           aria-live="polite"
-          className="bg-secondary-50 text-secondary-900 min-w-40 rounded-xl px-4 py-3"
+          className="bg-secondary-50 text-secondary-900 min-w-48 rounded-xl px-4 py-3"
         >
           <span className="block font-sans text-xs font-bold uppercase tracking-wide">
             Tahun terpilih
           </span>
-          <strong className="mt-1 block font-sans text-2xl">
-            {selectedPoint.year} · {selectedPoint.label}
+          <strong className="mt-1 block font-sans text-lg text-secondary-900 font-black">
+            {selectedPoint.year} · {selectedPoint.full}
           </strong>
         </div>
       </div>
@@ -175,7 +175,7 @@ export default function GrantTrendChart() {
             const isHovered = index === hoveredIndex;
             return (
               <g
-                aria-label={`${point.year}, ${point.label} hibah${
+                aria-label={`${point.year}, ${point.full} hibah${
                   isSelected ? ", dipilih" : ""
                 }`}
                 aria-pressed={isSelected}
@@ -236,26 +236,26 @@ export default function GrantTrendChart() {
             aria-hidden="true"
             pointerEvents="none"
             transform={`translate(${Math.min(
-              chart.width - 132,
-              Math.max(chart.left, activePoint.x - 54),
+              chart.width - 150,
+              Math.max(chart.left, activePoint.x - 70),
             )} ${Math.max(6, activePoint.y - 58)})`}
           >
-            <rect fill="#001F3F" height="42" rx="8" width="108" />
+            <rect fill="#001F3F" height="42" rx="8" width="140" />
             <text
               className="fill-white font-sans text-[10px] font-bold"
               textAnchor="middle"
-              x="54"
+              x="70"
               y="18"
             >
               {activePoint.year}
             </text>
             <text
-              className="fill-white font-sans text-[12px] font-bold"
+              className="fill-white font-sans text-[11px] font-bold"
               textAnchor="middle"
-              x="54"
+              x="70"
               y="33"
             >
-              {activePoint.label}
+              {activePoint.full}
             </text>
           </g>
         </svg>
