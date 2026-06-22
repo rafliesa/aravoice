@@ -5,14 +5,14 @@ import { useEffect, useRef, useState } from "react";
 
 type VoiceNoteCardProps = {
   audioSrc: string;
-  imageSrc: string;
+  imageSrc?: string;
   speakerName: string;
   speakerRole: string;
 };
 
 export default function VoiceNoteCard({
   audioSrc = "/KND Jonna Aman 1 (PBM).m4a",
-  imageSrc = "/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg",
+  imageSrc,
   speakerName = "Jonna Aman Damanik",
   speakerRole = "Komisioner Komisi Nasional Disabilitas (KND)",
 }: Partial<VoiceNoteCardProps>) {
@@ -20,10 +20,11 @@ export default function VoiceNoteCard({
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [srcError, setSrcError] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
-  // Attempt to resolve audio source. If the specified file doesn't exist, we can fallback to the sample audio
-  const finalAudioSrc = srcError ? "/design-system/sample-audio" : audioSrc;
+  const showImage = imageSrc && !imgError;
+
+  const finalAudioSrc = audioSrc ?? "/KND Jonna Aman 1 (PBM).m4a";
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -33,8 +34,7 @@ export default function VoiceNoteCard({
     const updateDuration = () => setDuration(audio.duration || 0);
     const handleEnded = () => setIsPlaying(false);
     const handleError = () => {
-      console.warn(`Audio source ${audioSrc} not found, falling back to demo audio`);
-      setSrcError(true);
+      console.warn(`Audio source ${audioSrc} not found.`);
     };
 
     audio.addEventListener("timeupdate", updateTime);
@@ -88,18 +88,20 @@ export default function VoiceNoteCard({
       {/* Speaker Profile Header */}
       <div className="flex items-center gap-3">
         <div className="relative size-12 overflow-hidden rounded-full border border-zinc-200 bg-zinc-100 flex-shrink-0">
-          <Image
-            src={imageSrc}
-            alt={`Foto ${speakerName}`}
-            fill
-            sizes="48px"
-            className="object-cover"
-            onError={(e) => {
-              // Fallback image if the specific upload doesn't exist
-              const img = e.target as HTMLImageElement;
-              img.src = "/dukung-kami-hero.png";
-            }}
-          />
+          {showImage ? (
+            <Image
+              src={imageSrc!}
+              alt={`Foto ${speakerName}`}
+              fill
+              sizes="48px"
+              className="object-cover"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <div className="flex size-full items-center justify-center bg-secondary-100 text-secondary-700 text-lg font-bold select-none">
+              {speakerName?.charAt(0).toUpperCase() ?? "?"}
+            </div>
+          )}
         </div>
         <div className="min-w-0 flex-1">
           <h4 className="truncate text-sm font-bold text-zinc-900">

@@ -5,7 +5,7 @@ import {
 } from "@/modules/medpro-report/data";
 import {
   konoStoryImages,
-} from "@/modules/medpro-report/content/SubtitleOneContent";
+} from "@/modules/medpro-report/data/konoStoryImages";
 import FotoStory from "@/modules/medpro-report/component/FotoStory";
 import JonnaAudioCard from "@/modules/medpro-report/component/JonnaAudioCard";
 import {
