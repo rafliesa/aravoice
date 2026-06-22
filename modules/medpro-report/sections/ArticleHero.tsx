@@ -5,11 +5,13 @@ import ArticleControls from "@/modules/medpro-report/component/ArticleControls";
 type ArticleHeroProps = {
   title: string;
   description: string;
+  coverImageSrc?: string;
 };
 
 export default function ArticleHero({
   title,
   description,
+  coverImageSrc = "/hero/pak-ono.webp",
 }: ArticleHeroProps) {
   return (
     <section className="mt-8 overflow-hidden rounded-lg border border-[#cfc8bd] bg-white">
@@ -20,7 +22,7 @@ export default function ArticleHero({
           fill
           priority
           sizes="(min-width: 1024px) 67rem, 100vw"
-          src="/hero/pak-ono.webp"
+          src={coverImageSrc}
         />
         <div className="absolute inset-0 bg-[#061426]/20" />
         <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-[#061426]/95 via-[#061426]/50 to-transparent" />

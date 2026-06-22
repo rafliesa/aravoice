@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function SubtitleThreePage() {
   return (
     <MedproReportPage
-      activeIndex={2}
+      activeIndex={3}
       currentLabel="Sub Judul 3 dari 7"
       heroTitle={title}
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-4"

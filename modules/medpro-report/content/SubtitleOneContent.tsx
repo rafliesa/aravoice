@@ -7,103 +7,57 @@ import LawReferenceLink, {
 import MediaPlaceholder from "@/modules/medpro-report/component/MediaPlaceholder";
 import Pasal53DataCard from "@/modules/medpro-report/component/Pasal53DataCard";
 import { articleHeadingClass, articleKickerClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
+import FotoStory from "@/modules/medpro-report/component/FotoStory";
+import JonnaAudioCard from "@/modules/medpro-report/component/JonnaAudioCard";
 
-const konoStoryImages = [
+export const konoStoryImages = [
   {
-    src: "/pak-ono/DIO_4745.webp",
-    alt: "Kono Saipudin dalam rangkaian sesi latihan angkat berat.",
+    src: "/photo-story/1.jpeg",
+    alt: "Foto Ono Saipudin di gym",
     caption:
-      "Kono Saipudin dalam rangkaian sesi latihan angkat berat di Gedung NPCI Kota Bandung.",
+      "Aroma mint menyengat khas counterpain menyelimuti seluruh ruangan gym pagi itu. Ono dan 12 atlet angkat beban paralimpik lainnya tengah mempersiapkan diri untuk mengikuti Pekan Paralimpik Daerah Jawa Barat 2026 Desember mendatang. Segala sisi ruangan tegang dengan erangan kerahan tenaga dan suara peraduan besi dari peralatan yang digunakan.\n\nHelaan nafas nyiur mengalir di sela-sela latihan angkat beban tersebut. Ono, seorang atlet paralimpik berumur 49 tahun penyandang kondisi polio di kedua kakinya tetap menatap tajam status juara tahun ini.",
   },
   {
-    src: "/pak-ono/DIO_4750.webp",
-    alt: "Kono Saipudin bersiap di area latihan.",
+    src: "/photo-story/2.jpeg",
+    alt: "Foto Ono Saipudin berlatih angkat beban",
     caption:
-      "Kono bersiap sebelum memulai latihan, menghadapi rutinitas yang tetap berjalan meski dukungan belum selalu pasti.",
+      "Meski ia menyadari bahwa umurnya sudah tidak muda dan tubuhnya kian menua, baginya angkat beban bukan lah perihal mudah untuk ditinggalkan. Pertemuannya dengan cabang olahraga ini berawal pada 9 tahun lalu. Ono memang sudah aktif berolahraga sejak muda.\n“Perjalanan saya menjadi atlet angkat berat itu karena sebelumnya saya memang senang fitness. Tahun 2018 saya baru tahu bahwa ada olahraga angkat berat khusus disabilitas di NPCI Kota Bandung. Dari situ saya masuk ke cabang olahraga angkat berat.” ungkapnya.\n“Saya memang senang fitness dan olahraga ini juga bagus untuk kesehatan. Sebagai penyandang tunadaksa, saya memang harus berolahraga. Kebetulan itu juga hobi saya, jadi dilanjutkan sampai sekarang.”\nDalam dunia barunya inilah, Ono menemukan kembali sepenggal lain bagian hidupnya. Baginya angkat berat bukan sekedar olahraga kompetitif, melainkan arena refleksi diri untuk terus menatap masa depan.\n“Tantangannya banyak (pada cabang olahraga ini). Yang paling besar itu mengalahkan diri sendiri.”\n“Misalnya ketika melihat beban yang berat, muncul pikiran, ‘Apa saya bisa mengangkat beban segini?’ Nah, mengalahkan rasa takut itu yang paling sulit.”",
   },
   {
-    src: "/pak-ono/DIO_4773.webp",
-    alt: "Detail aktivitas Kono Saipudin saat latihan.",
+    src: "/photo-story/3.jpeg",
+    alt: "Foto perjalanan pulang",
     caption:
-      "Latihan menjadi ruang Kono menjaga peluang bertanding dan mempertahankan prestasi.",
+      "Meskipun pertemuan dengan cabang olahraga angkat beban memberinya jalan hidup baru sebagai seorang atlet paralimpik. Ono tidak sepenuhnya meninggalkan dunia lamanya. Ono kecil, dibesarkan di Bumiayu, sebuah kecamatan di daerah selatan Kabupaten Brebes, Jawa Tengah. Ia tinggal bersama Kakek dan Neneknya ketika kedua orang tuanya harus pergi merantau ke daerah yang kelak juga ia wakili sebagai atlet saat ini.\n\nPerjalanan menuju dunia masa kecilnya akan ia lakukan sehabis pulang berlatih. Berdua bersama istrinya, Ono menyusuri jalanan kota Bandung menuju Cimahi untuk menjemput sepenggal kehidupannya yang lain.",
   },
   {
-    src: "/pak-ono/DIO_4807.webp",
-    alt: "Kono Saipudin menjalani sesi latihan.",
+    src: "/photo-story/4.jpeg",
+    alt: "Foto Ono Saipudin di kebun",
     caption:
-      "Setiap sesi latihan menuntut tenaga, waktu, dan biaya transportasi yang harus ditanggung secara mandiri.",
+      "\"Pagi-pagi saya latihan, kadang setelah dzuhur saya ke kebun.\"\n\nPerjalanan kiloan meter itu tidak lain ia lakukan untuk menuju ke kebun. Tempat yang paling dicintai di tengah percepatan pembangunan kota tempat tinggalnya saat ini. Ono selalu merasa pulang ketika ia sampai di kebun. Perasaan lelah tersapu dengan siraman pemandangan oase kecilnya tersebut.\n\n\"Kalau ingin fresh otak itu, ya saya ke kebun.\"\n\nOno kecil dibesarkan oleh Kakeknya sebagai seorang petani. Ajaran dan filosofi tani selalu ada dalam dirinya, meskipun ia sudah berada jauh dari kampung halamannya.",
   },
   {
-    src: "/pak-ono/DIO_4814.webp",
-    alt: "Kono Saipudin di ruang latihan NPCI Kota Bandung.",
+    src: "/photo-story/5.jpeg",
+    alt: "Foto Ono di kebun hidroponik",
     caption:
-      "Di ruang latihan NPCI Kota Bandung, Kono terus menyiapkan diri menuju agenda pertandingan berikutnya.",
+      "“Saya backgroundnya anak petani. Kalau saya tujuannya, ini karena saya senang menanam.\"\n\nSaat ini Ono tengah menjalankan pertanian Hidroponik. Namun sebelum menjalani pertanian hidroponik ini, Ono terlebih dahulu menjalankan pertanian konvensional dengan memanfaatkan lahan kosong dibelakang Sekretariat Tunanetra di komplek Dinas Sosial yang ada di daerah Cibabat, Kota Cimahi.\n\nIa memulai ide pertaniannya itu bersama 5 kawannya yang juga merupakan atlet disabilitas pada tahun 2018. Pada masa tersebut, Sekretariat Tunanetra memang dijadikan tempat berkumpul kelompok disabilitas.\n“Kamu bisa tani? Bisa kata saya. Nah udah saya mintain izin ke Kepala Dinas, tapi kamu harus bikin kelompok tani.\"\n\"Itu akhirnya terbentuk dan jalan lah, dan ini kebetulan kelompok tani disabilitas pertama yang ada di Jawa Barat.\"",
   },
   {
-    src: "/pak-ono/DIO_4828.webp",
-    alt: "Kono Saipudin mempersiapkan peralatan latihan.",
+    src: "/photo-story/6.jpeg",
+    alt: "Foto Ono sebagai instruktur pertanian",
     caption:
-      "Peralatan angkat berat sebagian besar merupakan produk impor dan membutuhkan dukungan biaya yang tidak kecil.",
+      "Pada tahun 2024 angin segar berhembus ke arah Ono dan kelompok taninya. Tawaran untuk menjadi instruktur pelatihan sektor pertanian difabel datang dari Unit Pelaksana Teknis Daerah  (UPTD) Pusat Pelayanan Sosial Griya Harapan Difabel. Namun angin segar tersebut tidak berhembus lama. Pada awal tahun ini, Ono menjadi korban dari dampak efisiensi Anggaran Pendapatan dan Belanja Negara (APBN) dan Anggaran Pendapatan dan Belanja Daerah (APBD) yang digencarkan pemerintah saat ini.\n“Dulu saya ngedidik disabilitas biar bisa bertani, saya tanamkan bahwa untuk bertahan hidup itu ya kita harus bisa nanem, karena tanpa ada petani kita gak akan bisa makan”",
   },
   {
-    src: "/pak-ono/DIO_4836.webp",
-    alt: "Kono Saipudin fokus saat latihan.",
+    src: "/photo-story/7.jpeg",
+    alt: "Foto hasil panen",
     caption:
-      "Fokus latihan tetap dijaga di tengah ketidakpastian pembinaan dan kebutuhan hidup harian.",
+      "Ono selalu menegaskan pentingnya ketahanan pangan dari lingkup terkecil. Menanam bukan hanya soal menunai, tapi tentang menghidupi.\n\n\"Kita menanam, singkong, enam bulan tujuh bulan, ada makanan untuk bertahan hidup.\"\n\"Itu juga untuk menutupi kekurangan dalam ekonomi.\"\n\"Untuk mengurangi itu gimana caranya kita sebagai orang yang harus berpikir, dan ya kita bertani.\"\n\nSelain internalisasi nilai-nilai tani yang ia terapkan di keluarganya, Ono juga kerap menginternalisasikan filosofi pertanian dalam kariernya sebagai seorang atlet. Ono menganggap bahwa manusia tidak berbeda dengan tanaman. Baginya  hasil tidak lahir dari ruang hampa, namun dari berbagai perawatan, perhatian, dan usaha yang rutin dikerahkan setiap harinya.",
   },
   {
-    src: "/pak-ono/DIO_4844.webp",
-    alt: "Kono Saipudin dalam sesi latihan pagi.",
+    src: "/photo-story/8.jpeg",
+    alt: "Foto Ono merawat tanaman",
     caption:
-      "Kono Saipudin mempersiapkan beban di sesi latihan pagi, Gedung NPCI Kota Bandung.",
-  },
-  {
-    src: "/pak-ono/DIO_4869.webp",
-    alt: "Kono Saipudin dan suasana latihan angkat berat.",
-    caption:
-      "Sorak-sorai podium menyimpan peluh latihan yang terus berlangsung di balik keterbatasan.",
-  },
-  {
-    src: "/pak-ono/DIO_4882.webp",
-    alt: "Kono Saipudin berada di dekat peralatan latihan.",
-    caption:
-      "Ongkos transportasi, kebutuhan nutrisi, dan pengeluaran tak terduga menjadi bagian dari rutinitas latihan.",
-  },
-  {
-    src: "/pak-ono/DIO_4900.webp",
-    alt: "Kono Saipudin menjalani aktivitas di sela latihan.",
-    caption:
-      "Di luar arena, Kono juga menjalani pekerjaan tambahan untuk menopang kebutuhan keluarga.",
-  },
-  {
-    src: "/pak-ono/DIO_4925.webp",
-    alt: "Kono Saipudin dalam rangkaian foto cerita.",
-    caption:
-      "Bagi Kono, olahraga bukan hanya soal medali, tetapi juga cara bertahan di tengah ketidakpastian.",
-  },
-  {
-    src: "/pak-ono/DIO_4931.webp",
-    alt: "Kono Saipudin di lokasi latihan.",
-    caption:
-      "Latihan terus berjalan meski pencairan pembinaan dan kepastian dukungan belum selalu mengikuti ritme atlet.",
-  },
-  {
-    src: "/pak-ono/DIO_4943.webp",
-    alt: "Kono Saipudin beraktivitas setelah latihan.",
-    caption:
-      "Setelah sesi latihan berakhir, perjuangan lain dimulai untuk memastikan kebutuhan rumah tetap terpenuhi.",
-  },
-  {
-    src: "/pak-ono/DIO_4957.webp",
-    alt: "Kono Saipudin dalam dokumentasi foto cerita.",
-    caption:
-      "Kesejahteraan atlet disabilitas masih bertumpu pada daya tahan pribadi dan pekerjaan sampingan.",
-  },
-  {
-    src: "/pak-ono/DIO_4970.webp",
-    alt: "Kono Saipudin dalam penutup rangkaian foto cerita.",
-    caption:
-      "Kisah Kono memperlihatkan bagaimana prestasi dan kehidupan sehari-hari saling bertarung di luar arena.",
+      "\"Orang petani itu ternyata luar biasa, bisa ngasih kehidupan buat orang lain. Kita menanam, orang bisa makan. Jangan lihat hasilnya, kita berhasil panen saja, bisa tumbuh, dan berkembang saja, sudah luar biasa.”\n\n“Untuk kuat itu akarnya yang harus bagus. Manusia juga butuh akar yang kuat seperti mentalnya untuk bertumbuh.\"",
   },
 ];
 
@@ -125,81 +79,75 @@ const blindJudoTransportImages = [
 export default function SubtitleOneContent() {
   return (
     <>
-      <p className={articleKickerClass} key="kicker-0">
-        {"Menelisik Realita Atlet Bandung Disabilitas"}
+
+
+      
+      <p className={articleParagraphClass} key="paragraph-0">
+        {"Sorak-sorai di podium menggema kencang, menggetarkan semangat para atlet disabilitas di lapangan. Di balik semangat itu, ada peluh yang jatuh senyap, menyisakan jejak keringat pion penting negara yang nyaris terlihat. Senyum terus terukir lebar di muka, meskipun kesejahteraan yang dijanjikan negara justru tertatih jauh di belakang prestasi mereka. Bagi atlet disabilitas, pertandingan tidak hanya selesai ketika peluit berbunyi. Di luar lapangan, mereka masih harus berhadapan dengan serentetan pertandingan melawan kehidupan. Kelayakan sosial menjadi kemewahan, dan kepastian masa depan terasa lebih jauh daripada garis finish yang mereka kejar."}
       </p>
+      
       <p className={articleParagraphClass} key="paragraph-4">
-        {"Tarikan napas dan barbell yang terangkat perlahan dari lantai. Otot-otot di lengan Kono Saipudin menegang, sementara peluh mulai membasahi wajahnya. Napas itu membawa kisah panjang dari lelaki 49 tahun dalam tubuhnya yang menyimpan keterbatasan pada kakinya. Sejak 2018,"}
+        {"Terdengar hela napas berat, seiring barbell yang terangkat pelan dari lantai. Otot-otot di lengan Ono Saipudin menegang, sementara peluh mulai membasahi wajahnya. Napas itu membawa kisah panjang lelaki 49 tahun yang menyimpan keterbatasan pada kakinya. Sejak 2018, kecintaannya pada olahraga membuatnya menekuni angkat beban yang mengantarnya ke berbagai arena prestasi dan menemukan ruang untuk menyalurkan kemampuannya."}
       </p>
-      <p className={articleParagraphClass} key="paragraph-5">
-        {"kecintaannya pada olahraga membawanya menekuni angkat beban yang membawanya ke berbagai arena prestasi dan menemukan ruang saluran kemampuan untuknya."}
-      </p>
-      <p className={articleParagraphClass} key="quote-6">{"“Ya namanya hidup harus jalan,”"}</p>
-      <p className={articleParagraphClass} key="paragraph-7">
-        {"Ucap Kono pelan sambil tersenyum sukar. Ekspresinya seakan damai dengan keadaan sekalipun keadaan itu tidak pernah benar-benar adil. Harus menghadapi beban kehidupan dan beratnya besi yang melampaui badan sendiri."}
-      </p>
+      
+      <div className="mx-auto my-8 max-w-lg border-y border-zinc-200/80 py-5 text-center" key="quote-6">
+        <p className="font-sans text-[15px] sm:text-base font-semibold leading-relaxed text-secondary-800 italic">
+          {"“Ya namanya hidup harus jalan,” ucap Ono Saipudin pelan sambil tersenyum sukar. Ekspresinya seakan damai dengan keadaan sekalipun kenyataannya pahit. Besi yang ia angkat memang berat, tetapi beban kehidupan di luar arena jauh lebih berat untuk dipikul."}
+        </p>
+      </div>
+
       <p className={articleParagraphClass} key="paragraph-8">
-        {"Di depannya terbentang bulan yang menjadikan Kota Bandung panggung Pekan Paralimpik Daerah (Peparda) pada November 2026 setelah Indramayu mengundurkan diri sebagai tuan rumah karena keterbatasan venue yang aksesibel bagi atlet disabilitas. Dalam waktu yang relatif singkat, tanggung jawab penyelenggaraan kemudian beralih ke Kota Bandung."}
+        {"Di depan matanya, waktu semakin menyempit. Terbentang Pekan Paralimpik Daerah (Peparda) yang menjadikan Kota Bandung panggung tuan rumah pada November 2026 setelah Indramayu mengundurkan diri. Keterbatasan venue yang inklusif bagi atlet disabilitas menjadi alasan utamanya. Dalam waktu yang relatif singkat, tanggung jawab penyelenggaraan kini beralih ke Kota Bandung."}
       </p>
+      
       <p className={articleParagraphClass} key="paragraph-9">
         {"Perubahan itu tidak hanya memindahkan lokasi pertandingan, tetapi juga menambah beban persiapan bagi daerah yang kini berstatus tuan rumah. Bersamaan dengan tuntutan menyukseskan penyelenggaraan, atlet-atlet Kota Bandung juga dibebani ekspektasi untuk mempertahankan prestasi dan membawa pulang medali di kandang sendiri."}
       </p>
       <p className={articleParagraphClass} key="paragraph-10">
-        {"Kompleksitas penyelenggaraan olahraga disabilitas tidak dapat disamakan dengan ajang olahraga pada umumnya. Setiap kompetisi membutuhkan lapisan persiapan tambahan yang berkaitan langsung dengan kebutuhan aksesibilitas para atlet. Mulai dari kesiapan venue, akomodasi,"}
+        {"Kompleksitas penyelenggaraan olahraga disabilitas tidak dapat disamakan dengan ajang olahraga pada umumnya. Setiap kompetisi membutuhkan lapisan persiapan tambahan yang berkaitan langsung dengan kebutuhan aksesibilitas para atlet. Mulai dari kesiapan venue, akomodasi, transportasi, hingga ketersediaan peralatan khusus harus dipastikan dapat digunakan oleh berbagai ragam disabilitas secara aman dan setara."}
       </p>
-      <p className={articleParagraphClass} key="paragraph-11">
-        {"transportasi, hingga ketersediaan peralatan khusus harus dipastikan dapat digunakan oleh berbagai ragam disabilitas secara aman dan setara."}
-      </p>
+      
       <p className={articleParagraphClass} key="paragraph-12">
-        Komisioner Komisi Nasional Disabilitas (KND), Jonna Damanik
-        menjelaskan terkait kondisi olahraga disabilitas “Kalau melihat
-        perkembangannya, setidaknya sejak lahirnya{" "}
-        <LawReferenceLink href={lawReferenceUrls.uuDisability}>
-          Undang-Undang Nomor 8 Tahun 2016
-        </LawReferenceLink>
-        , perkembangan atlet disabilitas sangat luar biasa. Momentum
-        pentingnya adalah Asian Para Games 2018. Dari situ prestasi atlet
-        disabilitas meningkat pesat. Tentu hal itu tidak lepas dari sistem
-        pembinaan, tata kelola kelembagaan, serta dukungan negara,”
+        {"Komisioner Komisi Nasional Disabilitas (KND), Jonna Aman Damanik menjelaskan terkait kondisi olahraga disabilitas,"}
       </p>
-      <MediaPlaceholder assetNumber={1} key="media-13" text={"VN statement Jonna Damanik"} />
+
+      {/* Voice Note player and Jonna's photo */}
+      <JonnaAudioCard key="voice-note-jonna" />
+
       <p className={articleParagraphClass} key="paragraph-14">
-        {"Di tengah persiapan menuju Peparda ini, National Paralympic Committee of Indonesia (NPCI)"}
+        {"Di tengah persiapan menuju Peparda ini, National Paralympic Committee of Indonesia (NPCI) Jawa Barat terpaksa melakukan penyesuaian di berbagai sektor agar program pembinaan tetap berjalan di tengah keterbatasan sumber daya."}
       </p>
-      <p className={articleParagraphClass} key="paragraph-15">
-        {"Jawa Barat terpaksa melakukan penyesuaian di berbagai sektor agar program pembinaan tetap berjalan di tengah keterbatasan sumber daya."}
+      
+      <p className={articleParagraphClass} key="quote-16">
+        {"“Terjadi juga di NPCI. Dalam rangka persiapan Pekan Paralimpik Daerah (Peparda) November 2026, kami harus melakukan pengetatan anggaran supaya semua kebutuhan tetap bisa diakomodasi. Baik pembinaan 17 cabang olahraga, kebutuhan organisasi, maupun kebutuhan lainnya semuanya harus diefisiensikan,” ujar Djumono, Ketua NPCI Kota Bandung."}
       </p>
-      <p className={articleParagraphClass} key="quote-16">{"\"Terjadi juga di NPCI. Dalam rangka persiapan Pekan Paralimpik Daerah (Peparda) November 2026, kami harus melakukan pengetatan anggaran supaya semua kebutuhan tetap bisa diakomodasi. Baik pembinaan 17 cabang olahraga, kebutuhan organisasi, maupun kebutuhan lainnya semuanya harus diefisiensikan,\""}</p>
-      <p className={articleParagraphClass} key="paragraph-17">
-        {"Ujar Ketua NPCI Kota Bandung, Djumono."}
-      </p>
+      
       <p className={articleParagraphClass} key="paragraph-18">
         {"Pengetatan tersebut tidak hanya menyentuh aspek administratif organisasi, tetapi juga berdampak langsung pada proses pembinaan atlet. Sejumlah program harus disesuaikan dengan kemampuan anggaran yang tersedia, mulai dari pemusatan latihan, pengadaan peralatan, hingga dukungan operasional yang menunjang persiapan atlet menuju Peparda."}
       </p>
+      
       <p className={articleParagraphClass} key="paragraph-19">
         {"Bagi atlet, jadwal latihan tidak mengenal penundaan sebagaimana proses administrasi. Ketika pencairan dana masih menunggu keputusan dan anggaran, tuntutan untuk menjaga performa tetap berlangsung setiap hari."}
       </p>
-      <p className={articleParagraphClass} key="quote-20">{"“Karena dari Januari sampai Juni belum ada uang pembinaan yang turun. Padahal banyak atlet disabilitas yang tidak bekerja tetap. Ada yang tinggal di kontrakan dan harus membayar biaya hidup setiap bulan,”"}</p>
-      <p className={articleParagraphClass} key="paragraph-21">
-        {"Ujar Kono yang memastikan persiapan menuju Peparda tetap berjalan."}
+      
+      <p className={articleParagraphClass} key="quote-20">
+        {"“Karena dari Januari sampai Juni belum ada uang pembinaan yang turun. Padahal banyak atlet disabilitas yang tidak bekerja tetap. Ada yang tinggal di kontrakan dan harus membayar biaya hidup setiap bulan,” ujar Kono, memastikan persiapan menuju Peparda tetap berjalan."}
       </p>
-      <p className={articleParagraphClass} key="quote-22">{"“Kalau dulu, meskipun SK belum turun, uang pembinaan sudah bisa cair. Sekarang mungkin karena Kota Bandung menjadi tuan rumah Peparda, jadi anggarannya berbeda. Tapi saya juga tidak tahu pasti,”"}</p>
-      <p className={articleParagraphClass} key="paragraph-23">
-        {"Lanjutnya."}
+      
+      <p className={articleParagraphClass} key="quote-22">
+        {"“Kalau dulu, meskipun SK belum turun, uang pembinaan sudah bisa cair. Sekarang mungkin karena Kota Bandung menjadi tuan rumah Peparda, jadi anggarannya berbeda. Tapi saya juga tidak tahu pasti,” lanjutnya."}
       </p>
+      
       <p className={articleParagraphClass} key="paragraph-24">
-        {"Di tengah tuntutan prestasi yang meninggi menjelang Peparda 2026, para atlet disabilitas berlari dalam lintasan yang tidak selalu setara. Mereka dibebani target untuk menang, tetapi tidak selalu dibekali dukungan yang memadai untuk sampai ke garis akhir. Sebab pengorbanan biaya hidup harus dibagi dengan kebutuhan olahraga dan kegigihan para atlet dalam menjaga mimpi ketika kesejahteraan mereka sendiri masih menjadi tanda tanya."}
+        {"Di tengah tuntutan prestasi yang meninggi menjelang Peparda 2026, para atlet disabilitas berlari dalam lintasan yang tidak selalu setara. Sebab pengorbanan biaya hidup harus dibagi dengan kebutuhan olahraga dan kegigihan para atlet dalam menjaga mimpi ketika kesejahteraan mereka sendiri masih menjadi tanda tanya."}
       </p>
+
       <h2 className={articleHeadingClass} key="heading-25">
         {"KEMBALI KE KEHIDUPAN KONO"}
       </h2>
       <h2 className={articleHeadingClass} key="heading-26">
         {"REALITA ATLET"}
       </h2>
-      <ArticleImageCarousel
-        images={konoStoryImages}
-        title="Foto Story Kono Saipudin"
-      />
       <p className={articleParagraphClass} key="paragraph-30">
         {"Ketika pertama kali memutuskan menekuni olahraga angkat berat, dukungan tidak langsung datang. Orang-orang terdekat justru menyambut pilihannya dengan kekhawatiran. Bagi penyandang tunadaksa, risiko cedera sering dipandang lebih besar, sementara akses terhadap layanan pemulihan dan perlindungan karir atlet tidak selalu tersedia."}
       </p>

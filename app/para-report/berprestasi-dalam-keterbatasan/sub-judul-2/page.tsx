@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 export default function SubtitleTwoPage() {
   return (
     <MedproReportPage
-      activeIndex={1}
+      activeIndex={2}
       currentLabel="Sub Judul 2 dari 7"
       heroTitle={title}
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-3"
-      previousHref="/para-report/berprestasi-dalam-keterbatasan"
+      previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-1"
     >
       <SubtitleTwoContent />
     </MedproReportPage>
