@@ -207,7 +207,7 @@ const accessibilityComparisonRows = [
 export default function SubtitleTwoContent() {
   return (
     <>
-      <p className={articleParagraphClass} key="paragraph-0">
+      <div className={articleParagraphClass} key="paragraph-0">
         Negara sudah menulis aksesibilitas dalam{" "}
         <Uu82016Link>
           Undang-Undang Nomor 8 Tahun 2016 tentang Penyandang Disabilitas
@@ -215,7 +215,7 @@ export default function SubtitleTwoContent() {
         . Tapi di lantai dua gedung dojo (tempat latihan kompetisi) NPCI Kota
         Bandung, seorang atlet blind judo masih harus meraba-raba tangga yang
         tidak pernah dirancang untuknya.
-      </p>
+      </div>
 
       {/* 5 Slide Photo Carousel */}
       <div className="my-8">
@@ -248,29 +248,29 @@ export default function SubtitleTwoContent() {
         </ZoomableWrapper>
       </div>
 
-      <p className={articleParagraphClass} key="paragraph-7">
+      <div className={articleParagraphClass} key="paragraph-7">
         Indonesia kemudian meratifikasi konvensi tersebut melalui{" "}
         <Uu192011Link>
           Undang-Undang Nomor 19 Tahun 2011
         </Uu192011Link>
         , menjadikannya bagian dari komitmen negara dalam menjamin hak-hak penyandang disabilitas yang mengubah paradigma dari model medis yakni melihat disabilitas sebagai penyakit, menjadi model hak asasi manusia.
-      </p>
+      </div>
 
-      <p className={articleParagraphClass} key="paragraph-8">
+      <div className={articleParagraphClass} key="paragraph-8">
         Selanjutnya dalam{" "}
         <Uu82016Link>
           Undang Undang Nomor 8 Tahun 2016
         </Uu82016Link>
         , negara memperjelas komitmennya untuk menjamin keberlangsungan hidup setiap warga negara tanpa kecuali. Ketentuan ini menegaskan bahwa penyandang disabilitas memiliki hak-hak dasar dan perlindungan hukum yang sama dengan warga negara lainnya dalam kehidupan berbangsa dan bernegara.
-      </p>
+      </div>
 
-      <p className={articleParagraphClass} key="paragraph-9">
+      <div className={articleParagraphClass} key="paragraph-9">
         Prinsip inklusivitas dan aksesibilitas adalah mandat yang tertuang dalam{" "}
         <Uu82016Link>
           Pasal 5, 83, dan 84 UU No. 8 Tahun 2016
         </Uu82016Link>{" "}
         di mana negara diwajibkan membangun sistem keolahragaan yang inklusif, mencakup olahraga pendidikan, rekreasi, hingga olahraga prestasi yang disesuaikan dengan jenis disabilitasnya. Berdasarkan ketentuan tersebut, terdapat 22 hak dasar yang wajib dipenuhi oleh pemerintah dan masyarakat.
-      </p>
+      </div>
 
       {/* Interactive Trigger Button for 22 Rights Pop-up */}
       <div className="my-6 p-4 bg-zinc-50 rounded-2xl border border-zinc-200/80 text-center">

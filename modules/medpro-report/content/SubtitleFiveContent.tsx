@@ -168,7 +168,7 @@ export default function SubtitleFiveContent() {
         {textContent.paragraphLindaFComparison}
       </p>
 
-      <p className={articleParagraphClass} key="paragraph-disability-data">
+      <div className={articleParagraphClass} key="paragraph-disability-data">
         {textContent.paragraphDisabilityDataPrefix}
         <a
           href="https://www.bps.go.id/id/publication/2022/12/12/f2a4773c52a3be6ec8d3d9cb/potret-penyandang-disabilitas-di-indonesia-2022.html"
@@ -182,7 +182,7 @@ export default function SubtitleFiveContent() {
         {" "}
         <UuDisabilityTypeLink>disabilitas tipe 1</UuDisabilityTypeLink>
         {" masih lebih banyak terkonsentrasi pada jenjang pendidikan rendah dibanding penduduk non-disabilitas."}
-      </p>
+      </div>
 
       {/* BPS Education Inequality Chart - Zoomable */}
       <div className="my-8" key="edu-chart-zoom">
@@ -216,13 +216,13 @@ export default function SubtitleFiveContent() {
         {textContent.paragraphEmploymentBarrier}
       </p>
 
-      <p className={articleParagraphClass} key="paragraph-18">
+      <div className={articleParagraphClass} key="paragraph-18">
         {textContent.paragraphAffirmativePrefix}
         <Uu82016Pasal53Link>
           UU Nomor 8 Tahun 2016 tentang Penyandang Disabilitas Pasal 53
         </Uu82016Pasal53Link>
         {textContent.paragraphAffirmativeSuffix}
-      </p>
+      </div>
 
       <p className={articleParagraphClass} key="paragraph-21">
         {textContent.paragraphJonnaAnalysis}

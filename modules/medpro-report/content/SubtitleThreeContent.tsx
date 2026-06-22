@@ -31,13 +31,13 @@ export default function SubtitleThreeContent() {
       {/* Grant Flow Infographic */}
       <GrantFlowInfographic />
 
-      <p className={articleParagraphClass} key="paragraph-8">
+      <div className={articleParagraphClass} key="paragraph-8">
         {"Penyaluran dana hibah telah ditetapkan dalam "}
         <Uu112022Pasal79Link>
           UU Nomor 11 Tahun 2022 tentang Keolahragaan Pasal 79
         </Uu112022Pasal79Link>
         {" yang menjelaskan bahwa alokasi hibah yang diberikan harus sesuai dengan kemampuan keuangan daerah dan mempertimbangkan target capaian. Pada proses pengalokasian dana hibah tersebut, berbagai kebutuhan organisasi mulai diseleksi berdasarkan skala prioritas. Tidak seluruh usulan dapat diakomodasi secara penuh karena besaran hibah yang diberikan harus disesuaikan dengan kondisi keuangan daerah serta kebutuhan sektor lain yang juga dibiayai melalui APBD."}
-      </p>
+      </div>
 
       <p className={articleParagraphClass} key="paragraph-9">
         {"Meski besaran hibah 2026 telah ditetapkan pada nominal Rp5 miliar, dana tersebut tidak langsung diterima secara penuh dan akan diturunkan secara bertahap. Hingga bulan Maret 2026 lalu, NPCI Kota Bandung baru menerima pencairan tahap pertama sebesar 55 persen atau sekitar Rp2,61 miliar. Sisa anggaran baru dapat dicairkan setelah organisasi menyelesaikan laporan pertanggungjawaban dan melalui proses verifikasi dari Dispora Kota Bandung."}
@@ -114,7 +114,7 @@ export default function SubtitleThreeContent() {
         {"MENUJU DUNIA OLAHRAGA YANG LEBIH INKLUSIF?"}
       </h2>
 
-      <p className={articleParagraphClass} key="paragraph-inklusif-1">
+      <div className={articleParagraphClass} key="paragraph-inklusif-1">
         {"Di atas kertas, kesetaraan atlet disabilitas dan non-disabilitas kerap dibaca dari besaran bonus medali. Hal ini tertulis pada "}
         <Uu112022Pasal60Link>
           UU No 11 Tahun 2022 tentang Keolahragaan Pasal 60 ayat 2e
@@ -129,7 +129,7 @@ export default function SubtitleThreeContent() {
           Kemenpora
         </a>
         {" juga menyatakan bonus atlet penyandang disabilitas berprestasi telah disetarakan dengan atlet non-disabilitas. Namun, kesetaraan bonus tidak berarti kesetaraan dalam proses pembinaan sehari-hari. Di titik inilah perbedaan dana antara KONI dan NPCI menjadi benang merah ketimpangan."}
-      </p>
+      </div>
 
       <p className={articleParagraphClass} key="paragraph-inklusif-2">
         {"Wakil Ketua 2 KONI Kota Bandung, Mulyana, menyebutkan bahwa organisasinya memiliki sekitar 81 cabang olahraga. Ia juga menyebutkan dana yang diterima pada untuk tahun 2026 berada berkisar Rp35 miIiar setelah adanya efisiensi. Dana tersebut digunakan untuk pembinaan termasuk dukungan BPJS, beasiswa, uang saku, serta program tunjangan prestasi dan pelatihan cabor (pelatcab) bagi atlet yang berprestasi. Meski begitu, pihak KONI tetap menilai pemotongan anggaran memberi tekanan besar karena pembinaan atlet membutuhkan biaya rutin untuk latihan, tempat, transportasi, hingga akomodasi."}
