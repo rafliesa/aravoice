@@ -42,9 +42,13 @@ export default function MedproArticlePage() {
       {/* Centered highlighted quote */}
       <div className="mx-auto my-8 max-w-lg border-y border-zinc-200/80 py-5 text-center">
         <p className="font-sans text-[15px] sm:text-base font-semibold leading-relaxed text-secondary-800 italic">
-          {"“Ya namanya hidup harus jalan,” ucap Ono pelan sambil tersenyum sukar. Ekspresinya seakan damai dengan keadaan sekalipun kenyataannya pahit. Besi yang ia angkat memang berat, tetapi beban kehidupan di luar arena jauh lebih berat untuk dipikul."}
+          {"“Ya namanya hidup harus jalan,”"}
         </p>
       </div>
+
+      <p className={articleParagraphClass}>
+        {"Ucap Ono pelan sambil tersenyum sukar. Ekspresinya seakan damai dengan keadaan sekalipun kenyataannya pahit. Besi yang ia angkat memang berat, tetapi beban kehidupan di luar arena jauh lebih berat untuk dipikul."}
+      </p>
 
       <p className={articleParagraphClass}>
         {"Di depan matanya, waktu semakin menyempit. Terbentang Pekan Paralimpik Daerah (Peparda) yang menjadikan Kota Bandung panggung tuan rumah pada November 2026 setelah Indramayu mengundurkan diri. Keterbatasan venue yang inklusif bagi atlet disabilitas menjadi alasan utamanya. Dalam waktu yang relatif singkat, tanggung jawab penyelenggaraan kini beralih ke Kota Bandung."}
