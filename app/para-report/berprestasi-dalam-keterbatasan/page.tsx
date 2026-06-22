@@ -41,7 +41,7 @@ export default function MedproArticlePage() {
 
       {/* Centered highlighted quote */}
       <div className="mx-auto my-8 max-w-lg border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-[15px] sm:text-base font-semibold leading-relaxed text-secondary-800 italic">
+        <p className="font-sans text-xl sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
           {"“Ya namanya hidup harus jalan,”"}
         </p>
       </div>
