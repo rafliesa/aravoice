@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 type ComparisonRow = {
   category: string;
@@ -109,54 +109,78 @@ const comparisonRows: ComparisonRow[] = [
 ];
 
 export default function KoniNpciComparisonInfographic() {
+  // Store expanded state per category. First one is open by default.
+  const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({
+    "SUMBER ANGGARAN": true,
+  });
+
+  const toggleRow = (category: string) => {
+    setExpandedRows((prev) => ({
+      ...prev,
+      [category]: !prev[category],
+    }));
+  };
+
+  // Helper to expand all / collapse all
+  const [allExpanded, setAllExpanded] = useState(false);
+  const toggleAll = () => {
+    const nextState = !allExpanded;
+    setAllExpanded(nextState);
+    const newStates: Record<string, boolean> = {};
+    comparisonRows.forEach((row) => {
+      newStates[row.category] = nextState;
+    });
+    setExpandedRows(newStates);
+  };
+
   return (
-    <section className="rounded-[2rem] bg-white p-4 sm:p-6 shadow-xl border border-slate-100/80 flex flex-col gap-6 font-sans">
+    <section className="rounded-[1.75rem] bg-white p-3.5 sm:p-5 shadow-xl border border-slate-100/80 flex flex-col gap-4 font-sans">
       
       {/* 1. Header Banner */}
-      <div className="rounded-3xl bg-gradient-to-r from-[#0b1f48] via-[#0d2c6c] to-[#164bb8] px-6 py-8 sm:px-10 sm:py-10 text-left relative overflow-hidden shadow-md">
+      <div className="rounded-2xl bg-gradient-to-r from-[#0b1f48] via-[#0d2c6c] to-[#164bb8] px-5 py-6 sm:px-8 sm:py-7 text-left relative overflow-hidden shadow-md">
         {/* Subtle decorative mesh background overlay */}
         <div className="absolute inset-0 bg-grid-white/[0.03] pointer-events-none" />
         
-        <span className="inline-block bg-white/10 border border-white/20 text-[#a5c3f7] text-[10px] sm:text-[11px] font-black uppercase tracking-[0.18em] px-4 py-1.5 rounded-full mb-4">
+        <span className="inline-block bg-white/10 border border-white/20 text-[#a5c3f7] text-[8.5px] sm:text-[9.5px] font-black uppercase tracking-[0.18em] px-3 py-1 rounded-full mb-3">
           EKOSISTEM OLAHRAGA KOTA BANDUNG
         </span>
         
-        <h2 className="text-white text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+        <h2 className="text-white text-xl sm:text-2xl font-black tracking-tight leading-tight">
           Perbandingan KONI &amp; NPCI <br className="hidden sm:inline" />
           Kota Bandung
         </h2>
         
-        <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mt-4 max-w-3xl font-medium">
+        <p className="text-slate-300 text-[11px] sm:text-xs leading-relaxed mt-2.5 max-w-2xl font-medium">
           Meskipun sama-sama menerima <strong className="text-white font-black">dana hibah APBD</strong>, kondisi dukungan kelembagaan, fasilitas, dan pengembangan SDM antara KONI dan NPCI masih menunjukkan <strong className="text-white font-black">perbedaan yang cukup besar</strong>.
         </p>
       </div>
 
       {/* 2. Column Headers (KONI & NPCI) */}
-      <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 shadow-sm">
+      <div className="overflow-hidden rounded-xl border border-slate-200/80 bg-white/90 shadow-sm">
         <div className="grid grid-cols-2 divide-x divide-slate-200/80">
           
           {/* KONI Column Header */}
-          <div className="flex flex-col items-center px-4 py-6 text-center bg-[#fdfefe]/40">
-            <span className="grid size-12 place-items-center rounded-full border border-emerald-200 bg-emerald-50 text-emerald-600 shadow-sm" aria-hidden="true">
+          <div className="flex flex-col items-center px-3 py-4 text-center bg-[#fdfefe]/40">
+            <span className="grid size-9 place-items-center rounded-full border border-emerald-200 bg-emerald-50 text-emerald-600 shadow-sm" aria-hidden="true">
               <TrophyIcon />
             </span>
-            <p className="mt-3 text-base sm:text-lg font-black text-[#0f2942]">
+            <p className="mt-2 text-sm sm:text-base font-black text-[#0f2942]">
               KONI
             </p>
-            <p className="mt-0.5 text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider">
+            <p className="mt-0.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
               Non-Disabilitas
             </p>
           </div>
 
           {/* NPCI Column Header */}
-          <div className="flex flex-col items-center px-4 py-6 text-center bg-[#fafcff]/40">
-            <span className="grid size-12 place-items-center rounded-full border border-blue-200 bg-blue-50 text-blue-600 shadow-sm" aria-hidden="true">
+          <div className="flex flex-col items-center px-3 py-4 text-center bg-[#fafcff]/40">
+            <span className="grid size-9 place-items-center rounded-full border border-blue-200 bg-blue-50 text-blue-600 shadow-sm" aria-hidden="true">
               <TrophyIcon />
             </span>
-            <p className="mt-3 text-base sm:text-lg font-black text-[#0f2942]">
+            <p className="mt-2 text-sm sm:text-base font-black text-[#0f2942]">
               NPCI
             </p>
-            <p className="mt-0.5 text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wider">
+            <p className="mt-0.5 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">
               Disabilitas
             </p>
           </div>
@@ -164,58 +188,101 @@ export default function KoniNpciComparisonInfographic() {
         </div>
       </div>
 
-      {/* 3. Comparison Cards Section */}
-      <div className="flex flex-col gap-5">
-        {comparisonRows.map((row) => (
-          <div 
-            key={row.category} 
-            className="overflow-hidden rounded-2xl border border-slate-200/80 shadow-sm flex flex-col"
+      {/* Accordion Expand All Controller */}
+      <div className="flex justify-end px-1 -mb-1">
+        <button
+          onClick={toggleAll}
+          className="text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center gap-1 cursor-pointer"
+        >
+          {allExpanded ? "Tutup Semua" : "Buka Semua"}
+          <svg
+            className={`size-3.5 transition-transform duration-200 ${allExpanded ? "rotate-180" : ""}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
           >
-            {/* Row Title Bar */}
-            <div className="bg-[#0a1e3b] px-4 py-2.5 sm:px-6 flex items-center gap-2.5 border-b border-[#132c52]">
-              <span className={`w-7 h-7 rounded-lg flex items-center justify-center ${row.iconBg} ${row.iconColor} shadow-inner`}>
-                {row.icon}
-              </span>
-              <span className="text-white text-[11px] sm:text-xs font-black tracking-widest uppercase">
-                {row.category}
-              </span>
-            </div>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
 
-            {/* Row Value Columns */}
-            <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-700/35 bg-[#132c52]">
-              
-              {/* KONI Side Cell */}
-              <div className="p-4 sm:p-5 flex flex-col justify-start min-h-[70px] md:min-h-[90px]">
-                <p className="font-extrabold text-sm sm:text-base leading-snug text-white">
-                  {row.koni.title}
-                </p>
-                {row.koni.desc && (
-                  <p className="mt-1 text-xs sm:text-sm leading-relaxed text-slate-300 font-medium">
-                    {row.koni.desc}
-                  </p>
-                )}
+      {/* 3. Comparison Accordion Section */}
+      <div className="flex flex-col gap-3">
+        {comparisonRows.map((row) => {
+          const isExpanded = !!expandedRows[row.category];
+          return (
+            <div 
+              key={row.category} 
+              className="overflow-hidden rounded-xl border border-slate-200/80 shadow-sm flex flex-col transition-all duration-300"
+            >
+              {/* Row Title Bar Button (Interactive Toggle) */}
+              <button
+                onClick={() => toggleRow(row.category)}
+                aria-expanded={isExpanded}
+                className="w-full bg-[#0a1e3b] px-4 py-2.5 sm:px-5 flex items-center justify-between border-b border-[#132c52] cursor-pointer hover:bg-[#0f2f5c] transition-colors duration-200 text-left"
+              >
+                <div className="flex items-center gap-2">
+                  <span className={`w-6 h-6 rounded-md flex items-center justify-center ${row.iconBg} ${row.iconColor} shadow-inner`}>
+                    {row.icon}
+                  </span>
+                  <span className="text-white text-[10px] sm:text-[11px] font-black tracking-widest uppercase">
+                    {row.category}
+                  </span>
+                </div>
+                <svg 
+                  className={`size-3.5 text-slate-400 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor" 
+                  strokeWidth={2.5}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Sliding Content Container */}
+              <div 
+                className={`transition-all duration-300 ease-in-out ${
+                  isExpanded ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+                }`}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-700/35 bg-[#132c52]">
+                  
+                  {/* KONI Side Cell */}
+                  <div className="p-3.5 sm:p-4 flex flex-col justify-center min-h-[50px] md:min-h-[60px]">
+                    <p className="font-extrabold text-xs sm:text-sm leading-snug text-white">
+                      {row.koni.title}
+                    </p>
+                    {row.koni.desc && (
+                      <p className="mt-1 text-[11px] sm:text-xs leading-relaxed text-slate-300 font-medium">
+                        {row.koni.desc}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* NPCI Side Cell */}
+                  <div className="p-3.5 sm:p-4 flex flex-col justify-center min-h-[50px] md:min-h-[60px]">
+                    <p className="font-extrabold text-xs sm:text-sm leading-snug text-white">
+                      {row.npci.title}
+                    </p>
+                    {row.npci.desc && (
+                      <p className="mt-1 text-[11px] sm:text-xs leading-relaxed text-slate-300 font-medium">
+                        {row.npci.desc}
+                      </p>
+                    )}
+                  </div>
+
+                </div>
               </div>
-
-              {/* NPCI Side Cell */}
-              <div className="p-4 sm:p-5 flex flex-col justify-start min-h-[70px] md:min-h-[90px]">
-                <p className="font-extrabold text-sm sm:text-base leading-snug text-white">
-                  {row.npci.title}
-                </p>
-                {row.npci.desc && (
-                  <p className="mt-1 text-xs sm:text-sm leading-relaxed text-slate-300 font-medium">
-                    {row.npci.desc}
-                  </p>
-                )}
-              </div>
-
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* 4. Footer info block */}
-      <div className="bg-[#08152c] px-6 py-4 rounded-2xl flex items-center justify-between border border-slate-800/40">
-        <p className="text-slate-400 text-[10px] sm:text-[11px] font-medium leading-normal">
+      <div className="bg-[#08152c] px-5 py-3 rounded-xl flex items-center justify-between border border-slate-800/40">
+        <p className="text-slate-400 text-[9px] sm:text-[10px] font-medium leading-normal">
           Sumber: <span className="font-bold text-slate-300">Data KONI Kota Bandung dan NPCI Kota Bandung Tahun 2026</span>
         </p>
       </div>
@@ -227,7 +294,7 @@ export default function KoniNpciComparisonInfographic() {
 function TrophyIcon() {
   return (
     <svg
-      className="size-5"
+      className="size-4"
       fill="none"
       stroke="currentColor"
       strokeLinecap="round"

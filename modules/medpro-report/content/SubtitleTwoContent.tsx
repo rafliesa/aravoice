@@ -3,9 +3,7 @@
 import EditorialNote from "@/modules/medpro-report/component/EditorialNote";
 import AccessibilityPrinciplesTable from "@/modules/medpro-report/component/AccessibilityPrinciplesTable";
 import AccessibilityPrinciplesInfographic from "@/modules/medpro-report/component/AccessibilityPrinciplesInfographic";
-import ArticleComparisonTable from "@/modules/medpro-report/component/ArticleComparisonTable";
 import ArticleRightsList from "@/modules/medpro-report/component/ArticleRightsList";
-import EquipmentComparisonTable from "@/modules/medpro-report/component/EquipmentComparisonTable";
 import KoniNpciComparisonInfographic from "@/modules/medpro-report/component/KoniNpciComparisonInfographic";
 import LawReferenceLink, {
   lawReferenceUrls,
@@ -22,7 +20,6 @@ import AthleteNeedsComparisonInfographic from "@/modules/medpro-report/component
 import InteractiveBrailleSimulator from "@/modules/medpro-report/component/InteractiveBrailleSimulator";
 import NpciHistoryGame from "@/modules/medpro-report/component/NpciHistoryGame";
 import QuoteCard from "@/modules/medpro-report/component/QuoteCard";
-import CoachTriQuote from "@/modules/medpro-report/component/CoachTriQuote";
 
 const disabilityRights = [
   {
@@ -148,63 +145,7 @@ const opikStoryImages = [
   },
 ];
 
-const accessibilityComparisonRows = [
-  {
-    aspect: "Fasilitas",
-    bandung:
-      "Belum memiliki fasilitas lapangan khusus disabilitas dan masih bertumpu pada penyesuaian.",
-    solo:
-      "Memiliki fasilitas kota ramah disabilitas seperti guiding block, area parkir khusus, jalur halte miring, bus low deck, dan Paralympic Training Center di Karanganyar.",
-    singapore:
-      "Menempatkan aksesibilitas sebagai bagian dari tata kota, termasuk mandat penyediaan toilet aksesibel di pintu masuk bangunan.",
-    japan:
-      "Menjadi contoh Asia yang lebih matang karena aksesibilitas telah masuk ke transportasi, hotel, toilet, jalur khusus, dan budaya layanan.",
-  },
-  {
-    aspect: "Venue",
-    bandung:
-      "Venue masih banyak bersifat sementara atau event-based, belum sepenuhnya terintegrasi dengan kebutuhan harian atlet.",
-    solo:
-      "Paralympic Training Center mencakup area latihan, asrama atlet, fasilitas recovery, serta sejumlah arena olahraga disabilitas.",
-    singapore:
-      "Tidak dibahas secara khusus sebagai pusat latihan olahraga disabilitas, tetapi aksesibilitas kota mendukung mobilitas harian penyandang disabilitas.",
-    japan:
-      "Memiliki fasilitas khusus untuk beberapa cabang olahraga disabilitas, termasuk lapangan khusus yang belum tersedia merata di Indonesia.",
-  },
-  {
-    aspect: "Transportasi dan Mobilitas",
-    bandung:
-      "Kendaraan ramah kursi roda dan fasilitas seperti hydraulic lift belum sepenuhnya menjadi standar aksesibilitas.",
-    solo:
-      "Memiliki guiding block, area parkir khusus, jalur halte miring, dan uji coba bus low deck pada 2022.",
-    singapore:
-      "Disebut memiliki lebih dari 95% jalur pejalan kaki, halte taksi, dan halte bus yang dapat diakses pengguna kursi roda, lansia, atau penyandang disabilitas lain.",
-    japan:
-      "Tokyo memiliki transportasi yang mudah diakses dan indikator tanah taktil yang membantu tunanetra.",
-  },
-  {
-    aspect: "Kebijakan dan Sistem",
-    bandung:
-      "Pemerintah daerah membantu melalui sewa lapangan, anggaran, honor pelatih, dan dukungan pembinaan, tetapi sarana khusus masih belum tersedia.",
-    solo:
-      "Pengalaman menyelenggarakan event nasional-internasional dan keberadaan Training Center membuat kebutuhan akomodasi lebih teruji.",
-    singapore:
-      "Sistem kota yang aksesibel membuat penyelenggaraan kegiatan publik lebih siap secara mobilitas.",
-    japan:
-      "Memiliki sejarah lebih panjang dalam gerakan hak disabilitas dan kebijakan barrier-free sejak akhir 1960-an.",
-  },
-  {
-    aspect: "Sensitivitas Masyarakat",
-    bandung:
-      "Awareness belum cukup dan kebutuhan tiap ragam disabilitas masih harus dipelajari.",
-    solo:
-      "Masyarakat disebut komunikatif dan siap melayani penyandang disabilitas, dari tukang parkir, pengemudi ojek, hingga pedagang warung.",
-    singapore:
-      "Penyandang disabilitas dipertimbangkan dalam desain ruang publik.",
-    japan:
-      "Tidak hanya kuat secara fasilitas, tetapi juga budaya layanan. Tokyo disebut lebih perhatian dan masyarakatnya lebih siap menerima kebutuhan aksesibilitas.",
-  },
-];
+
 
 export default function SubtitleTwoContent() {
   return (
@@ -387,7 +328,6 @@ export default function SubtitleTwoContent() {
       {/* Athlete Needs & Equipment Comparison & Braille Simulator Section */}
       <div className="space-y-8 my-10">
         <AthleteNeedsComparisonInfographic />
-        <EquipmentComparisonTable />
         <InteractiveBrailleSimulator />
       </div>
 
@@ -462,11 +402,11 @@ export default function SubtitleTwoContent() {
       </p>
 
       {/* Tri Direct Quote Component */}
-      <CoachTriQuote 
+      <QuoteCard 
         quote="Jadi untuk aksesibilitas itu jauh, artinya masih belum 100 persen terpikirkan. Masih banyak yang lewat. Contoh di jalan, karena ada jalan khusus, eh malah dipakai tempat jualan, eh dipakai parkir. Nah, itu pemahaman dari orang Indonesia sendiri kayak jadinya juga nanti kan kayak bisa di Arcamanik ya kan, saat ini belum siap."
-        author="Tri"
-        role="Pelatih Voli Duduk"
-        imageSrc="/DIO_3236_1.jpg"
+        speakerName="Tri"
+        speakerRole="Pelatih Voli Duduk"
+        imageSrc="/2/tri.jpg"
       />
 
       <p className={articleParagraphClass} key="paragraph-110">
@@ -486,7 +426,14 @@ export default function SubtitleTwoContent() {
         {"Padahal, voli duduk memiliki karakter berbeda dari voli berdiri. Ukuran lapangan, tinggi net, cara bergerak, dan posisi tubuh atlet berbeda. Atlet tidak hanya membutuhkan bola dan net, tetapi juga permukaan lapangan, garis, ruang gerak, dan fasilitas pendukung yang sesuai dengan kebutuhan cabang olahraga tersebut."}
       </p>
 
-      <ArticleComparisonTable rows={accessibilityComparisonRows} />
+      <iframe
+        src="https://uploads.knightlab.com/storymapjs/624b48ba902db5f52c77609bbc693d20/standar-infrastruktur-untuk-atlet-disabilitas/index.html"
+        frameBorder="0"
+        width="100%"
+        height="800"
+        className="w-full my-8 rounded-2xl border border-slate-200 shadow-md"
+        title="Standar Infrastruktur untuk Atlet Disabilitas"
+      />
 
     </>
   );
