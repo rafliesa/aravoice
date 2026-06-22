@@ -189,9 +189,9 @@ export default function NpciHistoryGame() {
     .reverse()
     .find((m) => mascotState.frame >= m.triggerFrame);
 
-  // Sizing calculated to preserve the 1.64 aspect ratio of the mascot inside the stretched container (increased 1.5x per user request)
-  const mascotWidth = 27;
-  const mascotHeight = 21.25; // 27% width * 1.64 / 2.0833 vertical stretch ratio = 21.25%
+  // Sizing calculated to preserve the 1.64 aspect ratio of the mascot inside the stretched container
+  const mascotWidth = 20;
+  const mascotHeight = 15.74; // 20% width * 1.64 / 2.0833 vertical stretch ratio = 15.74%
 
   return (
     <section className="w-full my-12 font-sans select-none">
