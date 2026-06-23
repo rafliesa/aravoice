@@ -198,12 +198,12 @@ export default function SubtitleFiveContent() {
       </p>
 
       {/* Linda Indriani Custom Audio Story Card */}
-      <article className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm my-8" key="linda-vn-container">
+      <article className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm mt-8" key="linda-vn-container">
         <div className="grid md:grid-cols-[220px_minmax(0,1fr)]">
           <div className="relative min-h-64 md:min-h-full bg-zinc-900">
             <Image
               src="/5/linda.webp"
-              alt="Foto narasumber Linda Indriani"
+              alt="Atlet voli duduk dan tembak National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Linda Indriani, berpose di depan warungnya di GOR Pajajaran, Kota Bandung."
               fill
               sizes="(min-width: 768px) 220px, 100vw"
               className="object-cover"
@@ -271,6 +271,11 @@ export default function SubtitleFiveContent() {
           </div>
         </div>
       </article>
+
+      {/* Visible Alt Text Caption for Linda's Photo */}
+      <p className="font-sans text-xs sm:text-sm text-zinc-400 font-light leading-relaxed -mt-4 mb-8 px-1">
+        Foto: Atlet voli duduk dan tembak National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Linda Indriani, berpose di depan warungnya di GOR Pajajaran, Kota Bandung.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-9">
         {textContent.paragraphLindaStruggleAnalysis}
