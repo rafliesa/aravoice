@@ -149,7 +149,7 @@ export default function Navbar() {
             alt="ParaVoice.id"
             width={200}
             height={112}
-            className="h-20 w-auto"
+            style={{ width: "auto", height: "5rem" }}
             priority
           />
         </Link>

@@ -330,11 +330,9 @@ export default function SubtitleSevenContent() {
         speakerRole="Sub Olahraga Pendidikan Dispora Bandung"
       />
 
-      {/* Timbangan Perbandingan KONI vs NPCI - Zoomable */}
+      {/* Timbangan Perbandingan KONI vs NPCI */}
       <div className="my-8" key="koni-npci-timbangan-scale">
-        <ZoomableWrapper>
-          <KoniNpciScaleComparison />
-        </ZoomableWrapper>
+        <KoniNpciScaleComparison />
       </div>
 
       <p className={articleParagraphClass} key="paragraph-herlinda-intro">

@@ -34,7 +34,7 @@ export default function Footer() {
             alt="ParaVoice.id"
             width={245}
             height={138}
-            className="h-14 w-auto"
+            style={{ width: "auto", height: "3.5rem" }}
           />
           <p className="max-w-xs text-sm leading-6 text-[#D1D5DB]">
             Media olahraga disabilitas independen yang berkomitmen pada
