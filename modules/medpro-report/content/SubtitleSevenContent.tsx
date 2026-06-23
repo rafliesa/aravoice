@@ -11,6 +11,7 @@ import PerdaInteractiveReader from "@/modules/medpro-report/component/PerdaInter
 import ZoomableWrapper from "@/modules/medpro-report/component/ZoomableWrapper";
 import QuoteCard from "@/modules/medpro-report/component/QuoteCard";
 import Image from "next/image";
+import DisabilityParadigmTimeline from "@/modules/medpro-report/component/DisabilityParadigmTimeline";
 
 // ==========================================
 // EDITABLE TEXT CONTENT DICTIONARY
@@ -217,19 +218,8 @@ export default function SubtitleSevenContent() {
         {"pada 2011, penyandang disabilitas cenderung diposisikan sebagai objek bantuan sosial yang harus dikasihani. Setelah ratifikasi tersebut, paradigma itu berubah. Penyandang disabilitas mulai dipandang sebagai subjek hukum yang memiliki hak setara dengan warga negara lainnya."}
       </p>
 
-      {/* Infografis KND Paradigm Shift - Static */}
-      <div className="my-8 max-w-2xl mx-auto overflow-hidden rounded-2xl border border-zinc-200 bg-white p-2 shadow-sm" key="knd-paradigm-infographic">
-        <div className="relative aspect-[1200/644] w-full">
-          <Image
-            src="/7/paradigma-disabilitas.webp"
-            alt="Infografis Tiga Model Perspektif Penyandang Disabilitas"
-            fill
-            className="object-contain rounded-xl"
-            sizes="(min-width: 768px) 672px, 100vw"
-            priority
-          />
-        </div>
-      </div>
+      {/* Infografis KND Paradigm Shift - Interactive Component */}
+      <DisabilityParadigmTimeline key="knd-paradigm-infographic" />
 
       <p className={articleParagraphClass} key="paragraph-3">
         {textContent.paragraphKnd143}
