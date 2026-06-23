@@ -16,6 +16,8 @@ export default function SubtitleSixPage() {
       activeIndex={6}
       currentLabel="Sub Judul 6 dari 7"
       heroTitle={title}
+      coverImageSrc="/6/hero.jpg"
+      coverImageCaption="Sejumlah atlet voli duduk National Paralympic Committee of Indonesia (NPCI) Kota Bandung berlatih untuk persiapan Peparda di GOR Lodaya, Kota Bandung, Jawa Barat pada 10 Juni 2026."
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-7"
       previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-5"
     >

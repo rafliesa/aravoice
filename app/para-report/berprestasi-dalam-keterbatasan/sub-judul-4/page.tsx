@@ -16,6 +16,8 @@ export default function SubtitleFourPage() {
       activeIndex={4}
       currentLabel="Sub Judul 4 dari 7"
       heroTitle={title}
+      coverImageSrc="/4/hero.jpg"
+      coverImageCaption="Medali perunggu Medali Perunggu Pekan Paralimpik Daerah (Peparda) Kabupaten Bekasi 2022 milik Ono, atlet angkat berat."
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-5"
       previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-3"
     >

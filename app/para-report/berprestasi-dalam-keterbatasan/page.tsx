@@ -124,7 +124,7 @@ export default function MedproArticlePage() {
             { src: "/photo-story/slideshow/7.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, merawat tanaman hidroponik di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, merawat tanaman hidroponik di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026." },
             { src: "/photo-story/slideshow/8.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono (kanan), mempraktikkan terapi listrik kepada kliennya di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono (kanan), mempraktikkan terapi listrik kepada kliennya di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026." },
           ]}
-          title="Tangga menuju dojo blind judo di lantai 2 Gor Pajajaran Kota Bandung"
+          title=""
         />
       </div>
     </MedproReportPage>

@@ -16,6 +16,8 @@ export default function SubtitleThreePage() {
       activeIndex={3}
       currentLabel="Sub Judul 3 dari 7"
       heroTitle={title}
+      coverImageSrc="/3/hero.jpg"
+      coverImageCaption="Logo National Paralympic Committee of Indonesia (NPCI) Jawa Barat di GOR Pajajaran Kota Bandung."
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-4"
       previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-2"
     >

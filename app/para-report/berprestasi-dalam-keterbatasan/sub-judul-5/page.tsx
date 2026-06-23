@@ -16,6 +16,8 @@ export default function SubtitleFivePage() {
       activeIndex={5}
       currentLabel="Sub Judul 5 dari 7"
       heroTitle={title}
+      coverImageSrc="/5/hero.jpg"
+      coverImageCaption="Guiding block berbelok dan dihimpit tiang di area GOR Pajajaran Kota Bandung."
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-6"
       previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-4"
     >

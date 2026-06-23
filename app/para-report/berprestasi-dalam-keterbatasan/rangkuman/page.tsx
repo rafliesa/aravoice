@@ -17,6 +17,8 @@ export default function SummaryPage() {
       activeIndex={8}
       currentLabel="Hak Tertunda"
       heroTitle={title}
+      coverImageSrc="/hero-rangkuman.jpg"
+      coverImageCaption="Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, berlatih untuk persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 19 Juli 2026."
       previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-7"
       nextHref=""
     >
