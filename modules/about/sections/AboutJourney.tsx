@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AboutJourney() {
   return (
     <section className="bg-zinc-100">
@@ -38,7 +40,15 @@ export default function AboutJourney() {
         </div>
 
         <div className="motion-slide-in-right relative">
-          <div className="h-full min-h-80 w-full rounded-sm border border-zinc-300 bg-zinc-200" />
+          <div className="relative h-full min-h-80 w-full overflow-hidden rounded-sm border border-zinc-300 bg-zinc-200">
+            <Image
+              src="/tentang-kami.jpeg"
+              alt="Suasana ruang redaksi Paravoice.id"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
+          </div>
           <div className="absolute -bottom-5 left-8 bg-secondary-800 rounded-lg px-5 py-4 text-white shadow-lg">
             <p className="text-2xl font-bold leading-none">120+</p>
             <p className="mt-1 text-xs font-bold leading-tight tracking-wide">LAPORAN DATA<br />TAHUNAN</p>

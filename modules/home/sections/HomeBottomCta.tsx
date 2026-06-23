@@ -69,8 +69,8 @@ export default function HomeBottomCta() {
                 <p className="mt-8 text-base leading-8 text-[#4f5564]">
                   Jadilah bagian dari kami dan miliki koleksi eksklusifnya sekarang!
                 </p>
-                <div className="relative mt-6 flex items-center gap-4">
-                  <div className="relative w-28 h-28 shrink-0">
+                <div className="relative mt-6 flex items-center gap-2">
+                  <div className="relative w-56 h-56 shrink-0">
                     <Image
                       src="/Maskot.png"
                       alt="Mascot ParaVoice"
@@ -78,7 +78,7 @@ export default function HomeBottomCta() {
                       className="object-contain"
                     />
                   </div>
-                  <div className="relative bg-[#9a5a00] text-white text-xs font-black px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm tracking-wide">
+                  <div className="relative bg-[#9a5a00] text-white text-xs font-black px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm tracking-wide -ml-8">
                     Grab Yours!
                     <div className="absolute -left-2 top-0 w-0 h-0 border-r-[8px] border-r-[#9a5a00] border-b-[8px] border-b-transparent" />
                   </div>
