@@ -144,7 +144,6 @@ export default function SubtitleFourContent() {
           audioSrc="/4/LOVITA PENCAIRAN BONUS.wav"
           speakerName="Lovita Uki Damayanti"
           speakerRole="Atlet Goalball Kontingen Jawa Barat"
-          imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
         />
       </div>
 

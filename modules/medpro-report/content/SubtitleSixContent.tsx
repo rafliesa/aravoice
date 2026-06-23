@@ -78,41 +78,44 @@ export default function SubtitleSixContent() {
         {"Toto menyebut dukungan lingkungan terdekat menjadi dasar penting untuk membangun kepercayaan diri atlet. Ia juga mengingatkan agar olahraga tidak menjadi beban berlebihan bagi atlet. Menurut Toto, prestasi itu bukan tujuan utama, tapi tetap bermain dengan baik."}
       </p>
 
-      {/* Toto Video Interview Card - Integrated Side-by-Side */}
-      <article className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm my-8" key="toto-card">
-        <div className="grid md:grid-cols-[220px_minmax(0,1fr)]">
-          {/* Left Side: Photo of Pak Toto */}
-          <div className="relative min-h-64 md:min-h-full bg-zinc-900">
-            <Image
-              src="/6/pak-toto-wwc.webp"
-              alt="Foto Pak Toto"
-              fill
-              sizes="(min-width: 768px) 220px, 100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-            <p className="absolute inset-x-5 bottom-5 text-[10px] font-extrabold uppercase tracking-[0.12em] text-white">
-              Profil narasumber
-            </p>
-          </div>
+      {/* Side-by-side Profile Image and Video Player */}
+      <div className="my-10 border border-zinc-200/80 bg-white rounded-2xl p-6 sm:p-8 shadow-sm" key="toto-editorial-block">
+        <div className="inline-flex items-center gap-1.5 rounded-md bg-secondary-50 px-2.5 py-1 text-[10px] font-black text-secondary-700 uppercase tracking-widest border border-secondary-100 mb-6">
+          <span className="text-xs">🎬</span> KESAKSIAN PAK TOTO
+        </div>
+        
+        <h3 className="text-xl sm:text-2xl font-sans font-extrabold text-primary-900 leading-snug tracking-tight mb-6">
+          Dukungan psikologis dari rumah sangat menentukan kestabilan performa atlet
+        </h3>
 
-          {/* Right Side: Video Note and Info */}
-          <div className="p-6 sm:p-8 flex flex-col justify-between">
-            <div>
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-0.5 text-[10px] font-bold text-amber-700 uppercase tracking-wider border border-amber-200">
-                <span>⚠️</span> KESAKSIAN PAK TOTO
-              </div>
-              <h3 className="mt-3 text-xl font-bold text-zinc-900 leading-snug">
-                Dukungan psikologis dari rumah sangat menentukan kestabilan performa atlet
-              </h3>
-              
-              <div className="mt-3 text-sm leading-relaxed text-zinc-600 font-medium italic border-l-2 border-zinc-300 pl-3">
-                “Kalau saya, sesuai dengan karena hidup dengan Ibu itu istilahnya betul-betul kita jalankan. Men-support yang paling utama adalah janganlah olahraga itu dijadikan beban. Prestasi itu bukan tujuan utama, tapi bermainlah dengan baik. Pendekatan-pendekatan seperti itulah yang membuat semangat Ibu tidak merasa terabaikan, tidak merasa jauh dengan siapa. Akhirnya bermain pun dia nothing to lose. Dan di situ main akan kelihatan progresif.”
+        {/* Side-by-side media grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          
+          {/* Left Media: Profile Photo with description */}
+          <div className="flex flex-col">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-zinc-100 border border-zinc-200 shadow-sm">
+              <Image
+                src="/6/pak-toto-wwc.webp"
+                alt="Foto Pak Toto"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover object-top transition-transform duration-500 hover:scale-102"
+              />
+              {/* Subtle badge on the image */}
+              <div className="absolute top-3 left-3 bg-primary-900/90 backdrop-blur-xs px-2.5 py-1 rounded text-[9px] font-bold text-white uppercase tracking-widest">
+                Narasumber
               </div>
             </div>
+            <div className="mt-3 text-sm">
+              <span className="font-bold text-zinc-900">Pak Toto</span>
+              <span className="text-zinc-400 mx-2">•</span>
+              <span className="text-xs font-semibold text-zinc-500">Pendamping &amp; Suami Asti (Atlet Ten Pin Bowling)</span>
+            </div>
+          </div>
 
-            {/* Video Player */}
-            <div className="mt-6 relative aspect-[16/9] w-full max-w-lg overflow-hidden rounded-xl bg-zinc-950 shadow-inner group">
+          {/* Right Media: Video Player */}
+          <div className="flex flex-col">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-zinc-950 shadow-md group border border-zinc-200/50">
               <video
                 ref={totoVideoRef}
                 src="/6/pak-toto-wwc-vid.mp4"
@@ -124,37 +127,60 @@ export default function SubtitleSixContent() {
 
               {/* Play Overlay */}
               {!isTotoPlaying && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors duration-300 group-hover:bg-black/35">
                   <button
                     type="button"
                     onClick={toggleTotoPlay}
-                    className="flex size-14 items-center justify-center rounded-full bg-[#082b4d] text-white hover:bg-[#061f38] transition-all shadow-md cursor-pointer transform group-hover:scale-105"
+                    className="flex size-14 items-center justify-center rounded-full bg-secondary text-white hover:bg-secondary-600 transition-all duration-300 shadow-lg cursor-pointer transform group-hover:scale-110 active:scale-95 focus:outline-none"
                     aria-label="Putar Video"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 ml-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 ml-1">
                       <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
                     </svg>
                   </button>
                 </div>
               )}
+              
+              {/* Pause control overlay when hover */}
+              {isTotoPlaying && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 hover:bg-black/30 opacity-0 hover:opacity-100 transition-all duration-300">
+                  <button
+                    type="button"
+                    onClick={toggleTotoPlay}
+                    className="flex size-14 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition-all duration-300 shadow-lg cursor-pointer"
+                    aria-label="Pause Video"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
+                      <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              )}
             </div>
-
-            {/* Subtitle/Context under player */}
-            <div className="mt-6 text-xs sm:text-sm leading-6 text-zinc-500 font-medium">
-              Ketika prestasi menjadi peluang pendapatan lebih, hal ini memberikan tekanan psikologis para atlet untuk terus meraih medali di ajang pertandingan. Tekanan ini sangat mempengaruhi performa atlet saat latihan maupun kompetisi. Menurut Yulia, pengaruh mental terhadap performa atlet saat bertanding bisa mencapai 80 persen. Bahkan saat semua persiapan sudah dilakukan selama latihan, masih ada atlet yang mengkhawatirkan kekalahan yang belum tentu terjadi.
-            </div>
-
-            {/* Speaker name metadata at the bottom */}
-            <div className="mt-4 flex items-center gap-2 text-[10px] text-zinc-400 font-bold uppercase tracking-wider">
-              <span>Pak Toto</span>
-              <span>•</span>
-              <span>Pendamping &amp; Suami Asti (Atlet Ten Pin Bowling)</span>
-              <span>•</span>
-              <span className="text-secondary-600">Video Note</span>
+            <div className="mt-3 text-sm">
+              <span className="font-bold text-zinc-900">Rekaman Wawancara</span>
+              <span className="text-zinc-400 mx-2">•</span>
+              <span className="text-xs font-semibold text-zinc-500">Video Note</span>
             </div>
           </div>
+
         </div>
-      </article>
+
+        {/* Content text below the side-by-side elements */}
+        <div className="mt-8 pt-6 border-t border-zinc-100 space-y-6">
+          <div className="relative rounded-xl bg-secondary-50/30 border-l-4 border-secondary-500 p-4 sm:p-5">
+            <span className="absolute right-4 top-2 text-6xl font-caslon text-secondary-500/10 select-none pointer-events-none">“</span>
+            <p className="text-sm sm:text-base leading-relaxed text-zinc-700 font-medium italic relative z-10">
+              “Kalau saya, sesuai dengan karena hidup dengan Ibu itu istilahnya betul-betul kita jalankan. Men-support yang paling utama adalah janganlah olahraga itu dijadikan beban. Prestasi itu bukan tujuan utama, tapi bermainlah dengan baik. Pendekatan-pendekatan seperti itulah yang membuat semangat Ibu tidak merasa terabaikan, tidak merasa jauh dengan siapa. Akhirnya bermain pun dia nothing to lose. Dan di situ main akan kelihatan progresif.”
+            </p>
+          </div>
+
+          <div className="text-sm sm:text-base leading-relaxed text-zinc-600 font-medium">
+            Ketika prestasi menjadi peluang pendapatan lebih, hal ini memberikan tekanan psikologis para atlet untuk terus meraih medali di ajang pertandingan. Tekanan ini sangat mempengaruhi performa atlet saat latihan maupun kompetisi. Menurut Yulia, pengaruh mental terhadap performa atlet saat bertanding bisa mencapai 80 persen. Bahkan saat semua persiapan sudah dilakukan selama latihan, masih ada atlet yang mengkhawatirkan kekalahan yang belum tentu terjadi.
+          </div>
+        </div>
+
+      </div>
 
       <h2 className={articleHeadingClass} key="heading-stigma">
         {"BELAS KASIHAN YANG MEMBUNUH MENTAL"}
@@ -228,6 +254,7 @@ export default function SubtitleSixContent() {
         imageSrc="/6/yulia.webp"
         speakerName="Yulia Sahaja Dewi Permatasari"
         speakerRole="Psikolog Klinis Pendamping Atlet Disabilitas"
+        imagePosition="object-top"
       />
 
       <p className={articleParagraphClass} key="paragraph-34">

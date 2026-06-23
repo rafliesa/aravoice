@@ -82,18 +82,10 @@ export default function LovitaVideoCard({
 
       {/* Speaker Information */}
       <div className="p-4 bg-zinc-50 border-t border-zinc-150 flex items-center gap-3">
-        <div className="relative size-10 rounded-full overflow-hidden border border-zinc-200 bg-zinc-200 shrink-0">
-          <Image
-            src="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
-            alt="Foto Lovita Uki Damayanti"
-            fill
-            sizes="40px"
-            className="object-cover"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = "/dukung-kami-hero.png";
-            }}
-          />
+        <div className="relative size-10 overflow-hidden rounded-full border border-zinc-200 bg-zinc-150 flex items-center justify-center shrink-0 text-zinc-400 select-none">
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
         </div>
         <div className="min-w-0 flex-1">
           <h4 className="text-xs font-black text-zinc-800 truncate">

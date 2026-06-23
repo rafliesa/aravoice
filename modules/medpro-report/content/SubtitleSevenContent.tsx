@@ -395,6 +395,7 @@ export default function SubtitleSevenContent() {
         imageSrc="/6/yulia.webp"
         speakerName="Yulia Sahaja Dewi Permatasari"
         speakerRole="Psikolog Klinis & Pendamping Atlet Paralimpik"
+        imagePosition="object-top"
       />
 
       <p className={articleParagraphClass} key="paragraph-eva-anxiety">
@@ -513,8 +514,7 @@ export default function SubtitleSevenContent() {
       {/* Aditya Nandang Saputra Voice Note Card */}
       <div className="my-8" key="aditya-vn-container">
         <VoiceNoteCard
-          audioSrc="/audio/28 Apr_Aditya Nandang.m4a"
-          imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
+          audioSrc="/7/28 Apr_Aditya Nandang.m4a"
           speakerName="Aditya Nandang Saputra"
           speakerRole="Bidang Pemberdayaan Atlet NPCI Kabupaten Bandung"
         />
@@ -580,10 +580,14 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphPensionAnalysis}
       </p>
 
-      {/* Dandan Supardan Highlighted Quote (Posisi di tengah, ukuran font lebih besar dari paragraf) */}
-      <blockquote className="my-8 text-center italic text-[#082b4d] font-bold text-base md:text-lg max-w-xl mx-auto border-y border-zinc-200 py-6" key="quote-dandan-highlighted-large-7">
-        {textContent.quoteDandanHighlightedLarge}
-        <cite className="block not-italic text-xs font-bold text-zinc-500 mt-2">— Dandan Supardan, Atlet Panahan & ASN Kementerian Sosial</cite>
+      {/* Dandan Supardan Highlighted Quote */}
+      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dandan-highlighted-large-7">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          {textContent.quoteDandanHighlightedLarge}
+        </p>
+        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
+          — Dandan Supardan, Atlet Panahan & ASN Kementerian Sosial
+        </cite>
       </blockquote>
 
       {/* Heading: PERATURAN PERUNDANG-UNDANGAN DAERAH */}

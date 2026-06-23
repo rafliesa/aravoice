@@ -21,7 +21,7 @@ export default function YuliaQuoteCard({
             src={imageSrc}
             alt="Yulia Sahaja Dewi Permatasari"
             fill
-            className="object-cover object-center"
+            className="object-cover object-top"
             sizes="(min-width: 640px) 25vw, 100vw"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
