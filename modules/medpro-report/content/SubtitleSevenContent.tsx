@@ -7,6 +7,7 @@ import VideoNoteCard from "@/modules/medpro-report/component/VideoNoteCard";
 import LegalHierarchyInfographic from "@/modules/medpro-report/component/LegalHierarchyInfographic";
 import KoniNpciScaleComparison from "@/modules/medpro-report/component/KoniNpciScaleComparison";
 import BandungDemographicsChart from "@/modules/medpro-report/component/BandungDemographicsChart";
+import BandungPopulationChart from "@/modules/medpro-report/component/BandungPopulationChart";
 import PerdaInteractiveReader from "@/modules/medpro-report/component/PerdaInteractiveReader";
 import ZoomableWrapper from "@/modules/medpro-report/component/ZoomableWrapper";
 import QuoteCard from "@/modules/medpro-report/component/QuoteCard";
@@ -128,6 +129,9 @@ const textContent = {
 
   paragraphRegenerationExplain2: 
     "Ketidaknampakan penyandang disabilitas tidak terlepas dari demografi Kota Bandung yang terus berkembang. Di tengah jumlah penduduk yang terus bertambah dari tahun ke tahun, tersimpan kelompok masyarakat yang masih berisiko luput dari jangkauan sistem pembinaan olahraga.",
+
+  newParagraphDemography:
+    "Di tengah jutaan Kota Bandung, ribuan penyandang disabilitas merupakan bagian dari lanskap demografi kota yang kerap luput dari perhatian. Tersimpan potensi atlet yang belum seluruhnya teridentifikasi.",
 
   paragraphRegenerationGap: 
     "Data tersebut memperlihatkan adanya jarak yang cukup lebar antara potensi dan realitas pembinaan. Di tengah ribuan penyandang disabilitas yang tercatat tinggal di Kota Bandung, Komarudin, Bendahara NPCI Kota Bandung menyebut saat ini NPCI membiayai pembinaan 17 cabang olahraga dan menyeleksi 516 atlet menjadi 250 atlet kontingen untuk Peparda Jawa Barat 2026.",
@@ -419,6 +423,13 @@ export default function SubtitleSevenContent() {
 
       <p className={articleParagraphClass} key="paragraph-regeneration-explain-2">
         {textContent.paragraphRegenerationExplain2}
+      </p>
+
+      {/* Bandung Population Growth Infographic */}
+      <BandungPopulationChart key="bandung-population-chart" />
+
+      <p className={articleParagraphClass} key="paragraph-new-demography">
+        {textContent.newParagraphDemography}
       </p>
 
       {/* Interactive Demographics Chart (Population & Disability 2017-2025) */}
