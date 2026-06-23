@@ -3,24 +3,34 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const slides = [
+interface Slide {
+  title: string;
+  description: string;
+  image: string;
+  imagePosition?: string;
+}
+
+const slides: Slide[] = [
   {
     title: "Dari Medali ke Nyala Api Kompor yang Menolak Mati",
     description:
       "Prestasi atlet paralimpik sering hadir dalam bentuk medali, piagam, dan seremoni penghargaan. Namun, ketika lampu arena padam dan sorak penonton berhenti, banyak atlet kembali menghadapi persoalan yang sama, bagaimana memenuhi kebutuhan keluarga sambil mempertahankan karier olahraga yang belum tentu menjamin kehidupan mereka.",
     image: "/dukung-kami/Dari Medali ke Nyala Api Kompor yang Menolak Mati_.jpg",
+    imagePosition: "center",
   },
   {
     title: "Doa-Doa di Balik Barisan Piala",
     description:
       "Kemenangan tidak sependek podium-podium perayaan itu. Kemenangan dipupuk dalam keseharian, kemenangan ada dalam senyuman orang-orang terdekat yang selama ini menemani Ono. Dalam tekanan kompetisi dan ekonomi, dukungan keluarga menjadi penopang tubuhnya untuk terus maju, menguatkannya dalam mengangkat beban yang lebih berat.",
     image: "/dukung-kami/Doa-Doa di Balik Barisan Piala_ .jpg",
+    imagePosition: "center",
   },
   {
     title: "Yang Terduduk Tidak Akan Pernah Tunduk",
     description:
       "Enam bulan menuju Pekan Paralimpik Daerah Jawa Barat, dan barisan kursi roda itu tetap berjajar rapi di tepi lapangan, berdoa kemudia melakukan pemanasan. Pemandangan ini sudah berlangsung dari dua bulan sebelumnya, dan niat mereka tetap sama, Meraih Juara.",
     image: "/dukung-kami/Yang Terduduk Tidak Akan Pernah Tunduk_.jpg",
+    imagePosition: "center",
   },
 ];
 
@@ -66,7 +76,7 @@ export default function SupportImageSection() {
             className={`object-cover transition-opacity duration-1000 ease-out ${
               index === activeIndex ? "opacity-100" : "opacity-0"
             }`}
-            style={{ objectPosition: slide.imagePosition }}
+            style={{ objectPosition: (slide as any).imagePosition }}
           />
         ))}
         <div className="absolute inset-0 bg-black/35" />
