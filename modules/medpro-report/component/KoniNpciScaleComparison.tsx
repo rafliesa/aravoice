@@ -92,8 +92,27 @@ export default function KoniNpciScaleComparison() {
   const [activeModal, setActiveModal] = useState<"koni" | "npci" | null>(null);
   const [hoveredWeight, setHoveredWeight] = useState<"koni" | "npci" | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const [tilted, setTilted] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  // Auto-trigger tilt animation when component enters viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !tilted) {
+          setIsAnimating(true);
+          setTilted(true);
+          setTimeout(() => setIsAnimating(false), 1200);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!activeModal) return;
@@ -182,7 +201,7 @@ export default function KoniNpciScaleComparison() {
   const angle = tilted ? -12 : 0; 
 
   return (
-    <article className="mx-auto my-8 max-w-3xl overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-md font-sans">
+    <article ref={containerRef} className="mx-auto my-8 max-w-3xl overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-md font-sans">
       {/* Header Info (Matching page layout style) */}
       <div className="border-b border-zinc-200 p-6 bg-zinc-50/30">
         <p className="text-secondary-700 text-xs font-extrabold uppercase tracking-[0.14em]">
