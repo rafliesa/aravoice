@@ -7,6 +7,7 @@ import {
   konoStoryImages,
 } from "@/modules/medpro-report/data/konoStoryImages";
 import FotoStory from "@/modules/medpro-report/component/FotoStory";
+import ArticleImageCarousel from "@/modules/medpro-report/component/ArticleImageCarousel";
 import JonnaAudioCard from "@/modules/medpro-report/component/JonnaAudioCard";
 import {
   articleKickerClass,
@@ -101,12 +102,29 @@ export default function MedproArticlePage() {
         {"Di tengah tuntutan prestasi yang meninggi menjelang Peparda 2026, para atlet disabilitas berlari dalam lintasan yang tidak selalu setara. Sebab pengorbanan biaya hidup harus dibagi dengan kebutuhan olahraga dan kegigihan para atlet dalam menjaga mimpi ketika kesejahteraan mereka sendiri masih menjadi tanda tanya."}
       </p>
 
-      {/* Photo Story Component moved to the very bottom */}
+      {/* Photo Story Component */}
       <div className="mt-10 pt-10 border-t border-zinc-200/80">
         <FotoStory
           images={konoStoryImages}
           title="Melihat Podium dari Sepetak Kebun"
           bottomText="Ono Saipudin dalam rangkaian sesi latihan angkat berat di Gedung NPCI Kota Bandung."
+        />
+      </div>
+
+      {/* Slideshow */}
+      <div className="my-10">
+        <ArticleImageCarousel
+          images={[
+            { src: "/photo-story/slideshow/1.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin (kiri) , berlatih bench press untuk persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 19 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin (kiri) , berlatih bench press untuk persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 19 Juli 2026." },
+            { src: "/photo-story/slideshow/2.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin, berlatih bench press untuk persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 19 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin, berlatih bench press untuk persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 19 Juli 2026." },
+            { src: "/photo-story/slideshow/3.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin (kanan), berjalan saat persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 19 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin (kanan), berjalan saat persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 19 Juli 2026." },
+            { src: "/photo-story/slideshow/4.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin (kiri) , mengendarai motor roda tiganya setelah berlatih di Kota Bandung, Jawa Barat pada 19 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin (kiri) , mengendarai motor roda tiganya setelah berlatih di Kota Bandung, Jawa Barat pada 19 Juli 2026." },
+            { src: "/photo-story/slideshow/5.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin (kiri) , mengendarai motor roda tiganya setelah berlatih di Kota Bandung, Jawa Barat pada 19 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono Saefudin (kiri) , mengendarai motor roda tiganya setelah berlatih di Kota Bandung, Jawa Barat pada 19 Juli 2026." },
+            { src: "/photo-story/slideshow/6.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, berjalan di dekat instalasi hidroponik di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, berjalan di dekat instalasi hidroponik di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026." },
+            { src: "/photo-story/slideshow/7.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, merawat tanaman hidroponik di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, merawat tanaman hidroponik di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026." },
+            { src: "/photo-story/slideshow/8.jpeg", alt: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono (kanan), mempraktikkan terapi listrik kepada kliennya di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026.", caption: "Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono (kanan), mempraktikkan terapi listrik kepada kliennya di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026." },
+          ]}
+          title="Tangga menuju dojo blind judo di lantai 2 Gor Pajajaran Kota Bandung"
         />
       </div>
     </MedproReportPage>
