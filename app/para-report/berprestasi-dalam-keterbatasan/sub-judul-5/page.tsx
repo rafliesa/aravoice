@@ -3,7 +3,7 @@ import MedproReportPage from "@/modules/medpro-report";
 import { medproArticleDescription } from "@/modules/medpro-report/data";
 import SubtitleFiveContent from "@/modules/medpro-report/content/SubtitleFiveContent";
 
-const title = "Pendidikan/Lapangan Pekerjaan";
+const title = "Pseudo Aksesibilitas";
 
 export const metadata: Metadata = {
   title,

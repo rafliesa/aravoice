@@ -3,7 +3,7 @@ import MedproReportPage from "@/modules/medpro-report";
 import { medproArticleDescription } from "@/modules/medpro-report/data";
 import SubtitleThreeContent from "@/modules/medpro-report/content/SubtitleThreeContent";
 
-const title = "Dana yang Berputar, Kebutuhan yang Bertambah";
+const title = "Perputaran Dana";
 
 export const metadata: Metadata = {
   title,

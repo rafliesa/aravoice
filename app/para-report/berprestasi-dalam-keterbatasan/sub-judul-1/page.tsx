@@ -3,7 +3,7 @@ import MedproReportPage from "@/modules/medpro-report";
 import { medproArticleDescription } from "@/modules/medpro-report/data";
 import SubtitleOneContent from "@/modules/medpro-report/content/SubtitleOneContent";
 
-const title = "Kesejahteraan yang Tak Pasti";
+const title = "Kondisi Nyata";
 
 export const metadata: Metadata = {
   title,

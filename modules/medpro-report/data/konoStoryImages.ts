@@ -26,7 +26,7 @@ export const konoStoryImages: StoryImage[] = [
     alt: "Sejumlah atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung berlatih untuk persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 19 Juli 2026.",
     caption:
       "Meskipun pertemuan dengan cabang olahraga angkat beban memberinya jalan hidup baru sebagai seorang atlet paralimpik. Ono tidak sepenuhnya meninggalkan dunia lamanya. Ono kecil, dibesarkan di Bumiayu, sebuah kecamatan di daerah selatan Kabupaten Brebes, Jawa Tengah. Ia tinggal bersama Kakek dan Neneknya ketika kedua orang tuanya harus pergi merantau ke daerah yang kelak juga ia wakili sebagai atlet saat ini. \n\nPerjalanan menuju dunia masa kecilnya akan ia lakukan sehabis pulang berlatih. Berdua bersama istrinya, Rohayati (45), Ono menyusuri jalanan kota Bandung menuju Cimahi untuk menjemput sepenggal kehidupannya yang lain. ",
-    secondSrc: "/photo-story/5.jpeg",
+    secondSrc: "/photo-story/3.jpeg",
     secondAlt: "Sejumlah atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung berkumpul di luar Gym setelah berlatih untuk persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 19 Juli 2026.",
   },
   {

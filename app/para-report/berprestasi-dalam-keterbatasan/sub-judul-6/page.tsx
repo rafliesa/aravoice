@@ -3,7 +3,7 @@ import MedproReportPage from "@/modules/medpro-report";
 import { medproArticleDescription } from "@/modules/medpro-report/data";
 import SubtitleSixContent from "@/modules/medpro-report/content/SubtitleSixContent";
 
-const title = "Psikologis";
+const title = "Tekanan dari Luar";
 
 export const metadata: Metadata = {
   title,

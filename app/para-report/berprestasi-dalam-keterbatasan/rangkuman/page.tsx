@@ -4,7 +4,7 @@ import { medproArticleDescription } from "@/modules/medpro-report/data";
 import { articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 import VoiceNoteCard from "@/modules/medpro-report/component/VoiceNoteCard";
 
-const title = "PENUTUP: Hak Tertunda";
+const title = "Hak Tertunda";
 
 export const metadata: Metadata = {
   title,
