@@ -448,7 +448,7 @@ function ArticleSubnav() {
     "Sub Judul 5",
     "Sub Judul 6",
     "Sub Judul 7",
-    "Rangkuman",
+    "Hak Tertunda",
   ];
 
   return (
@@ -461,7 +461,7 @@ function ArticleSubnav() {
           key={item}
           href="#"
           className={
-            item === "Rangkuman"
+            item === "Hak Tertunda"
               ? "shrink-0 border-b-2 border-secondary-800 pb-1 font-bold text-secondary-800"
               : "shrink-0 pb-1 hover:text-secondary-800"
           }

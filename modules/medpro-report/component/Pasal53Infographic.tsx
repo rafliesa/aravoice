@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Pasal53Infographic() {
   return (
-    <div className="mx-auto my-6 max-w-lg rounded-3xl overflow-hidden shadow-lg border border-zinc-200/50 bg-white">
+    <div className="w-full rounded-3xl overflow-hidden shadow-lg border border-zinc-200/50 bg-white">
       <InfographicBody animate={true} />
     </div>
   );

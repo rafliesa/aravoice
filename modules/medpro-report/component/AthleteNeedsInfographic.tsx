@@ -37,7 +37,7 @@ const needRows = [
 
 export default function AthleteNeedsInfographic() {
   return (
-    <div className="mx-auto my-6 max-w-xl rounded-3xl overflow-hidden shadow-lg border border-zinc-200/50 bg-white">
+    <div className="w-full rounded-3xl overflow-hidden shadow-lg border border-zinc-200/50 bg-white">
       {/* Top Header Panel (Vibrant Blue Radial Gradient) */}
       <div className="bg-[radial-gradient(circle_at_85%_15%,#2563eb_0%,#1e3a8a_50%,#0f172a_100%)] p-6 md:p-8 text-white relative overflow-hidden">
         {/* Light Glow elements for premium feel */}

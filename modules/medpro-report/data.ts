@@ -35,7 +35,7 @@ export const medproSubnav = [
     href: "/para-report/berprestasi-dalam-keterbatasan/sub-judul-7",
   },
   {
-    label: "Rangkuman",
+    label: "Hak Tertunda",
     href: "/para-report/berprestasi-dalam-keterbatasan/rangkuman",
   },
 ];

@@ -192,7 +192,7 @@ const textContent = {
     "ATURAN HUKUM: PERDA KOTA BANDUNG NOMOR 15 TAHUN 2019",
 
   headingSummary: 
-    "Rangkuman",
+    "Hak Tertunda",
 
   paragraphSummaryOno: 
     "Dalam ketidakpastian ekonomi saat ini, kisah Ono menjadi refleksi nyata bagaimana atlet disabilitas Kota Bandung berlatih dan berjuang tidak hanya untuk meraih prestasi, tetapi juga keberlangsungan hidup mereka.",
@@ -478,11 +478,9 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphRegenerationExplain2}
       </p>
 
-      {/* Interactive Demographics Chart (Population & Disability 2017-2025) - Zoomable */}
+      {/* Interactive Demographics Chart (Population & Disability 2017-2025) */}
       <div className="my-8" key="bandung-demographics-chart-container">
-        <ZoomableWrapper>
-          <BandungDemographicsChart />
-        </ZoomableWrapper>
+        <BandungDemographicsChart />
       </div>
 
       <p className={articleParagraphClass} key="paragraph-regeneration-gap">
@@ -607,9 +605,7 @@ export default function SubtitleSevenContent() {
 
       {/* Perda Interactive Deck Slider - Replacing all static articles */}
       <div className="my-8" key="perda-interactive-reader-container">
-        <ZoomableWrapper>
-          <PerdaInteractiveReader />
-        </ZoomableWrapper>
+        <PerdaInteractiveReader />
       </div>
 
 

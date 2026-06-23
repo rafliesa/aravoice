@@ -16,6 +16,12 @@ import {
   getResponseError,
   slugify,
 } from "@/lib/news";
+import {
+  type CreateEditorialMemberPayload,
+  type EditorialMember,
+  fetchEditorialMembers,
+  getEditorialMemberResponseError,
+} from "@/lib/about";
 import Field from "./component/Field";
 
 const CATEGORIES = [
@@ -78,6 +84,31 @@ function createEmptyMerchForm(): MerchFormState {
     image: "",
     sortOrder: "10",
     isActive: true,
+  };
+}
+
+type TeamFormState = {
+  name: string;
+  role: string;
+  image: string;
+  sortOrder: string;
+};
+
+function createEmptyTeamForm(): TeamFormState {
+  return {
+    name: "",
+    role: "",
+    image: "",
+    sortOrder: "10",
+  };
+}
+
+function createFormFromTeam(item: EditorialMember): TeamFormState {
+  return {
+    name: item.name,
+    role: item.role,
+    image: item.image,
+    sortOrder: String(item.sort_order),
   };
 }
 
@@ -239,6 +270,20 @@ export default function AdminDashboard() {
   const formRef = useRef<HTMLFormElement>(null);
   const merchFormRef = useRef<HTMLFormElement>(null);
 
+  const [teamForm, setTeamForm] = useState<TeamFormState>(
+    createEmptyTeamForm,
+  );
+  const [teamMembers, setTeamMembers] = useState<EditorialMember[]>([]);
+  const [editingTeamId, setEditingTeamId] = useState<number | null>(null);
+  const [teamLoading, setTeamLoading] = useState(true);
+  const [submittingTeam, setSubmittingTeam] = useState(false);
+  const [deletingTeamId, setDeletingTeamId] = useState<number | null>(null);
+  const [teamMessage, setTeamMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+  const teamFormRef = useRef<HTMLFormElement>(null);
+
   useEffect(() => {
     const controller = new AbortController();
 
@@ -288,6 +333,31 @@ export default function AdminDashboard() {
     }
 
     loadMerchProducts();
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadTeamMembers() {
+      try {
+        setTeamMembers(
+          await fetchEditorialMembers(controller.signal),
+        );
+      } catch (error) {
+        if ((error as Error).name !== "AbortError") {
+          setTeamMessage({
+            type: "error",
+            text:
+              error instanceof Error ? error.message : "Gagal memuat tim editorial",
+          });
+        }
+      } finally {
+        setTeamLoading(false);
+      }
+    }
+
+    loadTeamMembers();
     return () => controller.abort();
   }, []);
 
@@ -511,6 +581,109 @@ export default function AdminDashboard() {
       });
     } finally {
       setDeletingMerchId(null);
+    }
+  }
+
+  function updateTeam<K extends keyof TeamFormState>(
+    key: K,
+    val: TeamFormState[K],
+  ) {
+    setTeamForm((f) => ({ ...f, [key]: val }));
+  }
+
+  function resetTeamForm() {
+    setEditingTeamId(null);
+    setTeamForm(createEmptyTeamForm());
+  }
+
+  function editTeamMember(item: EditorialMember) {
+    setEditingTeamId(item.id);
+    setTeamForm(createFormFromTeam(item));
+    setTeamMessage(null);
+    teamFormRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  async function handleTeamSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const sortOrder = Number.parseInt(teamForm.sortOrder, 10);
+    if (
+      !teamForm.name.trim() ||
+      !teamForm.role.trim() ||
+      Number.isNaN(sortOrder)
+    ) {
+      setTeamMessage({
+        type: "error",
+        text: "Nama, peran (role), dan urutan wajib diisi.",
+      });
+      return;
+    }
+
+    const payload: CreateEditorialMemberPayload = {
+      name: teamForm.name,
+      role: teamForm.role,
+      image: teamForm.image,
+      sort_order: sortOrder,
+    };
+
+    setSubmittingTeam(true);
+    setTeamMessage(null);
+    try {
+      const response = await fetch(
+        editingTeamId === null
+          ? "/api/about/team"
+          : `/api/about/team/${editingTeamId}`,
+        {
+          method: editingTeamId === null ? "POST" : "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        },
+      );
+      if (!response.ok) throw new Error(await getEditorialMemberResponseError(response));
+
+      const saved = (await response.json()) as EditorialMember;
+      setTeamMembers((current) => {
+        const updated = editingTeamId === null
+          ? [...current, saved]
+          : current.map((item) => (item.id === saved.id ? saved : item));
+        return updated.sort((a, b) => a.sort_order - b.sort_order || a.id - b.id);
+      });
+      resetTeamForm();
+      setTeamMessage({
+        type: "success",
+        text:
+          editingTeamId === null
+            ? "Anggota tim berhasil disimpan."
+            : "Perubahan anggota tim berhasil disimpan.",
+      });
+    } catch (error) {
+      setTeamMessage({
+        type: "error",
+        text:
+          error instanceof Error ? error.message : "Gagal menyimpan anggota tim",
+      });
+    } finally {
+      setSubmittingTeam(false);
+    }
+  }
+
+  async function deleteTeamMember(id: number) {
+    setDeletingTeamId(id);
+    setTeamMessage(null);
+    try {
+      const response = await fetch(`/api/about/team/${id}`, { method: "DELETE" });
+      if (!response.ok) throw new Error(await getEditorialMemberResponseError(response));
+      setTeamMembers((current) => current.filter((item) => item.id !== id));
+      if (editingTeamId === id) resetTeamForm();
+      setTeamMessage({ type: "success", text: "Anggota tim berhasil dihapus." });
+    } catch (error) {
+      setTeamMessage({
+        type: "error",
+        text:
+          error instanceof Error ? error.message : "Gagal menghapus anggota tim",
+      });
+    } finally {
+      setDeletingTeamId(null);
     }
   }
 
@@ -1034,6 +1207,199 @@ export default function AdminDashboard() {
                         className="rounded-md border border-zinc-300 px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-red-300 hover:bg-red-50 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         {deletingMerchId === item.id ? "Menghapus…" : "Hapus"}
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+
+        <section className="mt-14 border-t border-zinc-200 pt-8">
+          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-bold tracking-wider text-[#F29100]">
+                TENTANG KAMI
+              </p>
+              <h2 className="mt-1 text-2xl font-extrabold tracking-tight">
+                {editingTeamId === null ? "Tambah Tim Editorial" : "Edit Tim Editorial"}
+              </h2>
+              <p className="mt-2 text-sm text-zinc-500">
+                Anggota tim editorial akan tampil di halaman Tentang Kami sesuai urutan.
+              </p>
+            </div>
+            <Link
+              href="/tentang-kami"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md border border-zinc-300 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-zinc-400 hover:bg-zinc-50"
+            >
+              Lihat Halaman Tentang Kami
+            </Link>
+          </div>
+
+          <form ref={teamFormRef} onSubmit={handleTeamSubmit}>
+            <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-2">
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <Field label="Nama Anggota">
+                    <input
+                      value={teamForm.name}
+                      onChange={(e) => updateTeam("name", e.target.value)}
+                      placeholder="Nama Lengkap"
+                      required
+                      className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#F29100]"
+                    />
+                  </Field>
+                  <Field label="Peran / Jabatan">
+                    <input
+                      value={teamForm.role}
+                      onChange={(e) => updateTeam("role", e.target.value)}
+                      placeholder="Contoh: Pemimpin Redaksi"
+                      required
+                      className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#F29100]"
+                    />
+                  </Field>
+                </div>
+
+                <Field label="Urutan Tampilan">
+                  <input
+                    type="number"
+                    value={teamForm.sortOrder}
+                    onChange={(e) => updateTeam("sortOrder", e.target.value)}
+                    placeholder="10"
+                    required
+                    className="w-full rounded-md border border-zinc-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#F29100]"
+                  />
+                </Field>
+
+                <Field label="URL Foto Anggota">
+                  <CoverImageInput
+                    value={teamForm.image}
+                    onChange={(url) => updateTeam("image", url)}
+                  />
+                </Field>
+              </div>
+
+              <div className="lg:sticky lg:top-6 lg:self-start">
+                <p className="mb-3 text-sm font-bold tracking-wider text-zinc-400">
+                  PRATINJAU KARTU STAF
+                </p>
+                <article className="rounded-lg border border-zinc-200 bg-white p-5">
+                  <div className="flex flex-col items-center">
+                    {teamForm.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={teamForm.image}
+                        alt=""
+                        className="aspect-square w-32 rounded-full object-cover border border-zinc-200"
+                      />
+                    ) : (
+                      <div className="aspect-square w-32 rounded-full bg-zinc-200 flex items-center justify-center text-zinc-400 text-3xl font-bold">
+                        {teamForm.name ? teamForm.name.slice(0, 2).toUpperCase() : "?"}
+                      </div>
+                    )}
+                    <h3 className="mt-4 text-lg font-bold text-[#101522]">
+                      {teamForm.name || "Nama Lengkap"}
+                    </h3>
+                    <p className="mt-1 text-xs font-extrabold uppercase tracking-[0.14em] text-[#9a5a00]">
+                      {teamForm.role || "PERAN / JABATAN"}
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div className="mt-8 flex items-center gap-4 border-t border-zinc-200 pt-6">
+              <button
+                type="submit"
+                disabled={submittingTeam}
+                className="rounded-md bg-[#1a1a1a] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {submittingTeam
+                  ? "Menyimpan…"
+                  : editingTeamId === null
+                    ? "Simpan Anggota"
+                    : "Simpan Perubahan"}
+              </button>
+              {editingTeamId !== null && (
+                <button
+                  type="button"
+                  onClick={resetTeamForm}
+                  disabled={submittingTeam}
+                  className="rounded-md border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-zinc-700 transition-colors hover:border-zinc-400 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  Batal Edit
+                </button>
+              )}
+              {teamMessage && (
+                <span
+                  className={`text-sm font-medium ${
+                    teamMessage.type === "success"
+                      ? "text-green-700"
+                      : "text-red-600"
+                  }`}
+                >
+                  {teamMessage.text}
+                </span>
+              )}
+            </div>
+          </form>
+
+          <div className="mt-10">
+            <h3 className="text-xl font-extrabold tracking-tight">
+              Daftar Tim Editorial ({teamMembers.length})
+            </h3>
+            {teamLoading ? (
+              <p className="mt-3 text-sm text-zinc-500">Memuat tim editorial…</p>
+            ) : teamMembers.length === 0 ? (
+              <p className="mt-3 text-sm text-zinc-500">Belum ada anggota tim editorial.</p>
+            ) : (
+              <ul className="mt-5 divide-y divide-zinc-200">
+                {teamMembers.map((item) => (
+                  <li
+                    key={item.id}
+                    className="flex flex-col items-start justify-between gap-4 py-4 sm:flex-row sm:items-center"
+                  >
+                    <div className="flex min-w-0 items-center gap-4">
+                      {item.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={item.image}
+                          alt=""
+                          className="h-12 w-12 shrink-0 rounded-full object-cover border border-zinc-200"
+                        />
+                      ) : (
+                        <div className="h-12 w-12 shrink-0 rounded-full bg-zinc-200 flex items-center justify-center font-bold text-zinc-500 text-sm">
+                          {item.name.slice(0, 2).toUpperCase()}
+                        </div>
+                      )}
+                      <div>
+                        <p className="text-xs font-bold tracking-wider text-[#F29100]">
+                          URUTAN {item.sort_order}
+                        </p>
+                        <p className="mt-1 font-semibold">{item.name}</p>
+                        <p className="mt-1 text-xs text-zinc-500">
+                          {item.role}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex shrink-0 flex-wrap items-center gap-2 sm:justify-end">
+                      <button
+                        type="button"
+                        onClick={() => editTeamMember(item)}
+                        className="rounded-md border border-zinc-300 bg-white px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-[#F29100] hover:bg-orange-50 hover:text-[#8A5100]"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => deleteTeamMember(item.id)}
+                        disabled={deletingTeamId === item.id}
+                        className="rounded-md border border-zinc-300 px-4 py-2 text-xs font-semibold text-zinc-700 transition-colors hover:border-red-300 hover:bg-red-50 hover:text-red-600 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        {deletingTeamId === item.id ? "Menghapus…" : "Hapus"}
                       </button>
                     </div>
                   </li>

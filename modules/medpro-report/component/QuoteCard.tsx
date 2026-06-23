@@ -8,6 +8,7 @@ type QuoteCardProps = {
   speakerName: string;
   speakerRole: string;
   reverse?: boolean;
+  imageAlt?: string;
 };
 
 export default function QuoteCard({
@@ -16,6 +17,7 @@ export default function QuoteCard({
   speakerName,
   speakerRole,
   reverse = false,
+  imageAlt,
 }: QuoteCardProps) {
   return (
     <section className="my-8 w-full overflow-hidden rounded-2xl bg-white text-zinc-900 shadow-md border border-zinc-200 font-sans transition-all duration-300 hover:shadow-lg">
@@ -25,7 +27,7 @@ export default function QuoteCard({
         <div className="sm:w-[30%] shrink-0 relative min-h-[220px] sm:min-h-auto bg-zinc-100">
           <Image
             src={imageSrc}
-            alt={`Foto ${speakerName}`}
+            alt={imageAlt || `Foto ${speakerName}`}
             fill
             sizes="(min-width: 640px) 25vw, 100vw"
             className="object-cover object-center"

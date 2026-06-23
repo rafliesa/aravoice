@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type YearData = {
   year: number;
@@ -28,6 +28,15 @@ const disabilityData: YearData[] = [
 export default function BandungDemographicsChart() {
   const [activeTab, setActiveTab] = useState<"population" | "disability">("population");
   const [selectedYear, setSelectedYear] = useState<number>(2025);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 750);
+    return () => clearTimeout(timer);
+  }, [activeTab]);
 
   const currentDataset = activeTab === "population" ? populationData : disabilityData;
   const selectedPoint = currentDataset.find((d) => d.year === selectedYear) || currentDataset[currentDataset.length - 1];
@@ -95,38 +104,51 @@ export default function BandungDemographicsChart() {
         </div>
 
         {/* Bar Matrix */}
-        <div className="grid grid-cols-5 gap-3 h-48 items-end border-b border-zinc-200 pb-3">
-          {currentDataset.map((d) => {
-            const isSelected = d.year === selectedYear;
-            
-            // Calculate height percentage relative to min/max scale
-            const percentHeight = ((d.value - minValue) / (maxValue - minValue)) * 80 + 20;
-
-            return (
-              <div
-                key={d.year}
-                onClick={() => setSelectedYear(d.year)}
-                className="group flex flex-col items-center cursor-pointer h-full justify-end"
-              >
-                {/* Visual Bar */}
-                <div
-                  className={`w-full rounded-t-lg transition-all duration-300 ${
-                    isSelected
-                      ? "bg-secondary-500 shadow-md scale-x-105"
-                      : "bg-[#082b4d] hover:bg-opacity-80"
-                  }`}
-                  style={{ height: `${percentHeight}%` }}
-                />
-                
-                {/* Year Label */}
-                <span className={`text-[10px] font-bold mt-2 transition-colors ${
-                  isSelected ? "text-secondary-700" : "text-zinc-400"
-                }`}>
-                  {d.year}
+        <div className="relative h-48 border-b border-zinc-200 pb-3">
+          {isLoading && (
+            <div className="absolute inset-0 flex flex-col justify-center items-center bg-white/70 backdrop-blur-[1px] z-10 rounded-xl transition-all duration-300">
+              <div className="flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full border-2 border-secondary-500 border-t-transparent animate-spin" />
+                <span className="text-xs font-bold text-zinc-500 tracking-wide animate-pulse">
+                  Memuat data...
                 </span>
               </div>
-            );
-          })}
+            </div>
+          )}
+
+          <div className="grid grid-cols-5 gap-3 h-full items-end">
+            {currentDataset.map((d) => {
+              const isSelected = d.year === selectedYear;
+              
+              // Calculate height percentage relative to min/max scale
+              const percentHeight = ((d.value - minValue) / (maxValue - minValue)) * 80 + 20;
+
+              return (
+                <div
+                  key={d.year}
+                  onClick={() => !isLoading && setSelectedYear(d.year)}
+                  className="group flex flex-col items-center cursor-pointer h-full justify-end"
+                >
+                  {/* Visual Bar */}
+                  <div
+                    className={`w-full rounded-t-lg transition-all duration-500 ease-out ${
+                      isSelected
+                        ? "bg-secondary-500 shadow-md scale-x-105"
+                        : "bg-[#082b4d] hover:bg-opacity-80"
+                    }`}
+                    style={{ height: isLoading ? "0%" : `${percentHeight}%` }}
+                  />
+                  
+                  {/* Year Label */}
+                  <span className={`text-[10px] font-bold mt-2 transition-colors ${
+                    isSelected ? "text-secondary-700" : "text-zinc-400"
+                  }`}>
+                    {d.year}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Selected Data Card */}

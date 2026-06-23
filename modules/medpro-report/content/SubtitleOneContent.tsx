@@ -15,6 +15,7 @@ import VoiceNoteCard from "@/modules/medpro-report/component/VoiceNoteCard";
 import Image from "next/image";
 import { konoStoryImages } from "@/modules/medpro-report/data/konoStoryImages";
 import QuoteCard from "@/modules/medpro-report/component/QuoteCard";
+import ZoomableWrapper from "@/modules/medpro-report/component/ZoomableWrapper";
 
 
 const blindJudoTransportImages = [
@@ -39,6 +40,21 @@ export default function SubtitleOneContent() {
       <h2 className={articleHeadingClass} key="heading-kondisi-nyata">
         {"KONDISI NYATA"}
       </h2>
+      <div className="my-8 mx-auto max-w-2xl">
+        <figure>
+          <div className="relative aspect-[3/2] w-full overflow-hidden rounded-xl bg-zinc-100 shadow-md">
+            <Image 
+              src="/pak-ono/DIO_4957.webp" 
+              alt="Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, beristirahat di rumahnya di Kota Bandung, Jawa Barat, pada 19 Juni, 2026." 
+              fill 
+              className="object-cover" 
+            />
+          </div>
+          <figcaption className="mt-3 font-sans text-xs text-zinc-500 leading-normal text-center">
+            Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, beristirahat di rumahnya di Kota Bandung, Jawa Barat, pada 19 Juni, 2026.
+          </figcaption>
+        </figure>
+      </div>
       <p className={articleParagraphClass}>
         {"Ketika pertama kali memutuskan menekuni olahraga angkat berat disabilitas, dukungan tidak langsung datang. Orang-orang terdekat justru menyambut pilihannya dengan kekhawatiran. Bagi penyandang tunadaksa, risiko cedera sering dipandang lebih besar, sementara akses terhadap layanan pemulihan dan perlindungan karier atlet tidak selalu tersedia."}
       </p>
@@ -46,50 +62,67 @@ export default function SubtitleOneContent() {
         {"\"Orang tua sempat bilang, 'Kamu kan tunadaksa, jalan saja susah. Nanti kalau cedera bagaimana?'’ Kenang Ono."}
       </p>
       <p className={articleParagraphClass}>
-        {"Terjun ke dalam cabang olahraga angkat berat disabilitas di tahun 2018 bukanlah keputusan yang mudah. Salah satu pencapaian yang paling diingatnya datang pada Peparnas 2022 di Kabupaten Bekasi. Medali perunggu yang ia raih saat itu menghasilkan bonus sebesar Rp25 juta, cukup untuk menghidupi beberapa bulan kehidupannya. Sayangnya, bonus hanyalah titik puncak, bukan pondasi."}
+        {"Namun, hal ini tidak menghilangkan tekad Ono untuk terjun ke dalam cabang olahraga angkat berat disabilitas pada tahun 2018. Salah satu pencapaian yang paling diingatnya datang pada Peparnas 2022 di Kabupaten Bekasi. Medali perunggu yang ia raih saat itu menghasilkan bonus sebesar Rp25 juta, cukup untuk menghidupi beberapa bulan kehidupannya. Sayangnya, bonus hanyalah titik puncak, bukan fondasi."}
       </p>
       <p className={articleParagraphClass}>
-        {"Biaya transportasi dan kebutuhan gizi yang harus dijaga agar kondisi tubuh tetap prima terus mengiringi setiap sesi latihan. Sementara itu, kebutuhan hidup sehari-hari tidak bisa menunggu uang pembinaan cair."}
+        {"Kebutuhan primer seperti biaya transportasi dan kebutuhan gizi harus dijaga agar kondisi tubuh tetap prima terus mengiringi setiap sesi latihan, sedangkan para atlet hingga hari ini belum menerima sepeserpun uang pembinaan."}
       </p>
-      {/* Centered highlighted quote */}
+      {/* Centered highlighted quote 1 */}
       <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          “Ya namanya hidup harus jalan,”
+        <p className="font-sans text-[1.1rem] sm:text-[1.15rem] font-semibold leading-relaxed text-secondary-800 italic">
+          “Ya kita mah latihan terus. Mau ada uang atau enggak, latihan harus jalan,”
         </p>
         <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Ono Saipudin, Atlet Angkat Berat
+          — Ono, Atlet Angkat Beban
         </span>
       </div>
       <p className={articleParagraphClass}>
         {"Baginya, latihan bukan sekadar rutinitas olahraga. Ia mencari cara untuk mempertahankan peluang bertanding dan harapan meraih prestasi. Sebab ketika latihan terhenti, kesempatan tampil di kompetisi, memperoleh bonus, dan mendapatkan insentif juga semakin jauh."}
       </p>
       <p className={articleParagraphClass}>
-        {"Bukan karena tidak pernah dijanjikan, Surat Keputusan (SK) baru turun pada pertengahan Juni. Artinya, selama enam bulan pertama 2026, Ono dan atlet lainnya harus menanggung sendiri biaya untuk mempertahankan performa menjelang Peparda. Ongkos perjalanan dari rumah ke tempat latihan menghabiskan sekitar Rp700.000 hingga Rp800.000 setiap bulan. Di luar itu, ada kebutuhan nutrisi, suplemen, serta berbagai pengeluaran tak terduga yang datang seiring rutinitas latihan yang terus berjalan."}
+        {"Bukan karena tidak pernah dijanjikan, Surat Keputusan (SK) baru turun pada pertengahan Juni. Artinya, selama enam bulan pertama 2026, Ono and atlet lainnya harus menanggung sendiri biaya untuk mempertahankan performa menjelang Peparda Jawa Barat. Ongkos perjalanan dari rumah ke tempat latihan menghabiskan sekitar Rp700.000 hingga Rp800.000 setiap bulan. Di luar itu, ada kebutuhan nutrisi, suplemen, serta berbagai pengeluaran tak terduga yang datang seiring rutinitas latihan terus berjalan."}
       </p>
       
       <div className="my-10 mx-auto max-w-2xl">
         <figure>
           <div className="relative aspect-[3/2] w-full overflow-hidden rounded-xl bg-zinc-100 shadow-md">
-            <Image src="/1/1.jpg" alt="Latihan Atlet Disabilitas NPCI" fill className="object-cover" />
+            <Image 
+              src="/1/1.jpg" 
+              alt="Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, merawat tanaman hidroponik di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026." 
+              fill 
+              className="object-cover" 
+            />
           </div>
+          <figcaption className="mt-3 font-sans text-xs text-zinc-500 leading-normal text-center">
+            Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, merawat tanaman hidroponik di Kompleks Dinas Sosial Jawa Barat, Kota Cimahi, Kota Bandung, Jawa Barat pada 20 Juli 2026.
+          </figcaption>
         </figure>
       </div>
       
       <p className={articleParagraphClass}>
-        {"Selain mengangkat beban di arena latihan, Ono juga mengangkat beban kehidupan. Biaya rumah tangga, kebutuhan keluarga, dan pengeluaran rutin tetap harus dipenuhi. Ia juga bertani hidroponik di Cibabat sekaligus membuka praktik pengobatan alternatif sebagai sumber penghasilan tambahan. Bagi Ono, pekerjaan-pekerjaan tersebut bukan sekadar aktivitas sampingan, melainkan cara bertahan hidup di tengah ketidakpastian penghasilan sebagai atlet."}
+        {"Selain mengangkat beban di arena latihan, Ono juga mengangkat beban kehidupan. Biaya rumah tangga, kebutuhan keluarga, dan pengeluaran rutin tetap harus terpenuhi. Ia juga bertani hidroponik di Cibabat sekaligus membuka praktik pengobatan alternatif sebagai sumber penghasilan tambahan. Bagi Ono, pekerjaan-pekerjaan tersebut bukan sekadar aktivitas sampingan, melainkan cara bertahan hidup di tengah ketidakpastian penghasilan sebagai atlet."}
       </p>
       <p className={articleParagraphClass}>
-        {"“Dari usaha itu. Tapi usaha kan kadang naik turun. Nah itu yang sering jadi tekanan,” ujarnya."}
+        {"“(Penghasilan) dari usaha itu. Tapi usaha kan kadang naik turun. Nah itu yang sering jadi tekanan,” ujarnya."}
       </p>
       <p className={articleParagraphClass}>
         {"Di tengah tuntutan menjaga performa dan meraih prestasi, mereka masih harus membagi tenaga dan waktu untuk mencari nafkah. Sebab setelah sesi latihan berakhir, perjuangan berikutnya dimulai untuk memastikan dapurnya tetap mengepul."}
       </p>
       <p className={articleParagraphClass}>
-        {"Tahun 2026 membuat tekanan tersebut semakin berat. Selain menghadapi ketidakpastian uang pembinaan, Ono juga kehilangan salah satu sumber penghasilannya. Sebelumnya, ia bekerja sebagai instruktur pertanian di lingkungan Dinas Sosial Jawa Barat. Pekerjaan itu menjadi penopang penting di luar aktivitasnya sebagai atlet. Namun, kebijakan efisiensi anggaran membuat posisinya ikut terdampak."}
+        {"Tahun 2026 membuat tekanan tersebut semakin berat. Selain menghadapi ketidakpastian uang pembinaan, Ono juga kehilangan salah satu sumber penghasilannya. Sebelumnya, ia bekerja sebagai instruktur pertanian di Griya Harapan Difabel Dinas Sosial Jawa Barat. Pekerjaan itu menjadi penopang penting di luar aktivitasnya sebagai atlet. Namun, kebijakan efisiensi anggaran membuat posisinya ikut terdampak."}
       </p>
       <p className={articleParagraphClass}>
         {"“Jadi saya juga termasuk korban efisiensi,” ucapnya datar."}
       </p>
+      {/* Centered highlighted quote 2 */}
+      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
+        <p className="font-sans text-[1.1rem] sm:text-[1.15rem] font-semibold leading-relaxed text-secondary-800 italic">
+          “Jadi saya juga termasuk korban efisiensi,”
+        </p>
+        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
+          — Ono, Atlet Angkat Beban
+        </span>
+      </div>
       <p className={articleParagraphClass}>
         {"Data NPCI Jawa Barat menunjukkan fenomena tersebut bukanlah kasus yang berdiri sendiri. Dari sekitar 2.500 atlet disabilitas aktif di Jawa Barat, sebagian besar harus mencari sumber penghidupan di luar arena olahraga. Namun, pekerjaan yang mereka geluti umumnya berada di sektor informal dengan tingkat pendapatan yang tidak menentu. Seperti halnya membuka usaha kecil-kecilan, menjadi buruh harian, pekerja lepas, terapis pijat, hingga pekerjaan serabutan yang bergantung pada ada atau tidaknya pelanggan."}
       </p>
@@ -102,9 +135,15 @@ export default function SubtitleOneContent() {
       </p>
 
       {/* Infografis Tabel Pasal 53 */}
-      <div className="my-10">
-        <Pasal53Infographic />
+      <div className="my-10 mx-auto max-w-sm">
+        <ZoomableWrapper title="Pasal 53: Kewajiban Kuota Pekerja Disabilitas">
+          <Pasal53Infographic />
+        </ZoomableWrapper>
       </div>
+
+      <p className={articleParagraphClass}>
+        {"Yadi Sopian, Ketua NPCI Kota Bandung menjelaskan terkait realita yang dihadapi atlet disabilitas."}
+      </p>
 
       {/* Premium Quote Card for Yadi Sopian */}
       <QuoteCard
@@ -112,6 +151,7 @@ export default function SubtitleOneContent() {
         imageSrc="/1/2.jpg"
         speakerName="Yadi Sopian"
         speakerRole="Ketua NPCI Kota Bandung"
+        imageAlt="Yadi Sopian, Ketua NPCI Kota Bandung"
         reverse={false}
       />
 
@@ -145,26 +185,42 @@ export default function SubtitleOneContent() {
       </div>
 
       <p className={articleParagraphClass}>
-        {"Hambatan ekonomi telah memengaruhi proses pembinaan sejak tahap paling dasar, kehadiran atlet di tempat latihan. Bagi sebagian atlet disabilitas, tantangan terbesar bukan meningkatkan performa, melainkan memastikan mereka memiliki ongkos untuk datang berlatih."}
+        {"Hambatan ekonomi telah memengaruhi proses pembinaan sejak tahap paling dasar, yakni kehadiran atlet di tempat latihan. Bagi sebagian atlet disabilitas, tantangan terbesar bukan meningkatkan performa, melainkan memastikan mereka memiliki ongkos untuk datang berlatih."}
       </p>
       <p className={articleParagraphClass}>
-        {"Salah satu yang membekas bagi Wirya adalah Opik, atlet blind judo dengan kategori low vision. Hampir setiap kali latihan, Opik datang dengan mengendarai sepeda motor, membonceng istrinya, Petri—yang juga seorang atlet blind judo—dari rumah menuju lokasi latihan. Padahal, penglihatannya terbatas, jarak yang ditempuh tidak dekat, dan tidak ada fasilitas transportasi khusus yang membantunya mencapai venue."}
+        {"Salah satu yang membekas bagi Wirya adalah Opik Jaya, atlet blind judo dengan kategori low vision. Hampir setiap kali latihan, Opik datang dengan mengendarai sepeda motor, membonceng istrinya, Petri—yang juga seorang atlet blind judo—dari rumah menuju lokasi latihan. Padahal, penglihatannya terbatas, jarak yang ditempuh tidak dekat, dan tidak ada fasilitas transportasi khusus yang membantunya mencapai venue."}
       </p>
       <p className={articleParagraphClass}>
-        {"“Tidak punya ongkos. Mereka harus mencari nafkah sendiri. Contohnya Opik tadi. Dengan kondisi low vision, dia tetap datang latihan sendiri, bahkan mengendarai motor sendiri. Padahal jaraknya cukup jauh. Itu pengorbanan yang luar biasa,” ujar Wirya."}
+        {"“Tidak punya ongkos. Mereka harus mencari nafkah sendiri, contohnya Opik tadi. Dengan kondisi low vision, dia tetap datang latihan sendiri, bahkan mengendarai motor sendiri. Padahal jaraknya cukup jauh. Itu pengorbanan yang luar biasa,” ujar Wirya."}
       </p>
 
       {/* Grid Foto Blind Judo dan Transportasi */}
       <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-4">
         <figure>
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-100 shadow-md">
-            <Image src="/1/blindjudo.jpg" alt="Blind Judo" fill className="object-cover" />
+            <Image 
+              src="/1/blindjudo.jpg" 
+              alt="Atlet blind judo National Paralympic Committee of Indonesia (NPCI) Kota Bandung, berlatih untuk persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 18 Mei 2026." 
+              fill 
+              className="object-cover" 
+            />
           </div>
+          <figcaption className="mt-3 font-sans text-xs text-zinc-500 leading-normal">
+            Atlet blind judo National Paralympic Committee of Indonesia (NPCI) Kota Bandung, berlatih untuk persiapan Peparda di GOR Pajajaran, Kota Bandung, Jawa Barat pada 18 Mei 2026.
+          </figcaption>
         </figure>
         <figure>
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-100 shadow-md">
-            <Image src="/1/transportasi.jpg" alt="Transportasi" fill className="object-cover" />
+            <Image 
+              src="/1/transportasi.jpg" 
+              alt="Sepeda motor milik para atlet dari National Paralympic Committee of Indonesia (NPCI) Kota Bandung, terparkir di area GOR Pajajaran, Kota Bandung, Jawa Barat, pada 18 Mei 2026." 
+              fill 
+              className="object-cover" 
+            />
           </div>
+          <figcaption className="mt-3 font-sans text-xs text-zinc-500 leading-normal">
+            Sepeda motor milik para atlet dari National Paralympic Committee of Indonesia (NPCI) Kota Bandung, terparkir di area GOR Pajajaran, Kota Bandung, Jawa Barat, pada 18 Mei 2026.
+          </figcaption>
         </figure>
       </div>
 
@@ -179,8 +235,10 @@ export default function SubtitleOneContent() {
       </p>
 
       {/* Infografis Kebutuhan Atlet */}
-      <div className="my-10">
-        <AthleteNeedsInfographic />
+      <div className="my-10 mx-auto max-w-sm">
+        <ZoomableWrapper title="Kebutuhan vs Realita Atlet Disabilitas">
+          <AthleteNeedsInfographic />
+        </ZoomableWrapper>
       </div>
 
       <h2 className={articleHeadingClass}>
@@ -201,16 +259,16 @@ export default function SubtitleOneContent() {
       />
 
       <p className={articleParagraphClass}>
-        {"Kekhawatiran itu yang mendorong Aditya Nandang Saputra, pengurus pemberdayaan atlet NPCI Kabupaten Bandung, mengembangkan pembinaan di luar aspek olahraga."}
+        {"Kekhawatiran itu yang mendorong Aditya Nandang Saputra mengembangkan pembinaan di luar aspek olahraga."}
       </p>
       <p className={articleParagraphClass}>
-        {"Ia menjelaskan bahwa pembinaan tidak hanya berfokus pada pendidikan formal and olahraga, tetapi juga pengembangan kapasitas diri. Peserta memperoleh pembelajaran literasi keuangan, seperti pengenalan saham, deposito, dan reksa dana, yang disampaikan secara bertahap. Selain itu, kegiatan mengaji dilaksanakan setiap hari, sementara peserta didik penyandang tunagrahita tetap mengikuti pendidikan formal melalui guru SLB yang datang ke lembaga. Setiap Jumat, pembinaan diisi dengan kelas pengembangan diri yang mencakup kepemimpinan, pemahaman dinamika politik, dan keterampilan hidup. Menurutnya, program tersebut dirancang sebagai bekal agar peserta mampu hidup lebih mandiri setelah tidak lagi bergantung pada dunia olahraga."}
+        {"Ia menjelaskan bahwa pembinaan tidak hanya berfokus pada pendidikan formal dan olahraga, tetapi juga pengembangan kapasitas diri. Peserta memperoleh pembelajaran literasi keuangan, seperti pengenalan saham, deposito, dan reksa dana, yang disampaikan secara bertahap. Selain itu, kegiatan mengaji dilaksanakan setiap hari, sementara peserta didik penyandang tunagrahita tetap mengikuti pendidikan formal melalui guru Sekolah Luar Biasa (SLB) yang datang ke lembaga. Setiap Jumat, pembinaan diisi dengan kelas pengembangan diri yang mencakup kepemimpinan, pemahaman dinamika politik, dan keterampilan hidup. Menurutnya, program tersebut dirancang sebagai bekal agar peserta mampu hidup lebih mandiri setelah tidak lagi bergantung pada dunia olahraga."}
       </p>
       <p className={articleParagraphClass}>
-        {"“Kita selamanya tidak bisa menjadi atlet, tapi bagaimana caranya uang yang bekerja untuk menjadi atlet tersebut, apalagi atlet tersebut adalah orang yang disabilitas,” ujar Aditya sembari menghela napas."}
+        {"“Kita selamanya tidak bisa menjadi atlet, tapi bagaimana caranya uang yang bekerja untuk menjadi atlet tersebut,” ujar Aditya sembari menghela napas."}
       </p>
       <p className={articleParagraphClass}>
-        {"Terdapat salah satu dari sedikit yang berhasil keluar dari lingkaran itu. Di sudut lapangan tenis UPI Bandung, ada seorang pria 59 tahun bernama Aden Achmad Muhammad Rahman. Ia pernah menjadi atlet tenis dan meraih tiga medali perunggu di tingkat Jawa Barat. Di usianya sekarang, tubuhnya tidak lagi mampu menanggung intensitas latihan seperti dulu. Pembengkakan jantung yang dipicu riwayat tekanan darah tinggi membuatnya harus membatasi aktivitas fisik."}
+        {"Terdapat salah satu dari sedikit yang berhasil keluar dari lingkaran itu. Contohnya, Aden Achmad Muhammad Rahman. Ia merupakan seorang atlet tenis kursi roda dan pernah meraih tiga medali perunggu di tingkat Jawa Barat. Di usianya sekarang, tubuhnya tidak lagi mampu menanggung intensitas latihan seperti dulu. Pembengkakan jantung yang dipicu riwayat tekanan darah tinggi membuatnya harus membatasi aktivitas fisik."}
       </p>
 
       {/* Premium Quote Card for Aden Achmad */}
@@ -218,7 +276,8 @@ export default function SubtitleOneContent() {
         quote="Saya menjadi bagian dari Perkumpulan Penyandang Disabilitas Indonesia Provinsi Jawa Barat di bidang hukum. Saya juga aktif di Bandung Independent Living Center sebagai program manager. Hampir 90 persen kehidupan saya ada di dunia aktivisme. Sisanya bisnis dan usaha"
         imageSrc="/1/Para Atlet Aden ahmad.jpeg"
         speakerName="Aden Achmad Muhammad Rahman"
-        speakerRole="Atlet Tenis Disabilitas & Program Manager Bandung Independent Living Center"
+        speakerRole="Aden Achmad Muhammad Rahman, atlet tennis disabilitas"
+        imageAlt="Aden Achmad Muhammad Rahman, atlet tennis disabilitas"
         reverse={true}
       />
 
@@ -231,18 +290,28 @@ export default function SubtitleOneContent() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <figure>
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-100 shadow-md">
-              <Image src="/1/kursi-roda-atlet.jpg" alt="Kursi Roda Atletik" fill className="object-cover" />
+              <Image 
+                src="/1/kursi-roda-atlet.jpg" 
+                alt="Kursi roda atletik yang memiliki camber (roda miring) untuk memberikan keseimbangan, posisi duduk aerodinamis meminimalisir hambatan angin." 
+                fill 
+                className="object-cover" 
+              />
             </div>
-            <figcaption className="mt-3 font-sans text-sm text-zinc-600">
-              <strong className="text-zinc-800 font-bold">Gambar kiri:</strong> kursi roda atletik yang memiliki camber (roda miring) untuk memberikan keseimbangan, posisi duduk aerodinamis meminimalisir hambatan angin.
+            <figcaption className="mt-3 font-sans text-xs text-zinc-500 leading-normal">
+              Kursi roda atletik yang memiliki camber (roda miring) untuk memberikan keseimbangan, posisi duduk aerodinamis meminimalisir hambatan angin.
             </figcaption>
           </figure>
           <figure>
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-100 shadow-md">
-              <Image src="/1/kursi-roda-disabilitas.jpg" alt="Kursi Roda Biasa" fill className="object-cover" />
+              <Image 
+                src="/1/kursi-roda-disabilitas.jpg" 
+                alt="kursi roda disabilitas biasa menggunakan roda tangan, roda tidak dibuat miring dan memiliki sandaran tangan serta pijakan kaki." 
+                fill 
+                className="object-cover" 
+              />
             </div>
-            <figcaption className="mt-3 font-sans text-sm text-zinc-600">
-              <strong className="text-zinc-800 font-bold">Gambar kanan:</strong> kursi roda disabilitas biasa menggunakan roda tangan, roda tidak dibuat miring dan memiliki sandaran tangan serta pijakan kaki.
+            <figcaption className="mt-3 font-sans text-xs text-zinc-500 leading-normal">
+              kursi roda disabilitas biasa menggunakan roda tangan, roda tidak dibuat miring dan memiliki sandaran tangan serta pijakan kaki.
             </figcaption>
           </figure>
         </div>

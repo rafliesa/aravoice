@@ -43,3 +43,17 @@ model MerchProduct {
   @@index([isActive, sortOrder], map: "idx_merch_products_active_sort")
   @@map("merch_products")
 }
+
+model EditorialMember {
+  id        Int      @id @default(autoincrement())
+  name      String
+  role      String
+  image     String   @default("")
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@index([sortOrder], map: "idx_editorial_members_sort")
+  @@map("editorial_members")
+}
+
