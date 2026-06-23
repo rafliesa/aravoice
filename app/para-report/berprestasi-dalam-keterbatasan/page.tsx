@@ -106,7 +106,7 @@ export default function MedproArticlePage() {
         <FotoStory
           images={konoStoryImages}
           title="Melihat Podium dari Sepetak Kebun"
-          bottomText="Kono Saipudin dalam rangkaian sesi latihan angkat berat di Gedung NPCI Kota Bandung."
+          bottomText="Ono Saipudin dalam rangkaian sesi latihan angkat berat di Gedung NPCI Kota Bandung."
         />
       </div>
     </MedproReportPage>

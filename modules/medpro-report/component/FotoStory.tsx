@@ -68,15 +68,6 @@ function StoryCard({
                 sizes="(min-width: 768px) 50vw, 100vw"
                 src={image.src}
               />
-              <div className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 backdrop-blur-sm">
-                <span className="font-mono text-xs font-bold text-white">
-                  {String(index + 1).padStart(2, "0")}a
-                </span>
-                <span className="text-white/40 text-xs">/</span>
-                <span className="font-mono text-xs text-white/60">
-                  {String(total).padStart(2, "0")}
-                </span>
-              </div>
             </div>
             {/* Left Image Visible Alt Caption */}
             <p className="font-sans text-xs sm:text-sm text-zinc-400 font-light leading-relaxed px-1">
@@ -94,15 +85,6 @@ function StoryCard({
                 sizes="(min-width: 768px) 50vw, 100vw"
                 src={image.secondSrc}
               />
-              <div className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 backdrop-blur-sm">
-                <span className="font-mono text-xs font-bold text-white">
-                  {String(index + 1).padStart(2, "0")}b
-                </span>
-                <span className="text-white/40 text-xs">/</span>
-                <span className="font-mono text-xs text-white/60">
-                  {String(total).padStart(2, "0")}
-                </span>
-              </div>
             </div>
             {/* Right Image Visible Alt Caption */}
             <p className="font-sans text-xs sm:text-sm text-zinc-400 font-light leading-relaxed px-1">
@@ -148,15 +130,6 @@ function StoryCard({
           src={image.src}
         />
         {/* Slide number badge */}
-        <div className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 backdrop-blur-sm">
-          <span className="font-mono text-xs font-bold text-white">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <span className="text-white/40 text-xs">/</span>
-          <span className="font-mono text-xs text-white/60">
-            {String(total).padStart(2, "0")}
-          </span>
-        </div>
       </div>
 
       {/* Visible Alt Text Caption */}
@@ -188,7 +161,7 @@ export default function FotoStory({ images, title, bottomText }: FotoStoryProps)
     <div className="mb-10 w-full">
       {/* Header */}
       <div className="mb-8 flex flex-col gap-1">
-        <div className="flex items-center gap-3">
+        <div className="flex iRtems-center gap-3">
           <span className="h-px w-8 bg-secondary-700 block" />
           <span className="text-secondary-700 text-[11px] font-extrabold uppercase tracking-[0.2em]">
             Photo Story
