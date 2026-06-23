@@ -135,10 +135,8 @@ export default function SubtitleOneContent() {
       </p>
 
       {/* Infografis Tabel Pasal 53 */}
-      <div className="my-10 mx-auto max-w-sm">
-        <ZoomableWrapper title="Pasal 53: Kewajiban Kuota Pekerja Disabilitas">
-          <Pasal53Infographic />
-        </ZoomableWrapper>
+      <div className="my-10 mx-auto max-w-2xl">
+        <Pasal53Infographic />
       </div>
 
       <p className={articleParagraphClass}>
@@ -235,10 +233,8 @@ export default function SubtitleOneContent() {
       </p>
 
       {/* Infografis Kebutuhan Atlet */}
-      <div className="my-10 mx-auto max-w-sm">
-        <ZoomableWrapper title="Kebutuhan vs Realita Atlet Disabilitas">
-          <AthleteNeedsInfographic />
-        </ZoomableWrapper>
+      <div className="my-10 mx-auto max-w-2xl">
+        <AthleteNeedsInfographic />
       </div>
 
       <h2 className={articleHeadingClass}>
