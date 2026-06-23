@@ -2,14 +2,19 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
 export default async function AboutTeam() {
-  const dbMembers = prisma.editorialMember
-    ? await prisma.editorialMember.findMany({
+  let dbMembers: any[] = [];
+  try {
+    if (prisma.editorialMember) {
+      dbMembers = await prisma.editorialMember.findMany({
         orderBy: [
           { sortOrder: "asc" },
           { id: "asc" },
         ],
-      })
-    : [];
+      });
+    }
+  } catch (error) {
+    console.error("Failed to query editorialMember from database:", error);
+  }
 
   // Fallback to mock data if database is empty
   const team = dbMembers.length > 0 
