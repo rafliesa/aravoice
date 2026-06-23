@@ -311,16 +311,27 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphHerlindaTot}
       </p>
 
-      {/* Herlinda Savitri Video Note */}
-      <div className="my-8 flex justify-center" key="herlinda-video-container">
-        <VideoNoteCard
-          videoSrc="/uploads/pak toto perasaan ibu.mov"
-          title="VN VIDEO HERLINDA"
-          description={textContent.herlindaVnText}
-          speakerName="Herlinda Savitri"
-          speakerRole="Pelatih Bowling Disabilitas Jawa Barat"
-          imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
-        />
+      {/* Herlinda Savitri Video — YouTube Embed */}
+      <div className="my-8 mx-auto max-w-2xl overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm" key="herlinda-video-container">
+        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+          <iframe
+            className="absolute inset-0 h-full w-full"
+            src="https://www.youtube.com/embed/PW6s0rqRn50"
+            title="VN Video Herlinda Savitri"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+        <div className="px-5 py-4">
+          <p className="text-xs font-extrabold uppercase tracking-widest text-zinc-400 mb-1">
+            Video Wawancara
+          </p>
+          <p className="text-sm font-bold text-[#082b4d]">Herlinda Savitri</p>
+          <p className="text-xs text-zinc-500">Pelatih Bowling Disabilitas Jawa Barat</p>
+          <p className="mt-3 text-xs italic text-zinc-500 leading-relaxed">
+            {textContent.herlindaVnText}
+          </p>
+        </div>
       </div>
 
       <p className={articleParagraphClass} key="paragraph-stigma-explain">
