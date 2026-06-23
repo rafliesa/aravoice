@@ -285,15 +285,9 @@ export default function SubtitleFiveContent() {
         {textContent.paragraphCollegeBarrier}
       </p>
 
-      {/* Djumono F Story Quote */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-djumono-f">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteDjumonoF}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          cerita Djumono.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-djumono-f">
+        {textContent.quoteDjumonoF} cerita Djumono.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-13">
         {textContent.paragraphLindaFComparison}
@@ -363,29 +357,17 @@ export default function SubtitleFiveContent() {
         {textContent.paragraphCoachBambangIntro}
       </p>
 
-      {/* Bambang Basuki Quote 1 */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-bambang-1">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteBambang1}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ungkap Bambang.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-bambang-1">
+        {textContent.quoteBambang1} ungkap Bambang.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-29">
         {textContent.paragraphCoachBambangAnalysis}
       </p>
 
-      {/* Bambang Basuki Quote 2 */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-bambang-2">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteBambang2}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          lanjut Bambang.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-bambang-2">
+        {textContent.quoteBambang2} lanjut Bambang.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-32">
         {textContent.paragraphWelfarePrestasiASN}
@@ -395,15 +377,9 @@ export default function SubtitleFiveContent() {
         {textContent.paragraphJonnaVocationalExplain}
       </p>
 
-      {/* Jonna Vocational Quote */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-jonna-vokasional">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteJonnaVocational}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ujar Jonna
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-jonna-vokasional">
+        {textContent.quoteJonnaVocational} ujar Jonna.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-37">
         {textContent.paragraphDandanASN}
@@ -415,15 +391,9 @@ export default function SubtitleFiveContent() {
 
 
 
-      {/* Dandan Quote 1 */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dandan-1">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteDandan1}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ungkap Dandan.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-dandan-1">
+        {textContent.quoteDandan1} ungkap Dandan.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-41">
         {textContent.paragraphDandanFamilyEconomy}

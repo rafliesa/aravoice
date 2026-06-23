@@ -54,10 +54,9 @@ export default function SummaryPage() {
         Di tingkat organisasi, National Paralympic Committee of Indonesia (NPCI) Kota Bandung menjadi rumah pembinaan bagi para atlet. Namun, organisasi ini belum sepenuhnya memiliki kemandirian finansial yang cukup untuk menopang kesejahteraan harian atlet ketika kebijakan anggaran berubah atau dana hibah dipotong.
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed text-[#0a3358] font-caslon text-lg italic">
-        “Kita mesti akui bahwa NPCI belum bisa sepenuhnya menjadi sandaran kesejahteraan atlet. Organisasi ini bergantung pada dana hibah pemerintah, dan ketika dana itu dipotong, seluruh ekosistem pembinaan ikut terdampak,”
-        <cite className="block text-xs font-sans not-italic text-zinc-500 mt-2 font-bold uppercase tracking-wider">— Djumono, Sekretaris Umum NPCI Kota Bandung</cite>
-      </blockquote>
+      <p className={`${articleParagraphClass} mb-6`}>
+        “Kita mesti akui bahwa NPCI belum bisa sepenuhnya menjadi sandaran kesejahteraan atlet. Organisasi ini bergantung pada dana hibah pemerintah, dan ketika dana itu dipotong, seluruh ekosistem pembinaan ikut terdampak,” — Djumono, Sekretaris Umum NPCI Kota Bandung
+      </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
         Kondisi itu memperlihatkan ruang kosong dalam sistem pembinaan atlet disabilitas. Berbagai upaya tetap dilakukan agar ekosistem olahraga disabilitas berjalan, mulai dari mempertahankan program latihan, mengusahakan bantuan transportasi, hingga mendorong pembinaan di luar arena seperti literasi keuangan, pengembangan keterampilan hidup, dan pemberdayaan atlet setelah karier olahraga berakhir.
@@ -67,10 +66,9 @@ export default function SummaryPage() {
         Namun, di sisi lain, pemerintah daerah menempatkan dirinya dalam posisi administratif sebagai pemberi dan pengawas dana. Acep Wahyu Ramdan, Sub Koordinator Olahraga Pendidikan Dispora Kota Bandung, menjelaskan bahwa Dispora tidak menangani langsung kesejahteraan atlet di lapangan.
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed text-[#0a3358] font-caslon text-lg italic">
-        “NPCI adalah mitra kami. Sama seperti KONI. Kami tidak mengurus teknis kesejahteraan atlet secara langsung. Kami memberikan dana hibah, lalu organisasi yang mengelola dan bertanggung jawab terhadap penggunaannya. Peran kami lebih kepada pendampingan, monitoring, dan evaluasi,”
-        <cite className="block text-xs font-sans not-italic text-zinc-500 mt-2 font-bold uppercase tracking-wider">— Acep Wahyu Ramdan, Sub Koordinator Olahraga Pendidikan Dispora Kota Bandung</cite>
-      </blockquote>
+      <p className={`${articleParagraphClass} mb-6`}>
+        “NPCI adalah mitra kami. Sama seperti KONI. Kami tidak mengurus teknis kesejahteraan atlet secara langsung. Kami memberikan dana hibah, lalu organisasi yang mengelola dan bertanggung jawab terhadap penggunaannya. Peran kami lebih kepada pendampingan, monitoring, dan evaluasi,” — Acep Wahyu Ramdan, Sub Koordinator Olahraga Pendidikan Dispora Kota Bandung
+      </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
         Ketika anggaran menyempit akibat efisiensi, ruang penyelesaian kembali diarahkan kepada organisasi. Acep menyebut NPCI dapat mencari sumber dukungan lain, seperti dana Corporate Social Responsibility (CSR) or sponsor, untuk menutupi kebutuhan yang belum dapat dipenuhi melalui anggaran pemerintah.
@@ -80,19 +78,17 @@ export default function SummaryPage() {
         Di tengah kewenangan yang saling berbatas itu, persoalan atlet disabilitas menjadi lebih rumit. Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas, melihat bahwa persoalan utama bukan terletak pada ketiadaan aturan, melainkan pada pelaksanaan kebijakan yang belum sepenuhnya menjawab kebutuhan penyandang disabilitas di lapangan.
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed text-[#0a3358] font-caslon text-lg italic">
-        “Kalau dari sisi regulasi sebenarnya sudah ada. Undang-undangnya juga sudah ada. Tetapi implementasinya secara keseluruhan masih belum memenuhi kebutuhan,”
-        <cite className="block text-xs font-sans not-italic text-zinc-500 mt-2 font-bold uppercase tracking-wider">— Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas</cite>
-      </blockquote>
+      <p className={`${articleParagraphClass} mb-6`}>
+        “Kalau dari sisi regulasi sebenarnya sudah ada. Undang-undangnya juga sudah ada. Tetapi implementasinya secara keseluruhan masih belum memenuhi kebutuhan,” — Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas
+      </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
         Jarak antara regulasi dan praktik itu semakin terasa ketika dibandingkan dengan ekosistem olahraga umum di bawah Komite Olahraga Nasional Indonesia (KONI). Wakil Ketua II KONI Kota Bandung, Mulyana, menyebut lembaganya memiliki struktur bidang yang dapat membantu atlet ketika cabang olahraga tidak mampu menyelesaikan persoalan sendiri, termasuk dalam kasus kecelakaan maupun advokasi hukum.
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed text-[#0a3358] font-caslon text-lg italic">
-        “Kalau misalnya cabang olahraga itu tidak bisa mengatasi, biasanya datang ke KONI. Contohnya ada kasus kecelakaan... Pernah ada kasus hukum juga kita berikan advokasi karena kita punya struktur dan ada tim berbentuk bidang,”
-        <cite className="block text-xs font-sans not-italic text-zinc-500 mt-2 font-bold uppercase tracking-wider">— Mulyana, Wakil Ketua II KONI Kota Bandung</cite>
-      </blockquote>
+      <p className={`${articleParagraphClass} mb-6`}>
+        “Kalau misalnya cabang olahraga itu tidak bisa mengatasi, biasanya datang ke KONI. Contohnya ada kasus kecelakaan... Pernah ada kasus hukum juga kita berikan advokasi karena kita punya struktur dan ada tim berbentuk bidang,” — Mulyana, Wakil Ketua II KONI Kota Bandung
+      </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
         Perbedaan dukungan kelembagaan itu menunjukkan bahwa persoalan atlet disabilitas tidak hanya berada di arena latihan. Ia juga berkaitan dengan desain organisasi, keberpihakan anggaran, dan kesiapan sistem dalam melindungi atlet ketika mereka menghadapi risiko di luar pertandingan.
@@ -110,10 +106,9 @@ export default function SummaryPage() {
         Sementara itu, Yadi Sopian, Ketua NPCI Kota Bandung menilai tantangan berikutnya terletak pada implementasi aturan yang sudah tersedia. Menurutnya, berbagai regulasi mengenai hak penyandang disabilitas sebenarnya telah ada, termasuk kewajiban membuka ruang kerja yang lebih inklusif.
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed text-[#0a3358] font-caslon text-lg italic">
-        “Saya berharap pemerintah dan pihak terkait benar-benar menjaga regulasi yang sudah dibuat. Kalau ada perusahaan yang tidak menjalankan aturan tersebut, seharusnya ada sanksi yang jelas.”
-        <cite className="block text-xs font-sans not-italic text-zinc-500 mt-2 font-bold uppercase tracking-wider">— Yadi Sopian, Ketua NPCI Kota Bandung</cite>
-      </blockquote>
+      <p className={`${articleParagraphClass} mb-6`}>
+        “Saya berharap pemerintah dan pihak terkait benar-benar menjaga regulasi yang sudah dibuat. Kalau ada perusahaan yang tidak menjalankan aturan tersebut, seharusnya ada sanksi yang jelas.” — Yadi Sopian, Ketua NPCI Kota Bandung
+      </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
         Pada akhirnya, kebijakan yang bergerak di tingkat atas bermuara pada ruang latihan. Di cabang blind judo Kota Bandung, Wirya Dharma, koordinator pelatih sekaligus mantan atlet, menyaksikan langsung bagaimana keterbatasan dukungan memengaruhi kehadiran anak asuhnya. Dari pinggir matras, ia tidak hanya melatih teknik, tetapi juga melihat bagaimana atlet berjuang agar tetap bisa datang.
@@ -123,10 +118,9 @@ export default function SummaryPage() {
         Hari itu, matras dojo tampak lebih lengang dari seharusnya. Bagi Wirya, lawan terbesar anak asuhnya tidak selalu datang dalam bentuk bantingan dari lawan tanding. Sering kali, hambatan itu hadir lebih awal sebagai ongkos transportasi, pekerjaan harian, dan kebutuhan ekonomi yang tidak bisa ditunda.
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed text-[#0a3358] font-caslon text-lg italic">
-        “Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya tidak bisa memaksa mereka,”
-        <cite className="block text-xs font-sans not-italic text-zinc-500 mt-2 font-bold uppercase tracking-wider">— Wirya Dharma, Koordinator Pelatih Blind Judo Kota Bandung</cite>
-      </blockquote>
+      <p className={`${articleParagraphClass} mb-6`}>
+        “Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya tidak bisa memaksa mereka,” — Wirya Dharma, Koordinator Pelatih Blind Judo Kota Bandung
+      </p>
 
       {/* Video Feature Section */}
       <div className="my-10 mx-auto max-w-2xl overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-lg transition-all duration-300 hover:shadow-xl font-sans">
@@ -139,12 +133,16 @@ export default function SummaryPage() {
           </h3>
         </div>
         <div className="relative aspect-[16/9] bg-black">
-          <video
-            src="/1/Pak Wirya 21 Atlet.mp4"
-            controls
-            className="w-full h-full object-cover"
-            preload="metadata"
-            poster="/1/blindjudo.jpg"
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/pdYVc8IvHjE?si=1wIjLGdzip563aCl"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="w-full h-full"
           />
         </div>
         <div className="p-4 bg-zinc-50 flex items-center gap-3">

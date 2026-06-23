@@ -225,43 +225,25 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphKnd143}
       </p>
 
-      {/* Jonna Quote */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-jonna">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteJonna}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ujar Jonna.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-jonna">
+        {textContent.quoteJonna} ujar Jonna.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-6">
         {textContent.paragraphDodiIntro}
       </p>
 
-      {/* Dodi Dilemma Quote */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dodi-dilemma">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteDodiDilemma}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          — Dodi, Wakil Sekretaris Umum NPCI
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-dodi-dilemma">
+        {textContent.quoteDodiDilemma} — Dodi, Wakil Sekretaris Umum NPCI
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-9">
         {textContent.paragraphDodiNPCl}
       </p>
 
-      {/* Dodi Statement */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dodi-authority">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteDodiAdvocacy}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          jelasnya.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-dodi-authority">
+        {textContent.quoteDodiAdvocacy} jelasnya.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-explain-dodi">
         {textContent.paragraphExplainDodi}
@@ -280,29 +262,17 @@ export default function SubtitleSevenContent() {
         </div>
       </div>
 
-      {/* Dodi Quote 2 */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dodi-ready">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteDodiReady}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ungkap Dodi saat menjawab laporan dari atlet terkait pemberdayaan atlet disabilitas.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-dodi-ready">
+        {textContent.quoteDodiReady} ungkap Dodi saat menjawab laporan dari atlet terkait pemberdayaan atlet disabilitas.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-koni-transition">
         {textContent.paragraphKoniTransition}
       </p>
 
-      {/* Mulyana Quote 1 */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-mulyana-gor">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteMulyanaGor}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ungkap Mulyana di KONI GOR Bandung.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-mulyana-gor">
+        {textContent.quoteMulyanaGor} ungkap Mulyana di KONI GOR Bandung.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-koni-explanation">
         {textContent.paragraphKoniExplanation}
@@ -329,15 +299,9 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphHerlindaIntro}
       </p>
 
-      {/* Herlinda Savitri Quote 1 */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-herlinda-1">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteHerlinda1}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ujar Herlinda.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-herlinda-1">
+        {textContent.quoteHerlinda1} ujar Herlinda.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-herlinda-tot">
         {textContent.paragraphHerlindaTot}
@@ -428,14 +392,9 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphDisporaOfficial}
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-acep-official">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteAcepOfficial}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ucap Acep sebagai Sub Olahraga Pendidikan kepada tim Paravoice.id di Dispora Kota Bandung.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-acep-official">
+        {textContent.quoteAcepOfficial} ucap Acep sebagai Sub Olahraga Pendidikan kepada tim Paravoice.id di Dispora Kota Bandung.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-welfare-gap">
         {textContent.paragraphWelfareGap}
@@ -445,14 +404,9 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphMuslimBpjsIntro}
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-muslim-bpjs-details">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteMuslimBpjsDetails}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          jelasnya.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-muslim-bpjs-details">
+        {textContent.quoteMuslimBpjsDetails} jelasnya.
+      </p>
 
       {/* Heading: REGENERASI MANDEK */}
       <h2 className={articleHeadingClass} key="heading-regeneration">
@@ -480,15 +434,9 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphImanStatsIntro}
       </p>
 
-      {/* Iman Stats Quote */}
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-iman-stats">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteImanStats}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ucapnya.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-iman-stats">
+        {textContent.quoteImanStats} ucapnya.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-stigma-silent">
         {textContent.paragraphStigmaSilent}
@@ -498,14 +446,9 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphDodiStigmaExplain}
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dodi-stigma-details">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteDodiStigmaDetails}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          tekannya.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-dodi-stigma-details">
+        {textContent.quoteDodiStigmaDetails} tekannya.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-aditya-intro">
         {textContent.paragraphAdityaIntro}
@@ -531,11 +474,9 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphAcepStigmaIntro}
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-acep-stigma-details">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteAcepStigmaDetails}
-        </p>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-acep-stigma-details">
+        {textContent.quoteAcepStigmaDetails}
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-opportunity-explain">
         {textContent.paragraphOpportunityExplain}
@@ -545,14 +486,9 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphImanDinsosIntro}
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-iman-dinsos-details">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteImanDinsosDetails}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          ungkap Iman, Bidang Pembinaan Prestasi NPCI Jawa Barat.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-iman-dinsos-details">
+        {textContent.quoteImanDinsosDetails} ungkap Iman, Bidang Pembinaan Prestasi NPCI Jawa Barat.
+      </p>
 
       {/* Heading: PENSIUN TANPA PAYUNG */}
       <h2 className={articleHeadingClass} key="heading-pension">
@@ -563,14 +499,9 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphAdenIntro}
       </p>
 
-      <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-aden-retirement-details">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {textContent.quoteAdenRetirementDetails}
-        </p>
-        <cite className="block not-italic text-xs font-bold text-[#082b4d] mt-2.5">
-          jelas Aden.
-        </cite>
-      </blockquote>
+      <p className={articleParagraphClass} key="quote-aden-retirement-details">
+        {textContent.quoteAdenRetirementDetails} jelas Aden.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-acep-pension">
         {textContent.paragraphAcepPension}
@@ -580,7 +511,6 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphPensionAnalysis}
       </p>
 
-      {/* Dandan Supardan Highlighted Quote */}
       <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dandan-highlighted-large-7">
         <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
           {textContent.quoteDandanHighlightedLarge}

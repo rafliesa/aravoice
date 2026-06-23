@@ -1,7 +1,6 @@
 "use client";
 
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
-import LovitaVideoCard from "@/modules/medpro-report/component/LovitaVideoCard";
 import QuoteCard from "@/modules/medpro-report/component/QuoteCard";
 import Image from "next/image";
 import { useRef, useState } from "react";
@@ -48,14 +47,9 @@ export default function SubtitleSixContent() {
         {"Tekanan itu tidak berdiri sendiri. Pada beberapa atlet, beban mental justru datang dari luar arena. Ono juga menyebut tekanan terbesarnya bukan berasal dari latihan, melainkan dari faktor lain."}
       </p>
 
-      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          “Namanya juga hidup pasti ada tekanan mental. Tapi tekanan saya bukan dari latihan. Justru dari luar latihan. Biasanya masalah ekonomi keluarga,”
-        </p>
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Ono Saipudin, Atlet Angkat Berat
-        </span>
-      </div>
+      <p className={articleParagraphClass} key="quote-ono-pressure">
+        “Namanya juga hidup pasti ada tekanan mental. Tapi tekanan saya bukan dari latihan. Justru dari luar latihan. Biasanya masalah ekonomi keluarga,” — Ono Saipudin, Atlet Angkat Berat
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-10">
         {"Untuk mengatasi masalah tersebut, Ono memiliki pekerjaan lain di luar olahraga, yaitu bertani konvensional dan hidroponik serta membuka pengobatan alternatif di rumah. Ia mengaku, penghasilan dari usaha itu tidak selalu stabil, tidak jauh berbeda dari penghasilannya sebagai atlet. Namun dalam waktu yang bersamaan, Ono menyatakan bahwa ketidakstabilan tersebut tetap menjadi beban."}
@@ -65,14 +59,9 @@ export default function SubtitleSixContent() {
         {"Dari sisi keluarga, Toto, pendamping sekaligus suami atlet Ten Pin Bowling, Asti, melihat kondisi rumah ikut mempengaruhi performa atlet di arena. Menurutnya, kemampuan mengelola emosi tidak bisa dilepaskan dari lingkungan rumah dan dukungan orang terdekat."}
       </p>
 
-      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          “Ketika emosi Ibu di rumah tidak stabil, dalam artian misalkan mempunyai satu permasalahan, itu terlihat sekali pada waktu Ibu bermain. Kadang dia lemparannya menjadi terlalu cepat, atau kadang-kadang tidak ada semangat. Itu pengaruh sekali,”
-        </p>
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Toto, Suami &amp; Pendamping Asti (Atlet Ten Pin Bowling)
-        </span>
-      </div>
+      <p className={articleParagraphClass} key="quote-toto-emotion">
+        “Ketika emosi Ibu di rumah tidak stabil, dalam artian misalkan mempunyai satu permasalahan, itu terlihat sekali pada waktu Ibu bermain. Kadang dia lemparannya menjadi terlalu cepat, atau kadang-kadang tidak ada semangat. Itu pengaruh sekali,” — Toto, Suami &amp; Pendamping Asti (Atlet Ten Pin Bowling)
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-15">
         {"Toto menyebut dukungan lingkungan terdekat menjadi dasar penting untuk membangun kepercayaan diri atlet. Ia juga mengingatkan agar olahraga tidak menjadi beban berlebihan bagi atlet. Menurut Toto, prestasi itu bukan tujuan utama, tapi tetap bermain dengan baik."}
@@ -190,27 +179,17 @@ export default function SubtitleSixContent() {
         {"Selain tekanan ekonomi, tekanan sosial juga menjadi bagian dari beban psikologis atlet disabilitas. Jonna menyebut stigma sebagai tantangan berat dalam isu disabilitas. Menurutnya, stigma lahir dari cara pandang yang keliru terhadap penyandang disabilitas."}
       </p>
 
-      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          “Advokasi paling berat dalam isu disabilitas adalah stigma. Stigma lahir dari paradigma yang tidak tepat dalam memandang penyandang disabilitas. Selama ini banyak masyarakat melihat disabilitas dengan pendekatan belas kasihan, ketidakmampuan, atau menganggap penyandang disabilitas tidak bisa berprestasi,”
-        </p>
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas (KND)
-        </span>
-      </div>
+      <p className={articleParagraphClass} key="quote-jonna-stigma">
+        “Advokasi paling berat dalam isu disabilitas adalah stigma. Stigma lahir dari paradigma yang tidak tepat dalam memandang penyandang disabilitas. Selama ini banyak masyarakat melihat disabilitas dengan pendekatan belas kasihan, ketidakmampuan, atau menganggap penyandang disabilitas tidak bisa berprestasi,” — Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas (KND)
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-22">
         {"Bagi atlet, stigma itu bisa muncul dalam komentar sederhana yang mempertanyakan kemampuan mereka. Randi, atlet bulu tangkis NPCI Kota Bandung, pernah mengalami tekanan semacam itu. Ia menyebut ada orang yang meragukan kemampuannya bermain karena kondisi fisiknya."}
       </p>
 
-      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          “Kadang ada yang ngomong, “Tangan kamu begitu, memang kamu bisa main bulu tangkis?” Tapi saya nggak masukin ke hati. Biarin saja. Yang penting saya bisa membuktikan kalau kita harus juara,”
-        </p>
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Randi, Atlet Bulu Tangkis NPCI Kota Bandung
-        </span>
-      </div>
+      <p className={articleParagraphClass} key="quote-randi-stigma">
+        “Kadang ada yang ngomong, “Tangan kamu begitu, memang kamu bisa main bulu tangkis?” Tapi saya nggak masukin ke hati. Biarin saja. Yang penting saya bisa membuktikan kalau kita harus juara,” — Randi, Atlet Bulu Tangkis NPCI Kota Bandung
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-26">
         {"Randi memilih tidak menanggapi komentar tersebut dengan sabar agar tidak mengganggu fokusnya saat bertanding. Namun, ia mengakui bahwa omongan semacam itu tetap bisa muncul sebagai tekanan mental."}
@@ -220,21 +199,42 @@ export default function SubtitleSixContent() {
         {"Stigma juga dapat hadir dalam bentuk yang sistemik. Lovita menyadari bahwa diskriminasi juga muncul dari ruang kota yang belum sepenuhnya aksesibel. Ia menyebut Bandung belum 100 persen inklusif. Trotoar, guiding block, parkir kendaraan, dan pot besar yang menghalangi jalur bisa menjadi pengalaman harian bagi yang tunanetra. Lovita juga mencontohkan pengalaman ketika tongkatnya tidak sengaja menyenggol kendaraan yang parkir di bahu jalan."}
       </p>
 
-      {/* Lovita Trotoar Video note */}
-      <LovitaVideoCard 
-        videoSrc="/uploads/VID LOVITA.mp4"
-        title="AKSESIBILITAS TROTOAR & GUIDING BLOCK"
-        description="Lovita menceritakan tantangan harian tunanetra menavigasi trotoar Bandung yang terhalang pot dan kendaraan"
-      />
+      <p className={articleParagraphClass} key="quote-lovita-trotoar">
+        “Orang kalau di depan (GOR) Pajajaran itu kan banyak yang parkir ya, mobil-mobil di bahu jalan. Kalau misalkan kita lihat lewat trotoar gitu, trotoarnya juga tuh sebenarnya nggak aksesibel banget, Kak. Karena kakak tahu kalau yang kuning-kuning gading blok, kalau gading bloknya itu... Misalkan ada gading blok, tiba-tiba ada pot besar kayak gitu di tengah-tengah. Menurut kami yang tunanetra itu sangat-sangat tidak akses. Seharusnya boleh mungkin mengedepankan estetika, tapi kayak pot-pot besar itu seharusnya ditaruh di pinggir. Jadi nggak menghalangi gading blok mau nggak mau. Kan kita lewat bawah, lewat bawah tuh kayak banyak. Mobil parkir apalagi kalau ada acara kayak gitu bisa dua ruas, tiga ruas, kadang-kadang kayak gitu. Terus kan kita jalan pakai tongkat. Ada aja orang yang marah kalau misalkan mobilnya kesenggol atau cerminnya kesenggol kayak gitu”
+      </p>
 
-      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          “Jadi, inklusi itu kadang orang salah, dianggapnya disabilitas harus inklusi, tapi seharusnya yang normal harus inklusi pada disabilitas. Memahami siapa disabilitas. Karena orang disabilitasnya itu memahami yang normal itu udah banyak. Tapi yang normal bisa memahami yang disabilitas,”
-        </p>
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Pak Toto, Suami &amp; Pendamping Asti
-        </span>
+      {/* Lovita Trotoar Video note */}
+      <div className="my-8 mx-auto max-w-2xl overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-lg">
+        <div className="bg-zinc-900 p-3 text-center border-b border-zinc-800">
+          <span className="text-[10px] font-black text-secondary-400 uppercase tracking-widest block">
+            VIDEO
+          </span>
+          <h3 className="text-xs font-bold text-zinc-300 mt-1">
+            AKSESIBILITAS TROTOAR & GUIDING BLOCK
+          </h3>
+        </div>
+        <div className="relative aspect-[16/9] bg-black">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/_h5CZ8VsTX4"
+            title="Aksesibilitas Trotoar & Guiding Block"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="w-full h-full"
+          />
+        </div>
       </div>
+
+      <p className={articleParagraphClass} key="paragraph-toto-stigma">
+        Sebagai seseorang yang dekat dengan seorang tunadaksa, Toto melihat stigma sebagai persoalan cara pandang. Selama masyarakat masih menempatkan penyandang disabilitas sebagai pihak yang terus menyesuaikan diri, ruang inklusif akan sulit terbentuk.
+      </p>
+
+      <p className={articleParagraphClass} key="quote-toto-inklusi">
+        “Jadi, inklusi itu kadang orang salah, dianggapnya disabilitas harus inklusi, tapi seharusnya yang normal harus inklusi pada disabilitas. Memahami siapa disabilitas. Karena orang disabilitasnya itu memahami yang normal itu udah banyak. Tapi yang normal bisa memahami yang disabilitas,” — Pak Toto, Suami &amp; Pendamping Asti
+      </p>
 
       <h2 className={articleHeadingClass} key="heading-psikologi">
         {"PSIKOLOGI YANG MASIH DIPANDANG SEBELAH MATA"}
@@ -282,27 +282,17 @@ export default function SubtitleSixContent() {
         {"Bambang juga mengatakan belum ada pendampingan psikologis khusus yang ia lihat secara langsung. Selama ini, atlet lebih banyak saling menguatkan sebagai teman."}
       </p>
 
-      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          “Belum ada secara khusus. Padahal menurut saya itu penting, misalnya menyediakan psikolog olahraga untuk membantu kondisi mental atlet. Sejauh ini kami lebih banyak saling menguatkan sebagai teman,”
-        </p>
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Bambang Basuki, Pelatih Ten Pin Bowling
-        </span>
-      </div>
+      <p className={articleParagraphClass} key="quote-bambang-psikolog">
+        “Belum ada secara khusus. Padahal menurut saya itu penting, misalnya menyediakan psikolog olahraga untuk membantu kondisi mental atlet. Sejauh ini kami lebih banyak saling menguatkan sebagai teman,” — Bambang Basuki, Pelatih Ten Pin Bowling
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-43">
         {"Toto menilai pendampingan idealnya psikologis perlu hadir sejak awal proses latihan, bukan hanya setelah atlet mengalami tekanan atau kegagalan. Menurutnya, tekanan tidak terkelola setelah pertandingan dapat membuat atlet drop, sementara tekanan pertandingannya bisa membuat atlet “kalah duluan” secara mental."}
       </p>
 
-      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          “Yang berbahaya adalah ketika pressure-nya itu setelah bertanding. Jadi dia tidak ter-manage tuh. Dan di kalangan atlet banyak. Karena apa? Dari awal tidak ada pendampingan. Jadi ketika akhir pertandingan selesai, dia drop. Atau sebelum pertandingan dia sudah kalah duluan mentalnya,”
-        </p>
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Toto, Suami &amp; Pendamping Asti
-        </span>
-      </div>
+      <p className={articleParagraphClass} key="quote-toto-pressure-2">
+        “Yang berbahaya adalah ketika pressure-nya itu setelah bertanding. Jadi dia tidak ter-manage tuh. Dan di kalangan atlet banyak. Karena apa? Dari awal tidak ada pendampingan. Jadi ketika akhir pertandingan selesai, dia drop. Atau sebelum pertandingan dia sudah kalah duluan mentalnya,” — Toto, Suami &amp; Pendamping Asti
+      </p>
     </>
   );
 }
