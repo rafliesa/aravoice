@@ -140,15 +140,6 @@ export default function SubtitleThreeContent() {
       </p>
 
       {/* Iman Jabar Statement & Audio VN */}
-      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          “Ternyata seharusnya, seharusnya. Jadi dana atlet disabilitas agak lebih besar daripada dana ke atlet olahraga lain (atlet non-disabilitas). Kenapa? Satu atlet butuh pelatih, butuh pendamping. Pendamping inilah yang harus memahami atlet. Entah itu psikologis dan kebutuhan. Sehingga, dana kita selain untuk menggaji honor pelatih, ya juga untuk honor pendamping,”
-        </p>
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Iman Imanudin, Kepala Bidang Pembinaan Prestasi NPCI Jawa Barat
-        </span>
-      </div>
-
       <div className="max-w-xs mx-auto my-6">
         <VoiceNoteCard 
           audioSrc="/3/Iman - NPCI Jabar.mp3"
@@ -156,6 +147,15 @@ export default function SubtitleThreeContent() {
           speakerRole="Kabid Binpres NPCI Jawa Barat"
           imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
         />
+      </div>
+
+      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          “Ternyata seharusnya, seharusnya. Jadi dana atlet disabilitas agak lebih besar daripada dana ke atlet olahraga lain (atlet non-disabilitas). Kenapa? Satu atlet butuh pelatih, butuh pendamping. Pendamping inilah yang harus memahami atlet. Entah itu psikologis dan kebutuhan. Sehingga, dana kita selain untuk menggaji honor pelatih, ya juga untuk honor pendamping,”
+        </p>
+        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
+          — Iman Imanudin, Kepala Bidang Pembinaan Prestasi NPCI Jawa Barat
+        </span>
       </div>
 
       <p className={articleParagraphClass} key="paragraph-inklusif-4">
