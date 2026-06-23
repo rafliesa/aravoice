@@ -40,21 +40,7 @@ export default function SubtitleOneContent() {
       <h2 className={articleHeadingClass} key="heading-kondisi-nyata">
         {"KONDISI NYATA"}
       </h2>
-      <div className="my-8 mx-auto max-w-2xl">
-        <figure>
-          <div className="relative aspect-[3/2] w-full overflow-hidden rounded-xl bg-zinc-100 shadow-md">
-            <Image 
-              src="/pak-ono/DIO_4957.webp" 
-              alt="Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, beristirahat di rumahnya di Kota Bandung, Jawa Barat, pada 19 Juni, 2026." 
-              fill 
-              className="object-cover" 
-            />
-          </div>
-          <figcaption className="mt-3 font-sans text-xs text-zinc-500 leading-normal text-center">
-            Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, beristirahat di rumahnya di Kota Bandung, Jawa Barat, pada 19 Juni, 2026.
-          </figcaption>
-        </figure>
-      </div>
+
       <p className={articleParagraphClass}>
         {"Ketika pertama kali memutuskan menekuni olahraga angkat berat disabilitas, dukungan tidak langsung datang. Orang-orang terdekat justru menyambut pilihannya dengan kekhawatiran. Bagi penyandang tunadaksa, risiko cedera sering dipandang lebih besar, sementara akses terhadap layanan pemulihan dan perlindungan karier atlet tidak selalu tersedia."}
       </p>
@@ -253,6 +239,14 @@ export default function SubtitleOneContent() {
         speakerName="Aditya Nandang Saputra"
         speakerRole="Pengurus Pemberdayaan Atlet NPCI Kab. Bandung"
       />
+
+      {/* Transkripsi VN Aditya */}
+      <div className="mx-auto my-4 max-w-sm rounded-xl border border-zinc-100 bg-zinc-50 px-5 py-4">
+        <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Transkripsi</p>
+        <p className="font-sans text-sm leading-relaxed text-zinc-600 italic">
+          "Kebetulan saya anak dari atlet disabilitas. Saya tahu lah bagaimana perjuangan atlet-atlet saya yang sekarang ya. Karena saya juga mengawal almarhum bapak saya, atlet itu sama bareng sama Agus Bagja, yang dari tahun 2010. Saya tahu gitu bagaimana pandangan orang di luar sana yang memandang sebelah mata disabilitas tersebut gitu. Perjuangan bapak saya itu sama dari tahun 2010 sampai tahun 2020, dua minggu sebelum berangkat Peparnas Papua itu meninggal."
+        </p>
+      </div>
 
       <p className={articleParagraphClass}>
         {"Kekhawatiran itu yang mendorong Aditya Nandang Saputra mengembangkan pembinaan di luar aspek olahraga."}

@@ -14,7 +14,7 @@ import ArticleImageCarousel from "@/modules/medpro-report/component/ArticleImage
 import Uu82016Link from "@/modules/medpro-report/component/Uu82016Link";
 import Uu192011Link from "@/modules/medpro-report/component/Uu192011Link";
 import ZoomableWrapper from "@/modules/medpro-report/component/ZoomableWrapper";
-import ConstitutionLawTable from "@/modules/medpro-report/component/ConstitutionLawTable";
+import Uud1945Infographic from "@/modules/medpro-report/component/Uud1945Infographic";
 import DojoUpiGallery from "@/modules/medpro-report/component/DojoUpiGallery";
 import AthleteNeedsComparisonInfographic from "@/modules/medpro-report/component/AthleteNeedsComparisonInfographic";
 import InteractiveBrailleSimulator from "@/modules/medpro-report/component/InteractiveBrailleSimulator";
@@ -119,27 +119,27 @@ const disabilityRights = [
 
 const opikStoryImages = [
   {
-    src: "/photo-story/1.jpeg",
+    src: "/2/carousel/1.jpg",
     alt: "Tangga dojo",
     caption: "Tangga menuju dojo blind judo di lantai 2 Gor Pajajaran Kota Bandung",
   },
   {
-    src: "/photo-story/2.jpeg",
+    src: "/2/carousel/2.jpg",
     alt: "Opik Jaya",
     caption: "Opik Jaya, atlet blind judo low vision",
   },
   {
-    src: "/photo-story/3.jpeg",
+    src: "/2/carousel/3.jpg",
     alt: "Kendaraan Opik",
     caption: "Kendaraan Opik atlet judo low vision yang dimodifikasi untuk dikendarai sejauh 2.5 km ke tempat latihan",
   },
   {
-    src: "/photo-story/4.jpeg",
+    src: "/2/carousel/4.jpg",
     alt: "Mess atlet",
     caption: "Mess atlet blind judo",
   },
   {
-    src: "/photo-story/5.jpeg",
+    src: "/2/carousel/5.jpg",
     alt: "Magic com di mess",
     caption: "Alat masak di mess atlet yang disediakan NPCI Kota Bandung, berisi beras dan lauk beli sendiri",
   },
@@ -184,11 +184,9 @@ export default function SubtitleTwoContent() {
         melalui landasan konstitusional:
       </p>
 
-      {/* Compact Zoomable UUD 1945 Table */}
+      {/* UUD 1945 Infographic */}
       <div className="my-8">
-        <ZoomableWrapper title="Tabel Landasan Hak Disabilitas dalam UUD 1945">
-          <ConstitutionLawTable />
-        </ZoomableWrapper>
+        <Uud1945Infographic />
       </div>
 
       <div className={articleParagraphClass} key="paragraph-7">
@@ -303,7 +301,9 @@ export default function SubtitleTwoContent() {
       </p>
 
       {/* 4 Asas Aksesibilitas Infographic */}
-      <AccessibilityPrinciplesInfographic />
+      <div className="mx-auto max-w-3xl">
+        <AccessibilityPrinciplesInfographic />
+      </div>
 
       <p className={articleParagraphClass} key="paragraph-61">
         {"Menjelang ajang besar seperti Peparda, para atlet memang ditempatkan di mess sebagai bagian dari persiapan pertandingan. Namun, fasilitas yang tersedia belum sepenuhnya menjawab kebutuhan dasar mereka. Opik Jaya, atlet blind judo NPCI Kota Bandung kerap menginap di mess, mengungkapkan bahwa organisasi hanya menyediakan beras dan magic com."}
@@ -407,7 +407,12 @@ export default function SubtitleTwoContent() {
         speakerName="Tri"
         speakerRole="Pelatih Voli Duduk"
         imageSrc="/2/tri.jpg"
+        imageAlt="Tri Nugorho, pelatih voli duduk National Paralympic Committee of Indonesia (NPCI) Kota Bandung, melatih untuk persiapan Peparda di GOR Lodaya, Kota Bandung, Jawa Barat pada 10 Juni 2026."
+        reverse={true}
       />
+      <p className="font-sans text-xs font-light text-zinc-400 text-center -mt-4 mb-6">
+        Tri Nugorho, pelatih voli duduk National Paralympic Committee of Indonesia (NPCI) Kota Bandung, melatih untuk persiapan Peparda di GOR Lodaya, Kota Bandung, Jawa Barat pada 10 Juni 2026.
+      </p>
 
       <p className={articleParagraphClass} key="paragraph-110">
         {"Jonna Aman Damanik selaku Komisioner Nasional Disabilitas juga mendukung pernyataan tersebut. Sebagai contoh, banyak event internasional disabilitas lebih dipilih diselenggarakan di Solo, “karena di sana bukan hanya infrastrukturnya yang baik, tetapi masyarakatnya juga sudah memiliki sensitivitas yang tinggi. Mulai dari tukang parkir, pengemudi ojek, hingga pedagang warung, semuanya sangat komunikatif dan siap melayani penyandang disabilitas dengan baik. Inilah yang saya maksud dengan paradigma. Kita tidak hanya berbicara soal infrastruktur, tetapi juga budaya dan sikap masyarakat,” Lanjut Jonna."}

@@ -25,7 +25,7 @@ export default function DojoUpiGallery() {
               Tangga Dojo Blind Judo Gor Pajajaran
             </p>
             <p className="text-xs text-zinc-500 mt-1.5 leading-relaxed">
-              Kondisi tangga yang curam, tanpa ramp bidang miring, dan tanpa penanda taktil (guiding block) menyulitkan mobilitas atlet tunanetra.
+              Tangga menuju dojo blind judo masih curam, tanpa jalur landai maupun penanda taktil yang memadai bagi atlet tunanetra.
             </p>
           </figcaption>
         </figure>
@@ -49,7 +49,7 @@ export default function DojoUpiGallery() {
               Lapangan Tenis Indoor UPI Bandung
             </p>
             <p className="text-xs text-zinc-500 mt-1.5 leading-relaxed">
-              Salah satu dari sedikit venue latihan yang relatif aksesibel, namun berstatus sewa dan pembagian jadwal harus bergantian dengan cabor umum.
+              Lapangan tenis indoor UPI, salah satu venue yang relatif aksesibel bagi atlet disabilitas, masih berstatus sewa dan harus bergantian dengan cabang olahraga lain.
             </p>
           </figcaption>
         </figure>

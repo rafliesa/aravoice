@@ -11,7 +11,7 @@ type ArticleHeroProps = {
 export default function ArticleHero({
   title,
   description,
-  coverImageSrc = "/hero/pak-ono.webp",
+  coverImageSrc = "/1/hero.jpg",
 }: ArticleHeroProps) {
   return (
     <section className="mt-8 overflow-hidden rounded-lg border border-[#cfc8bd] bg-white">

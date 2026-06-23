@@ -18,6 +18,7 @@ export default function SubtitleTwoPage() {
       heroTitle={title}
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-3"
       previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-1"
+      coverImageSrc="/2/hero.jpg"
     >
       <SubtitleTwoContent />
     </MedproReportPage>
