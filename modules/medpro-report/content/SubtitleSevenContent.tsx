@@ -11,18 +11,17 @@ import PerdaInteractiveReader from "@/modules/medpro-report/component/PerdaInter
 import ZoomableWrapper from "@/modules/medpro-report/component/ZoomableWrapper";
 import QuoteCard from "@/modules/medpro-report/component/QuoteCard";
 import Image from "next/image";
-import DisabilityParadigmTimeline from "@/modules/medpro-report/component/DisabilityParadigmTimeline";
 
 // ==========================================
 // EDITABLE TEXT CONTENT DICTIONARY
 // Feel free to modify any text inside this block.
 // ==========================================
 const textContent = {
-  paragraphIntro:
-    "Di atas kertas Indonesia memiliki regulasi yang tertuju kepada hak-hak atlet disabilitas.",
+  paragraphIntro: 
+    "",
 
   paragraphJonnaRatifikasi: 
-    "Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas (KND), menjelaskan bahwa perubahan besar dalam kebijakan disabilitas di Indonesia berawal dari perubahan cara pandang negara terhadap penyandang disabilitas. Sebelum Indonesia meratifikasi",
+    "Di atas kertas Indonesia memiliki regulasi yang tertuju kepada hak-hak atlet disabilitas. Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas (KND), menjelaskan bahwa perubahan besar dalam kebijakan disabilitas di Indonesia berawal dari perubahan cara pandang negara terhadap penyandang disabilitas. Sebelum Indonesia meratifikasi Convention on the Rights of Persons with Disabilities (CRPD) pada 2011, penyandang disabilitas cenderung diposisikan sebagai objek bantuan sosial yang harus dikasihani. Setelah ratifikasi tersebut, paradigma itu berubah. Penyandang disabilitas mulai dipandang sebagai subjek hukum yang memiliki hak setara dengan warga negara lainnya.",
 
   paragraphKnd143: 
     "KND juga membuka kanal pengaduan Disabilitas Tanah Air 143 yang menerima laporan dari berbagai sektor, mulai dari pendidikan, ketenagakerjaan, layanan publik, hingga ruang digital.",
@@ -218,8 +217,19 @@ export default function SubtitleSevenContent() {
         {"pada 2011, penyandang disabilitas cenderung diposisikan sebagai objek bantuan sosial yang harus dikasihani. Setelah ratifikasi tersebut, paradigma itu berubah. Penyandang disabilitas mulai dipandang sebagai subjek hukum yang memiliki hak setara dengan warga negara lainnya."}
       </p>
 
-      {/* Infografis KND Paradigm Shift - Interactive Component */}
-      <DisabilityParadigmTimeline key="knd-paradigm-infographic" />
+      {/* Infografis KND Paradigm Shift - Static */}
+      <div className="my-8 max-w-2xl mx-auto overflow-hidden rounded-2xl border border-zinc-200 bg-white p-2 shadow-sm" key="knd-paradigm-infographic">
+        <div className="relative aspect-[1200/644] w-full">
+          <Image
+            src="/7/paradigma-disabilitas.webp"
+            alt="Infografis Tiga Model Perspektif Penyandang Disabilitas"
+            fill
+            className="object-contain rounded-xl"
+            sizes="(min-width: 768px) 672px, 100vw"
+            priority
+          />
+        </div>
+      </div>
 
       <p className={articleParagraphClass} key="paragraph-3">
         {textContent.paragraphKnd143}
@@ -346,12 +356,12 @@ export default function SubtitleSevenContent() {
       {/* Herlinda Savitri Video Note */}
       <div className="my-8 flex justify-center" key="herlinda-video-container">
         <VideoNoteCard
-          videoSrc="https://www.youtube.com/watch?v=PW6s0rqRn50"
+          videoSrc="/uploads/pak toto perasaan ibu.mov"
           title="VN VIDEO HERLINDA"
           description={textContent.herlindaVnText}
           speakerName="Herlinda Savitri"
           speakerRole="Pelatih Bowling Disabilitas Jawa Barat"
-          imageSrc="/7/herlinda.png"
+          imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
         />
       </div>
 
@@ -363,13 +373,27 @@ export default function SubtitleSevenContent() {
         {textContent.paragraphAdvocacyExplain}
       </p>
 
-      {/* Mulyana Quote Card */}
-      <QuoteCard
-        quote={textContent.quoteMulyanaCard}
-        imageSrc="/7/mulyana.webp"
-        speakerName="Mulyana"
-        speakerRole="Wakil Ketua II KONI Kota Bandung"
-      />
+      {/* Mulyana Quote Card (Ratio 1:1, Larger Photo) */}
+      <div className="my-8 flex flex-col items-center text-center p-6 bg-zinc-50 border border-zinc-200 rounded-2xl max-w-2xl mx-auto font-sans" key="mulyana-quote-card">
+        <blockquote className="text-sm italic text-zinc-700 font-medium leading-relaxed max-w-lg mb-6">
+          {textContent.quoteMulyanaCard}
+        </blockquote>
+        <div className="relative size-24 rounded-2xl overflow-hidden border border-zinc-300 bg-zinc-200 shadow-sm mb-3 shrink-0">
+          <Image
+            src="/7/mulyana.webp"
+            alt="Foto Mulyana"
+            fill
+            sizes="96px"
+            className="object-cover"
+          />
+        </div>
+        <cite className="not-italic block font-sans text-xs font-extrabold text-[#082b4d]">
+          Mulyana
+        </cite>
+        <span className="block font-sans text-[10px] text-zinc-500 mt-1">
+          Wakil Ketua II KONI Kota Bandung
+        </span>
+      </div>
 
       <p className={articleParagraphClass} key="paragraph-yulia-intro">
         {textContent.paragraphYuliaIntro}
@@ -381,8 +405,6 @@ export default function SubtitleSevenContent() {
         imageSrc="/6/yulia.webp"
         speakerName="Yulia Sahaja Dewi Permatasari"
         speakerRole="Psikolog Klinis & Pendamping Atlet Paralimpik"
-        reverse={true}
-        imagePosition="object-top"
       />
 
       <p className={articleParagraphClass} key="paragraph-eva-anxiety">
@@ -501,7 +523,7 @@ export default function SubtitleSevenContent() {
       {/* Aditya Nandang Saputra Voice Note Card */}
       <div className="my-8" key="aditya-vn-container">
         <VoiceNoteCard
-          audioSrc="/7/28 Apr_Aditya Nandang.m4a"
+          audioSrc="/audio/28 Apr_Aditya Nandang.m4a"
           imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
           speakerName="Aditya Nandang Saputra"
           speakerRole="Bidang Pemberdayaan Atlet NPCI Kabupaten Bandung"
