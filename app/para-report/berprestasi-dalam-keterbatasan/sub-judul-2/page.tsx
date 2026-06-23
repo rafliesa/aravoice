@@ -3,7 +3,7 @@ import MedproReportPage from "@/modules/medpro-report";
 import { medproArticleDescription } from "@/modules/medpro-report/data";
 import SubtitleTwoContent from "@/modules/medpro-report/content/SubtitleTwoContent";
 
-const title = "Inklusivitas Hanya di Atas Kertas";
+const title = "Inklusivitas Semu";
 
 export const metadata: Metadata = {
   title,
@@ -19,6 +19,7 @@ export default function SubtitleTwoPage() {
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-3"
       previousHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-1"
       coverImageSrc="/2/hero.jpg"
+      coverImageCaption="Jalur landai curam dengan pagar besi tempa yang mengarah ke lantai dua gedung NPCI Jawa Barat"
     >
       <SubtitleTwoContent />
     </MedproReportPage>

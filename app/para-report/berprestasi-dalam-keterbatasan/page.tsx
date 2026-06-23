@@ -28,6 +28,7 @@ export default function MedproArticlePage() {
       heroTitle={title}
       nextHref="/para-report/berprestasi-dalam-keterbatasan/sub-judul-1"
       coverImageSrc="/hero/photo-story.webp"
+      coverImageCaption="Sejumlah atlet voli duduk National Paralympic Committee of Indonesia (NPCI) Kota Bandung melakukan pemanasan sebelum berlatih untuk persiapan Peparda di GOR Lodaya, Kota Bandung, Jawa Barat pada 10 Juni 2026."
     >
       {/* Kicker & Text Narrative */}
       <p className={articleParagraphClass}>
@@ -40,10 +41,13 @@ export default function MedproArticlePage() {
       </p>
 
       {/* Centered highlighted quote */}
-      <div className="mx-auto my-8 max-w-lg border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-xl sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
-          {"“Ya namanya hidup harus jalan,”"}
+      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
+        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+          “Ya namanya hidup harus jalan,”
         </p>
+        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
+          — Ono, Atlet Angkat Beban
+        </span>
       </div>
 
       <p className={articleParagraphClass}>

@@ -122,7 +122,7 @@ export default function NpciHistoryGame() {
     const assets = [
       "/2/sejarah-npci/webp/20.webp",
       "/2/sejarah-npci/webp/21.webp",
-      "/2/sejarah-npci/webp/mascot_sprite.webp"
+      "/2/sejarah-npci/22.png"
     ];
     assets.forEach((src) => {
       const img = new Image();
@@ -169,8 +169,8 @@ export default function NpciHistoryGame() {
     const bobbing = Math.sin(progress * 150) * 0.35; // 0.35% vertical bounce
     const bodyRoll = Math.sin(progress * 150) * 4.5; // 4.5 degree left/right wobble
 
-    // Perspective scale: scaled up by 1.5x (from 0.8x at the top to 1.65x at the bottom)
-    const scale = 0.8 + progress * 0.85;
+    // Perspective scale: starts larger at the top (1.0x) and grows even larger towards the bottom (2.2x)
+    const scale = 1.0 + progress * 1.2;
 
     return {
       x,
@@ -190,8 +190,8 @@ export default function NpciHistoryGame() {
     .find((m) => mascotState.frame >= m.triggerFrame);
 
   // Sizing calculated to preserve the 1.64 aspect ratio of the mascot inside the stretched container
-  const mascotWidth = 20;
-  const mascotHeight = 15.74; // 20% width * 1.64 / 2.0833 vertical stretch ratio = 15.74%
+  const mascotWidth = 40;
+  const mascotHeight = 31.48; // 40% width * 1.64 / 2.0833 vertical stretch ratio = 31.48%
 
   return (
     <section className="w-full my-12 font-sans select-none">
@@ -224,7 +224,7 @@ export default function NpciHistoryGame() {
 
             {/* 3. Programmatically Positioned, Oriented & Perspective Scaled Mascot Sprite */}
             <img
-              src="/2/sejarah-npci/webp/mascot_sprite.webp"
+              src="/2/sejarah-npci/22.png"
               alt="Running Mascot"
               className="absolute pointer-events-none select-none z-25 transition-all duration-75 ease-out"
               style={{
