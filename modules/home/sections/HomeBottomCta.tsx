@@ -69,9 +69,20 @@ export default function HomeBottomCta() {
                 <p className="mt-8 text-base leading-8 text-[#4f5564]">
                   Jadilah bagian dari kami dan miliki koleksi eksklusifnya sekarang!
                 </p>
-                <p className="mt-8 text-base font-extrabold text-[#182036]">
-                  Grab Yours Now!
-                </p>
+                <div className="relative mt-6 flex items-center gap-3">
+                  <div className="relative w-16 h-16 shrink-0 bg-white/60 rounded-full border border-zinc-200/80 shadow-inner">
+                    <Image
+                      src="/2/sejarah-npci/webp/mascot_sprite.webp"
+                      alt="Mascot ParaVoice"
+                      fill
+                      className="object-contain p-2"
+                    />
+                  </div>
+                  <div className="relative bg-[#9a5a00] text-white text-xs font-black px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm tracking-wide">
+                    Grab Yours!
+                    <div className="absolute -left-2 top-0 w-0 h-0 border-r-[8px] border-r-[#9a5a00] border-b-[8px] border-b-transparent" />
+                  </div>
+                </div>
               </div>
 
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[#cfd3db] bg-white shadow-lg shadow-black/10">

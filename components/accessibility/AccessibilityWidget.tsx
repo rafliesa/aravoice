@@ -529,7 +529,7 @@ export default function AccessibilityWidget() {
                     onChange={(event) => setDictionaryTerm(event.target.value)}
                     placeholder="Masukkan kata..."
                     aria-label="Kata yang dicari"
-                    className="min-w-0 flex-1 rounded-md border border-tertiary-300 bg-white px-3 py-2 text-sm outline-none focus:border-secondary"
+                    className="min-w-0 flex-1 rounded-md border border-tertiary-300 bg-white px-3 py-2 text-sm outline-none focus:border-secondary text-[#0f2c5c] placeholder:text-zinc-500 font-medium"
                   />
                   <button
                     type="submit"

@@ -2,7 +2,6 @@
 
 import { articleHeadingClass, articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
 import JudoAttendanceInfographic from "@/modules/medpro-report/component/JudoAttendanceInfographic";
-import LovitaVideoCard from "@/modules/medpro-report/component/LovitaVideoCard";
 import FinancialLiteracySteps from "@/modules/medpro-report/component/FinancialLiteracySteps";
 import VoiceNoteCard from "@/modules/medpro-report/component/VoiceNoteCard";
 import Image from "next/image";
@@ -139,8 +138,15 @@ export default function SubtitleFourContent() {
         {"“Bonus dapat, karena sesuai medali kan, waktu itu aku dapat perak, terus penyalurannya aku nggak tahu sih kak, dari itu, pokoknya aku dapat bonus itu dari NPC Jawa Barat sama NPC Kota Bandung,” ujarnya."}
       </p>
 
-      {/* Lovita Video Card player */}
-      <LovitaVideoCard />
+      {/* Lovita Voice Note Card */}
+      <div className="max-w-xs mx-auto my-6">
+        <VoiceNoteCard 
+          audioSrc="/4/LOVITA PENCAIRAN BONUS.wav"
+          speakerName="Lovita Uki Damayanti"
+          speakerRole="Atlet Goalball Kontingen Jawa Barat"
+          imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
+        />
+      </div>
 
       <p className={articleParagraphClass} key="paragraph-27">
         {"Dalam pengalaman Lovita, kesejahteraan ekonomi atlet tidak hanya berkaitan dengan ada atau tidaknya bonus. Sebagai atlet yang merantau dari Lampung ke Bandung, ia juga menjalani keseharian tanpa dukungan keluarga secara langsung. Keluarganya tetap mendukung, tetapi bentuknya lebih banyak berubah doa dan komunikasi jarak jauh."}

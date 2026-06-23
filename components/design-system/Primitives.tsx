@@ -220,7 +220,7 @@ export function StatusBadge({
     verified: "bg-emerald-100 text-emerald-700",
     pending: "bg-blue-100 text-blue-700",
     admin: "bg-primary text-white",
-    new: "bg-secondary-800/10 text-secondary-800",
+    new: "bg-secondary-800 text-white font-extrabold",
   };
 
   return (
@@ -256,7 +256,7 @@ export function SearchField({
         type="search"
         placeholder={placeholder}
         aria-label={props["aria-label"] ?? placeholder}
-        className={`min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-zinc-400 ${className}`}
+        className={`min-w-0 flex-1 bg-transparent text-sm outline-none text-[#0f2c5c] placeholder:text-zinc-500 font-medium ${className}`}
         {...props}
       />
       {endAdornment}

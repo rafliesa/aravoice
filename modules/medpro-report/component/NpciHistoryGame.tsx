@@ -200,11 +200,11 @@ export default function NpciHistoryGame() {
         
         {/* Pinned viewport screen - Transparent background, locks screen and centers content vertically */}
         <div
-          className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center"
+          className="sticky top-0 w-full h-screen flex items-center justify-center"
         >
           {/* Animating image container - Static size, transparent bg */}
           <div
-            className="relative h-[90vh] max-h-[850px] aspect-[1920/4000] flex-shrink-0"
+            className="relative h-[80vh] max-h-[720px] aspect-[1920/4000] flex-shrink-0 scale-90 sm:scale-95 md:scale-100 lg:scale-105 transition-transform"
           >
             {/* 1. Static Clean Background Track (21.webp - contains red track, years, lines, but NO description boxes) */}
             <img

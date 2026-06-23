@@ -408,10 +408,7 @@ export default function SubtitleFiveContent() {
         {textContent.paragraphDandanDilemma}
       </p>
 
-      {/* Dandan Supardan Gallery (Side by side images) */}
-      <div className="my-8" key="dandan-gallery">
-        <DandanSupardanGallery />
-      </div>
+
 
       {/* Dandan Quote 1 */}
       <blockquote className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center leading-relaxed" key="quote-dandan-1">
@@ -430,7 +427,7 @@ export default function SubtitleFiveContent() {
       {/* Dandan Supardan Interview Voice Note */}
       <div className="my-8" key="dandan-vn-container">
         <VoiceNoteCard
-          audioSrc="/audio/dandan-ekonomi.mp3"
+          audioSrc="/5/Dandan Supardan - Atlet Panahan.m4a"
           imageSrc="/uploads/d42c798d9c02a41627330f928b3c33c2.jpg"
           speakerName="Dandan Supardan"
           speakerRole="Atlet Panahan NPCI Kota Bandung & ASN Kemensos"

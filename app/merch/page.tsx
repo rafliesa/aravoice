@@ -4,7 +4,7 @@ import MerchPage from "@/modules/merch";
 export const metadata: Metadata = {
   title: "Merch",
   description:
-    "Koleksi merchandise Aravoice.id yang mendukung jurnalisme olahraga disabilitas yang inklusif dan independen.",
+    "Koleksi merchandise Paravoice.id yang mendukung jurnalisme olahraga disabilitas yang inklusif dan independen.",
 };
 
 export default function Page() {

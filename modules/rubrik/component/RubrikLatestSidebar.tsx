@@ -23,7 +23,7 @@ export default function RubrikLatestSidebar({
         {articles.map((item) => (
           <article key={item.id} className="py-5">
             <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-[#9a5a00]">
-              PARA X
+              {item.category}
             </p>
             <Link
               href={`/${item.slug}`}
@@ -32,7 +32,7 @@ export default function RubrikLatestSidebar({
               {item.title}
             </Link>
             <p className="mt-2 text-xs text-[#8a8f99]">
-              {formatPublishedDate(item.published_at)} • {item.reading_time} mnt baca
+              {formatPublishedDate(item.published_at)} • {item.reading_time} menit baca
             </p>
           </article>
         ))}

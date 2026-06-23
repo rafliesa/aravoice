@@ -126,7 +126,7 @@ export default function ArticleSubnav({
   };
 
   return (
-    <div className="relative mb-6 flex items-center w-full">
+    <div className="sticky top-0 z-40 bg-[#faf8f3]/95 backdrop-blur-sm py-3 border-b border-zinc-200/30 mb-6 flex items-center w-full">
       {/* Left scroll button */}
       {showLeftArrow && (
         <button

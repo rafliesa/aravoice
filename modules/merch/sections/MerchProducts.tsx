@@ -15,10 +15,10 @@ const categories = [
 const products: MerchProduct[] = [
   {
     id: 1,
-    name: 'T-Shirt "Suara Setara"',
-    category: "Pakaian",
-    description: "Bahan katun organik premium dengan logo eksklusif ParaVoice.",
-    price: "Rp 189.000",
+    name: 'Sticker Sheet "Suara Setara"',
+    category: "Aksesori",
+    description: "Lembaran stiker eksklusif dengan desain kampanye jurnalisme inklusif dari ParaVoice.",
+    price: "Rp 25.000",
     image: "/merch/sticker-sheet.png",
     sort_order: 10,
     is_active: true,

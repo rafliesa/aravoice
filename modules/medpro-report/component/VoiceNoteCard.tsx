@@ -8,6 +8,7 @@ type VoiceNoteCardProps = {
   imageSrc?: string;
   speakerName: string;
   speakerRole: string;
+  imageAlt?: string;
 };
 
 export default function VoiceNoteCard({
@@ -15,6 +16,7 @@ export default function VoiceNoteCard({
   imageSrc,
   speakerName = "Jonna Aman Damanik",
   speakerRole = "Komisioner Komisi Nasional Disabilitas (KND)",
+  imageAlt,
 }: Partial<VoiceNoteCardProps>) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -91,7 +93,7 @@ export default function VoiceNoteCard({
           {showImage ? (
             <Image
               src={imageSrc!}
-              alt={`Foto ${speakerName}`}
+              alt={imageAlt || `Foto ${speakerName}`}
               fill
               sizes="48px"
               className="object-cover"

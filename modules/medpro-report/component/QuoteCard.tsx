@@ -9,6 +9,7 @@ type QuoteCardProps = {
   speakerRole: string;
   reverse?: boolean;
   imageAlt?: string;
+  imagePosition?: string;
 };
 
 export default function QuoteCard({
@@ -18,6 +19,7 @@ export default function QuoteCard({
   speakerRole,
   reverse = false,
   imageAlt,
+  imagePosition = "object-center",
 }: QuoteCardProps) {
   return (
     <section className="my-8 w-full overflow-hidden rounded-2xl bg-white text-zinc-900 shadow-md border border-zinc-200 font-sans transition-all duration-300 hover:shadow-lg">
@@ -30,7 +32,7 @@ export default function QuoteCard({
             alt={imageAlt || `Foto ${speakerName}`}
             fill
             sizes="(min-width: 640px) 25vw, 100vw"
-            className="object-cover object-center"
+            className={`object-cover ${imagePosition}`}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.src = "/dukung-kami-hero.png";

@@ -40,14 +40,16 @@ export default function MerchImpact() {
             return (
               <article
                 key={item.title}
-                className="motion-card motion-fade-up min-h-64 rounded-lg border border-[#bfc4cf] bg-white p-8"
+                className="motion-card motion-fade-up rounded-2xl border border-[#d7dbe4] bg-white p-8 shadow-sm hover:shadow-md transition-all duration-300"
                 style={{ animationDelay: `${index * 90}ms` }}
               >
-                <Icon className="h-9 w-9 text-[#9a5a00]" />
-                <h2 className="mt-8 text-2xl font-extrabold leading-8 text-[#25272d]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#9a5a00]/10 text-[#9a5a00]">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h2 className="mt-6 text-xl font-extrabold leading-8 text-[#182036]">
                   {item.title}
                 </h2>
-                <p className="mt-5 text-base leading-7 text-[#5d6574]">
+                <p className="mt-3 text-sm leading-6 text-[#5d6574]">
                   {item.description}
                 </p>
               </article>

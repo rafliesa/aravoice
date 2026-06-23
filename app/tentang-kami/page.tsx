@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Tentang Kami",
   description:
-    "Kenali Aravoice.id, media olahraga disabilitas independen yang mengangkat jurnalisme data dan inklusivitas.",
+    "Kenali Paravoice.id, media olahraga disabilitas independen yang mengangkat jurnalisme data dan inklusivitas.",
 };
 
 export default function Page() {

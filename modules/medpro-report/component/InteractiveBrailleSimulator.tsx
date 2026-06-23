@@ -38,7 +38,7 @@ const brailleAlphabet: Record<string, number[]> = {
 };
 
 export default function InteractiveBrailleSimulator() {
-  const [inputText, setInputText] = useState("aravoice");
+  const [inputText, setInputText] = useState("paravoice");
   const [customDots, setCustomDots] = useState<number[]>([]);
 
   const handleDotToggle = (dotNum: number) => {

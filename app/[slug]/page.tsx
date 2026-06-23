@@ -15,10 +15,10 @@ export async function generateMetadata({
 
     return {
       title: news.title,
-      description: news.excerpt || `${news.title} di Aravoice.id.`,
+      description: news.excerpt || `${news.title} di Paravoice.id.`,
       openGraph: {
         title: news.title,
-        description: news.excerpt || `${news.title} di Aravoice.id.`,
+        description: news.excerpt || `${news.title} di Paravoice.id.`,
         images: news.cover_image ? [news.cover_image] : undefined,
         type: "article",
       },

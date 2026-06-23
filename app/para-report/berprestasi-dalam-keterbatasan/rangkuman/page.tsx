@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import MedproReportPage from "@/modules/medpro-report";
 import { medproArticleDescription } from "@/modules/medpro-report/data";
 import { articleParagraphClass } from "@/modules/medpro-report/component/articleContentClasses";
+import VoiceNoteCard from "@/modules/medpro-report/component/VoiceNoteCard";
 
 const title = "PENUTUP: Hak Tertunda";
 
@@ -26,6 +27,20 @@ export default function SummaryPage() {
       <p className={`${articleParagraphClass} mb-6`}>
         Sorak-sorai euforia kemenangan yang selama ini dielu-elukan nyatanya hanya tertinggal di dalam gelanggang. Begitu Ono melangkah keluar dari pintu ruang latihan, barbel kehidupan yang jauh lebih berat sudah menanti untuk dipikul. Ia harus segera kembali ke rutinitasnya, memastikan dapur keluarganya tetap mengepul. Selain sebagai sumber penghidupan, kebun hidroponiknya di Cibabat menjadi ruang kecil baginya untuk bernapas di tengah tekanan hidup yang saling berkelindan.
       </p>
+
+      {/* Voice Note Ono Closing */}
+      <div className="my-8" key="ono-closing-vn">
+        <VoiceNoteCard
+          audioSrc="/7/Pak Ono Closing.m4a"
+          imageSrc="/pak-ono/DIO_4957.webp"
+          speakerName="Ono Saefudin"
+          speakerRole="Atlet Angkat Berat NPCI Kota Bandung"
+          imageAlt="Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, beristirahat di rumahnya di Kota Bandung, Jawa Barat, pada 19 Juni, 2026."
+        />
+        <p className="text-zinc-500 text-xs italic text-center -mt-4 max-w-md mx-auto leading-relaxed">
+          “Jadi disabilitas itu harus bisa mandiri. Kalau kita gak punya keahlian. Terlantar. Ngemis,” ujar Ono.
+        </p>
+      </div>
 
       <p className={`${articleParagraphClass} mb-6`}>
         Di depan matanya, Peparda Jawa Barat 2026 semakin dekat. Namun, fokusnya harus rela terpecah belah. Ia masih harus menghitung ongkos perjalanan dari rumah ke tempat latihan, mencapai Rp700-800 ribu/bulan. Biaya itu keluar dari kantong pribadinya, sementara uang pembinaannya belum kunjung turun.

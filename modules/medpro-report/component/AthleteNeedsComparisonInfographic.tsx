@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 type EquipmentCategory = {
   id: string;
@@ -27,21 +28,14 @@ const equipmentCategories: EquipmentCategory[] = [
       </svg>
     ),
     illustration: (
-      <svg className="w-16 h-16 sm:w-20 sm:h-20 text-cyan-400" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        {/* Back Wheel */}
-        <circle cx="24" cy="40" r="15" strokeDasharray="3 3" />
-        <circle cx="24" cy="40" r="11" />
-        <circle cx="24" cy="40" r="2" fill="currentColor" />
-        {/* Frame */}
-        <path d="M24 24h16l6 20h-8" />
-        <path d="M40 24v12" />
-        {/* Front caster */}
-        <circle cx="48" cy="48" r="4" />
-        {/* Seat and backrest */}
-        <path d="M22 14v10h18" strokeWidth={3} />
-        {/* Footrest */}
-        <path d="M46 44h4" />
-      </svg>
+      <div className="relative w-20 h-20 sm:w-24 sm:h-24">
+        <Image
+          src="/2/kursi_roda_harian.png"
+          alt="Kursi Roda Harian"
+          fill
+          className="object-contain"
+        />
+      </div>
     ),
     disabilitas: {
       title: "Rp4 Juta – Rp6,7 Juta",
@@ -63,18 +57,14 @@ const equipmentCategories: EquipmentCategory[] = [
       </svg>
     ),
     illustration: (
-      <svg className="w-16 h-16 sm:w-20 sm:h-20 text-amber-400" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        {/* Slanted Back Wheel */}
-        <ellipse cx="20" cy="42" rx="14" ry="16" transform="rotate(-10 20 42)" strokeDasharray="3 3" />
-        <ellipse cx="20" cy="42" rx="10" ry="12" transform="rotate(-10 20 42)" />
-        {/* Long aerodynamic frame */}
-        <path d="M20 38h24l12 10" />
-        <path d="M30 26l8 12" strokeWidth={2.5} />
-        {/* Front Wheel */}
-        <circle cx="56" cy="48" r="4" />
-        {/* Hand rim */}
-        <circle cx="20" cy="42" r="8" />
-      </svg>
+      <div className="relative w-20 h-20 sm:w-24 sm:h-24">
+        <Image
+          src="/2/kursi_roda_balap.png"
+          alt="Kursi Roda Balap"
+          fill
+          className="object-contain"
+        />
+      </div>
     ),
     disabilitas: {
       title: "Rp100 Juta – Rp210 Juta",
@@ -96,17 +86,14 @@ const equipmentCategories: EquipmentCategory[] = [
       </svg>
     ),
     illustration: (
-      <svg className="w-16 h-16 sm:w-20 sm:h-20 text-rose-400" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        {/* Chess Knight */}
-        <path d="M22 48c0-8 4-12 8-16 2-2 4-5 2-8s-5-2-7-1c-2 1-4 3-5 5l-2-1c2-4 5-7 9-7 5 0 9 4 7 9s-2 6-4 8c-3 3-5 7-5 11h-2z" fill="currentColor" fillOpacity={0.1} />
-        <path d="M16 48h20v4H16z" />
-        <path d="M12 52h28v2H12z" />
-        {/* Dual Clock Timer */}
-        <rect x="36" y="24" width="20" height="14" rx="2" />
-        <circle cx="41" cy="31" r="4" />
-        <circle cx="51" cy="31" r="4" />
-        <path d="M41 29v2h2M51 29v2h-1M41 20v4M51 20v4" />
-      </svg>
+      <div className="relative w-20 h-20 sm:w-24 sm:h-24">
+        <Image
+          src="/2/catur.png"
+          alt="Timer Catur Taktil"
+          fill
+          className="object-contain"
+        />
+      </div>
     ),
     disabilitas: {
       title: "Rp7,5 Juta / Unit",
@@ -128,14 +115,14 @@ const equipmentCategories: EquipmentCategory[] = [
       </svg>
     ),
     illustration: (
-      <svg className="w-16 h-16 sm:w-20 sm:h-20 text-indigo-400" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        {/* Guide Railing Structure */}
-        <path d="M8 24h48M8 32h48" strokeWidth={2.5} />
-        <path d="M16 24v28M32 24v28M48 24v28M8 24c-4 0-4 8 0 8M56 24c4 0 4 8 0 8" />
-        {/* Bowling Ball & Pin */}
-        <circle cx="22" cy="46" r="6" fill="currentColor" fillOpacity={0.1} />
-        <path d="M44 40l2-8 2 8-2 2z" />
-      </svg>
+      <div className="relative w-20 h-20 sm:w-24 sm:h-24">
+        <Image
+          src="/2/guide_rail.png"
+          alt="Guide Rail (Bowling)"
+          fill
+          className="object-contain"
+        />
+      </div>
     ),
     disabilitas: {
       title: "Ketersediaan Terbatas",
@@ -157,15 +144,14 @@ const equipmentCategories: EquipmentCategory[] = [
       </svg>
     ),
     illustration: (
-      <svg className="w-16 h-16 sm:w-20 sm:h-20 text-emerald-400" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        {/* Racket */}
-        <ellipse cx="22" cy="22" rx="10" ry="12" transform="rotate(-30 22 22)" fill="currentColor" fillOpacity={0.1} />
-        <path d="M30 30l18 18M44 44l4 4" strokeWidth={2.5} />
-        <path d="M46 46l2 2" strokeWidth={4} />
-        {/* Shuttlecock */}
-        <path d="M34 26l12-8M38 30l8-12M32 24l12-12" />
-        <path d="M42 14c2-2 6 2 4 4l-4 4-4-4z" fill="currentColor" />
-      </svg>
+      <div className="relative w-20 h-20 sm:w-24 sm:h-24">
+        <Image
+          src="/2/shuttlecock_right.png"
+          alt="Badminton / Shuttlecock"
+          fill
+          className="object-contain"
+        />
+      </div>
     ),
     disabilitas: {
       title: "Hingga 1 Slop / Hari",
@@ -189,17 +175,20 @@ export default function AthleteNeedsComparisonInfographic() {
     <div className="my-8 font-sans w-full max-w-5xl mx-auto">
       
       {/* ── Outer Card Dashboard Container ── */}
-      <div className="overflow-hidden rounded-[2rem] bg-[#001f3f] border border-white/10 shadow-2xl p-4 sm:p-6 text-white">
+      <div 
+        className="overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl p-4 sm:p-6 text-white"
+        style={{ background: "linear-gradient(135deg,#0f2c5c 0%,#1a3f7a 45%,#1e4d96 100%)" }}
+      >
         
         {/* Header Title Section */}
         <div className="text-center mb-6 border-b border-white/10 pb-5">
-          <span className="inline-block bg-white/10 border border-white/20 text-[#a5c3f7] text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-3">
+          <span className="inline-block bg-white/10 border border-white/20 text-blue-200 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-3">
             INTERACTIVE DASHBOARD
           </span>
           <h3 className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-wider text-white">
             Kebutuhan &amp; Biaya Alat Atlet
           </h3>
-          <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm text-blue-100 mt-2 max-w-2xl mx-auto">
             Klik tombol kategori di bawah untuk membandingkan perbedaan biaya dan kebutuhan peralatan khusus antara atlet disabilitas (NPCI) dan non-disabilitas (KONI).
           </p>
         </div>
@@ -214,7 +203,7 @@ export default function AthleteNeedsComparisonInfographic() {
                 onClick={() => setActiveTab(cat.id)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-300 cursor-pointer ${
                   isActive
-                    ? "bg-[#0c2b5c] border-cyan-400/60 text-cyan-300 shadow-md shadow-cyan-500/10"
+                    ? "bg-[#0c2b5c] border-blue-400/60 text-blue-300 shadow-md shadow-blue-500/10"
                     : "bg-white/5 border-white/10 hover:bg-white/10 text-slate-300 hover:text-white"
                 }`}
               >
@@ -232,12 +221,12 @@ export default function AthleteNeedsComparisonInfographic() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
             {/* Left Card: Disabilitas (NPCI) */}
-            <div className="bg-[#0a1e3b]/80 border border-cyan-400/25 rounded-2xl p-5 flex flex-col justify-between shadow-lg relative overflow-hidden group">
+            <div className="bg-[#0a1e3b]/80 border border-blue-400/25 rounded-2xl p-5 flex flex-col justify-between shadow-lg relative overflow-hidden group">
               {/* Highlight gradient back shadow */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-full blur-xl group-hover:bg-cyan-500/10 transition-all duration-300" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl group-hover:bg-blue-500/10 transition-all duration-300" />
               
               <div>
-                <span className="inline-block bg-cyan-500/15 text-cyan-300 border border-cyan-400/30 text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md mb-4">
+                <span className="inline-block bg-blue-500/15 text-blue-300 border border-blue-400/30 text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md mb-4">
                   {currentCategory.disabilitas.badge}
                 </span>
                 
@@ -252,7 +241,7 @@ export default function AthleteNeedsComparisonInfographic() {
                 </p>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-white/5 flex items-center gap-1.5 text-[10px] text-cyan-400 font-extrabold">
+              <div className="mt-5 pt-3 border-t border-white/5 flex items-center gap-1.5 text-[10px] text-blue-300 font-extrabold">
                 <svg className="size-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
@@ -291,7 +280,7 @@ export default function AthleteNeedsComparisonInfographic() {
           {/* Right Vector Illustration Card */}
           <div className="bg-[#06142c] border border-white/5 rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-lg relative overflow-hidden">
             {/* Ambient circular blur background */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.06)_0%,transparent_70%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.06)_0%,transparent_70%)] pointer-events-none" />
             
             <div className="relative z-10 p-4 bg-white/5 border border-white/10 rounded-2xl mb-4 shadow-inner flex items-center justify-center min-h-[110px] min-w-[110px]">
               {currentCategory.illustration}
