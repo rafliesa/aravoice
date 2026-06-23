@@ -5,25 +5,22 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    title: "Dari Tribun yang Sepi, Suara Itu Tetap Tumbuh",
+    title: "Dari Medali ke Nyala Api Kompor yang Menolak Mati",
     description:
-      "Di balik arena yang jauh dari sorotan, para atlet disabilitas terus berjuang dengan fasilitas, waktu, dan tenaga yang sering kali terbatas.",
-    image: "/dukung-kami-hero.png",
-    imagePosition: "center",
+      "Prestasi atlet paralimpik sering hadir dalam bentuk medali, piagam, dan seremoni penghargaan. Namun, ketika lampu arena padam dan sorak penonton berhenti, banyak atlet kembali menghadapi persoalan yang sama, bagaimana memenuhi kebutuhan keluarga sambil mempertahankan karier olahraga yang belum tentu menjamin kehidupan mereka.",
+    image: "/dukung-kami/Dari Medali ke Nyala Api Kompor yang Menolak Mati_.jpg",
   },
   {
-    title: "Janji di Atas Kertas, Latihan di Atas Keterbatasan",
+    title: "Doa-Doa di Balik Barisan Piala",
     description:
-      "Undang-undang telah memberi pedoman bagi pemenuhan hak penyandang disabilitas. Namun, bagi sebagian atlet NPCI Kota Bandung, hak itu masih harus dicari di antara ruang latihan, pekerjaan, dan insentif yang tidak selalu pasti.",
-    image: "/dukung-kami-hero.png",
-    imagePosition: "45% center",
+      "Kemenangan tidak sependek podium-podium perayaan itu. Kemenangan dipupuk dalam keseharian, kemenangan ada dalam senyuman orang-orang terdekat yang selama ini menemani Ono. Dalam tekanan kompetisi dan ekonomi, dukungan keluarga menjadi penopang tubuhnya untuk terus maju, menguatkannya dalam mengangkat beban yang lebih berat.",
+    image: "/dukung-kami/Doa-Doa di Balik Barisan Piala_ .jpg",
   },
   {
-    title: "Alat Impor, Mimpi yang Tetap Dipikul Sendiri",
+    title: "Yang Terduduk Tidak Akan Pernah Tunduk",
     description:
-      "Saat dana pembinaan harus dibagi untuk banyak cabang olahraga, atlet disabilitas tetap dituntut berprestasi dengan peralatan yang mahal, terbatas, dan tidak selalu mudah dirawat.",
-    image: "/dukung-kami-hero.png",
-    imagePosition: "55% center",
+      "Enam bulan menuju Pekan Paralimpik Daerah Jawa Barat, dan barisan kursi roda itu tetap berjajar rapi di tepi lapangan, berdoa kemudia melakukan pemanasan. Pemandangan ini sudah berlangsung dari dua bulan sebelumnya, dan niat mereka tetap sama, Meraih Juara.",
+    image: "/dukung-kami/Yang Terduduk Tidak Akan Pernah Tunduk_.jpg",
   },
 ];
 
