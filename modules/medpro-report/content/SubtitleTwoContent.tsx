@@ -343,6 +343,20 @@ export default function SubtitleTwoContent() {
 
       <p className={articleParagraphClass} key="quote-85">{"“Karena kami (saya) tidak banyak mengandalkan penglihatan, jadi lebih banyak mengandalkan pendengaran dan deskripsi verbal,” ujar Bambang. Ia kemudian menekankan, “(pelatihan) secara khusus belum ada. Saya lebih banyak belajar sendiri dari pengalaman sebagai atlet.”"}</p>
 
+      {/* Accessibility Infographic Block */}
+      <div className="my-10 mx-auto max-w-2xl" key="accessibility-infographic-container">
+        <div className="overflow-hidden rounded-2xl shadow-md border border-zinc-200/50">
+          <img
+            src="/2/Infografis nami 2.png"
+            alt="infografis aksesibilitas fasilitas olahraga disabilitas di kota bandung"
+            className="w-full h-auto block"
+          />
+        </div>
+        <p className="font-sans text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mt-3 px-1 text-center">
+          infografis aksesibilitas fasilitas olahraga disabilitas di kota bandung
+        </p>
+      </div>
+
       <h2 className={articleHeadingClass} key="heading-88">
         {"SEJARAH TERBENTUKNYA NPCI"}
       </h2>

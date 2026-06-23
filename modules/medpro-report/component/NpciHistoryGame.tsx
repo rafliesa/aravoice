@@ -238,7 +238,7 @@ export default function NpciHistoryGame() {
 
             {/* Desktop Overlays: Render clean React cards positioned completely OUTSIDE the image frame */}
             {milestones.map((m) => {
-              const isVisible = mascotState.frame >= m.triggerFrame;
+              const isVisible = activeMilestone?.year === m.year;
               const isLeftCard = m.style.hasOwnProperty("right");
               const lineLeft = isLeftCard ? 0 : m.trackX;
               const lineWidth = isLeftCard ? m.trackX : (105 - m.trackX);
