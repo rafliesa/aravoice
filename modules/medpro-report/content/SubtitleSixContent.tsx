@@ -156,20 +156,17 @@ export default function SubtitleSixContent() {
         </div>
 
         {/* Content text below the side-by-side elements */}
-        <div className="mt-8 pt-6 border-t border-zinc-100 space-y-6">
-          <div className="relative rounded-xl bg-secondary-50/30 border-l-4 border-secondary-500 p-4 sm:p-5">
-            <span className="absolute right-4 top-2 text-6xl font-caslon text-secondary-500/10 select-none pointer-events-none">“</span>
-            <p className="text-sm sm:text-base leading-relaxed text-zinc-700 font-medium italic relative z-10">
-              “Kalau saya, sesuai dengan karena hidup dengan Ibu itu istilahnya betul-betul kita jalankan. Men-support yang paling utama adalah janganlah olahraga itu dijadikan beban. Prestasi itu bukan tujuan utama, tapi bermainlah dengan baik. Pendekatan-pendekatan seperti itulah yang membuat semangat Ibu tidak merasa terabaikan, tidak merasa jauh dengan siapa. Akhirnya bermain pun dia nothing to lose. Dan di situ main akan kelihatan progresif.”
-            </p>
-          </div>
-
-          <div className="text-sm sm:text-base leading-relaxed text-zinc-600 font-medium">
-            Ketika prestasi menjadi peluang pendapatan lebih, hal ini memberikan tekanan psikologis para atlet untuk terus meraih medali di ajang pertandingan. Tekanan ini sangat mempengaruhi performa atlet saat latihan maupun kompetisi. Menurut Yulia, pengaruh mental terhadap performa atlet saat bertanding bisa mencapai 80 persen. Bahkan saat semua persiapan sudah dilakukan selama latihan, masih ada atlet yang mengkhawatirkan kekalahan yang belum tentu terjadi.
-          </div>
+        <div className="mt-5 pt-5 border-t border-zinc-100">
+          <p className="text-sm text-zinc-500 italic leading-relaxed">
+            “Kalau saya, sesuai dengan karena hidup dengan Ibu itu istilahnya betul-betul kita jalankan. Men-support yang paling utama adalah janganlah olahraga itu dijadikan beban. Prestasi itu bukan tujuan utama, tapi bermainlah dengan baik. Pendekatan-pendekatan seperti itulah yang membuat semangat Ibu tidak merasa terabaikan, tidak merasa jauh dengan siapa. Akhirnya bermain pun dia nothing to lose. Dan di situ main akan kelihatan progresif.”
+          </p>
         </div>
 
       </div>
+
+      <p className={articleParagraphClass} key="paragraph-16">
+        {"Ketika prestasi menjadi peluang pendapatan lebih, hal ini memberikan tekanan psikologis para atlet untuk terus meraih medali di ajang pertandingan. Tekanan ini sangat mempengaruhi performa atlet saat latihan maupun kompetisi. Menurut Yulia, pengaruh mental terhadap performa atlet saat bertanding bisa mencapai 80 persen. Bahkan saat semua persiapan sudah dilakukan selama latihan, masih ada atlet yang mengkhawatirkan kekalahan yang belum tentu terjadi."}
+      </p>
 
       <h2 className={articleHeadingClass} key="heading-stigma">
         {"BELAS KASIHAN YANG MEMBUNUH MENTAL"}
