@@ -58,7 +58,7 @@ export default function DonationForm() {
     <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
       <div className="motion-fade-up">
         <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9a5a00]">
-          Donasi: Hasna
+          Donasi
         </p>
         <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
           Pilih Nominal Donasi

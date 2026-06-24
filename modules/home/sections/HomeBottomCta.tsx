@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  CheckCircleIcon,
-  HandHeartIcon,
-} from "@/modules/home/component/icons";
+import { CheckCircleIcon, HandHeartIcon } from "@/modules/home/component/icons";
 
 const memberBenefits = [
   "Laporan Mendalam Eksklusif",
@@ -42,12 +39,27 @@ export default function HomeBottomCta() {
           >
             Daftar Sekarang
           </Link>
+
           <p className="mt-6 text-sm text-[#686868]">
             Sudah punya akun?{" "}
-            <Link href="/admin/login" className="font-semibold text-[#9a5a00] hover:underline">
+            <Link
+              href="/admin/login"
+              className="font-semibold text-[#9a5a00] hover:underline"
+            >
               Masuk di sini.
             </Link>
           </p>
+          <div className="absolute -bottom-18 -left-28 w-80 h-80 pointer-events-none">
+            <Image
+              src="/Maskot_HI.png"
+              alt="Mascot ParaVoice"
+              fill
+              className="object-contain"
+            />
+          </div>
+          <div className="absolute -left-40 bottom-44 ml-auto bg-[#9a5a00] text-white text-xs font-black px-4 py-2.5 rounded-2xl shadow-sm tracking-wide">
+            Ayo jadi Paravox!
+          </div>
         </article>
 
         <Link
@@ -67,22 +79,9 @@ export default function HomeBottomCta() {
                   Dapatkan Merchandise eksklusif dari ParaVoice secara langsung
                 </p>
                 <p className="mt-8 text-base leading-8 text-[#4f5564]">
-                  Jadilah bagian dari kami dan miliki koleksi eksklusifnya sekarang!
+                  Jadilah bagian dari kami dan miliki koleksi eksklusifnya
+                  sekarang!
                 </p>
-                <div className="relative mt-6 flex items-center gap-2">
-                  <div className="relative w-56 h-56 shrink-0">
-                    <Image
-                      src="/Maskot.png"
-                      alt="Mascot ParaVoice"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <div className="relative bg-[#9a5a00] text-white text-xs font-black px-4 py-2.5 rounded-2xl rounded-tl-none shadow-sm tracking-wide -ml-8">
-                    Grab Yours!
-                    <div className="absolute -left-2 top-0 w-0 h-0 border-r-[8px] border-r-[#9a5a00] border-b-[8px] border-b-transparent" />
-                  </div>
-                </div>
               </div>
 
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[#cfd3db] bg-white shadow-lg shadow-black/10">
@@ -94,6 +93,17 @@ export default function HomeBottomCta() {
                   className="motion-image object-cover"
                 />
               </div>
+            </div>
+            <div className="absolute -bottom-16 -right-24 w-80 h-80 pointer-events-none">
+              <Image
+                src="/Maskot.png"
+                alt="Mascot ParaVoice"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="absolute -right-32 bottom-48 ml-auto bg-[#9a5a00] text-white text-xs font-black px-4 py-2.5 rounded-2xl shadow-sm tracking-wide">
+              Grab Yours!
             </div>
           </article>
         </Link>

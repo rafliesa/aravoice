@@ -312,7 +312,7 @@ export default function AccessibilityWidget() {
           <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-tertiary-200 bg-white px-5 py-4">
             <div>
               <p className="text-secondary-700 text-xs font-extrabold uppercase tracking-[0.14em]">
-                ParaVoice
+                ParaHelp
               </p>
               <h2 id="a11y-panel-title" className="mt-1 text-xl font-bold">
                 Aksesibilitas
