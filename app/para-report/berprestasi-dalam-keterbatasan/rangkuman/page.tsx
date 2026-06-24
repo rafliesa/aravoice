@@ -40,88 +40,32 @@ export default function SummaryPage() {
           imageAlt="Atlet angkat beban National Paralympic Committee of Indonesia (NPCI) Kota Bandung, Ono, beristirahat di rumahnya di Kota Bandung, Jawa Barat, pada 19 Juni, 2026."
         />
         <p className="text-zinc-500 text-xs italic text-center -mt-4 max-w-md mx-auto leading-relaxed">
-          “Jadi disabilitas itu harus bisa mandiri. Kalau kita gak punya keahlian. Terlantar. Ngemis,” ujar Ono.
+          “Jadi disabilitas itu harus bisa mandiri. Kalau kita gak punya keahlian. Terlantar. Ngemis,” ujar Ono
         </p>
       </div>
 
       <p className={`${articleParagraphClass} mb-6`}>
-        Di depan matanya, Peparda Jawa Barat 2026 semakin dekat. Namun, fokusnya harus rela terpecah belah. Ia masih harus menghitung ongkos perjalanan dari rumah ke tempat latihan, mencapai Rp700-800 ribu/bulan. Biaya itu keluar dari kantong pribadinya, sementara uang pembinaannya belum kunjung turun.
+        Di depan matanya, Peparda Jawa Barat 2026 semakin dekat. Namun, fokusnya harus rela terbagi. Ia masih menghitung ongkos perjalanan dari rumah ke tempat latihan yang mencapai Rp700.000 hingga Rp800.000 setiap bulan. Biaya itu keluar dari kantong pribadinya, sementara uang pembinaan belum kunjung turun. Dalam ketidakpastian itu, kisah Ono memperlihatkan bagaimana atlet disabilitas Kota Bandung tidak hanya berlatih untuk meraih prestasi, tetapi juga berjuang menjaga keberlangsungan hidup.
       </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
-        Dalam ketidakpastian ekonomi saat ini, kisah Ono menjadi refleksi nyata bagaimana atlet disabilitas Kota Bandung berlatih dan berjuang tidak hanya untuk meraih prestasi, tetapi juga keberlangsungan hidup mereka.
+        Di tingkat organisasi, National Paralympic Committee of Indonesia (NPCI) Kota Bandung menjadi rumah pembinaan bagi para atlet. Namun, organisasi ini belum sepenuhnya memiliki kemandirian finansial untuk menopang kesejahteraan harian atlet ketika kebijakan anggaran berubah atau dana hibah dipotong. “Kita mesti akui bahwa NPCI belum bisa sepenuhnya menjadi sandaran kesejahteraan atlet. Organisasi ini bergantung pada dana hibah pemerintah, dan ketika dana itu dipotong, seluruh ekosistem pembinaan ikut terdampak,” jelas Djumono, Sekretaris Umum NPCI Kota Bandung.
       </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
-        Di tingkat organisasi, National Paralympic Committee of Indonesia (NPCI) Kota Bandung menjadi rumah pembinaan bagi para atlet. Namun, organisasi ini belum sepenuhnya memiliki kemandirian finansial yang cukup untuk menopang kesejahteraan harian atlet ketika kebijakan anggaran berubah atau dana hibah dipotong.
+        Di sisi lain, pemerintah daerah menempatkan dirinya dalam posisi administratif sebagai pemberi dan pengawas dana. Acep Wahyu Ramdan, Sub Koordinator Olahraga Pendidikan Dispora Kota Bandung, menjelaskan bahwa Dispora tidak menangani langsung kesejahteraan atlet di lapangan. “NPCI adalah mitra kami. Sama seperti KONI. Kami tidak mengurus teknis kesejahteraan atlet secara langsung. Kami memberikan dana hibah, lalu organisasi yang mengelola dan bertanggung jawab terhadap penggunaannya. Peran kami lebih kepada pendampingan, monitoring, dan evaluasi,” jelas Acep.
       </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
-        “Kita mesti akui bahwa NPCI belum bisa sepenuhnya menjadi sandaran kesejahteraan atlet. Organisasi ini bergantung pada dana hibah pemerintah, dan ketika dana itu dipotong, seluruh ekosistem pembinaan ikut terdampak,” — Djumono, Sekretaris Umum NPCI Kota Bandung
+        Di tengah kewenangan yang birokratis itu, persoalan atlet disabilitas menjadi lebih rumit. Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas, melihat bahwa persoalan utama bukan terletak pada ketiadaan aturan, melainkan pada pelaksanaan kebijakan yang belum sepenuhnya menjawab kebutuhan penyandang disabilitas di lapangan. “Kalau dari sisi regulasi sebenarnya sudah ada. Undang-undangnya juga sudah ada. Tetapi implementasinya secara keseluruhan masih belum memenuhi kebutuhan,” tegas Jonna. Jarak antara regulasi dan praktik itu semakin terasa ketika dibandingkan dengan ekosistem olahraga umum di bawah KONI yang memiliki struktur bidang untuk membantu atlet dalam kasus kecelakaan maupun advokasi hukum.
       </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
-        Kondisi itu memperlihatkan ruang kosong dalam sistem pembinaan atlet disabilitas. Berbagai upaya tetap dilakukan agar ekosistem olahraga disabilitas berjalan, mulai dari mempertahankan program latihan, mengusahakan bantuan transportasi, hingga mendorong pembinaan di luar arena seperti literasi keuangan, pengembangan keterampilan hidup, dan pemberdayaan atlet setelah karier olahraga berakhir.
+        Karena itu, pembinaan tidak bisa hanya bertumpu pada bonus atau prestasi. Aditya Nandang Saputra, pengurus bidang pemberdayaan atlet NPCI Kabupaten Bandung, mulai mendorong literasi keuangan, investasi dasar, pengembangan diri, hingga keterampilan hidup sebagai bekal setelah karier olahraga berakhir. “Kita selamanya tidak bisa menjadi atlet,” ujarnya.
       </p>
 
       <p className={`${articleParagraphClass} mb-6`}>
-        Namun, di sisi lain, pemerintah daerah menempatkan dirinya dalam posisi administratif sebagai pemberi dan pengawas dana. Acep Wahyu Ramdan, Sub Koordinator Olahraga Pendidikan Dispora Kota Bandung, menjelaskan bahwa Dispora tidak menangani langsung kesejahteraan atlet di lapangan.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        “NPCI adalah mitra kami. Sama seperti KONI. Kami tidak mengurus teknis kesejahteraan atlet secara langsung. Kami memberikan dana hibah, lalu organisasi yang mengelola dan bertanggung jawab terhadap penggunaannya. Peran kami lebih kepada pendampingan, monitoring, dan evaluasi,” — Acep Wahyu Ramdan, Sub Koordinator Olahraga Pendidikan Dispora Kota Bandung
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        Ketika anggaran menyempit akibat efisiensi, ruang penyelesaian kembali diarahkan kepada organisasi. Acep menyebut NPCI dapat mencari sumber dukungan lain, seperti dana Corporate Social Responsibility (CSR) or sponsor, untuk menutupi kebutuhan yang belum dapat dipenuhi melalui anggaran pemerintah.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        Di tengah kewenangan yang saling berbatas itu, persoalan atlet disabilitas menjadi lebih rumit. Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas, melihat bahwa persoalan utama bukan terletak pada ketiadaan aturan, melainkan pada pelaksanaan kebijakan yang belum sepenuhnya menjawab kebutuhan penyandang disabilitas di lapangan.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        “Kalau dari sisi regulasi sebenarnya sudah ada. Undang-undangnya juga sudah ada. Tetapi implementasinya secara keseluruhan masih belum memenuhi kebutuhan,” — Jonna Aman Damanik, Komisioner Komisi Nasional Disabilitas
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        Jarak antara regulasi dan praktik itu semakin terasa ketika dibandingkan dengan ekosistem olahraga umum di bawah Komite Olahraga Nasional Indonesia (KONI). Wakil Ketua II KONI Kota Bandung, Mulyana, menyebut lembaganya memiliki struktur bidang yang dapat membantu atlet ketika cabang olahraga tidak mampu menyelesaikan persoalan sendiri, termasuk dalam kasus kecelakaan maupun advokasi hukum.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        “Kalau misalnya cabang olahraga itu tidak bisa mengatasi, biasanya datang ke KONI. Contohnya ada kasus kecelakaan... Pernah ada kasus hukum juga kita berikan advokasi karena kita punya struktur dan ada tim berbentuk bidang,” — Mulyana, Wakil Ketua II KONI Kota Bandung
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        Perbedaan dukungan kelembagaan itu menunjukkan bahwa persoalan atlet disabilitas tidak hanya berada di arena latihan. Ia juga berkaitan dengan desain organisasi, keberpihakan anggaran, dan kesiapan sistem dalam melindungi atlet ketika mereka menghadapi risiko di luar pertandingan.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        Karena itu, pembinaan tidak bisa hanya bertumpu pada bonus atau prestasi. Aditya Nandang Saputra, pengurus bidang pemberdayaan atlet NPCI Kabupaten Bandung, mulai mendorong literasi keuangan, investasi dasar, pengembangan diri, hingga keterampilan hidup sebagai bekal setelah karier olahraga berakhir. “Kita selamanya tidak bisa menjadi atlet,” ujarnya. Kalimat itu menjadi pengingat bahwa medali punya masa terang, sementara hidup atlet terus berjalan setelah sorak arena padam.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        Di tingkat organisasi kota, Komarudin menjelaskan bahwa NPCI Kota Bandung tetap berusaha mempertahankan bantuan transportasi dan memastikan latihan berjalan meski anggaran semakin terbatas. “Karena paling terasa buat atlet itu transport. Kalau bonus kan nanti setelah pertandingan,” katanya.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        Sementara itu, Yadi Sopian, Ketua NPCI Kota Bandung menilai tantangan berikutnya terletak pada implementasi aturan yang sudah tersedia. Menurutnya, berbagai regulasi mengenai hak penyandang disabilitas sebenarnya telah ada, termasuk kewajiban membuka ruang kerja yang lebih inklusif.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        “Saya berharap pemerintah dan pihak terkait benar-benar menjaga regulasi yang sudah dibuat. Kalau ada perusahaan yang tidak menjalankan aturan tersebut, seharusnya ada sanksi yang jelas.” — Yadi Sopian, Ketua NPCI Kota Bandung
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        Pada akhirnya, kebijakan yang bergerak di tingkat atas bermuara pada ruang latihan. Di cabang blind judo Kota Bandung, Wirya Dharma, koordinator pelatih sekaligus mantan atlet, menyaksikan langsung bagaimana keterbatasan dukungan memengaruhi kehadiran anak asuhnya. Dari pinggir matras, ia tidak hanya melatih teknik, tetapi juga melihat bagaimana atlet berjuang agar tetap bisa datang.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        Hari itu, matras dojo tampak lebih lengang dari seharusnya. Bagi Wirya, lawan terbesar anak asuhnya tidak selalu datang dalam bentuk bantingan dari lawan tanding. Sering kali, hambatan itu hadir lebih awal sebagai ongkos transportasi, pekerjaan harian, dan kebutuhan ekonomi yang tidak bisa ditunda.
-      </p>
-
-      <p className={`${articleParagraphClass} mb-6`}>
-        “Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya tidak bisa memaksa mereka,” — Wirya Dharma, Koordinator Pelatih Blind Judo Kota Bandung
+        Pada akhirnya, kebijakan yang berlika-liku itu bermuara pada ruang latihan. Di cabang blind judo Kota Bandung, Wirya Dharma menyaksikan langsung bagaimana keterbatasan dukungan memengaruhi kehadiran anak asuhnya. “Dari 21 atlet yang kami bina, yang hadir latihan biasanya hanya sekitar 10 orang. Sisanya banyak yang terkendala masalah ekonomi. Saya tidak bisa memaksa mereka,” ucap Wirya, membiarkan kenyataan itu menggantung di ruang latihan yang mulai lengang.
       </p>
 
       {/* Video Feature Section */}
