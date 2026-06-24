@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const STORAGE_KEY = "aravoice:a11y-settings";
 const TEXT_SCALE_LABELS = ["100%", "112%", "125%", "137%"];
-const CONTRAST_LABELS = ["Normal", "Sedang", "Tinggi"];
+const CONTRAST_LABELS = ["Normal", "Negatif"];
 
 /**
  * Reads the persisted accessibility settings from localStorage.
@@ -242,7 +242,7 @@ export default function ArticleControls() {
               : "border-black text-black hover:bg-zinc-100"
           }`}
         >
-          ◐ Kontras Tinggi
+          ◐ Kontras: {CONTRAST_LABELS[contrast]}
         </button>
       </div>
     </div>

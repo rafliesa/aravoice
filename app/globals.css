@@ -249,8 +249,6 @@ body {
 
 html:is(
     [data-a11y-smart-contrast="true"],
-    [data-a11y-contrast="1"],
-    [data-a11y-contrast="2"],
     [data-a11y-saturation="1"],
     [data-a11y-saturation="2"],
     [data-a11y-saturation="3"]
@@ -266,13 +264,18 @@ html[data-a11y-smart-contrast="true"] #site-shell {
   --a11y-smart-contrast: 1.12;
 }
 
+/* 1. Negative Contrast Mode */
 html[data-a11y-contrast="1"] #site-shell {
-  --a11y-manual-contrast: 1.2;
+  filter: invert(1) contrast(var(--a11y-smart-contrast)) saturate(var(--a11y-saturation));
+}
+/* Re-invert media inside site-shell so they look normal */
+html[data-a11y-contrast="1"] #site-shell img,
+html[data-a11y-contrast="1"] #site-shell video,
+html[data-a11y-contrast="1"] #site-shell iframe {
+  filter: invert(1);
 }
 
-html[data-a11y-contrast="2"] #site-shell {
-  --a11y-manual-contrast: 1.45;
-}
+
 
 html[data-a11y-saturation="1"] #site-shell {
   --a11y-saturation: 0.45;

@@ -54,7 +54,7 @@ const DEFAULT_SETTINGS: Settings = {
 
 const TEXT_SCALE_LABELS = ["100%", "112%", "125%", "137%"];
 const TEXT_SPACING_LABELS = ["Normal", "Ringan", "Lega"];
-const CONTRAST_LABELS = ["Normal", "Sedang", "Tinggi"];
+const CONTRAST_LABELS = ["Normal", "Negatif"];
 const LINE_HEIGHT_LABELS = ["Normal", "1.6", "1.9", "2.2"];
 const TEXT_ALIGN_LABELS = ["Default", "Kiri", "Tengah", "Kanan", "Rata"];
 const SATURATION_LABELS = ["Normal", "Rendah", "Tinggi", "Abu-abu"];
