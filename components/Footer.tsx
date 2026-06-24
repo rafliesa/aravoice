@@ -29,12 +29,12 @@ export default function Footer() {
     <footer className="w-full bg-[#0b0f1a] text-[#D1D5DB]">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col gap-5">
-          <div className="relative w-52 h-14">
+          <div className="mb-10 h-16">
             <Image
               src="/footer-logo.webp"
               alt="ParaVoice.id"
-              fill
-              sizes="(max-width: 768px) 100vw, 208px"
+              width={200}
+              height={48}
               className="object-contain object-left"
             />
           </div>

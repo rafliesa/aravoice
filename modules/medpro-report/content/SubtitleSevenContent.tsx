@@ -254,15 +254,19 @@ export default function SubtitleSevenContent() {
       </p>
 
       {/* Hak dalam Regulasi - Realita Atlet (Infografis Nami) - Static */}
-      <div className="my-8 max-w-xl mx-auto overflow-hidden rounded-2xl border border-zinc-200 bg-white p-2 shadow-sm" key="rights-vs-reality-infographic-container">
-        <div className="relative aspect-[1200/2545] w-full">
-          <Image
-            src="/7/infografis-nami.webp"
-            alt="Hak dalam Regulasi vs Realita Atlet"
-            fill
-            className="object-contain rounded-xl"
-            sizes="(min-width: 768px) 576px, 100vw"
-          />
+      <div className="my-8 flex justify-center" key="rights-vs-reality-infographic-container">
+        <div className="w-fit">
+          <ZoomableWrapper title="Hak dalam Regulasi vs Realita Atlet">
+            <div className="relative h-[60vh] md:h-[75vh] max-h-[800px] aspect-[1200/2545] overflow-hidden rounded-xl bg-white p-2">
+              <Image
+                src="/7/infografis-nami.webp"
+                alt="Hak dalam Regulasi vs Realita Atlet"
+                fill
+                className="object-contain"
+                sizes="(min-width: 768px) 50vw, 90vw"
+              />
+            </div>
+          </ZoomableWrapper>
         </div>
       </div>
 

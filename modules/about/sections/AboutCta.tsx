@@ -26,7 +26,7 @@ export default function AboutCta() {
           menjadi bagian penting dari percakapan publik Indonesia.
         </p>
         <Link
-          href="#"
+          href="/dukung-kami"
           className="mt-7 inline-flex min-h-10 items-center justify-center rounded-md bg-secondary-800 px-6 text-sm font-bold text-white transition-colors hover:bg-[#b26a00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           Ajukan Kerjasama

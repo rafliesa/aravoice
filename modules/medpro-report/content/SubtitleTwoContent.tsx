@@ -344,13 +344,17 @@ export default function SubtitleTwoContent() {
       <p className={articleParagraphClass} key="quote-85">{"“Karena kami (saya) tidak banyak mengandalkan penglihatan, jadi lebih banyak mengandalkan pendengaran dan deskripsi verbal,” ujar Bambang. Ia kemudian menekankan, “(pelatihan) secara khusus belum ada. Saya lebih banyak belajar sendiri dari pengalaman sebagai atlet.”"}</p>
 
       {/* Accessibility Infographic Block */}
-      <div className="my-10 mx-auto max-w-2xl" key="accessibility-infographic-container">
-        <div className="overflow-hidden rounded-2xl shadow-md border border-zinc-200/50">
-          <img
-            src="/2/Infografis nami 2.png"
-            alt="infografis aksesibilitas fasilitas olahraga disabilitas di kota bandung"
-            className="w-full h-auto block"
-          />
+      <div className="my-10 flex flex-col items-center justify-center" key="accessibility-infographic-container">
+        <div className="w-fit">
+          <ZoomableWrapper title="Aksesibilitas Fasilitas Olahraga Disabilitas di Kota Bandung">
+            <div className="relative h-[60vh] md:h-[75vh] max-h-[800px] overflow-hidden rounded-2xl bg-white p-2 border border-zinc-200/50 shadow-md">
+              <img
+                src="/2/Infografis nami 2.png"
+                alt="infografis aksesibilitas fasilitas olahraga disabilitas di kota bandung"
+                className="h-full w-auto object-contain block rounded-xl"
+              />
+            </div>
+          </ZoomableWrapper>
         </div>
         <p className="font-sans text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mt-3 px-1 text-center">
           infografis aksesibilitas fasilitas olahraga disabilitas di kota bandung

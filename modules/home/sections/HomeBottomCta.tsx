@@ -86,7 +86,7 @@ export default function HomeBottomCta() {
 
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[#cfd3db] bg-white shadow-lg shadow-black/10">
                 <Image
-                  src="/merch/merchs.jpeg"
+                  src="/merchs.jpeg"
                   alt=""
                   fill
                   sizes="(min-width: 768px) 28vw, 80vw"

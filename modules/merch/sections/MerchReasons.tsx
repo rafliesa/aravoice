@@ -67,32 +67,17 @@ export default function MerchReasons() {
           </div>
         </div>
 
-        <div className="motion-slide-in-right relative min-h-[30rem] lg:min-h-[39rem]">
-          <div className="absolute left-8 right-[-9rem] top-8 h-[31rem] rotate-3 rounded-3xl border-8 border-[#1e315d] bg-[#13254b] shadow-2xl shadow-black/25" />
-          <div className="absolute left-0 right-0 top-0 grid grid-cols-2 gap-5 rounded-2xl p-4 md:grid-cols-3 lg:left-8 lg:right-[-3rem] lg:top-10">
-            {[
-              "/merch/hoodie-inklusif.png",
-              "/merch/tote-bag.png",
-              "/merch/topi-para.png",
-              "/merch/sticker-sheet.png",
-              "/merch/tumbler-orange.png",
-              "/merch/mug-jurnalis.png",
-            ].map((image, index) => (
-              <div
-                key={image}
-                className={`relative aspect-square overflow-hidden rounded-lg bg-white/8 shadow-xl ${
-                  index % 2 === 0 ? "translate-y-6" : ""
-                }`}
-              >
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  sizes="(min-width: 1024px) 16vw, 28vw"
-                  className="object-cover opacity-90"
-                />
-              </div>
-            ))}
+        <div className="motion-slide-in-right relative h-[30rem] lg:h-[39rem]">
+          <div className="absolute inset-0 p-4 lg:left-8 lg:right-[-3rem] lg:p-8">
+            <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-xl rotate-[2deg] transition-transform duration-500 hover:scale-105">
+              <Image
+                src="/merchs.jpeg"
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 40vw, 80vw"
+                className="object-cover opacity-90"
+              />
+            </div>
           </div>
         </div>
       </div>
