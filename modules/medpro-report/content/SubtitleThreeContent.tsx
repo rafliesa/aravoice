@@ -140,22 +140,16 @@ export default function SubtitleThreeContent() {
       </p>
 
       {/* Iman Jabar Statement & Audio VN */}
-      <div className="max-w-xs mx-auto my-6">
+      <div className="my-8" key="iman-vn-container">
         <VoiceNoteCard 
           audioSrc="/3/Iman - NPCI Jabar.mp3"
           speakerName="Iman Imanudin"
           speakerRole="Kabid Binpres NPCI Jawa Barat"
           imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
         />
-      </div>
-
-      <div className="mx-auto my-8 max-w-xl border-y border-zinc-200/80 py-5 text-center">
-        <p className="font-sans text-lg sm:text-xl font-semibold leading-relaxed text-secondary-800 italic">
+        <p className="text-zinc-500 text-xs italic text-center -mt-4 max-w-md mx-auto leading-relaxed">
           “Ternyata seharusnya, seharusnya. Jadi dana atlet disabilitas agak lebih besar daripada dana ke atlet olahraga lain (atlet non-disabilitas). Kenapa? Satu atlet butuh pelatih, butuh pendamping. Pendamping inilah yang harus memahami atlet. Entah itu psikologis dan kebutuhan. Sehingga, dana kita selain untuk menggaji honor pelatih, ya juga untuk honor pendamping,”
         </p>
-        <span className="block not-italic text-xs font-bold text-zinc-500 mt-2.5">
-          — Iman Imanudin, Kepala Bidang Pembinaan Prestasi NPCI Jawa Barat
-        </span>
       </div>
 
       <p className={articleParagraphClass} key="paragraph-inklusif-4">
@@ -198,17 +192,16 @@ export default function SubtitleThreeContent() {
       </p>
 
       {/* Komarudin statement and Audio VN */}
-      <p className={articleParagraphClass} key="paragraph-efisiensi-7">
-        {"“Rencana kita di bulan Juli. Rencana. Jadi kita harus berubah dulu. Menurut saya rapat dengan Dispora itu ada beberapa item yang harus kita ubah. Karena di Dispora istilahnya cara anggaran belum pasti. Ya anggaran belum pasti. Besaran ini berapa. Dispora itu belum tahu,” jelas Komarudin."}
-      </p>
-
-      <div className="max-w-xs mx-auto my-6">
+      <div className="my-8" key="komarudin-vn-container">
         <VoiceNoteCard 
           audioSrc="/3/Komarudin ANGGARAN.wav"
           speakerName="Komarudin"
           speakerRole="Bendahara NPCI Kota Bandung"
           imageSrc="/uploads/9ee61479be07118e6f3170b0b7197bb1.jpg"
         />
+        <p className="text-zinc-500 text-xs italic text-center -mt-4 max-w-md mx-auto leading-relaxed">
+          “Rencana kita di bulan Juli. Rencana. Jadi kita harus berubah dulu. Menurut saya rapat dengan Dispora itu ada beberapa item yang harus kita ubah. Karena di Dispora istilahnya cara anggaran belum pasti. Ya anggaran belum pasti. Besaran ini berapa. Dispora itu belum tahu.”
+        </p>
       </div>
 
       <p className={articleParagraphClass} key="paragraph-efisiensi-8">

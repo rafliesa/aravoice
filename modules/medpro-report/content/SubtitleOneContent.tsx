@@ -159,13 +159,38 @@ export default function SubtitleOneContent() {
       </p>
 
       {/* Mini Video Pak Wirya */}
-      <div className="my-8 flex justify-center">
-        <video 
-          src="/1/Pak Wirya 21 Atlet.mp4" 
-          controls 
-          className="w-full max-w-lg rounded-2xl shadow-md bg-black"
-          poster="/video-placeholder.webp"
-        />
+      <div className="my-10 mx-auto max-w-2xl overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-lg transition-all duration-300 hover:shadow-xl font-sans">
+        <div className="bg-zinc-900 p-3 text-center border-b border-zinc-800">
+          <span className="text-[10px] font-black text-secondary-400 uppercase tracking-widest block">
+            VIDEO FEATURE
+          </span>
+          <h3 className="text-xs font-bold text-zinc-300 mt-1">
+            WIRYA DHARMA: DEDIKASI DAN KETERBATASAN ATLET BLIND JUDO
+          </h3>
+        </div>
+        <div className="relative aspect-[16/9] bg-black">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/UidWxBgYGDA"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="w-full h-full"
+          />
+        </div>
+        <div className="p-4 bg-zinc-50 flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <h4 className="text-xs font-black text-zinc-800">
+              Wirya Dharma
+            </h4>
+            <p className="text-[10px] text-zinc-500">
+              Koordinator Pelatih Blind Judo NPCI Kota Bandung
+            </p>
+          </div>
+        </div>
       </div>
 
       <p className={articleParagraphClass}>
@@ -234,16 +259,13 @@ export default function SubtitleOneContent() {
       </p>
 
       {/* VN Aditya Nandang */}
-      <VoiceNoteCard
-        audioSrc="/1/Aditya Nandang - VN Anak dari Atlet Difabel.m4a"
-        speakerName="Aditya Nandang Saputra"
-        speakerRole="Pengurus Pemberdayaan Atlet NPCI Kab. Bandung"
-      />
-
-      {/* Transkripsi VN Aditya */}
-      <div className="mx-auto my-4 max-w-sm rounded-xl border border-zinc-100 bg-zinc-50 px-5 py-4">
-        <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400">Transkripsi</p>
-        <p className="font-sans text-sm leading-relaxed text-zinc-600 italic">
+      <div className="my-8" key="aditya-vn-container">
+        <VoiceNoteCard
+          audioSrc="/1/Aditya Nandang - VN Anak dari Atlet Difabel.m4a"
+          speakerName="Aditya Nandang Saputra"
+          speakerRole="Pengurus Pemberdayaan Atlet NPCI Kab. Bandung"
+        />
+        <p className="text-zinc-500 text-xs italic text-center -mt-4 max-w-md mx-auto leading-relaxed">
           "Kebetulan saya anak dari atlet disabilitas. Saya tahu lah bagaimana perjuangan atlet-atlet saya yang sekarang ya. Karena saya juga mengawal almarhum bapak saya, atlet itu sama bareng sama Agus Bagja, yang dari tahun 2010. Saya tahu gitu bagaimana pandangan orang di luar sana yang memandang sebelah mata disabilitas tersebut gitu. Perjuangan bapak saya itu sama dari tahun 2010 sampai tahun 2020, dua minggu sebelum berangkat Peparnas Papua itu meninggal."
         </p>
       </div>
@@ -281,7 +303,7 @@ export default function SubtitleOneContent() {
           <figure>
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-100 shadow-md">
               <Image 
-                src="/1/kursi-roda-atlet.jpg" 
+                src="/IMG_4125.jpg" 
                 alt="Kursi roda atletik yang memiliki camber (roda miring) untuk memberikan keseimbangan, posisi duduk aerodinamis meminimalisir hambatan angin." 
                 fill 
                 className="object-cover" 
@@ -294,7 +316,7 @@ export default function SubtitleOneContent() {
           <figure>
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-zinc-100 shadow-md">
               <Image 
-                src="/1/kursi-roda-disabilitas.jpg" 
+                src="/IMG_2788.jpg" 
                 alt="kursi roda disabilitas biasa menggunakan roda tangan, roda tidak dibuat miring dan memiliki sandaran tangan serta pijakan kaki." 
                 fill 
                 className="object-cover" 

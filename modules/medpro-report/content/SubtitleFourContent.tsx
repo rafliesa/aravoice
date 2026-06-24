@@ -134,17 +134,16 @@ export default function SubtitleFourContent() {
         {"Dari sisi ekonomi, Lovita tidak menggambarkan adanya penghasilan rutin bulanan sebagai atlet. Pemasukan yang ia sebut secara langsung adalah bonus setelah meraih medali perak di Peparnas 2024. Bonus tersebut ia terima dari NPCI Jawa Barat dan Kota Bandung karena ia merupakan salah satu kontingen Jawa Barat atau pengcab Kota Bandung."}
       </p>
 
-      <p className={articleParagraphClass} key="quote-25">
-        {"“Bonus dapat, karena sesuai medali kan, waktu itu aku dapat perak, terus penyalurannya aku nggak tahu sih kak, dari itu, pokoknya aku dapat bonus itu dari NPC Jawa Barat sama NPC Kota Bandung,” ujarnya."}
-      </p>
-
       {/* Lovita Voice Note Card */}
-      <div className="max-w-xs mx-auto my-6">
+      <div className="my-8" key="lovita-vn-container">
         <VoiceNoteCard 
           audioSrc="/4/LOVITA PENCAIRAN BONUS.wav"
           speakerName="Lovita Uki Damayanti"
           speakerRole="Atlet Goalball Kontingen Jawa Barat"
         />
+        <p className="text-zinc-500 text-xs italic text-center -mt-4 max-w-md mx-auto leading-relaxed">
+          “Bonus dapat, karena sesuai medali kan, waktu itu aku dapat perak, terus penyalurannya aku nggak tahu sih kak, dari itu, pokoknya aku dapat bonus itu dari NPC Jawa Barat sama NPC Kota Bandung.”
+        </p>
       </div>
 
       <p className={articleParagraphClass} key="paragraph-27">
@@ -258,18 +257,17 @@ export default function SubtitleFourContent() {
         {"NPCI Kota Bandung sendiri masih belum menyediakan pelatihan literasi keuangan yang dapat membantu para atlet untuk mengelola serta memanfaatkan dana pribadi dan bonus yang mereka dapatkan. Komisioner Komisi Nasional Disabilitas (KND) Jonna Aman Damanik menyebutkan bahwa literasi keuangan merupakan hal yang sangat penting untuk dikuasai. Menurutnya, banyak atlet yang mendapatkan bonus besar, tetapi tidak memiliki kemampuan untuk mengelola uang dengan baik."}
       </p>
 
-      <p className={articleParagraphClass} key="quote-37">
-        {"“...yang paling penting menurut saya adalah literasi keuangan. Banyak atlet mendapatkan bonus besar, tetapi tidak memiliki kemampuan mengelola keuangan dengan baik. Akhirnya setelah beberapa tahun kondisi ekonominya kembali sulit. Karena itu sekarang Kemenpora bekerja sama dengan OJK untuk memberikan pendidikan literasi keuangan kepada para atlet,” jelas Jonna."}
-      </p>
-
       {/* Jonna Damanik Audio VN card */}
-      <div className="max-w-xs mx-auto my-6">
+      <div className="my-8" key="jonna-vn-container">
         <VoiceNoteCard 
           audioSrc="/4/jonna-vn.MP3"
           speakerName="Jonna Aman Damanik"
           speakerRole="Komisioner Komisi Nasional Disabilitas (KND)"
           imageSrc="/jonna.jpg"
         />
+        <p className="text-zinc-500 text-xs italic text-center -mt-4 max-w-md mx-auto leading-relaxed">
+          “...yang paling penting menurut saya adalah literasi keuangan. Banyak atlet mendapatkan bonus besar, tetapi tidak memiliki kemampuan mengelola keuangan dengan baik. Akhirnya setelah beberapa tahun kondisi ekonominya kembali sulit. Karena itu sekarang Kemenpora bekerja sama dengan OJK untuk memberikan pendidikan literasi keuangan kepada para atlet.”
+        </p>
       </div>
 
       <p className={articleParagraphClass} key="paragraph-39">

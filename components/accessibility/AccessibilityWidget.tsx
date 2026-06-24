@@ -331,12 +331,6 @@ export default function AccessibilityWidget() {
           <div className="p-4">
             <div className="grid grid-cols-2 gap-2">
               <FeatureButton
-                code="SC"
-                label="Smart Contrast"
-                active={settings.smartContrast}
-                onClick={() => toggleSetting("smartContrast", "Smart contrast")}
-              />
-              <FeatureButton
                 code="II"
                 label="Pause Animation"
                 active={settings.pauseAnimations}
@@ -675,7 +669,6 @@ function readSettings(): Settings {
 
 function applySettings(settings: Settings) {
   const root = document.documentElement;
-  root.dataset.a11ySmartContrast = String(settings.smartContrast);
   root.dataset.a11yPauseAnimations = String(settings.pauseAnimations);
   root.dataset.a11yContrast = String(settings.contrast);
   root.dataset.a11yHighlightLinks = String(settings.highlightLinks);

@@ -43,7 +43,7 @@ export default function HomeBottomCta() {
           <p className="mt-6 text-sm text-[#686868]">
             Sudah punya akun?{" "}
             <Link
-              href="/admin/login"
+              href="/dukung-kami"
               className="font-semibold text-[#9a5a00] hover:underline"
             >
               Masuk di sini.
@@ -56,9 +56,6 @@ export default function HomeBottomCta() {
               fill
               className="object-contain"
             />
-          </div>
-          <div className="absolute -left-40 bottom-44 ml-auto bg-[#9a5a00] text-white text-xs font-black px-4 py-2.5 rounded-2xl shadow-sm tracking-wide">
-            Ayo jadi Paravox!
           </div>
         </article>
 
@@ -101,9 +98,6 @@ export default function HomeBottomCta() {
                 fill
                 className="object-contain"
               />
-            </div>
-            <div className="absolute -right-32 bottom-48 ml-auto bg-[#9a5a00] text-white text-xs font-black px-4 py-2.5 rounded-2xl shadow-sm tracking-wide">
-              Grab Yours!
             </div>
           </article>
         </Link>

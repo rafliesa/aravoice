@@ -19,7 +19,7 @@ const columns = [
       { label: "Kontak", href: "/kontak" },
       { label: "Donasi", href: "/donasi" },
       { label: "Newsletter", href: "/dukung-kami" },
-      { label: "Panduan Kontributor", href: "/panduan-kontributor" },
+      { label: "Panduan Kontributor", href: "/dukung-kami" },
     ],
   },
 ];

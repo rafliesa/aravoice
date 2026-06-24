@@ -178,9 +178,8 @@ export default function ArticlePage({
 
         {status === "ready" && news && (
           <article>
-            <ArticleSubnav />
             <section
-              className={`mt-8 overflow-hidden rounded-lg border bg-white ${
+              className={`overflow-hidden rounded-lg border bg-white ${
                 highContrast ? "border-black" : "border-[#cfc8bd]"
               }`}
             >
@@ -437,40 +436,6 @@ function clearSpeechKeepAlive(ref: React.MutableRefObject<number | null>) {
   if (ref.current === null) return;
   window.clearInterval(ref.current);
   ref.current = null;
-}
-
-function ArticleSubnav() {
-  const items = [
-    "Sub Judul 1",
-    "Sub Judul 2",
-    "Sub Judul 3",
-    "Sub Judul 4",
-    "Sub Judul 5",
-    "Sub Judul 6",
-    "Sub Judul 7",
-    "Hak Tertunda",
-  ];
-
-  return (
-    <nav
-      aria-label="Navigasi bagian artikel"
-      className="flex gap-7 overflow-x-auto pb-1 text-sm font-semibold text-[#544434]"
-    >
-      {items.map((item) => (
-        <a
-          key={item}
-          href="#"
-          className={
-            item === "Hak Tertunda"
-              ? "shrink-0 border-b-2 border-secondary-800 pb-1 font-bold text-secondary-800"
-              : "shrink-0 pb-1 hover:text-secondary-800"
-          }
-        >
-          {item}
-        </a>
-      ))}
-    </nav>
-  );
 }
 
 function PlayCircleIcon() {

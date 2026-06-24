@@ -63,6 +63,7 @@ export default function BandungDemographicsChart() {
   const containerRef = useRef<HTMLElement>(null);
   const [animated, setAnimated]     = useState(false);
   const [hovered, setHovered]       = useState<number | null>(null);
+  const [selected, setSelected]     = useState<number | null>(null);
   const gradId  = `bdg-fill-${useId().replaceAll(":", "")}`;
   const clipId  = `bdg-clip-${useId().replaceAll(":", "")}`;
 
@@ -159,25 +160,26 @@ export default function BandungDemographicsChart() {
             {/* points */}
             {pts.map((pt, i) => {
               const isHov  = hovered === i;
-              const is2022 = pt.year === 2022;
+              const isActive = isHov || selected === i;
               return (
                 <g key={pt.year}
                   onPointerEnter={() => setHovered(i)}
                   onPointerLeave={() => setHovered(null)}
+                  onClick={() => setSelected(selected === i ? null : i)}
                   className="cursor-pointer"
                 >
                   {/* hover label */}
                   <text x={pt.x} y={pt.y - 14} textAnchor="middle"
                     fontSize="10" fontWeight="700" className="fill-zinc-700 font-sans"
-                    style={{ opacity: isHov ? 1 : 0, transition: "opacity 150ms" }}>
+                    style={{ opacity: isActive ? 1 : 0, transition: "opacity 150ms" }}>
                     {pt.value.toLocaleString("id")}
                   </text>
 
                   {/* dot */}
                   <circle cx={pt.x} cy={pt.y}
-                    r={is2022 || isHov ? 7 : 5}
-                    fill={is2022 ? "#0f2c5c" : "white"}
-                    stroke={is2022 ? "#0f2c5c" : "#3b6bda"}
+                    r={isActive ? 7 : 5}
+                    fill={isActive ? "#0f2c5c" : "white"}
+                    stroke={isActive ? "#0f2c5c" : "#3b6bda"}
                     strokeWidth="2"
                     className="transition-all duration-300"
                     style={{
@@ -189,8 +191,8 @@ export default function BandungDemographicsChart() {
 
                   {/* x-label */}
                   <text x={pt.x} y={chart.height - 8} textAnchor="middle"
-                    fontSize="11" fontWeight={is2022 ? "700" : "500"}
-                    className={is2022 ? "fill-zinc-800 font-sans" : "fill-zinc-400 font-sans"}>
+                    fontSize="11" fontWeight={isActive ? "700" : "500"}
+                    className={isActive ? "fill-zinc-800 font-sans" : "fill-zinc-400 font-sans"}>
                     {pt.year}
                   </text>
                 </g>

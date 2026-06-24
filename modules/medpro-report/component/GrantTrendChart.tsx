@@ -41,6 +41,7 @@ export default function GrantTrendChart() {
   const containerRef = useRef<HTMLElement>(null);
   const [isAnimated, setIsAnimated]   = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const gradientId = `gtc-fill-${useId().replaceAll(":", "")}`;
   const lineId     = `gtc-line-${useId().replaceAll(":", "")}`;
 
@@ -169,13 +170,14 @@ export default function GrantTrendChart() {
             {/* ── Data points + labels + x-axis years ── */}
             {points.map((point, index) => {
               const isHovered  = index === hoveredIndex;
-              const isHighlight = point.year === 2025; // filled dot per reference
+              const isActive   = isHovered || index === selectedIndex;
 
               return (
                 <g
                   key={point.year}
                   onPointerEnter={() => setHoveredIndex(index)}
                   onPointerLeave={() => setHoveredIndex(null)}
+                  onClick={() => setSelectedIndex(index === selectedIndex ? null : index)}
                   className="cursor-pointer"
                 >
                   {/* data label above point — only visible on hover */}
@@ -187,7 +189,7 @@ export default function GrantTrendChart() {
                     fontWeight="700"
                     className="font-sans fill-blue-700"
                     style={{
-                      opacity: isHovered ? 1 : 0,
+                      opacity: isActive ? 1 : 0,
                       transition: "opacity 150ms ease",
                     }}
                   >
@@ -207,9 +209,9 @@ export default function GrantTrendChart() {
                   {/* main dot */}
                   <circle
                     cx={point.x} cy={point.y}
-                    r={isHighlight || isHovered ? 8 : 6}
-                    fill={isHighlight ? "#0f2c5c" : "white"}
-                    stroke={isHighlight ? "#0f2c5c" : "#3b6bda"}
+                    r={isActive ? 8 : 6}
+                    fill={isActive ? "#0f2c5c" : "white"}
+                    stroke={isActive ? "#0f2c5c" : "#3b6bda"}
                     strokeWidth="2.5"
                     className="transition-all duration-300"
                     style={{
@@ -226,9 +228,9 @@ export default function GrantTrendChart() {
                     y={chart.height - 12}
                     textAnchor="middle"
                     fontSize="12"
-                    fontWeight={isHovered ? "700" : "500"}
+                    fontWeight={isActive ? "700" : "500"}
                     className={`font-sans transition-colors duration-200 ${
-                      isHighlight ? "fill-zinc-800" : "fill-zinc-500"
+                      isActive ? "fill-zinc-800" : "fill-zinc-500"
                     }`}
                   >
                     {point.year}

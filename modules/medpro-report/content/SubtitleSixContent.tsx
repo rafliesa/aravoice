@@ -107,7 +107,7 @@ export default function SubtitleSixContent() {
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-zinc-950 shadow-md group border border-zinc-200/50">
               <video
                 ref={totoVideoRef}
-                src="/6/pak-toto-wwc-vid.mp4"
+                src="/6/pak-toto-wwc-vid.mp4#t=0.001"
                 className="w-full h-full object-cover"
                 preload="metadata"
                 onClick={toggleTotoPlay}
